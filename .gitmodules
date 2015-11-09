@@ -1,3 +1,6 @@
+[submodule "install/brew"]
+	path = install/brew
+	url = https://github.com/Homebrew/install
 [submodule "zsh/modules/zsh-syntax-highlighting"]
 	path = zsh/modules/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting

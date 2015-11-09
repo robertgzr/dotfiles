@@ -10,3 +10,6 @@
 [submodule "zsh/modules/zsh-autosuggestions"]
 	path = zsh/modules/zsh-autosuggestions
 	url = https://github.com/tarruda/zsh-autosuggestions
+[submodule "zsh/modules/faster-vcs-info"]
+	path = zsh/modules/faster-vcs-info
+	url = https://github.com/kyanagi/faster-vcs-info

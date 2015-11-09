@@ -7,3 +7,6 @@
 [submodule "zsh/modules/zsh-history-substring-search"]
 	path = zsh/modules/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "zsh/modules/zsh-autosuggestions"]
+	path = zsh/modules/zsh-autosuggestions
+	url = https://github.com/tarruda/zsh-autosuggestions

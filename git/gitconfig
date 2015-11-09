@@ -139,9 +139,6 @@
 [url "git://gist.github.com/"]
 
     insteadOf = "gist:"
-[user]
-	name = Robert Günzler
-	email = robert.guenzler@student.htw-berlin.de
 [http]
 	sslverify = true
 	#sslCAInfo = /Users/robertgz/.git-certs/htw_berlin.pem

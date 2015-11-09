@@ -10,3 +10,6 @@
 [submodule "zsh/modules/faster-vcs-info"]
 	path = zsh/modules/faster-vcs-info
 	url = https://github.com/kyanagi/faster-vcs-info
+[submodule "zsh/modules/fasd"]
+	path = zsh/modules/fasd
+	url = https://github.com/clvv/fasd

@@ -25,10 +25,10 @@ source $ZSHDIR/zsh_hooks.zsh
 # source $ZSHDIR/modules/zaw/zaw.zsh
 
 # History Substring Search
-source $ZSHDIR/modules/history-substring-search/zsh-history-substring-search.zsh
+source $ZSHDIR/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Syntax Highlighting
-source $ZSHDIR/modules/syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSHDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fish like autosuggestions
 # source $ZSHDIR/modules/zsh-autosuggestions/autosuggestions.zsh

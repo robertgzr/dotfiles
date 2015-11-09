@@ -1,0 +1,56 @@
+# ==== Basic ZSH
+
+fpath=(
+    $ZSHDIR/modules/*
+    $LUNCHY_DIR/lunchy-completion.zsh
+    /usr/local/share/zsh-completions
+    /usr/local/share/zsh/site-functions
+    /usr/local/bin/
+    ${fpath[@]}
+)
+
+source $ZSHDIR/setopt.zsh
+source $ZSHDIR/exports.zsh
+source $ZSHDIR/completion.zsh
+source $ZSHDIR/spectrum.zsh
+source $ZSHDIR/prompt.zsh
+source $ZSHDIR/aliases.zsh
+source $ZSHDIR/bindkeys.zsh
+source $ZSHDIR/functions.zsh
+source $ZSHDIR/history.zsh
+source $ZSHDIR/zsh_hooks.zsh
+
+# ==== Custom Modules
+
+# source $ZSHDIR/modules/zaw/zaw.zsh
+
+# History Substring Search
+source $ZSHDIR/modules/history-substring-search/zsh-history-substring-search.zsh
+
+# Syntax Highlighting
+source $ZSHDIR/modules/syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fish like autosuggestions
+# source $ZSHDIR/modules/zsh-autosuggestions/autosuggestions.zsh
+
+source $ZSHDIR/modules/fasd/fasd.zsh
+
+# ==== Random
+
+# init autosuggest
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
+
+# ==== TODO
+
+# setup virtualenvwrapper
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+fi
+
+# setup: THEFUCK
+eval $(thefuck-alias fuck)

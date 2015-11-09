@@ -1,0 +1,7 @@
+# Defines helper functions
+
+function is_autoloadable {
+  ( unfunction $1 ; autoload -U +X $1 ) &> /dev/null
+}
+
+is_autoloadable $@

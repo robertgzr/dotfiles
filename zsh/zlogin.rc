@@ -1,0 +1,13 @@
+# stolen from github.com/palcu/dotfiles
+{
+    zcompdump="$ZSHDIR/tmp/.zcompdump"
+    if [[ -s "$zcompdump" && (! -s "$zcompdump.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+        zcompile "$zcompdump"
+    fi
+} &!
+
+# print a random adage
+if (( $+commands[fortune] )); then
+    fortune -a
+    print
+fi

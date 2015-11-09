@@ -1,0 +1,65 @@
+# Provide a minimal prompt interface
+
+# Sets up: pwd
+# takes 'short' as argument
+function prompt_dir() {
+    if [[ $1 = short ]]; then
+        # shortend path behaviour
+        local pwd="${PWD/#$HOME/~}"
+
+        if [[ "$pwd" == (#m)[/~] ]]; then
+            prompt_pwd="$MATCH"
+            unset MATCH
+        else
+            prompt_pwd="$FG[002]$FX[no-bold]$FX[italic]${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+        fi
+    else
+        # default behaviour
+        prompt_pwd=" %~%<< "
+    fi
+}
+
+# ==== Prompt constructor functions
+
+function prompt_precmd {
+    prompt_dir short
+
+    autoload -Uz update_git_info
+    if (( $+functions[update_git_info] )); then
+        update_git_info
+    fi
+
+    PROMPT='$FG[002]$prompt_pwd%{%f%}$FX[reset] $FG[255]> '
+
+    if [[ -n "$FORMAT_GIT_INFO" ]]; then
+        RPROMPT='$FORMAT_GIT_INFO[status]'
+    fi
+}
+
+function prompt_minimal {
+    setopt LOCAL_OPTIONS
+    unsetopt XTRACE KSH_ARRAYS
+    autoload -Uz add-zsh-hook
+
+    zstyle ':git:info' verbose 'yes'
+
+    zstyle ':git:info:commit' format "$FG[000]@$FX[reset]%c"
+    zstyle ':git:info:branch' format "$FG[000]$FG[004]%b$FX[reset]"
+
+    zstyle ':git:info:ahead' format " ↑"
+    zstyle ':git:info:behind' format "↓"
+
+    zstyle ':git:info:clean' format " $FG[002]✔$FX[reset]"
+    zstyle ':git:info:dirty' format " $FG[001]✗$FX[reset]"
+    zstyle ':git:info:unmerged' format "═"
+    zstyle ':git:info:modified' format "✱"
+    zstyle ':git:info:untracked' format "?"
+
+    zstyle ':git:info:keys' format \
+        'status' "%b%c%A%B%C%D%m%U%u $FG[000]" \
+        'short' '%b%C%D $FG[000]'
+
+    add-zsh-hook precmd prompt_precmd
+}
+
+prompt_minimal "$@"

@@ -1,0 +1,148 @@
+[user]
+    name = Robert G.
+    email = robert.guenzler@student.htw-berlin.de
+
+[github]
+    user = robertgzr
+
+[core]
+    excludesfile = ~/.global_gitignore
+    editor = vim
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+    filemode = false
+
+[alias]
+    st = status
+    sts = status -sb
+    stl = ls-files -m -o --exclude-standard
+    ci = commit
+    br = branch
+    co = checkout
+    cr = clone --recursive
+    df = diff --word-diff
+    unstage = reset --hard HEAD
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=oneline --graph --abbrev-commit
+    lm = log --pretty=format:'* %s (%h)'
+    lg = log -p
+    g = grep --break --heading --line-number
+    amend = commit --amend --reuse-message=HEAD
+    contrib = shortlog --summary --numbered
+    show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+    ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+    pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
+[pager]
+    diff = diff-highlight | less
+
+[apply]
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
+
+[color]
+    # Use colors in Git commands that are capable of colored output when
+    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[credential]
+    helper = osxkeychain
+
+[diff]
+    # Detect copies as well as renames
+    renames = copies
+
+[diff "bin"]
+    # Use `hexdump` to diff binary files
+    textconv = hexdump -v -C
+    renames = copies
+    tool = vim
+[difftool "vim"]
+    cmd = vim
+[difftool]
+    prompt = false
+
+[fetch]
+    prune = true
+
+[grep]
+    lineNumber = true
+
+[help]
+    # Automatically correct and execute mistyped commands
+    autocorrect = 1
+
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+    conflictstyle = diff3
+    defaultToUpstream = true
+    tool = vim
+[mergetool "vim"]
+    cmd = vim
+    trustExitCode = true
+[mergetool]
+    prompt = false
+
+[push]
+    # Use the Git 1.x.x default to avoid errors on machines with old Git
+    # installations. To use `simple` instead, add this to your `~/.extra` file:
+    # `git config --global push.default simple`. See http://git.io/mMah-w.
+    default = simple
+    # Make `git push` push relevant annotated tags when pushing branches out.
+    followTags = true
+
+# URL shorthands
+
+[url "git@github.com:"]
+
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+
+    insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+
+    insteadOf = "gist:"
+[user]
+	name = Robert Günzler
+	email = robert.guenzler@student.htw-berlin.de
+[http]
+	sslverify = true
+	#sslCAInfo = /Users/robertgz/.git-certs/htw_berlin.pem
+

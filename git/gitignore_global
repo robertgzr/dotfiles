@@ -1,0 +1,20 @@
+# Random
+*~
+._*
+Thumbs.db
+.DS_Store
+Desktop.ini
+.idea
+
+# external
+.Spotlight-V100
+.Trashes
+
+# compiled
+*.o
+*.out
+*.pyc
+
+# web stuff
+node_modules
+bower_components

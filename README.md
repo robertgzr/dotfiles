@@ -13,11 +13,11 @@ Other Ressources:
 status
 ======
 
-## done
-* ZSH
+### done
+* ZSH ✔
 * Git
 
-## Todo
+### Todo
 * look at the cgitparser files again!
 * brewfile
 * caskfile (?)

@@ -11,10 +11,10 @@ A slimmed down configuration of ZSH.
 Todo
 ----
 - [x] git
-- [] python-env
+- [ ] python-env
 - [x] right prompt
 - [x] fine tune minimal-prompt
-- [] folder-owner indicator
+- [ ] folder-owner indicator
 
 - [x] integrate old prezto files
 

@@ -1,3 +1,4 @@
+config/flexget/.config-lock
 config/flexget/*.log
 config/flexget/log-*
 config/flexget/*.sqlite

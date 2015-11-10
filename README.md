@@ -13,19 +13,20 @@ Other Ressources:
 status
 ======
 
-### done
+### done (✔ = checked)
 * ZSH ✔
-* Git
+* Git ✔
+* brew api token file ✔
+* iTerm2 colorschemes ✔
+* copy over stuff from old dotfiles (alias, env, functions) 
+* Brewfile
 
 ### Todo
 * look at the cgitparser files again!
-* brewfile
 * caskfile (?)
-* copy over stuff from old dotfiles (alias, env, functions)
 * .dotfiles/config/* <-- a lot
 * move applescripts
 * write osx defaults
 * irssi
 * finally get rid of prezto
 * iterm colors
-* brew api token file

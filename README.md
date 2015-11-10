@@ -18,7 +18,7 @@ Status
 * `✔` brew api token
 * `✔` iTerm2 colorschemes
 * `✔` copy over stuff from old dotfiles (alias, env, functions)
-* ` ` Brewfile
+* `  ` Brewfile
 * `✔` move .dotfiles_old/config/*
 
 ### todo

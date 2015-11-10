@@ -17,16 +17,17 @@ status
 * ZSH ✔
 * Git ✔
 * brew api token file ✔
-* iTerm2 colorschemes ✔
+* iTerm2 colorschemes ✔ 
 * copy over stuff from old dotfiles (alias, env, functions) 
 * Brewfile
+* move .dotfiles/config/*
 
 ### Todo
 * look at the cgitparser files again!
 * caskfile (?)
-* .dotfiles/config/* <-- a lot
 * move applescripts
 * write osx defaults
 * irssi
 * finally get rid of prezto
 * iterm colors
+* config/mpv/scripts as submodules?

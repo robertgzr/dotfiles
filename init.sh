@@ -15,12 +15,17 @@ ln -sfv "$DOT_DIR/zsh/zlogin.rc" ~/.zlogin
 cd "$DOT_DIR/zsh/modules/info-functions/cgitparser"
 # make
 
+# .config git
+ln -sfv "$DOT_DIR/config" ~/.config
+
 ln -sfv "$DOT_DIR/git/gitconfig" ~/.gitconfig
 ln -sfv "$DOT_DIR/git/gitignore_global" ~/.gitignore_global
 
 
 # install brew
 eval "$DOT_DIR/install/brew/install"
+brew update
+brew upgrade
 
 # run brew install scripts
 

@@ -1,3 +1,13 @@
+config/flexget/*.log
+config/flexget/log-*
+config/flexget/*.sqlite
+
+config/mpv/watch_later/*
+config/mpv/icc-cache/*
+
+config/transmision/*
+
 gh_api_token
+
 zsh/tmp/
 zsh/modules/info-functions/cgitparser/cgitparser

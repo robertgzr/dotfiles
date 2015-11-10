@@ -7,27 +7,26 @@ inspired by [Getting started with dotfiles](https://medium.com/@webprolific/gett
 
 Other Ressources:
 * https://github.com/webpro/dotfiles
-* https://github.com/zenorocha/sublime-preferences
 
 
-status
-======
+Status
+------
 
 ### done (✔ = checked)
-* ZSH ✔
-* Git ✔
-* brew api token file ✔
-* iTerm2 colorschemes ✔ 
-* copy over stuff from old dotfiles (alias, env, functions) 
-* Brewfile
-* move .dotfiles/config/*
+* `✔` ZSH
+* `✔` Git
+* `✔` brew api token
+* `✔` iTerm2 colorschemes
+* `✔` copy over stuff from old dotfiles (alias, env, functions)
+* ` ` Brewfile
+* `✔` move .dotfiles_old/config/*
 
-### Todo
+### todo
 * look at the cgitparser files again!
-* caskfile (?)
+* ~~caskfile~~
 * move applescripts
 * write osx defaults
 * irssi
 * finally get rid of prezto
-* iterm colors
 * config/mpv/scripts as submodules?
+* What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)

@@ -128,22 +128,22 @@ function firefoxcli() {
 }
 
 # Execute a command in the same directory but in a new tab
-function tcmd() {
-  if [[  $TERM_PROGRAM != iTerm.app ]]; then
-      open -a Terminal
-      return 0
-  fi
-  # First, get the directory for the new tab
-  ThisDirectory=$PWD
+# function tcmd() {
+#   if [[  $TERM_PROGRAM != iTerm.app ]]; then
+#       open -a Terminal
+#       return 0
+#   fi
+#   # First, get the directory for the new tab
+#   ThisDirectory=$PWD
 
-  if [[ $# == 0  ]]; then
-        print "usage: $0 [commands]"
-        return 1
-  fi
+#   if [[ $# == 0  ]]; then
+#         print "usage: $0 [commands]"
+#         return 1
+#   fi
 
-  osascript <<-eof
-eof
-}
+#   osascript <<-eof
+# eof
+# }
 
 function streamit()
 {

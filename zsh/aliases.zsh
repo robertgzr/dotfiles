@@ -1,10 +1,16 @@
+# ==== ALIASES
+
 # Colorize output, add file type indicator, and put sizes in human readable format
 alias ls='ls -GFh'
-
 # Same as above, but in long listing format
 alias ll='ls -GFhl'
 alias la='ls -GFhla'
 alias ld='ls -ld */'
+
+# dot expolding (not sure if neccessary)
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 alias rmx='rm -rf'
 # recursive delete of .DS_Store files
@@ -15,9 +21,9 @@ alias unhide="chflags nohidden"
 # alias bower='noglob bower'
 # alias git='hub'
 
-alias py2='python2.7'
-alias py3='python3.5'
-alias py='py2'
+# alias py2='python2.7'
+# alias py3='python3.5'
+alias py='python'
 
 # ==== OSX specific
 alias cdf='cd "$(pfd)"'
@@ -40,6 +46,7 @@ alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 
 alias find='noglob find'
+alias chickenfind="find / -name"
 alias history='noglob history'
 alias locate='noglob locate'
 
@@ -47,8 +54,14 @@ alias cp="${aliases[cp]:-cp} -i"
 alias rm="${aliases[rm]:-rm} -i"
 alias grep="${aliases[grep]:-grep} --color=auto"
 
-# ==== fasd
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
 alias m='f -e mpv'
 alias s='f -e subl'
+
+alias mpv="noglob mpv"
+alias vlc="noglob /opt/homebrew-cask/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC"
+alias cvlc="vlc --intf=rc"
+alias youtube-dl="noglob youtube-dl"
+alias ydl="youtube-dl"
+alias livestreamer="noglob livestreamer"

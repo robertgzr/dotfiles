@@ -44,8 +44,29 @@ export EAGLE_DIR=$HOME/Documents/eagle
 export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/gh_api_token)
 
 # Python
-# export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-#
+# export PYTHON=/usr/local/bin/python
+# export PYTHON2=/usr/local/bin/python2
+# export PYTHON3=/usr/local/bin/python2.8
+# # export PYTHONPATH=/usr/local/lib/python2.7/:$PYTHONPATH
+# export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.12/lib/python2.7/site-packages
+
+# UTF-8 locale fix for Python
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# VirtualEnv
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+# export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# export PIP_RESPECT_VIRTUALENV=true
+
+# Django
+# export ENV_ROLE=development
+# export CRMEASY_DB_PASS=pg
+# export SECRET_KEY='l6w=)99mi_^$=p9^d2=%8qvl7@fee$0=s=k$(@4cwldmjgyo1e'
+
+
 
 # Go
 export GOROOT=/usr/local/opt/go/libexec
@@ -61,3 +82,8 @@ export JUNIT_HOME=$HOME/Development/CE-HTW/softwaretechnik/junit_test/
 
 # postgreSQL
 export PGDATA=/usr/local/pgsql/data
+
+# Arduino
+export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Contents/Java/
+export BOARD=uno
+

@@ -121,3 +121,67 @@ function mpvp()
         echo "m -mpvp [youtube-dl format] [profile]"
     fi
 }
+
+# start firefox with dev-profile
+function firefoxcli() {
+    $FIREFOX --new-instance -P "dev";
+}
+
+# Execute a command in the same directory but in a new tab
+function tcmd() {
+  if [[  $TERM_PROGRAM != iTerm.app ]]; then
+      open -a Terminal
+      return 0
+  fi
+  # First, get the directory for the new tab
+  ThisDirectory=$PWD
+
+  if [[ $# == 0  ]]; then
+        print "usage: $0 [commands]"
+        return 1
+  fi
+
+  osascript <<-eof
+eof
+}
+
+function streamit()
+{
+    INRES="1920x1080" # input resolution
+    OUTRES="1920x1080" # output resolution
+    FPS="60" # target FPS
+    GOP="120" # i-frame interval, should be double of FPS,
+    GOPMIN="$FPS" # min i-frame interval, should be equal to fps,
+    THREADS="2" # max 6
+    CBR="1000k" # constant bitrate (should be between 1000k - 3000k)
+    QUALITY="ultrafast"  # one of the many FFMPEG preset
+    AUDIO_RATE="44100"
+
+    STREAM_KEY="CC-D0B0431E-33ED-6E54-4D2A-F6825CACA9D0-38639"
+
+    # File streaming
+    if [[ $1 ]]; then
+        ffmpeg -i $1 -f matr -ac 2 -b:a $AUDIO_RATE -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p -s $OUTRES -preset $QUALITY -acodec libopus -application lowdelay -threads $THREADS -strict normal -bufsize $CBR "rtmp://stream.connectcast.tv/live/$STREAM_KEY"
+    # Desktop streaming
+    else;
+        ffmpeg -f avfoundation -video_size "$INRES" -framerate "$FPS" -i "1:0" -f flv -ac 2 -b:a $AUDIO_RATE -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p -s $OUTRES -preset $QUALITY -tune film -acodec libopus -application lowdelay -threads $THREADS -strict normal -bufsize $CBR "rtmp://stream.connectcast.tv/live/$STREAM_KEY"
+    fi
+}
+
+# set AppleShowAllFiles to TRUE or FALSE
+function findershowall() {
+    defaults write com.apple.finder AppleShowAllFiles $1;
+    killall Finder;
+    echo 'set AppleShowAllFiles to '$1;
+}
+
+# encfs FakeSeagate shortcut
+function encfsfs() {
+    encfs /Volumes/Transcend/FSeagate/.encfs-raw /Volumes/Transcend/FSeagate/FS;
+    #ln -s /Volumes/Transcend/FSeagate/FS /Volumes/FakeSeagate;
+}
+
+# convenience to flash Atmega8
+function bootloadHID() {
+    $HOME/Development/git/bootloadHID/commandline/bootloadHID $1
+}

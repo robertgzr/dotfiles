@@ -1,0 +1,93 @@
+# MPV Configuration
+#
+# Video
+#
+vo=opengl-hq:icc-profile-auto
+#hwdec=auto
+hwdec=no
+framedrop=vo
+geometry=50%:50%
+autofit-larger=80%x80%
+
+#
+# Audio
+#
+ao=coreaudio
+alang=jpn,ja,eng,en,ger,de
+softvol=yes
+softvol-max=200
+audio-channels=2
+# bs2b filter
+af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
+
+#
+# Subtitles
+#
+# slang=eng,en,ger,de
+sub-text-font='Gandhi Sans'
+sub-text-border-size=2.5
+sub-text-font-size=44
+sub-text-margin-y=50
+ass-force-style=Kerning=yes
+sub-auto=fuzzy
+
+#
+# OSD
+#
+no-border
+stop-screensaver
+cursor-autohide-fs-only
+osd-scale-by-window=yes
+# osd-font='Gandhi Sans Bold'
+osd-font='.HelveticaNeueDeskInterface-Regular' # San Francisco
+# osd-font-size=10
+# osd-scale=20
+
+#
+# Misc.
+#
+screenshot-template=~/Pictures/Screenshots/mpv/mpv_screenshot_%n
+screenshot-format=png
+user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
+
+#
+# PROFILES
+#
+[ydl]
+profile-desc="Optimized for streaming with youtube-dl"
+
+# ytdl-format="bestvideo[height<=?720]+bestaudio/best"
+ytdl-format=22
+hwdec=auto
+
+cache=8192
+cache-initial=1024
+cache-secs=2
+cache-pause
+
+[3d]
+profile-desc="3d"
+hwdec=no
+vf-add=stereo3d=sbs2l:mono
+
+[anime]
+profile-desc="flash3kyuu_deband with (s:eng/a:jpn)"
+
+hwdec=auto
+# vf-add=vapoursynth=~/.config/mpv/vapoursynth/f3kdb.py
+alang=ja
+slang=en
+
+[insane]
+profile-desc="OpenGL-HQ (scale-antiring/fbo:rgba16) + VS [insane] interpolation"
+
+vo=opengl-hq:scale-antiring=0.7:scale=ewa_lanczos:icc-profile-auto
+vf-add=vapoursynth=~/.config/mpv/vapoursynth/interpolation_insane.py
+vf-add=vapoursynth=~/.config/mpv/vapoursynth/f3kdb.py
+
+[no_ass]
+# ass-force-style=FontName=GandhiSans
+no-sub-ass
+sub-text-font='Gandhi Sans Bold Italic'
+sub-scale=1.1
+sub-text-margin-y=60

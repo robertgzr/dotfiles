@@ -1,7 +1,9 @@
 # ==== Basic ZSH
+export DOT_DIR=$HOME/.dotfiles.bkup
+export ZSH_DIR=$DOT_DIR/zsh
 
 fpath=(
-    $ZSHDIR/modules/*
+    $ZSH_DIR/modules/*
     $LUNCHY_DIR/lunchy-completion.zsh
     /usr/local/share/zsh-completions
     /usr/local/share/zsh/site-functions
@@ -9,31 +11,31 @@ fpath=(
     ${fpath[@]}
 )
 
-source $ZSHDIR/setopt.zsh
-source $ZSHDIR/exports.zsh
-source $ZSHDIR/completion.zsh
-source $ZSHDIR/spectrum.zsh
-source $ZSHDIR/prompt.zsh
-source $ZSHDIR/aliases.zsh
-source $ZSHDIR/bindkeys.zsh
-source $ZSHDIR/functions.zsh
-source $ZSHDIR/history.zsh
-source $ZSHDIR/zsh_hooks.zsh
+source $ZSH_DIR/setopt.zsh
+source $ZSH_DIR/exports.zsh
+source $ZSH_DIR/completion.zsh
+source $ZSH_DIR/spectrum.zsh
+source $ZSH_DIR/prompt.zsh
+source $ZSH_DIR/aliases.zsh
+source $ZSH_DIR/bindkeys.zsh
+source $ZSH_DIR/functions.zsh
+source $ZSH_DIR/history.zsh
+source $ZSH_DIR/zsh_hooks.zsh
 
 # ==== Custom Modules
 
-# source $ZSHDIR/modules/zaw/zaw.zsh
+# source $ZSH_DIR/modules/zaw/zaw.zsh
 
 # History Substring Search
-source $ZSHDIR/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $ZSH_DIR/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Syntax Highlighting
-source $ZSHDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH_DIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fish like autosuggestions
-# source $ZSHDIR/modules/zsh-autosuggestions/autosuggestions.zsh
+# source $ZSH_DIR/modules/zsh-autosuggestions/autosuggestions.zsh
 
-source $ZSHDIR/modules/fasd/fasd.zsh
+source $ZSH_DIR/modules/fasd.zsh
 
 # ==== Random
 
@@ -45,12 +47,25 @@ source $ZSHDIR/modules/fasd/fasd.zsh
 
 # ==== TODO
 
-# setup virtualenvwrapper
-if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    echo "WARNING: Can't find virtualenvwrapper.sh"
-fi
+# setup: Pyenv
+# eval "$(pyenv init -)"
 
 # setup: THEFUCK
 eval $(thefuck-alias fuck)
+
+
+# ==== zsh modules configuration envs
+
+# configure autosuggestion
+AUTOSUGGESTION_HIGHLIGHT_COLOR=fg=$FG[241]
+AUTOSUGGESTION_HIGHLIGHT_CURSOR=0
+AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
+
+# # histroy substring highlight colors
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+
+# # activate highlighters
+# # to tweak > zsh/modules/zsh-syntax-highlighting/highlighters
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)

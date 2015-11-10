@@ -1,6 +1,6 @@
 CC		:= clang
 
-TARGET=build/cgitparse
+TARGET=cgitparser
 
 SOURCES=$(wildcard *.c)
 INCLUDES=
@@ -8,7 +8,7 @@ INCLUDES=
 OBJECTS:=$(SOURCES:.c=.o)
 
 CSTD?=c99
-COPT=-O3
+COPT=
 CFLAGS=-std=$(CSTD) -Wall
 CFLAGS+=$(COPT)
 CFLAGS+=$(addprefix -I,$(INCLUDES))

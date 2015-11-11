@@ -9,8 +9,9 @@ DOT_DIR="$HOME/.dotfiles"
 
 # symlinks
 ln -sfv "$DOT_DIR/zsh/modules/fasd/fasd.rc" ~/.fasdrc
-ln -sfv "$DOT_DIR/zsh/zsh.rc" ~/.zshrc
-ln -sfv "$DOT_DIR/zsh/zlogin.rc" ~/.zlogin
+ln -sfv "$DOT_DIR/zsh/zshenv" ~/.zshenv
+# bacause I made $DOT_DIR/zsh my ZDOTDIR
+ln -sfv "$DOT_DIR/zsh/zshrc" "$DOT_DIR/zsh/.zshrc"
 
 cd "$DOT_DIR/zsh/modules/info-functions/cgitparser"
 # make

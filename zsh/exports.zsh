@@ -1,17 +1,18 @@
+# ==== ENVS
+
+# Go
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/Development/go
+
 # Path
-export PATH=/tmp/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-    export PATH=$PATH:/opt/X11/bin
-    export PATH=$PATH:$TEXLIVE
-    export PATH=$(brew --prefix homebrew/php/php54)/bin:$PATH
-    export PATH=$PATH:$GOROOT/bin
-    export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/opt/X11/bin
+export PATH=$PATH:$(brew --prefix homebrew/php/php54)/bin
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
 # export PKG_CONFIG_PATH=/usr/local/opt/pyenv/versions/3.4.3/lib/pkgconfig/:/usr/local/opt/qt5/lib/pkgconfig:/usr/local/opt/oniguruma/lib/pkgconfig
-
-# Dotfiles
-export DOT_DIR=~/.dotfiles.bkup
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color
@@ -44,33 +45,28 @@ export EAGLE_DIR=$HOME/Documents/eagle
 export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/gh_api_token)
 
 # Python
-# export PYTHON=/usr/local/bin/python
-# export PYTHON2=/usr/local/bin/python2
-# export PYTHON3=/usr/local/bin/python2.8
-# # export PYTHONPATH=/usr/local/lib/python2.7/:$PYTHONPATH
+# export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 # export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.12/lib/python2.7/site-packages
+
+export PYENV_ROOT=/usr/local/var/pyenv
 
 # UTF-8 locale fix for Python
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # VirtualEnv
-# export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=/usr/local/var/virtualenvs
 # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 # export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-# export PIP_VIRTUALENV_BASE=$WORKON_HOME
-# export PIP_RESPECT_VIRTUALENV=true
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # Django
 # export ENV_ROLE=development
 # export CRMEASY_DB_PASS=pg
 # export SECRET_KEY='l6w=)99mi_^$=p9^d2=%8qvl7@fee$0=s=k$(@4cwldmjgyo1e'
 
-
-
-# Go
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/Development/go
 
 # Ruby
 # export GEM_PATH=$DOT_DIR/gem

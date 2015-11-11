@@ -1,0 +1,76 @@
+# ==== Basic ZSH
+
+fpath=(
+    $ZDOTDIR/modules/*
+    $LUNCHY_DIR/lunchy-completion.zsh
+    /usr/local/share/zsh-completions
+    /usr/local/share/zsh/site-functions
+    /usr/local/bin/
+    ${fpath[@]}
+)
+
+source $ZDOTDIR/setopt.zsh
+source $ZDOTDIR/completion.zsh
+source $ZDOTDIR/spectrum.zsh
+source $ZDOTDIR/prompt.zsh
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/bindkeys.zsh
+source $ZDOTDIR/functions.zsh
+source $ZDOTDIR/history.zsh
+source $ZDOTDIR/zsh_hooks.zsh
+
+
+# ==== TODO
+
+# setup: Pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
+
+if which pyenv-virtualenv-init > /dev/null; then
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# setup: THEFUCK
+if $(which thefuck-alias) > /dev/null; then
+    eval $(thefuck-alias fuck)
+fi
+
+
+# ==== zsh modules configuration envs
+
+# configure autosuggestion
+AUTOSUGGESTION_HIGHLIGHT_COLOR=fg=$FG[241]
+AUTOSUGGESTION_HIGHLIGHT_CURSOR=0
+AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
+
+# # histroy substring highlight colors
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+
+# # activate highlighters
+# # to tweak > zsh/modules/zsh-syntax-highlighting/highlighters
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
+
+
+# ==== Custom Modules
+
+source $ZDOTDIR/modules/fasd.zsh
+
+# source $ZDOTDIR/modules/zaw/zaw.zsh
+
+# History Substring Search
+source $ZDOTDIR/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# fish like autosuggestions
+# source $ZDOTDIR/modules/zsh-autosuggestions/autosuggestions.zsh
+
+# init autosuggest
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
+
+# Syntax Highlighting
+source $ZDOTDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

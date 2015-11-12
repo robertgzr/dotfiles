@@ -44,7 +44,7 @@
     pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 
 [pager]
-    diff = diff-highlight | less
+    diff = less
 
 [apply]
     # Detect whitespace errors when applying a patch

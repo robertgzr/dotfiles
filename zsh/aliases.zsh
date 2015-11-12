@@ -32,6 +32,7 @@ alias pbc='pbcopy'
 alias pbp='pbpaste'
 
 alias cask='brew cask'
+alias caskx='cask zap'
 alias brewup='brew update && brew upgrade --all'
 alias brewx='brew remove --force'
 

@@ -5,8 +5,11 @@ robertgzr's dotfiles
 
 inspired by [Getting started with dotfiles](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789) by [Lars Kappert](https://twitter.com/webprolific)
 
-Other Ressources:
+nice dotfile examples
 * https://github.com/webpro/dotfiles
+
+zsh startup time profiling
+* https://kev.inburke.com/kevin/profiling-zsh-startup-time/
 
 
 Status

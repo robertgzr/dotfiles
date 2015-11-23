@@ -11,6 +11,11 @@ nice dotfile examples
 zsh startup time profiling
 * https://kev.inburke.com/kevin/profiling-zsh-startup-time/
 
+weechat-mac-ca-bundle gist:
+https://gist.github.com/1stvamp/2158128
+
+Tame Spotlight:
+http://tumblr.amitgupta.com/post/262471673/stopping-runaway-cpu-usage-by-mds-mdworker-and
 
 Status
 ------

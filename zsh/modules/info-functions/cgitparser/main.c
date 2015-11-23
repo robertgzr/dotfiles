@@ -180,7 +180,7 @@ int make_output_to_shell()
 
 int main(int argc, char const *argv[])
 {
-    int a = run_cmd("git status --porcelain --branch --ignored 2>/dev/null");
+    int a = run_cmd("git status --porcelain --branch 2>/dev/null");
     int b = run_cmd("git rev-parse --short HEAD 2>/dev/null");
 
     if (a+b < 0)

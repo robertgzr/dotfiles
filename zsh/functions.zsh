@@ -2,6 +2,7 @@
 # ze-best-zsh-config
 # Author:
 #   https://github.com/spicycode
+#
 function zsh_recompile {
   autoload -U zrecompile
   rm -f ~/.zsh/*.zwc
@@ -109,6 +110,30 @@ function mcd()
     cd $1
 }
 
+# cd using fzf
+function cdf()
+{
+  local file
+  local dir
+  file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# full shell power: fzf + fasd
+# to open a file in sublime text
+function sublf()
+{
+  local file
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl -n "${file}" || return 1
+}
+
+# select with fzf + fasd
+# open the file in mpv
+function mpvf()
+{
+  local file
+  file="$(fzf +m -q "$1")" && mpv "${file}" || return 1
+}
+
 function mpvp()
 {
     if [ "$#" = 0 ]; then
@@ -120,6 +145,11 @@ function mpvp()
     else
         echo "m -mpvp [youtube-dl format] [profile]"
     fi
+}
+
+function mpva()
+{
+  mpv --no-video --vo=null --term-osd=force --term-osd-bar=yes --term-osd-bar-chars="[+>-]" --term-playing-msg="> ${filename}" --input-app-events=yes --ytdl $1
 }
 
 # start firefox with dev-profile
@@ -183,5 +213,5 @@ function encfsfs() {
 
 # convenience to flash Atmega8
 function bootloadHID() {
-    $HOME/Development/git/bootloadHID/commandline/bootloadHID $1
+    ~/Development/git/bootloadHID/commandline/bootloadHID $1
 }

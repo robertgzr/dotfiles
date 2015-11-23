@@ -57,6 +57,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
 # ==== Custom Modules
 
 source $ZDOTDIR/modules/fasd.zsh
+source $ZDOTDIR/modules/fzf.zsh
 
 # source $ZDOTDIR/modules/zaw/zaw.zsh
 
@@ -74,3 +75,5 @@ source $ZDOTDIR/modules/zsh-history-substring-search/zsh-history-substring-searc
 
 # Syntax Highlighting
 source $ZDOTDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

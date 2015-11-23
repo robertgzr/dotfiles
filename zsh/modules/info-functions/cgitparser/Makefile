@@ -8,7 +8,7 @@ INCLUDES=
 OBJECTS:=$(SOURCES:.c=.o)
 
 CSTD?=c99
-COPT=
+COPT=-O0
 CFLAGS=-std=$(CSTD) -Wall
 CFLAGS+=$(COPT)
 CFLAGS+=$(addprefix -I,$(INCLUDES))

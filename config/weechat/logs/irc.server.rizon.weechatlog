@@ -1,0 +1,1493 @@
+2015-11-14 22:38:07	--	irc: connecting to server irc.rizon.net/6667...
+2015-11-14 22:38:08	--	irc: connected to irc.rizon.net/6667 (2607:2200:0:2351::1783:5213)
+2015-11-14 22:38:08	--	* :Please wait while we process your connection.
+2015-11-14 22:38:08	--	irc.broke-it.com: *** Looking up your hostname...
+2015-11-14 22:38:08	--	irc.broke-it.com: *** Checking Ident
+2015-11-14 22:38:08	--	irc.broke-it.com: *** Found your hostname
+2015-11-14 22:38:09	--	irc.broke-it.com: *** No Ident response
+2015-11-14 22:38:09	--	irc.broke-it.com: *** Your host is masked (Rizon-7F1E1187.dip0.t-ipconnect.de)
+2015-11-14 22:38:09	--	Welcome to the Rizon Internet Relay Chat Network r0ked
+2015-11-14 22:38:09	--	Your host is irc.broke-it.com, running version hybrid-7.2.3+plexus-3.1.0(20141225_0-545)
+2015-11-14 22:38:09	--	This server was created Dec 28 2014 at 00:34:00
+2015-11-14 22:38:09	--	irc.broke-it.com hybrid-7.2.3+plexus-3.1.0(20141225_0-545) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-14 22:38:09	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-14 22:38:09	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz AWAYLEN=160 KNOCK NAMESX UHNAMES ELIST=CMNTU SAFELIST FNC EXCEPTS=e INVEX=I :are supported by this server
+2015-11-14 22:38:09	--	90CABGI8B :your unique ID
+2015-11-14 22:38:09	--	There are 79 users and 23472 invisible on 13 servers
+2015-11-14 22:38:09	--	57 :IRC Operators online
+2015-11-14 22:38:09	--	1 :unknown connection(s)
+2015-11-14 22:38:09	--	20108 :channels formed
+2015-11-14 22:38:09	--	I have 23551 clients and 13 servers
+2015-11-14 22:38:09	--	23551 29157 :Current local users 23551, max 29157
+2015-11-14 22:38:09	--	23551 29157 :Current global users 23551, max 29157
+2015-11-14 22:38:09	--	- irc.broke-it.com Message of the Day -
+2015-11-14 22:38:09	--	-    Welcome to irc.broke-it.com
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-         Now its time for **UPDATED** conversational spanish with grimlock
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    Las ardillas. Me persiguen. Quieren mis tuercas pero no pueden tenerlas.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    no habla? the squirrels. they chase me. they want my nuts but they
+2015-11-14 22:38:09	--	-    can not have them.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    El gato en mi pantalones, quiere mi burrito. Pero el no puede
+2015-11-14 22:38:09	--	-    tenerlo. No compartire con el.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    Still no habla? the cat in my pants, he wants my burrito. But he can
+2015-11-14 22:38:09	--	-    not have it. I will not share with him.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    Por que el perro que lame mis bolas? Debo de haber banado en mantequilla
+2015-11-14 22:38:09	--	-    de mani de nuevo ...
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    Really!?!? No habla?! You really need to work on your spanglish skills..
+2015-11-14 22:38:09	--	-    Why is the dog licking my balls? I must have bathed in peanut butter
+2015-11-14 22:38:09	--	-    again...
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    Cuando salgo de la peluqueria despues de tener mi espalda afeitado, me
+2015-11-14 22:38:09	--	-    doy cuenta de que seria mucho mas barato tener un rebano de cabras.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    You really need to sign up for my formal spanish lessons.  I can teach
+2015-11-14 22:38:09	--	-    many more useful phrases phrases!  When I leave the barber after having
+2015-11-14 22:38:09	--	-    my back shaved, I realize it would be much cheaper to own a herd of goats.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    Usted dice que el tomate, digo que me gusta la leche con chocolate y
+2015-11-14 22:38:09	--	-    panecillos. Has visto a mi cepillo de dientes?
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    My lesson rates are very reasonable!  I can teach you to splanglish like
+2015-11-14 22:38:09	--	-    I do!  You say tomato, I say I like chocolate milk and bagels.  Have you
+2015-11-14 22:38:09	--	-    seen my toothbrush?
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    mi escroto es como un helicóptero de dolor. no recibir un golpe en el oj
+2015-11-14 22:38:09	--	-    o con esa mierda.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-    I am considering expanding my lessons to french.  Did you know I spoke
+2015-11-14 22:38:09	--	-    french?  I speak it quite well.  My ball sack is like a helicopter of pain.
+2015-11-14 22:38:09	--	-    Do not get hit in the eye with that shit.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-         This has been conversational spanish with grimlock, time for
+2015-11-14 22:38:09	--	-         something more serious.
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	-          oo                            
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-14 22:38:09	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-14 22:38:09	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-14 22:38:09	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	- Rizon Chat Network -- http://rizon.net
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	- Rules:
+2015-11-14 22:38:09	--	- o No spamming or flooding
+2015-11-14 22:38:09	--	- o No clones or malicious bots
+2015-11-14 22:38:09	--	- o No takeovers
+2015-11-14 22:38:09	--	- o No distribution of child pornography
+2015-11-14 22:38:09	--	- o Clients must respond to VERSION requests
+2015-11-14 22:38:09	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	- First steps:
+2015-11-14 22:38:09	--	- o To register your nick: /msg NickServ HELP
+2015-11-14 22:38:09	--	- o To register your channel: /msg ChanServ HELP
+2015-11-14 22:38:09	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-14 22:38:09	--	- o For other help with Rizon: /join #help
+2015-11-14 22:38:09	--	-
+2015-11-14 22:38:09	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-14 22:38:09	--	- transit provider, therefore no person or entity involved with
+2015-11-14 22:38:09	--	- *.rizon.net or irc.broke-it.com takes any responsibility for
+2015-11-14 22:38:09	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-14 22:38:09	--	End of /MOTD command.
+2015-11-14 22:38:09	--	User mode [+ix] by r0ked
+2015-11-14 22:38:09	--	CTCP requested by py-ctcp: VERSION
+2015-11-14 22:38:09	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-14 22:38:09	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-14 22:38:09	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-14 22:38:09	--	Global (service@rizon.net): [Random News - Mar 20 2009] Idle on Rizon a lot? Why not play our idlerpg game, you can check it out at #RizonIRPG for more information visit the website http://idlerpg.rizon.net -Rizon Staff
+2015-11-14 22:38:09	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (2001:1ad8:2002:c::5). This scan will not harm your computer.
+2015-11-14 23:05:14	--	irc: connecting to server irc.rizon.net/6667...
+2015-11-14 23:05:14	--	irc: connected to irc.rizon.net/6667 (2607:2200:0:2351::1783:5213)
+2015-11-14 23:05:15	--	* :Please wait while we process your connection.
+2015-11-14 23:05:15	--	irc.broke-it.com: *** Looking up your hostname...
+2015-11-14 23:05:15	--	irc.broke-it.com: *** Checking Ident
+2015-11-14 23:05:15	--	irc.broke-it.com: *** Found your hostname
+2015-11-14 23:05:16	--	irc.broke-it.com: *** No Ident response
+2015-11-14 23:05:16	--	irc.broke-it.com: *** Your host is masked (Rizon-7F1E1187.dip0.t-ipconnect.de)
+2015-11-14 23:05:16	--	Welcome to the Rizon Internet Relay Chat Network r0ked
+2015-11-14 23:05:16	--	Your host is irc.broke-it.com, running version hybrid-7.2.3+plexus-3.1.0(20141225_0-545)
+2015-11-14 23:05:16	--	This server was created Dec 28 2014 at 00:34:00
+2015-11-14 23:05:16	--	irc.broke-it.com hybrid-7.2.3+plexus-3.1.0(20141225_0-545) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-14 23:05:16	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-14 23:05:16	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz AWAYLEN=160 KNOCK NAMESX UHNAMES ELIST=CMNTU SAFELIST FNC EXCEPTS=e INVEX=I :are supported by this server
+2015-11-14 23:05:16	--	90CABGJBZ :your unique ID
+2015-11-14 23:05:16	--	There are 79 users and 23396 invisible on 13 servers
+2015-11-14 23:05:16	--	57 :IRC Operators online
+2015-11-14 23:05:16	--	1 :unknown connection(s)
+2015-11-14 23:05:16	--	20036 :channels formed
+2015-11-14 23:05:16	--	I have 23475 clients and 13 servers
+2015-11-14 23:05:16	--	23475 29157 :Current local users 23475, max 29157
+2015-11-14 23:05:16	--	23475 29157 :Current global users 23475, max 29157
+2015-11-14 23:05:16	--	- irc.broke-it.com Message of the Day -
+2015-11-14 23:05:16	--	-    Welcome to irc.broke-it.com
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-         Now its time for **UPDATED** conversational spanish with grimlock
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    Las ardillas. Me persiguen. Quieren mis tuercas pero no pueden tenerlas.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    no habla? the squirrels. they chase me. they want my nuts but they
+2015-11-14 23:05:16	--	-    can not have them.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    El gato en mi pantalones, quiere mi burrito. Pero el no puede
+2015-11-14 23:05:16	--	-    tenerlo. No compartire con el.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    Still no habla? the cat in my pants, he wants my burrito. But he can
+2015-11-14 23:05:16	--	-    not have it. I will not share with him.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    Por que el perro que lame mis bolas? Debo de haber banado en mantequilla
+2015-11-14 23:05:16	--	-    de mani de nuevo ...
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    Really!?!? No habla?! You really need to work on your spanglish skills..
+2015-11-14 23:05:16	--	-    Why is the dog licking my balls? I must have bathed in peanut butter
+2015-11-14 23:05:16	--	-    again...
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    Cuando salgo de la peluqueria despues de tener mi espalda afeitado, me
+2015-11-14 23:05:16	--	-    doy cuenta de que seria mucho mas barato tener un rebano de cabras.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    You really need to sign up for my formal spanish lessons.  I can teach
+2015-11-14 23:05:16	--	-    many more useful phrases phrases!  When I leave the barber after having
+2015-11-14 23:05:16	--	-    my back shaved, I realize it would be much cheaper to own a herd of goats.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    Usted dice que el tomate, digo que me gusta la leche con chocolate y
+2015-11-14 23:05:16	--	-    panecillos. Has visto a mi cepillo de dientes?
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    My lesson rates are very reasonable!  I can teach you to splanglish like
+2015-11-14 23:05:16	--	-    I do!  You say tomato, I say I like chocolate milk and bagels.  Have you
+2015-11-14 23:05:16	--	-    seen my toothbrush?
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    mi escroto es como un helicóptero de dolor. no recibir un golpe en el oj
+2015-11-14 23:05:16	--	-    o con esa mierda.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-    I am considering expanding my lessons to french.  Did you know I spoke
+2015-11-14 23:05:16	--	-    french?  I speak it quite well.  My ball sack is like a helicopter of pain.
+2015-11-14 23:05:16	--	-    Do not get hit in the eye with that shit.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-         This has been conversational spanish with grimlock, time for
+2015-11-14 23:05:16	--	-         something more serious.
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	-          oo                            
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-14 23:05:16	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-14 23:05:16	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-14 23:05:16	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	- Rizon Chat Network -- http://rizon.net
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	- Rules:
+2015-11-14 23:05:16	--	- o No spamming or flooding
+2015-11-14 23:05:16	--	- o No clones or malicious bots
+2015-11-14 23:05:16	--	- o No takeovers
+2015-11-14 23:05:16	--	- o No distribution of child pornography
+2015-11-14 23:05:16	--	- o Clients must respond to VERSION requests
+2015-11-14 23:05:16	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	- First steps:
+2015-11-14 23:05:16	--	- o To register your nick: /msg NickServ HELP
+2015-11-14 23:05:16	--	- o To register your channel: /msg ChanServ HELP
+2015-11-14 23:05:16	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-14 23:05:16	--	- o For other help with Rizon: /join #help
+2015-11-14 23:05:16	--	-
+2015-11-14 23:05:16	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-14 23:05:16	--	- transit provider, therefore no person or entity involved with
+2015-11-14 23:05:16	--	- *.rizon.net or irc.broke-it.com takes any responsibility for
+2015-11-14 23:05:16	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-14 23:05:16	--	End of /MOTD command.
+2015-11-14 23:05:16	--	User mode [+ix] by r0ked
+2015-11-14 23:05:16	--	CTCP requested by py-ctcp: VERSION
+2015-11-14 23:05:16	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-14 23:05:16	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-14 23:05:16	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-14 23:05:16	--	Global (service@rizon.net): [Random News - Mar 20 2009] Idle on Rizon a lot? Why not play our idlerpg game, you can check it out at #RizonIRPG for more information visit the website http://idlerpg.rizon.net -Rizon Staff
+2015-11-14 23:05:16	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (2001:1ad8:2002:c::4). This scan will not harm your computer.
+2015-11-14 23:44:59	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:45:00	=!=	irc: TLS handshake failed
+2015-11-14 23:45:00	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:45:00	--	irc: reconnecting to server in 10 seconds
+2015-11-14 23:45:10	--	irc: reconnecting to server...
+2015-11-14 23:45:10	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:45:10	=!=	irc: TLS handshake failed
+2015-11-14 23:45:10	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:45:10	--	irc: reconnecting to server in 20 seconds
+2015-11-14 23:45:30	--	irc: reconnecting to server...
+2015-11-14 23:45:30	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:45:30	=!=	irc: TLS handshake failed
+2015-11-14 23:45:30	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:45:30	--	irc: reconnecting to server in 40 seconds
+2015-11-14 23:46:10	--	irc: reconnecting to server...
+2015-11-14 23:46:10	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:46:10	=!=	irc: TLS handshake failed
+2015-11-14 23:46:10	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:46:10	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-14 23:46:48	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:46:48	=!=	irc: TLS handshake failed
+2015-11-14 23:46:48	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:46:48	--	irc: reconnecting to server in 10 seconds
+2015-11-14 23:46:58	--	irc: reconnecting to server...
+2015-11-14 23:46:58	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:46:58	=!=	irc: TLS handshake failed
+2015-11-14 23:46:58	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:46:58	--	irc: reconnecting to server in 20 seconds
+2015-11-14 23:47:18	--	irc: reconnecting to server...
+2015-11-14 23:47:18	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:47:19	=!=	irc: TLS handshake failed
+2015-11-14 23:47:19	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:47:19	--	irc: reconnecting to server in 40 seconds
+2015-11-14 23:47:59	--	irc: reconnecting to server...
+2015-11-14 23:47:59	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:48:00	=!=	irc: TLS handshake failed
+2015-11-14 23:48:00	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:48:00	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-14 23:49:20	--	irc: reconnecting to server...
+2015-11-14 23:49:20	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:49:21	=!=	irc: TLS handshake failed
+2015-11-14 23:49:21	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:49:21	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2015-11-14 23:56:48	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:56:49	=!=	irc: TLS handshake failed
+2015-11-14 23:56:49	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:56:49	--	irc: reconnecting to server in 10 seconds
+2015-11-14 23:56:59	--	irc: reconnecting to server...
+2015-11-14 23:56:59	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:57:00	=!=	irc: TLS handshake failed
+2015-11-14 23:57:00	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:57:00	--	irc: reconnecting to server in 20 seconds
+2015-11-14 23:57:20	--	irc: reconnecting to server...
+2015-11-14 23:57:20	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:57:21	=!=	irc: TLS handshake failed
+2015-11-14 23:57:21	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:57:21	--	irc: reconnecting to server in 40 seconds
+2015-11-14 23:58:01	--	irc: reconnecting to server...
+2015-11-14 23:58:01	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:58:02	=!=	irc: TLS handshake failed
+2015-11-14 23:58:02	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:58:02	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-14 23:59:22	--	irc: reconnecting to server...
+2015-11-14 23:59:22	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:59:23	=!=	irc: TLS handshake failed
+2015-11-14 23:59:23	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:59:23	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2015-11-14 23:59:46	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:59:46	=!=	irc: TLS handshake failed
+2015-11-14 23:59:46	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:59:46	--	irc: reconnecting to server in 10 seconds
+2015-11-14 23:59:56	--	irc: reconnecting to server...
+2015-11-14 23:59:56	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-14 23:59:56	=!=	irc: TLS handshake failed
+2015-11-14 23:59:56	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-14 23:59:56	--	irc: reconnecting to server in 20 seconds
+2015-11-15 00:00:10		irc: auto-reconnection is cancelled
+2015-11-15 00:00:10	--	irc: disconnected from server
+2015-11-15 00:00:15	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:00:15	=!=	irc: TLS handshake failed
+2015-11-15 00:00:15	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:00:15	--	irc: reconnecting to server in 10 seconds
+2015-11-15 00:00:25	--	irc: reconnecting to server...
+2015-11-15 00:00:25	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:00:25	=!=	irc: TLS handshake failed
+2015-11-15 00:00:25	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:00:25	--	irc: reconnecting to server in 20 seconds
+2015-11-15 00:00:36		irc: auto-reconnection is cancelled
+2015-11-15 00:00:36	--	irc: disconnected from server
+2015-11-15 00:01:59	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:02:00	=!=	irc: TLS handshake failed
+2015-11-15 00:02:00	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:02:00	--	irc: reconnecting to server in 10 seconds
+2015-11-15 00:02:10	--	irc: reconnecting to server...
+2015-11-15 00:02:10	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:02:11	=!=	irc: TLS handshake failed
+2015-11-15 00:02:11	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:02:11	--	irc: reconnecting to server in 20 seconds
+2015-11-15 00:02:31	--	irc: reconnecting to server...
+2015-11-15 00:02:31	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:02:31	=!=	irc: TLS handshake failed
+2015-11-15 00:02:31	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:02:31	--	irc: reconnecting to server in 40 seconds
+2015-11-15 00:03:11	--	irc: reconnecting to server...
+2015-11-15 00:03:11	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:03:11	=!=	irc: TLS handshake failed
+2015-11-15 00:03:11	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:03:11	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-15 00:04:31	--	irc: reconnecting to server...
+2015-11-15 00:04:31	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:04:31	=!=	irc: TLS handshake failed
+2015-11-15 00:04:31	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:04:31	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2015-11-15 00:05:19		irc: auto-reconnection is cancelled
+2015-11-15 00:05:19	--	irc: disconnected from server
+2015-11-15 00:08:16	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:08:17	=!=	irc: TLS handshake failed
+2015-11-15 00:08:17	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:08:17	--	irc: reconnecting to server in 10 seconds
+2015-11-15 00:08:27	--	irc: reconnecting to server...
+2015-11-15 00:08:27	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:08:27	=!=	irc: TLS handshake failed
+2015-11-15 00:08:27	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:08:27	--	irc: reconnecting to server in 20 seconds
+2015-11-15 00:08:47	--	irc: reconnecting to server...
+2015-11-15 00:08:47	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:08:48	=!=	irc: TLS handshake failed
+2015-11-15 00:08:48	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:08:48	--	irc: reconnecting to server in 40 seconds
+2015-11-15 00:09:28	--	irc: reconnecting to server...
+2015-11-15 00:09:28	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:09:28	=!=	irc: TLS handshake failed
+2015-11-15 00:09:28	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:09:28	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-15 00:10:33	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:10:33	=!=	irc: TLS handshake failed
+2015-11-15 00:10:33	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:10:33	--	irc: reconnecting to server in 10 seconds
+2015-11-15 00:10:43	--	irc: reconnecting to server...
+2015-11-15 00:10:43	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:10:43	=!=	irc: TLS handshake failed
+2015-11-15 00:10:43	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:10:43	--	irc: reconnecting to server in 20 seconds
+2015-11-15 00:11:03	--	irc: reconnecting to server...
+2015-11-15 00:11:03	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:11:03	=!=	irc: TLS handshake failed
+2015-11-15 00:11:03	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:11:03	--	irc: reconnecting to server in 40 seconds
+2015-11-15 00:11:43	--	irc: reconnecting to server...
+2015-11-15 00:11:43	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:11:43	=!=	irc: TLS handshake failed
+2015-11-15 00:11:43	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:11:43	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-15 00:13:03	--	irc: reconnecting to server...
+2015-11-15 00:13:03	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:13:04	=!=	irc: TLS handshake failed
+2015-11-15 00:13:04	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:13:04	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2015-11-15 00:15:44	--	irc: reconnecting to server...
+2015-11-15 00:15:44	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:15:45	=!=	irc: TLS handshake failed
+2015-11-15 00:15:45	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:15:45	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2015-11-15 00:21:05	--	irc: reconnecting to server...
+2015-11-15 00:21:05	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:21:05	=!=	irc: TLS handshake failed
+2015-11-15 00:21:05	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 00:21:05	--	irc: reconnecting to server in 10 minutes
+2015-11-15 00:31:05	--	irc: reconnecting to server...
+2015-11-15 00:31:05	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:31:05	=!=	irc: TLS init error
+2015-11-15 00:31:05	=!=	irc: error: invalid priorities
+2015-11-15 00:31:05	--	irc: reconnecting to server in 10 minutes
+2015-11-15 00:41:05	--	irc: reconnecting to server...
+2015-11-15 00:41:05	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:41:05	=!=	irc: TLS init error
+2015-11-15 00:41:05	=!=	irc: error: invalid priorities
+2015-11-15 00:41:05	--	irc: reconnecting to server in 10 minutes
+2015-11-15 00:45:09	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 00:45:09	=!=	irc: TLS init error
+2015-11-15 00:45:09	=!=	irc: error: invalid priorities
+2015-11-15 00:45:09	--	irc: reconnecting to server in 10 seconds
+2015-11-15 00:45:21	--	irc: disconnected from server
+2015-11-15 01:03:02	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:03:02	=!=	irc: TLS init error
+2015-11-15 01:03:02	=!=	irc: error: invalid priorities
+2015-11-15 01:03:02	--	irc: reconnecting to server in 10 seconds
+2015-11-15 01:18:10	--	irc: disconnected from server
+2015-11-15 01:18:13	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:18:13	=!=	irc: TLS init error
+2015-11-15 01:18:13	=!=	irc: error: invalid priorities
+2015-11-15 01:18:13	--	irc: reconnecting to server in 10 seconds
+2015-11-15 01:18:52	--	irc: disconnected from server
+2015-11-15 01:18:54	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:18:55	=!=	irc: TLS handshake failed
+2015-11-15 01:18:55	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 01:18:55	--	irc: reconnecting to server in 10 seconds
+2015-11-15 01:19:05	--	irc: reconnecting to server...
+2015-11-15 01:19:05	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:19:05	=!=	irc: TLS handshake failed
+2015-11-15 01:19:05	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 01:19:05	--	irc: reconnecting to server in 20 seconds
+2015-11-15 01:19:25	--	irc: reconnecting to server...
+2015-11-15 01:19:25	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:19:25	=!=	irc: TLS handshake failed
+2015-11-15 01:19:25	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 01:19:25	--	irc: reconnecting to server in 40 seconds
+2015-11-15 01:20:05	--	irc: reconnecting to server...
+2015-11-15 01:20:05	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:20:05	=!=	irc: TLS handshake failed
+2015-11-15 01:20:05	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 01:20:05	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-15 01:21:25	--	irc: reconnecting to server...
+2015-11-15 01:21:25	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:21:25	=!=	irc: TLS handshake failed
+2015-11-15 01:21:25	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 01:21:25	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2015-11-15 01:24:05	--	irc: reconnecting to server...
+2015-11-15 01:24:05	--	irc: connecting to server irc.rizon.net/6667 (SSL)...
+2015-11-15 01:24:05	=!=	irc: TLS handshake failed
+2015-11-15 01:24:05	=!=	irc: error: An unexpected TLS packet was received.
+2015-11-15 01:24:05	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2015-11-15 01:27:04	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 01:27:04	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 01:27:04	--	gnutls: receiving 1 certificate
+2015-11-15 01:27:04	--	 - certificate[1] info:
+2015-11-15 01:27:04	--	   - subject `C=RZ,ST=Nowhere,L=Rizon,CN=irc.rizon.net,O=Rizon IRC Network,OU=irc.rizon.no', issuer `C=RZ,ST=Nowhere,L=Rizon,CN=irc.rizon.net,O=Rizon IRC Network,OU=irc.rizon.no', RSA key 2048 bits, signed using RSA-SHA1, activated `2013-07-25 13:23:20 UTC', expires `2016-07-24 13:23:20 UTC', SHA-1 fingerprint `713f40119217ff6049cdeba72b9071127594d1b5'
+2015-11-15 01:27:04	=!=	gnutls: peer's certificate is NOT trusted
+2015-11-15 01:27:04	=!=	gnutls: peer's certificate issuer is unknown
+2015-11-15 01:27:04	--	gnutls: sending one certificate
+2015-11-15 01:27:04	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 01:27:04	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 01:27:04	--	irc: connected to irc.rizon.net/6697 (2001:1ad8:2002:2::babe)
+2015-11-15 01:27:04	--	* :Please wait while we process your connection.
+2015-11-15 01:27:04	--	irc.rizon.no: *** Looking up your hostname...
+2015-11-15 01:27:04	--	irc.rizon.no: *** Checking Ident
+2015-11-15 01:27:04	--	irc.rizon.no: *** Found your hostname
+2015-11-15 01:27:06	--	irc.rizon.no: *** No Ident response
+2015-11-15 01:27:06	--	irc.rizon.no: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 01:27:06	--	irc.rizon.no: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 01:27:06	--	irc.rizon.no: *** Your host is masked (Rizon-7F1E1187.dip0.t-ipconnect.de)
+2015-11-15 01:27:06	--	Welcome to the Rizon Internet Relay Chat Network r0ked
+2015-11-15 01:27:06	--	Your host is irc.rizon.no, running version hybrid-7.2.3+plexus-3.1.0(20141225_0-545)
+2015-11-15 01:27:06	--	This server was created Jun 25 2015 at 17:38:48
+2015-11-15 01:27:06	--	irc.rizon.no hybrid-7.2.3+plexus-3.1.0(20141225_0-545) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 01:27:06	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 01:27:06	--	CHANLIMIT=#:250 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz KNOCK ELIST=CMNTU SAFELIST NAMESX UHNAMES FNC AWAYLEN=160 EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 01:27:06	--	06CAARQW1 :your unique ID
+2015-11-15 01:27:06	--	There are 78 users and 22764 invisible on 13 servers
+2015-11-15 01:27:06	--	57 :IRC Operators online
+2015-11-15 01:27:06	--	5 :unknown connection(s)
+2015-11-15 01:27:06	--	20069 :channels formed
+2015-11-15 01:27:06	--	I have 22842 clients and 13 servers
+2015-11-15 01:27:06	--	22842 25467 :Current local users 22842, max 25467
+2015-11-15 01:27:06	--	22842 25467 :Current global users 22842, max 25467
+2015-11-15 01:27:06	--	- irc.rizon.no Message of the Day -
+2015-11-15 01:27:06	--	-          oo                            
+2015-11-15 01:27:06	--	-
+2015-11-15 01:27:06	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 01:27:06	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 01:27:06	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 01:27:06	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 01:27:06	--	-
+2015-11-15 01:27:06	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 01:27:06	--	-
+2015-11-15 01:27:06	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 01:27:06	--	-
+2015-11-15 01:27:06	--	- Rules:
+2015-11-15 01:27:06	--	- o No spamming or flooding
+2015-11-15 01:27:06	--	- o No clones or malicious bots
+2015-11-15 01:27:06	--	- o No takeovers
+2015-11-15 01:27:06	--	- o No distribution of child pornography
+2015-11-15 01:27:06	--	- o Clients must respond to VERSION requests
+2015-11-15 01:27:06	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 01:27:06	--	-
+2015-11-15 01:27:06	--	- First steps:
+2015-11-15 01:27:06	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 01:27:06	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 01:27:06	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 01:27:06	--	- o For other help with Rizon: /join #help
+2015-11-15 01:27:06	--	-
+2015-11-15 01:27:06	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 01:27:06	--	- transit provider, therefore no person or entity involved with
+2015-11-15 01:27:06	--	- *.rizon.net or irc.rizon.no takes any responsibility for
+2015-11-15 01:27:06	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 01:27:06	--	End of /MOTD command.
+2015-11-15 01:27:06	--	User mode [+Six] by r0ked
+2015-11-15 01:27:06	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 01:27:06	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 01:27:06	--	Global (service@rizon.net): [Random News - Mar 20 2009] Idle on Rizon a lot? Why not play our idlerpg game, you can check it out at #RizonIRPG for more information visit the website http://idlerpg.rizon.net -Rizon Staff
+2015-11-15 01:27:06	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (2001:1ad8:2002:c::5). This scan will not harm your computer.
+2015-11-15 01:27:07	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 01:27:07	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 01:27:30	--	MSG(NickServ): indentify mrr00tkid
+2015-11-15 01:27:31	--	NickServ (service@rizon.net): Unknown command indentify.  "/msg NickServ HELP" for help.
+2015-11-15 01:27:43	--	MSG(NickServ): IDENTIFY *********
+2015-11-15 01:27:43	--	NickServ (service@rizon.net): Your nick isn't registered.
+2015-11-15 01:28:24	--	irc: disconnected from server
+2015-11-15 01:28:29	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 01:28:29	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 01:28:29	--	gnutls: receiving 1 certificate
+2015-11-15 01:28:29	--	 - certificate[1] info:
+2015-11-15 01:28:29	--	   - subject `C=RZ,ST=Nowhere,L=Rizon,CN=irc.rizon.net,O=Rizon IRC Network,OU=irc.rizon.no', issuer `C=RZ,ST=Nowhere,L=Rizon,CN=irc.rizon.net,O=Rizon IRC Network,OU=irc.rizon.no', RSA key 2048 bits, signed using RSA-SHA1, activated `2013-07-25 13:23:20 UTC', expires `2016-07-24 13:23:20 UTC', SHA-1 fingerprint `713f40119217ff6049cdeba72b9071127594d1b5'
+2015-11-15 01:28:29	=!=	gnutls: peer's certificate is NOT trusted
+2015-11-15 01:28:29	=!=	gnutls: peer's certificate issuer is unknown
+2015-11-15 01:28:29	--	gnutls: sending one certificate
+2015-11-15 01:28:29	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 01:28:29	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 01:28:29	--	irc: connected to irc.rizon.net/6697 (2001:1ad8:2002:2::babe)
+2015-11-15 01:28:29	--	* :Please wait while we process your connection.
+2015-11-15 01:28:29	--	irc.rizon.no: *** Found your hostname (cached)
+2015-11-15 01:28:29	--	irc.rizon.no: *** Checking Ident
+2015-11-15 01:28:30	--	irc.rizon.no: *** No Ident response
+2015-11-15 01:28:30	--	irc.rizon.no: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 01:28:30	--	irc.rizon.no: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 01:28:30	--	irc.rizon.no: *** Your host is masked (Rizon-7F1E1187.dip0.t-ipconnect.de)
+2015-11-15 01:28:30	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 01:28:30	--	Your host is irc.rizon.no, running version hybrid-7.2.3+plexus-3.1.0(20141225_0-545)
+2015-11-15 01:28:30	--	This server was created Jun 25 2015 at 17:38:48
+2015-11-15 01:28:30	--	irc.rizon.no hybrid-7.2.3+plexus-3.1.0(20141225_0-545) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 01:28:30	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 01:28:30	--	CHANLIMIT=#:250 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz KNOCK ELIST=CMNTU SAFELIST NAMESX UHNAMES FNC AWAYLEN=160 EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 01:28:30	--	06CAARQW3 :your unique ID
+2015-11-15 01:28:30	--	There are 78 users and 22802 invisible on 13 servers
+2015-11-15 01:28:30	--	57 :IRC Operators online
+2015-11-15 01:28:30	--	3 :unknown connection(s)
+2015-11-15 01:28:30	--	20067 :channels formed
+2015-11-15 01:28:30	--	I have 22880 clients and 13 servers
+2015-11-15 01:28:30	--	22880 25467 :Current local users 22880, max 25467
+2015-11-15 01:28:30	--	22880 25467 :Current global users 22880, max 25467
+2015-11-15 01:28:30	--	- irc.rizon.no Message of the Day -
+2015-11-15 01:28:30	--	-          oo                            
+2015-11-15 01:28:30	--	-
+2015-11-15 01:28:30	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 01:28:30	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 01:28:30	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 01:28:30	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 01:28:30	--	-
+2015-11-15 01:28:30	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 01:28:30	--	-
+2015-11-15 01:28:30	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 01:28:30	--	-
+2015-11-15 01:28:30	--	- Rules:
+2015-11-15 01:28:30	--	- o No spamming or flooding
+2015-11-15 01:28:30	--	- o No clones or malicious bots
+2015-11-15 01:28:30	--	- o No takeovers
+2015-11-15 01:28:30	--	- o No distribution of child pornography
+2015-11-15 01:28:30	--	- o Clients must respond to VERSION requests
+2015-11-15 01:28:30	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 01:28:30	--	-
+2015-11-15 01:28:30	--	- First steps:
+2015-11-15 01:28:30	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 01:28:30	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 01:28:30	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 01:28:30	--	- o For other help with Rizon: /join #help
+2015-11-15 01:28:30	--	-
+2015-11-15 01:28:30	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 01:28:30	--	- transit provider, therefore no person or entity involved with
+2015-11-15 01:28:30	--	- *.rizon.net or irc.rizon.no takes any responsibility for
+2015-11-15 01:28:30	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 01:28:30	--	End of /MOTD command.
+2015-11-15 01:28:30	--	User mode [+Six] by r0kd
+2015-11-15 01:28:30	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 01:28:30	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 01:28:30	--	Global (service@rizon.net): [Random News - May 07 2013] Looking for a quotes, trivia, or other extra bots? /msg funserv help
+2015-11-15 01:28:30	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 01:28:30	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 01:28:30	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 01:28:30	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 01:28:30	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 01:28:30	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (2001:1ad8:2002:c::4). This scan will not harm your computer.
+2015-11-15 01:28:41	--	MSG(NickServ): IDENTIFY *********
+2015-11-15 01:28:41	--	NickServ (service@rizon.net): Password incorrect.
+2015-11-15 01:28:49	--	MSG(NickServ): IDENTIFY *********
+2015-11-15 01:28:49	--	User mode [+r] by r0kd
+2015-11-15 01:28:49	--	NickServ (service@rizon.net): Password accepted - you are now recognized.
+2015-11-15 01:29:16	--	MSG(NickServ): ACCESS ADD FINGERPRINT
+2015-11-15 01:29:17	--	NickServ (service@rizon.net): 51CC7A0CBA015178B227A2EAB590111B8C696189 added to your access list.
+2015-11-15 01:29:27	--	irc: disconnected from server
+2015-11-15 01:29:38	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 01:29:38	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 01:29:38	--	gnutls: receiving 1 certificate
+2015-11-15 01:29:38	--	 - certificate[1] info:
+2015-11-15 01:29:38	--	   - subject `C=RZ,ST=Nowhere,L=Rizon,CN=irc.rizon.net,O=Rizon IRC Network,OU=irc.broke-it.com', issuer `C=RZ,ST=Nowhere,L=Rizon,CN=irc.rizon.net,O=Rizon IRC Network,OU=irc.broke-it.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2013-07-24 21:52:39 UTC', expires `2016-07-23 21:52:39 UTC', SHA-1 fingerprint `150159fe4c0916c13424a312bc2832232922d9e1'
+2015-11-15 01:29:38	=!=	gnutls: peer's certificate is NOT trusted
+2015-11-15 01:29:38	=!=	gnutls: peer's certificate issuer is unknown
+2015-11-15 01:29:38	--	gnutls: sending one certificate
+2015-11-15 01:29:38	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 01:29:38	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 01:29:38	--	irc: connected to irc.rizon.net/6697 (2607:2200:0:2351::1783:5213)
+2015-11-15 01:29:38	--	* :Please wait while we process your connection.
+2015-11-15 01:29:38	--	irc.broke-it.com: *** Looking up your hostname...
+2015-11-15 01:29:38	--	irc.broke-it.com: *** Checking Ident
+2015-11-15 01:29:38	--	irc.broke-it.com: *** Found your hostname
+2015-11-15 01:29:39	--	irc.broke-it.com: *** No Ident response
+2015-11-15 01:29:39	--	irc.broke-it.com: *** Connected securely via TLSv1 AES128-SHA-128
+2015-11-15 01:29:39	--	irc.broke-it.com: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 01:29:39	--	irc.broke-it.com: *** Your host is masked (Rizon-7F1E1187.dip0.t-ipconnect.de)
+2015-11-15 01:29:39	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 01:29:39	--	Your host is irc.broke-it.com, running version hybrid-7.2.3+plexus-3.1.0(20141225_0-545)
+2015-11-15 01:29:39	--	This server was created Dec 28 2014 at 00:34:00
+2015-11-15 01:29:39	--	irc.broke-it.com hybrid-7.2.3+plexus-3.1.0(20141225_0-545) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 01:29:39	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 01:29:39	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz AWAYLEN=160 KNOCK NAMESX UHNAMES ELIST=CMNTU SAFELIST FNC EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 01:29:39	--	90CABGJVS :your unique ID
+2015-11-15 01:29:39	--	There are 78 users and 22783 invisible on 13 servers
+2015-11-15 01:29:39	--	57 :IRC Operators online
+2015-11-15 01:29:39	--	2 :unknown connection(s)
+2015-11-15 01:29:39	--	20065 :channels formed
+2015-11-15 01:29:39	--	I have 22861 clients and 13 servers
+2015-11-15 01:29:39	--	22861 29157 :Current local users 22861, max 29157
+2015-11-15 01:29:39	--	22861 29157 :Current global users 22861, max 29157
+2015-11-15 01:29:39	--	- irc.broke-it.com Message of the Day -
+2015-11-15 01:29:39	--	-    Welcome to irc.broke-it.com
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-         Now its time for **UPDATED** conversational spanish with grimlock
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    Las ardillas. Me persiguen. Quieren mis tuercas pero no pueden tenerlas.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    no habla? the squirrels. they chase me. they want my nuts but they
+2015-11-15 01:29:39	--	-    can not have them.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    El gato en mi pantalones, quiere mi burrito. Pero el no puede
+2015-11-15 01:29:39	--	-    tenerlo. No compartire con el.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    Still no habla? the cat in my pants, he wants my burrito. But he can
+2015-11-15 01:29:39	--	-    not have it. I will not share with him.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    Por que el perro que lame mis bolas? Debo de haber banado en mantequilla
+2015-11-15 01:29:39	--	-    de mani de nuevo ...
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    Really!?!? No habla?! You really need to work on your spanglish skills..
+2015-11-15 01:29:39	--	-    Why is the dog licking my balls? I must have bathed in peanut butter
+2015-11-15 01:29:39	--	-    again...
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    Cuando salgo de la peluqueria despues de tener mi espalda afeitado, me
+2015-11-15 01:29:39	--	-    doy cuenta de que seria mucho mas barato tener un rebano de cabras.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    You really need to sign up for my formal spanish lessons.  I can teach
+2015-11-15 01:29:39	--	-    many more useful phrases phrases!  When I leave the barber after having
+2015-11-15 01:29:39	--	-    my back shaved, I realize it would be much cheaper to own a herd of goats.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    Usted dice que el tomate, digo que me gusta la leche con chocolate y
+2015-11-15 01:29:39	--	-    panecillos. Has visto a mi cepillo de dientes?
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    My lesson rates are very reasonable!  I can teach you to splanglish like
+2015-11-15 01:29:39	--	-    I do!  You say tomato, I say I like chocolate milk and bagels.  Have you
+2015-11-15 01:29:39	--	-    seen my toothbrush?
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    mi escroto es como un helicóptero de dolor. no recibir un golpe en el oj
+2015-11-15 01:29:39	--	-    o con esa mierda.
+2015-11-15 01:29:39	--	-
+2015-11-15 01:29:39	--	-    I am considering expanding my lessons to french.  Did you know I spoke
+2015-11-15 01:29:39	--	-    french?  I speak it quite well.  My ball sack is like a helicopter of pain.
+2015-11-15 01:29:40	--	-    Do not get hit in the eye with that shit.
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	-         This has been conversational spanish with grimlock, time for
+2015-11-15 01:29:40	--	-         something more serious.
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	-          oo                            
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 01:29:40	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 01:29:40	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 01:29:40	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	- Rules:
+2015-11-15 01:29:40	--	- o No spamming or flooding
+2015-11-15 01:29:40	--	- o No clones or malicious bots
+2015-11-15 01:29:40	--	- o No takeovers
+2015-11-15 01:29:40	--	- o No distribution of child pornography
+2015-11-15 01:29:40	--	- o Clients must respond to VERSION requests
+2015-11-15 01:29:40	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	- First steps:
+2015-11-15 01:29:40	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 01:29:40	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 01:29:40	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 01:29:40	--	- o For other help with Rizon: /join #help
+2015-11-15 01:29:40	--	-
+2015-11-15 01:29:40	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 01:29:40	--	- transit provider, therefore no person or entity involved with
+2015-11-15 01:29:40	--	- *.rizon.net or irc.broke-it.com takes any responsibility for
+2015-11-15 01:29:40	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 01:29:40	--	End of /MOTD command.
+2015-11-15 01:29:40	--	User mode [+Six] by r0kd
+2015-11-15 01:29:40	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 01:29:40	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 01:29:40	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 01:29:40	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 01:29:40	--	Global (service@rizon.net): [Random News - May 07 2013] Looking for a quotes, trivia, or other extra bots? /msg funserv help
+2015-11-15 01:29:40	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 01:29:40	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 01:29:40	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 01:29:40	--	User mode [+r] by r0kd
+2015-11-15 01:29:40	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 01:29:40	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (2001:1ad8:2002:c::5). This scan will not harm your computer.
+2015-11-15 03:50:40	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 03:50:40	--	irc: disconnecting from server...
+2015-11-15 03:50:40	--	irc: disconnected from server
+2015-11-15 03:50:40	--	irc: reconnecting to server in 10 seconds
+2015-11-15 03:50:50	--	irc: reconnecting to server...
+2015-11-15 03:50:50	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 03:50:50	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 03:50:50	--	gnutls: receiving 2 certificates
+2015-11-15 03:50:50	--	 - certificate[1] info:
+2015-11-15 03:50:50	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 03:50:50	--	 - certificate[2] info:
+2015-11-15 03:50:50	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 03:50:50	--	gnutls: peer's certificate is trusted
+2015-11-15 03:50:50	--	gnutls: sending one certificate
+2015-11-15 03:50:50	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 03:50:50	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 03:50:50	--	irc: connected to irc.rizon.net/6697 (213.80.41.222)
+2015-11-15 03:50:50	--	* :Please wait while we process your connection.
+2015-11-15 03:50:50	--	irc.infoqb.se: *** Looking up your hostname...
+2015-11-15 03:50:50	--	irc.infoqb.se: *** Checking Ident
+2015-11-15 03:50:50	--	irc.infoqb.se: *** Found your hostname
+2015-11-15 03:50:52	--	irc.infoqb.se: *** No Ident response
+2015-11-15 03:50:52	--	irc.infoqb.se: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 03:50:52	--	irc.infoqb.se: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 03:50:52	--	irc.infoqb.se: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 03:50:52	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 03:50:52	--	Your host is irc.infoqb.se, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 03:50:52	--	This server was created Oct 11 2015 at 01:52:36
+2015-11-15 03:50:52	--	irc.infoqb.se hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 03:50:52	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 03:50:52	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz FNC KNOCK NAMESX UHNAMES AWAYLEN=160 ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 03:50:52	--	37CAABAFX :your unique ID
+2015-11-15 03:50:52	--	There are 75 users and 22121 invisible on 13 servers
+2015-11-15 03:50:52	--	57 :IRC Operators online
+2015-11-15 03:50:52	--	2 :unknown connection(s)
+2015-11-15 03:50:52	--	20038 :channels formed
+2015-11-15 03:50:52	--	I have 22196 clients and 13 servers
+2015-11-15 03:50:52	--	22196 25256 :Current local users 22196, max 25256
+2015-11-15 03:50:52	--	22196 25256 :Current global users 22196, max 25256
+2015-11-15 03:50:52	--	- irc.infoqb.se Message of the Day -
+2015-11-15 03:50:52	--	-          oo                            
+2015-11-15 03:50:52	--	-
+2015-11-15 03:50:52	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 03:50:52	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 03:50:52	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 03:50:52	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 03:50:52	--	-
+2015-11-15 03:50:52	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 03:50:52	--	-
+2015-11-15 03:50:52	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 03:50:52	--	-
+2015-11-15 03:50:52	--	- Rules:
+2015-11-15 03:50:52	--	- o No spamming or flooding
+2015-11-15 03:50:52	--	- o No clones or malicious bots
+2015-11-15 03:50:52	--	- o No takeovers
+2015-11-15 03:50:52	--	- o No distribution of child pornography
+2015-11-15 03:50:52	--	- o Clients must respond to VERSION requests
+2015-11-15 03:50:52	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 03:50:52	--	-
+2015-11-15 03:50:52	--	- First steps:
+2015-11-15 03:50:52	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 03:50:52	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 03:50:52	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 03:50:52	--	- o For other help with Rizon: /join #help
+2015-11-15 03:50:52	--	-
+2015-11-15 03:50:52	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 03:50:52	--	- transit provider, therefore no person or entity involved with
+2015-11-15 03:50:52	--	- *.rizon.net or irc.infoqb.se takes any responsibility for
+2015-11-15 03:50:52	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 03:50:52	--	End of /MOTD command.
+2015-11-15 03:50:52	--	User mode [+Six] by r0kd
+2015-11-15 03:50:52	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 03:50:52	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 03:50:52	--	Global (service@rizon.net): [Random News - Nov 29 2013] Want to make your vhost shiny by adding colors to it? Try your luck in #VIzon
+2015-11-15 03:50:52	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 03:50:52	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 03:50:52	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 03:50:52	--	User mode [+r] by r0kd
+2015-11-15 03:50:52	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 03:50:52	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 03:50:52	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 03:50:52	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.221). This scan will not harm your computer.
+2015-11-15 04:51:25	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 04:51:25	--	irc: disconnecting from server...
+2015-11-15 04:51:25	--	irc: disconnected from server
+2015-11-15 04:51:25	--	irc: reconnecting to server in 10 seconds
+2015-11-15 04:51:35	--	irc: reconnecting to server...
+2015-11-15 04:51:35	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 04:51:36	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 04:51:36	--	gnutls: receiving 2 certificates
+2015-11-15 04:51:36	--	 - certificate[1] info:
+2015-11-15 04:51:36	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 04:51:36	--	 - certificate[2] info:
+2015-11-15 04:51:36	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 04:51:36	--	gnutls: peer's certificate is trusted
+2015-11-15 04:51:36	--	gnutls: sending one certificate
+2015-11-15 04:51:36	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 04:51:36	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 04:51:36	--	irc: connected to irc.rizon.net/6697 (54.229.0.87)
+2015-11-15 04:51:36	--	* :Please wait while we process your connection.
+2015-11-15 04:51:36	--	irc.x2x.cc: *** Looking up your hostname...
+2015-11-15 04:51:36	--	irc.x2x.cc: *** Checking Ident
+2015-11-15 04:51:37	--	irc.x2x.cc: *** Found your hostname
+2015-11-15 04:51:38	--	irc.x2x.cc: *** No Ident response
+2015-11-15 04:51:38	--	irc.x2x.cc: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 04:51:38	--	irc.x2x.cc: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 04:51:38	--	irc.x2x.cc: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 04:51:38	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 04:51:38	--	Your host is irc.x2x.cc, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 04:51:38	--	This server was created Oct 10 2015 at 23:17:48
+2015-11-15 04:51:38	--	irc.x2x.cc hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 04:51:38	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 04:51:38	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz NAMESX UHNAMES AWAYLEN=160 FNC KNOCK ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 04:51:38	--	39CAAF8NL :your unique ID
+2015-11-15 04:51:38	--	There are 76 users and 21977 invisible on 13 servers
+2015-11-15 04:51:38	--	56 :IRC Operators online
+2015-11-15 04:51:38	--	3 :unknown connection(s)
+2015-11-15 04:51:38	--	19994 :channels formed
+2015-11-15 04:51:38	--	I have 22053 clients and 13 servers
+2015-11-15 04:51:38	--	22053 25256 :Current local users 22053, max 25256
+2015-11-15 04:51:38	--	22053 25256 :Current global users 22053, max 25256
+2015-11-15 04:51:38	--	- irc.x2x.cc Message of the Day -
+2015-11-15 04:51:38	--	-          oo                            
+2015-11-15 04:51:38	--	-
+2015-11-15 04:51:38	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 04:51:38	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 04:51:38	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 04:51:38	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 04:51:38	--	-
+2015-11-15 04:51:38	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 04:51:38	--	-
+2015-11-15 04:51:38	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 04:51:38	--	-
+2015-11-15 04:51:38	--	- Rules:
+2015-11-15 04:51:38	--	- o No spamming or flooding
+2015-11-15 04:51:38	--	- o No clones or malicious bots
+2015-11-15 04:51:38	--	- o No takeovers
+2015-11-15 04:51:38	--	- o No distribution of child pornography
+2015-11-15 04:51:38	--	- o Clients must respond to VERSION requests
+2015-11-15 04:51:38	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 04:51:38	--	-
+2015-11-15 04:51:38	--	- First steps:
+2015-11-15 04:51:38	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 04:51:38	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 04:51:38	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 04:51:38	--	- o For other help with Rizon: /join #help
+2015-11-15 04:51:38	--	-
+2015-11-15 04:51:38	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 04:51:38	--	- transit provider, therefore no person or entity involved with
+2015-11-15 04:51:38	--	- *.rizon.net or irc.x2x.cc takes any responsibility for
+2015-11-15 04:51:38	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 04:51:38	--	End of /MOTD command.
+2015-11-15 04:51:38	--	User mode [+Six] by r0kd
+2015-11-15 04:51:38	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 04:51:38	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 04:51:38	--	Global (service@rizon.net): [Random News - May 07 2013] Looking for a quotes, trivia, or other extra bots? /msg funserv help
+2015-11-15 04:51:38	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 04:51:38	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 04:51:38	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 04:51:38	--	User mode [+r] by r0kd
+2015-11-15 04:51:38	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 04:51:38	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 04:51:38	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 04:51:38	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.221). This scan will not harm your computer.
+2015-11-15 05:52:09	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 05:52:09	--	irc: disconnecting from server...
+2015-11-15 05:52:09	--	irc: disconnected from server
+2015-11-15 05:52:09	--	irc: reconnecting to server in 10 seconds
+2015-11-15 05:52:19	--	irc: reconnecting to server...
+2015-11-15 05:52:19	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 05:52:19	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 05:52:19	--	gnutls: receiving 2 certificates
+2015-11-15 05:52:19	--	 - certificate[1] info:
+2015-11-15 05:52:19	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 05:52:19	--	 - certificate[2] info:
+2015-11-15 05:52:19	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 05:52:19	--	gnutls: peer's certificate is trusted
+2015-11-15 05:52:19	--	gnutls: sending one certificate
+2015-11-15 05:52:19	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 05:52:19	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 05:52:19	--	irc: connected to irc.rizon.net/6697 (54.229.0.87)
+2015-11-15 05:52:19	--	* :Please wait while we process your connection.
+2015-11-15 05:52:19	--	irc.x2x.cc: *** Looking up your hostname...
+2015-11-15 05:52:19	--	irc.x2x.cc: *** Checking Ident
+2015-11-15 05:52:19	--	irc.x2x.cc: *** Found your hostname
+2015-11-15 05:52:20	--	irc.x2x.cc: *** No Ident response
+2015-11-15 05:52:20	--	irc.x2x.cc: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 05:52:20	--	irc.x2x.cc: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 05:52:20	--	irc.x2x.cc: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 05:52:20	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 05:52:20	--	Your host is irc.x2x.cc, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 05:52:20	--	This server was created Oct 10 2015 at 23:17:48
+2015-11-15 05:52:20	--	irc.x2x.cc hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 05:52:20	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 05:52:20	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz NAMESX UHNAMES AWAYLEN=160 FNC KNOCK ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 05:52:21	--	39CAAF8SQ :your unique ID
+2015-11-15 05:52:21	--	There are 75 users and 21732 invisible on 13 servers
+2015-11-15 05:52:21	--	56 :IRC Operators online
+2015-11-15 05:52:21	--	2 :unknown connection(s)
+2015-11-15 05:52:21	--	19933 :channels formed
+2015-11-15 05:52:21	--	I have 21807 clients and 13 servers
+2015-11-15 05:52:21	--	21807 25256 :Current local users 21807, max 25256
+2015-11-15 05:52:21	--	21807 25256 :Current global users 21807, max 25256
+2015-11-15 05:52:21	--	- irc.x2x.cc Message of the Day -
+2015-11-15 05:52:21	--	-          oo                            
+2015-11-15 05:52:21	--	-
+2015-11-15 05:52:21	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 05:52:21	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 05:52:21	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 05:52:21	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 05:52:21	--	-
+2015-11-15 05:52:21	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 05:52:21	--	-
+2015-11-15 05:52:21	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 05:52:21	--	-
+2015-11-15 05:52:21	--	- Rules:
+2015-11-15 05:52:21	--	- o No spamming or flooding
+2015-11-15 05:52:21	--	- o No clones or malicious bots
+2015-11-15 05:52:21	--	- o No takeovers
+2015-11-15 05:52:21	--	- o No distribution of child pornography
+2015-11-15 05:52:21	--	- o Clients must respond to VERSION requests
+2015-11-15 05:52:21	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 05:52:21	--	-
+2015-11-15 05:52:21	--	- First steps:
+2015-11-15 05:52:21	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 05:52:21	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 05:52:21	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 05:52:21	--	- o For other help with Rizon: /join #help
+2015-11-15 05:52:21	--	-
+2015-11-15 05:52:21	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 05:52:21	--	- transit provider, therefore no person or entity involved with
+2015-11-15 05:52:21	--	- *.rizon.net or irc.x2x.cc takes any responsibility for
+2015-11-15 05:52:21	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 05:52:21	--	End of /MOTD command.
+2015-11-15 05:52:21	--	User mode [+Six] by r0kd
+2015-11-15 05:52:21	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 05:52:21	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 05:52:21	--	Global (service@rizon.net): [Random News - Mar 20 2009] Idle on Rizon a lot? Why not play our idlerpg game, you can check it out at #RizonIRPG for more information visit the website http://idlerpg.rizon.net -Rizon Staff
+2015-11-15 05:52:21	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 05:52:21	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 05:52:21	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 05:52:21	--	User mode [+r] by r0kd
+2015-11-15 05:52:21	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 05:52:21	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 05:52:21	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 05:52:21	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.220). This scan will not harm your computer.
+2015-11-15 06:52:55	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 06:52:55	--	irc: disconnecting from server...
+2015-11-15 06:52:55	--	irc: disconnected from server
+2015-11-15 06:52:55	--	irc: reconnecting to server in 10 seconds
+2015-11-15 06:53:05	--	irc: reconnecting to server...
+2015-11-15 06:53:05	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 06:53:06	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 06:53:06	--	gnutls: receiving 2 certificates
+2015-11-15 06:53:06	--	 - certificate[1] info:
+2015-11-15 06:53:06	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 06:53:06	--	 - certificate[2] info:
+2015-11-15 06:53:06	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 06:53:06	--	gnutls: peer's certificate is trusted
+2015-11-15 06:53:06	--	gnutls: sending one certificate
+2015-11-15 06:53:06	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 06:53:06	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 06:53:06	--	irc: connected to irc.rizon.net/6697 (192.161.191.29)
+2015-11-15 06:53:06	--	* :Please wait while we process your connection.
+2015-11-15 06:53:06	--	irc.rizon.io: *** Looking up your hostname...
+2015-11-15 06:53:06	--	irc.rizon.io: *** Checking Ident
+2015-11-15 06:53:06	--	irc.rizon.io: *** Found your hostname
+2015-11-15 06:53:08	--	irc.rizon.io: *** No Ident response
+2015-11-15 06:53:08	--	irc.rizon.io: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 06:53:08	--	irc.rizon.io: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 06:53:08	--	irc.rizon.io: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 06:53:08	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 06:53:08	--	Your host is irc.rizon.io, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 06:53:08	--	This server was created Oct 23 2015 at 15:30:46
+2015-11-15 06:53:08	--	irc.rizon.io hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 06:53:08	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 06:53:08	--	CHANLIMIT=#:75 CHANNELLEN=50 EXCEPTS=e INVEX=I CHANMODES=beI,k,l,BCMNORScimnpstz ELIST=CMNTU SAFELIST AWAYLEN=160 KNOCK FNC NAMESX UHNAMES :are supported by this server
+2015-11-15 06:53:08	--	89CAAA54R :your unique ID
+2015-11-15 06:53:08	--	There are 78 users and 21443 invisible on 13 servers
+2015-11-15 06:53:08	--	56 :IRC Operators online
+2015-11-15 06:53:08	--	2 :unknown connection(s)
+2015-11-15 06:53:08	--	19909 :channels formed
+2015-11-15 06:53:08	--	I have 21521 clients and 13 servers
+2015-11-15 06:53:08	--	21521 24501 :Current local users 21521, max 24501
+2015-11-15 06:53:08	--	21521 24501 :Current global users 21521, max 24501
+2015-11-15 06:53:08	--	- irc.rizon.io Message of the Day -
+2015-11-15 06:53:08	--	-          oo                            
+2015-11-15 06:53:08	--	-
+2015-11-15 06:53:08	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 06:53:08	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 06:53:08	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 06:53:08	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 06:53:08	--	-
+2015-11-15 06:53:08	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 06:53:08	--	-
+2015-11-15 06:53:08	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 06:53:08	--	-
+2015-11-15 06:53:08	--	- Rules:
+2015-11-15 06:53:08	--	- o No spamming or flooding
+2015-11-15 06:53:08	--	- o No clones or malicious bots
+2015-11-15 06:53:08	--	- o No takeovers
+2015-11-15 06:53:08	--	- o No distribution of child pornography
+2015-11-15 06:53:08	--	- o Clients must respond to VERSION requests
+2015-11-15 06:53:08	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 06:53:08	--	-
+2015-11-15 06:53:08	--	- First steps:
+2015-11-15 06:53:08	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 06:53:08	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 06:53:08	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 06:53:08	--	- o For other help with Rizon: /join #help
+2015-11-15 06:53:08	--	-
+2015-11-15 06:53:08	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 06:53:08	--	- transit provider, therefore no person or entity involved with
+2015-11-15 06:53:08	--	- *.rizon.net or irc.rizon.io takes any responsibility for
+2015-11-15 06:53:08	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 06:53:08	--	End of /MOTD command.
+2015-11-15 06:53:08	--	User mode [+Six] by r0kd
+2015-11-15 06:53:08	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 06:53:08	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 06:53:08	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 06:53:08	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 06:53:08	--	Global (service@rizon.net): [Random News - Nov 29 2013] Want to make your vhost shiny by adding colors to it? Try your luck in #VIzon
+2015-11-15 06:53:08	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 06:53:08	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 06:53:08	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 06:53:08	--	User mode [+r] by r0kd
+2015-11-15 06:53:08	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 06:53:08	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.222). This scan will not harm your computer.
+2015-11-15 07:53:39	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 07:53:39	--	irc: disconnecting from server...
+2015-11-15 07:53:39	--	irc: disconnected from server
+2015-11-15 07:53:39	--	irc: reconnecting to server in 10 seconds
+2015-11-15 07:53:49	--	irc: reconnecting to server...
+2015-11-15 07:53:49	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 07:53:49	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 07:53:49	--	gnutls: receiving 2 certificates
+2015-11-15 07:53:49	--	 - certificate[1] info:
+2015-11-15 07:53:49	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 07:53:49	--	 - certificate[2] info:
+2015-11-15 07:53:49	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 07:53:49	--	gnutls: peer's certificate is trusted
+2015-11-15 07:53:49	--	gnutls: sending one certificate
+2015-11-15 07:53:49	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 07:53:49	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 07:53:50	--	irc: connected to irc.rizon.net/6697 (54.229.0.87)
+2015-11-15 07:53:50	--	* :Please wait while we process your connection.
+2015-11-15 07:53:50	--	irc.x2x.cc: *** Looking up your hostname...
+2015-11-15 07:53:50	--	irc.x2x.cc: *** Checking Ident
+2015-11-15 07:53:50	--	irc.x2x.cc: *** Found your hostname
+2015-11-15 07:53:52	--	irc.x2x.cc: *** No Ident response
+2015-11-15 07:53:52	--	irc.x2x.cc: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 07:53:52	--	irc.x2x.cc: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 07:53:52	--	irc.x2x.cc: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 07:53:52	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 07:53:52	--	Your host is irc.x2x.cc, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 07:53:52	--	This server was created Oct 10 2015 at 23:17:48
+2015-11-15 07:53:52	--	irc.x2x.cc hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 07:53:52	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 07:53:52	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz NAMESX UHNAMES AWAYLEN=160 FNC KNOCK ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 07:53:52	--	39CAAF800 :your unique ID
+2015-11-15 07:53:52	--	There are 80 users and 21136 invisible on 13 servers
+2015-11-15 07:53:52	--	56 :IRC Operators online
+2015-11-15 07:53:52	--	2 :unknown connection(s)
+2015-11-15 07:53:52	--	19873 :channels formed
+2015-11-15 07:53:52	--	I have 21216 clients and 13 servers
+2015-11-15 07:53:52	--	21216 25256 :Current local users 21216, max 25256
+2015-11-15 07:53:52	--	21216 25256 :Current global users 21216, max 25256
+2015-11-15 07:53:52	--	- irc.x2x.cc Message of the Day -
+2015-11-15 07:53:52	--	-          oo                            
+2015-11-15 07:53:52	--	-
+2015-11-15 07:53:52	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 07:53:52	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 07:53:52	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 07:53:52	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 07:53:52	--	-
+2015-11-15 07:53:52	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 07:53:52	--	-
+2015-11-15 07:53:52	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 07:53:52	--	-
+2015-11-15 07:53:52	--	- Rules:
+2015-11-15 07:53:52	--	- o No spamming or flooding
+2015-11-15 07:53:52	--	- o No clones or malicious bots
+2015-11-15 07:53:52	--	- o No takeovers
+2015-11-15 07:53:52	--	- o No distribution of child pornography
+2015-11-15 07:53:52	--	- o Clients must respond to VERSION requests
+2015-11-15 07:53:52	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 07:53:52	--	-
+2015-11-15 07:53:52	--	- First steps:
+2015-11-15 07:53:52	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 07:53:52	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 07:53:52	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 07:53:52	--	- o For other help with Rizon: /join #help
+2015-11-15 07:53:52	--	-
+2015-11-15 07:53:52	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 07:53:52	--	- transit provider, therefore no person or entity involved with
+2015-11-15 07:53:52	--	- *.rizon.net or irc.x2x.cc takes any responsibility for
+2015-11-15 07:53:52	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 07:53:52	--	End of /MOTD command.
+2015-11-15 07:53:52	--	User mode [+Six] by r0kd
+2015-11-15 07:53:52	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 07:53:52	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 07:53:52	--	Global (service@rizon.net): [Random News - May 07 2013] Looking for a quotes, trivia, or other extra bots? /msg funserv help
+2015-11-15 07:53:52	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 07:53:52	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 07:53:52	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 07:53:52	--	User mode [+r] by r0kd
+2015-11-15 07:53:52	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 07:53:52	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 07:53:52	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 07:53:52	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.219). This scan will not harm your computer.
+2015-11-15 08:54:26	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 08:54:26	--	irc: disconnecting from server...
+2015-11-15 08:54:26	--	irc: disconnected from server
+2015-11-15 08:54:26	--	irc: reconnecting to server in 10 seconds
+2015-11-15 08:54:36	--	irc: reconnecting to server...
+2015-11-15 08:54:36	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 08:54:37	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 08:54:37	--	gnutls: receiving 2 certificates
+2015-11-15 08:54:37	--	 - certificate[1] info:
+2015-11-15 08:54:37	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 08:54:37	--	 - certificate[2] info:
+2015-11-15 08:54:37	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 08:54:37	--	gnutls: peer's certificate is trusted
+2015-11-15 08:54:37	--	gnutls: sending one certificate
+2015-11-15 08:54:37	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 08:54:37	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 08:54:37	--	irc: connected to irc.rizon.net/6697 (213.80.41.222)
+2015-11-15 08:54:37	--	* :Please wait while we process your connection.
+2015-11-15 08:54:37	--	irc.infoqb.se: *** Looking up your hostname...
+2015-11-15 08:54:37	--	irc.infoqb.se: *** Checking Ident
+2015-11-15 08:54:37	--	irc.infoqb.se: *** Found your hostname
+2015-11-15 08:54:39	--	irc.infoqb.se: *** No Ident response
+2015-11-15 08:54:42	--	irc.infoqb.se: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 08:54:42	--	irc.infoqb.se: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 08:54:42	--	irc.infoqb.se: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 08:54:42	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 08:54:42	--	Your host is irc.infoqb.se, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 08:54:42	--	This server was created Oct 11 2015 at 01:52:36
+2015-11-15 08:54:42	--	irc.infoqb.se hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 08:54:42	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 08:54:42	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz FNC KNOCK NAMESX UHNAMES AWAYLEN=160 ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 08:54:42	--	37CAABAKY :your unique ID
+2015-11-15 08:54:42	--	There are 80 users and 20870 invisible on 13 servers
+2015-11-15 08:54:42	--	56 :IRC Operators online
+2015-11-15 08:54:42	--	1 :unknown connection(s)
+2015-11-15 08:54:42	--	19885 :channels formed
+2015-11-15 08:54:42	--	I have 20950 clients and 13 servers
+2015-11-15 08:54:42	--	20950 25256 :Current local users 20950, max 25256
+2015-11-15 08:54:42	--	20950 25256 :Current global users 20950, max 25256
+2015-11-15 08:54:42	--	- irc.infoqb.se Message of the Day -
+2015-11-15 08:54:42	--	-          oo                            
+2015-11-15 08:54:42	--	-
+2015-11-15 08:54:42	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 08:54:42	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 08:54:42	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 08:54:42	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 08:54:42	--	-
+2015-11-15 08:54:42	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 08:54:42	--	-
+2015-11-15 08:54:42	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 08:54:42	--	-
+2015-11-15 08:54:42	--	- Rules:
+2015-11-15 08:54:42	--	- o No spamming or flooding
+2015-11-15 08:54:42	--	- o No clones or malicious bots
+2015-11-15 08:54:42	--	- o No takeovers
+2015-11-15 08:54:42	--	- o No distribution of child pornography
+2015-11-15 08:54:42	--	- o Clients must respond to VERSION requests
+2015-11-15 08:54:42	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 08:54:42	--	-
+2015-11-15 08:54:42	--	- First steps:
+2015-11-15 08:54:42	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 08:54:42	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 08:54:42	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 08:54:42	--	- o For other help with Rizon: /join #help
+2015-11-15 08:54:42	--	-
+2015-11-15 08:54:42	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 08:54:42	--	- transit provider, therefore no person or entity involved with
+2015-11-15 08:54:42	--	- *.rizon.net or irc.infoqb.se takes any responsibility for
+2015-11-15 08:54:42	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 08:54:42	--	End of /MOTD command.
+2015-11-15 08:54:42	--	User mode [+Six] by r0kd
+2015-11-15 08:54:42	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 08:54:42	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 08:54:42	--	Global (service@rizon.net): [Random News - Mar 20 2009] Idle on Rizon a lot? Why not play our idlerpg game, you can check it out at #RizonIRPG for more information visit the website http://idlerpg.rizon.net -Rizon Staff
+2015-11-15 08:54:42	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 08:54:42	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 08:54:42	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 08:54:42	--	User mode [+r] by r0kd
+2015-11-15 08:54:42	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 08:54:42	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 08:54:42	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 08:54:42	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.219). This scan will not harm your computer.
+2015-11-15 09:55:08	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 09:55:08	--	irc: disconnecting from server...
+2015-11-15 09:55:08	--	irc: disconnected from server
+2015-11-15 09:55:08	--	irc: reconnecting to server in 10 seconds
+2015-11-15 09:55:18	--	irc: reconnecting to server...
+2015-11-15 09:55:18	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 09:55:18	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 09:55:18	--	gnutls: receiving 2 certificates
+2015-11-15 09:55:18	--	 - certificate[1] info:
+2015-11-15 09:55:18	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 09:55:18	--	 - certificate[2] info:
+2015-11-15 09:55:18	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 09:55:18	--	gnutls: peer's certificate is trusted
+2015-11-15 09:55:18	--	gnutls: sending one certificate
+2015-11-15 09:55:18	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 09:55:18	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 09:55:19	--	irc: connected to irc.rizon.net/6697 (54.229.0.87)
+2015-11-15 09:55:19	--	* :Please wait while we process your connection.
+2015-11-15 09:55:19	--	irc.x2x.cc: *** Looking up your hostname...
+2015-11-15 09:55:19	--	irc.x2x.cc: *** Checking Ident
+2015-11-15 09:55:19	--	irc.x2x.cc: *** Found your hostname
+2015-11-15 09:55:21	--	irc.x2x.cc: *** No Ident response
+2015-11-15 09:55:21	--	irc.x2x.cc: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 09:55:21	--	irc.x2x.cc: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 09:55:21	--	irc.x2x.cc: *** Your host is masked (Rizon-3A2F1029.dip0.t-ipconnect.de)
+2015-11-15 09:55:21	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 09:55:21	--	Your host is irc.x2x.cc, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 09:55:21	--	This server was created Oct 10 2015 at 23:17:48
+2015-11-15 09:55:21	--	irc.x2x.cc hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 09:55:21	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 09:55:21	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz NAMESX UHNAMES AWAYLEN=160 FNC KNOCK ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 09:55:21	--	39CAAF9A0 :your unique ID
+2015-11-15 09:55:21	--	There are 81 users and 20689 invisible on 13 servers
+2015-11-15 09:55:21	--	56 :IRC Operators online
+2015-11-15 09:55:21	--	6 :unknown connection(s)
+2015-11-15 09:55:21	--	19847 :channels formed
+2015-11-15 09:55:21	--	I have 20770 clients and 13 servers
+2015-11-15 09:55:21	--	20770 25256 :Current local users 20770, max 25256
+2015-11-15 09:55:21	--	20770 25256 :Current global users 20770, max 25256
+2015-11-15 09:55:21	--	- irc.x2x.cc Message of the Day -
+2015-11-15 09:55:21	--	-          oo                            
+2015-11-15 09:55:21	--	-
+2015-11-15 09:55:21	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 09:55:21	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 09:55:21	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 09:55:21	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 09:55:21	--	-
+2015-11-15 09:55:21	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 09:55:21	--	-
+2015-11-15 09:55:21	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 09:55:21	--	-
+2015-11-15 09:55:21	--	- Rules:
+2015-11-15 09:55:21	--	- o No spamming or flooding
+2015-11-15 09:55:21	--	- o No clones or malicious bots
+2015-11-15 09:55:21	--	- o No takeovers
+2015-11-15 09:55:21	--	- o No distribution of child pornography
+2015-11-15 09:55:21	--	- o Clients must respond to VERSION requests
+2015-11-15 09:55:21	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 09:55:21	--	-
+2015-11-15 09:55:21	--	- First steps:
+2015-11-15 09:55:21	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 09:55:21	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 09:55:21	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 09:55:21	--	- o For other help with Rizon: /join #help
+2015-11-15 09:55:21	--	-
+2015-11-15 09:55:21	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 09:55:21	--	- transit provider, therefore no person or entity involved with
+2015-11-15 09:55:21	--	- *.rizon.net or irc.x2x.cc takes any responsibility for
+2015-11-15 09:55:21	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 09:55:21	--	End of /MOTD command.
+2015-11-15 09:55:21	--	User mode [+Six] by r0kd
+2015-11-15 09:55:21	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 09:55:21	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 09:55:21	--	Global (service@rizon.net): [Random News - May 07 2013] Looking for a quotes, trivia, or other extra bots? /msg funserv help
+2015-11-15 09:55:21	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 09:55:21	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 09:55:21	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 09:55:21	--	User mode [+r] by r0kd
+2015-11-15 09:55:21	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 09:55:21	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.219). This scan will not harm your computer.
+2015-11-15 09:55:21	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 09:55:21	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 13:41:26	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 13:41:26	--	irc: disconnecting from server...
+2015-11-15 13:41:26	--	irc: disconnected from server
+2015-11-15 13:41:26	--	irc: reconnecting to server in 10 seconds
+2015-11-15 13:41:36	--	irc: reconnecting to server...
+2015-11-15 13:41:36	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 13:41:36	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 13:41:36	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 13:41:36	--	irc: reconnecting to server in 20 seconds
+2015-11-15 13:41:56	--	irc: reconnecting to server...
+2015-11-15 13:41:56	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 13:41:56	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 13:41:56	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 13:41:56	--	irc: reconnecting to server in 40 seconds
+2015-11-15 13:42:36	--	irc: reconnecting to server...
+2015-11-15 13:42:36	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 13:42:36	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 13:42:36	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 13:42:36	--	irc: reconnecting to server in 1 minute, 20 seconds
+2015-11-15 13:43:56	--	irc: reconnecting to server...
+2015-11-15 13:43:56	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 13:43:56	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 13:43:56	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 13:43:56	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2015-11-15 13:46:36	--	irc: reconnecting to server...
+2015-11-15 13:46:36	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 13:46:36	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 13:46:36	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 13:46:36	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2015-11-15 13:51:56	--	irc: reconnecting to server...
+2015-11-15 13:51:56	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 13:51:56	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 13:51:56	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 13:51:56	--	irc: reconnecting to server in 10 minutes
+2015-11-15 15:35:30	--	irc: reconnecting to server...
+2015-11-15 15:35:30	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 15:35:30	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 15:35:30	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 15:35:30	--	irc: reconnecting to server in 10 minutes
+2015-11-15 15:45:30	--	irc: reconnecting to server...
+2015-11-15 15:45:30	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 15:45:30	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 15:45:30	--	gnutls: receiving 2 certificates
+2015-11-15 15:45:30	--	 - certificate[1] info:
+2015-11-15 15:45:30	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 15:45:30	--	 - certificate[2] info:
+2015-11-15 15:45:30	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 15:45:30	--	gnutls: peer's certificate is trusted
+2015-11-15 15:45:30	--	gnutls: sending one certificate
+2015-11-15 15:45:30	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 15:45:30	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 15:45:30	--	irc: connected to irc.rizon.net/6697 (213.80.41.222)
+2015-11-15 15:45:30	--	* :Please wait while we process your connection.
+2015-11-15 15:45:30	--	irc.infoqb.se: *** Looking up your hostname...
+2015-11-15 15:45:30	--	irc.infoqb.se: *** Checking Ident
+2015-11-15 15:45:30	--	irc.infoqb.se: *** Found your hostname
+2015-11-15 15:45:32	--	irc.infoqb.se: *** No Ident response
+2015-11-15 15:45:32	--	irc.infoqb.se: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 15:45:32	--	irc.infoqb.se: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 15:45:32	--	irc.infoqb.se: *** Your host is masked (Rizon-658BE6A5.dip0.t-ipconnect.de)
+2015-11-15 15:45:32	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 15:45:32	--	Your host is irc.infoqb.se, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 15:45:32	--	This server was created Oct 11 2015 at 01:52:36
+2015-11-15 15:45:32	--	irc.infoqb.se hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 15:45:32	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 15:45:32	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz FNC KNOCK NAMESX UHNAMES AWAYLEN=160 ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 15:45:32	--	37CAABA31 :your unique ID
+2015-11-15 15:45:32	--	There are 79 users and 21817 invisible on 13 servers
+2015-11-15 15:45:32	--	57 :IRC Operators online
+2015-11-15 15:45:32	--	1 :unknown connection(s)
+2015-11-15 15:45:32	--	20023 :channels formed
+2015-11-15 15:45:32	--	I have 21896 clients and 13 servers
+2015-11-15 15:45:32	--	21896 25256 :Current local users 21896, max 25256
+2015-11-15 15:45:32	--	21896 25256 :Current global users 21896, max 25256
+2015-11-15 15:45:32	--	- irc.infoqb.se Message of the Day -
+2015-11-15 15:45:32	--	-          oo                            
+2015-11-15 15:45:32	--	-
+2015-11-15 15:45:32	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 15:45:32	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 15:45:32	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 15:45:32	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 15:45:32	--	-
+2015-11-15 15:45:32	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 15:45:32	--	-
+2015-11-15 15:45:32	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 15:45:32	--	-
+2015-11-15 15:45:32	--	- Rules:
+2015-11-15 15:45:32	--	- o No spamming or flooding
+2015-11-15 15:45:32	--	- o No clones or malicious bots
+2015-11-15 15:45:32	--	- o No takeovers
+2015-11-15 15:45:32	--	- o No distribution of child pornography
+2015-11-15 15:45:32	--	- o Clients must respond to VERSION requests
+2015-11-15 15:45:32	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 15:45:32	--	-
+2015-11-15 15:45:32	--	- First steps:
+2015-11-15 15:45:32	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 15:45:32	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 15:45:32	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 15:45:32	--	- o For other help with Rizon: /join #help
+2015-11-15 15:45:32	--	-
+2015-11-15 15:45:32	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 15:45:32	--	- transit provider, therefore no person or entity involved with
+2015-11-15 15:45:32	--	- *.rizon.net or irc.infoqb.se takes any responsibility for
+2015-11-15 15:45:32	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 15:45:32	--	End of /MOTD command.
+2015-11-15 15:45:32	--	User mode [+Six] by r0kd
+2015-11-15 15:45:32	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 15:45:32	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 15:45:32	--	Global (service@rizon.net): [Random News - Mar 20 2009] Idle on Rizon a lot? Why not play our idlerpg game, you can check it out at #RizonIRPG for more information visit the website http://idlerpg.rizon.net -Rizon Staff
+2015-11-15 15:45:32	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 15:45:32	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 15:45:32	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 15:45:32	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 15:45:32	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 15:45:32	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.219). This scan will not harm your computer.
+2015-11-15 15:45:32	--	User mode [+r] by r0kd
+2015-11-15 15:45:33	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 18:33:49	=!=	irc: reading data on socket: error -54 Error in the pull function.
+2015-11-15 18:33:49	--	irc: disconnecting from server...
+2015-11-15 18:33:49	--	irc: disconnected from server
+2015-11-15 18:33:49	--	irc: reconnecting to server in 10 seconds
+2015-11-15 18:34:05	--	irc: reconnecting to server...
+2015-11-15 18:34:05	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 18:34:05	=!=	irc: address "irc.rizon.net" not found
+2015-11-15 18:34:05	=!=	irc: error: nodename nor servname provided, or not known
+2015-11-15 18:34:05	--	irc: reconnecting to server in 20 seconds
+2015-11-15 18:34:25	--	irc: reconnecting to server...
+2015-11-15 18:34:25	--	irc: connecting to server irc.rizon.net/6697 (SSL)...
+2015-11-15 18:34:25	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2015-11-15 18:34:25	--	gnutls: receiving 2 certificates
+2015-11-15 18:34:25	--	 - certificate[1] info:
+2015-11-15 18:34:25	--	   - subject `C=US,OU=Domain Control Validated,CN=irc.rizon.net', issuer `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', RSA key 2048 bits, signed using RSA-SHA256, activated `2015-04-19 20:58:21 UTC', expires `2016-04-19 20:58:21 UTC', SHA-1 fingerprint `a23b1092e09d4429bff6c1b939566435f05724b0'
+2015-11-15 18:34:25	--	 - certificate[2] info:
+2015-11-15 18:34:25	--	   - subject `C=BE,O=GlobalSign nv-sa,CN=AlphaSSL CA - SHA256 - G2', issuer `C=BE,O=GlobalSign nv-sa,OU=Root CA,CN=GlobalSign Root CA', RSA key 2048 bits, signed using RSA-SHA256, activated `2014-02-20 10:00:00 UTC', expires `2024-02-20 10:00:00 UTC', SHA-1 fingerprint `4c27431717565a3a07f3e6d0032c4258949cf9ec'
+2015-11-15 18:34:25	--	gnutls: peer's certificate is trusted
+2015-11-15 18:34:25	--	gnutls: sending one certificate
+2015-11-15 18:34:25	--	 - client certificate info (/Users/robertgz/.dotfiles.bkup/config/weechat/ssl/Rizon.pem):
+2015-11-15 18:34:25	--	  - subject `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', issuer `C=US,ST=Michigan,L=Grand Rapids,O=Rizon,OU=IRC,CN=r0ked,EMAIL=r0ked@mailismagic.com', RSA key 2048 bits, signed using RSA-SHA1, activated `2015-11-14 22:54:28 UTC', expires `2016-11-13 22:54:28 UTC', SHA-1 fingerprint `51cc7a0cba015178b227a2eab590111b8c696189'
+2015-11-15 18:34:25	--	irc: connected to irc.rizon.net/6697 (104.155.5.159)
+2015-11-15 18:34:25	--	* :Please wait while we process your connection.
+2015-11-15 18:34:25	--	irc.rizon.so: *** Looking up your hostname...
+2015-11-15 18:34:25	--	irc.rizon.so: *** Checking Ident
+2015-11-15 18:34:25	--	irc.rizon.so: *** Found your hostname
+2015-11-15 18:34:27	--	irc.rizon.so: *** No Ident response
+2015-11-15 18:34:27	--	irc.rizon.so: *** Connected securely via TLSv1.2 AES128-GCM-SHA256-128
+2015-11-15 18:34:27	--	irc.rizon.so: *** Your client certificate fingerprint is 51CC7A0CBA015178B227A2EAB590111B8C696189
+2015-11-15 18:34:27	--	irc.rizon.so: *** Your host is masked (Rizon-658BE6A5.dip0.t-ipconnect.de)
+2015-11-15 18:34:27	--	Welcome to the Rizon Internet Relay Chat Network r0kd
+2015-11-15 18:34:27	--	Your host is irc.rizon.so, running version hybrid-7.2.3+plexus-3.1.0(20151005_0-546)
+2015-11-15 18:34:27	--	This server was created Oct 16 2015 at 22:03:36
+2015-11-15 18:34:27	--	irc.rizon.so hybrid-7.2.3+plexus-3.1.0(20151005_0-546) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
+2015-11-15 18:34:27	--	CALLERID CASEMAPPING=rfc1459 DEAF=D KICKLEN=160 MODES=4 NICKLEN=30 TOPICLEN=390 PREFIX=(qaohv)~&@%+ STATUSMSG=~&@%+ NETWORK=Rizon MAXLIST=beI:250 TARGMAX=ACCEPT:,KICK:1,LIST:1,NAMES:1,NOTICE:4,PRIVMSG:4,WHOIS:1 CHANTYPES=# :are supported by this server
+2015-11-15 18:34:27	--	CHANLIMIT=#:75 CHANNELLEN=50 CHANMODES=beI,k,l,BCMNORScimnpstz FNC AWAYLEN=160 NAMESX UHNAMES KNOCK ELIST=CMNTU SAFELIST EXCEPTS=e INVEX=I :are supported by this server
+2015-11-15 18:34:27	--	87CAACJ97 :your unique ID
+2015-11-15 18:34:27	--	There are 79 users and 22863 invisible on 13 servers
+2015-11-15 18:34:27	--	57 :IRC Operators online
+2015-11-15 18:34:27	--	2 :unknown connection(s)
+2015-11-15 18:34:27	--	20122 :channels formed
+2015-11-15 18:34:27	--	I have 22942 clients and 13 servers
+2015-11-15 18:34:27	--	22942 25256 :Current local users 22942, max 25256
+2015-11-15 18:34:27	--	22942 25256 :Current global users 22942, max 25256
+2015-11-15 18:34:27	--	- irc.rizon.so Message of the Day -
+2015-11-15 18:34:27	--	-          oo                            
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- 88d888b. dP d888888b .d8888b. 88d888b. 
+2015-11-15 18:34:27	--	- 88'  `88 88    .d8P' 88'  `88 88'  `88 
+2015-11-15 18:34:27	--	- 88       88  .Y8P    88.  .88 88    88 
+2015-11-15 18:34:27	--	- dP       dP d888888P `88888P' dP    dP
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- Rizon Chat Network -- http://rizon.net
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- Listening on ports: 6660 - 6669, 7000. SSL: 6697, 9999
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- This server is partly sponsored by Darkness Reigns (Holding) B.V.
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- Rules:
+2015-11-15 18:34:27	--	- o No spamming or flooding
+2015-11-15 18:34:27	--	- o No clones or malicious bots
+2015-11-15 18:34:27	--	- o No takeovers
+2015-11-15 18:34:27	--	- o No distribution of child pornography
+2015-11-15 18:34:27	--	- o Clients must respond to VERSION requests
+2015-11-15 18:34:27	--	- o Rizon staff may disconnect clients for any or no reason
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- First steps:
+2015-11-15 18:34:27	--	- o To register your nick: /msg NickServ HELP
+2015-11-15 18:34:27	--	- o To register your channel: /msg ChanServ HELP
+2015-11-15 18:34:27	--	- o To get a vHost: /msg HostServ HELP REQUEST
+2015-11-15 18:34:27	--	- o For other help with Rizon: /join #help
+2015-11-15 18:34:27	--	-
+2015-11-15 18:34:27	--	- Usage of this network is a privilege, not a right. Rizon is a
+2015-11-15 18:34:27	--	- transit provider, therefore no person or entity involved with
+2015-11-15 18:34:27	--	- *.rizon.net or irc.rizon.so takes any responsibility for
+2015-11-15 18:34:27	--	- users' actions. Absolutely no warranty is expressed or implied.
+2015-11-15 18:34:27	--	End of /MOTD command.
+2015-11-15 18:34:27	--	User mode [+Six] by r0kd
+2015-11-15 18:34:27	--	CTCP requested by py-ctcp: VERSION
+2015-11-15 18:34:27	--	CTCP reply to py-ctcp: VERSION WeeChat 1.3 (Nov 14 2015)
+2015-11-15 18:34:27	--	Global (service@rizon.net): [Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
+2015-11-15 18:34:27	--	Global (service@rizon.net): [Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
+2015-11-15 18:34:27	--	Global (service@rizon.net): [Random News - May 07 2013] Looking for a quotes, trivia, or other extra bots? /msg funserv help
+2015-11-15 18:34:27	--	NickServ (service@rizon.net): This nickname is registered and protected. If it is your
+2015-11-15 18:34:27	--	NickServ (service@rizon.net): nick, type /msg NickServ IDENTIFY password. Otherwise,
+2015-11-15 18:34:27	--	NickServ (service@rizon.net): please choose a different nick.
+2015-11-15 18:34:27	--	User mode [+r] by r0kd
+2015-11-15 18:34:27	--	NickServ (service@rizon.net): You are now identified via SSL certificate auth.
+2015-11-15 18:34:27	--	peer (service@rizon.net): For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.222). This scan will not harm your computer.

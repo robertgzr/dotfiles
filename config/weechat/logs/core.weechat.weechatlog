@@ -1,0 +1,2702 @@
+2015-11-14 21:22:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2015-11-14 21:24:38		[color] (weechat.conf)
+2015-11-14 21:24:38		  weechat.color.nicklist_away = cyan
+2015-11-14 21:24:38		  weechat.color.nicklist_group = green
+2015-11-14 21:24:38		  weechat.color.nicklist_offline = blue
+2015-11-14 21:24:38		  weechat.color.status_nicklist_count = default
+2015-11-14 21:24:38		[bar] (weechat.conf)
+2015-11-14 21:24:38		  weechat.bar.nicklist.color_bg = default
+2015-11-14 21:24:38		  weechat.bar.nicklist.color_delim = cyan
+2015-11-14 21:24:38		  weechat.bar.nicklist.color_fg = default
+2015-11-14 21:24:38		  weechat.bar.nicklist.conditions = "${nicklist}"
+2015-11-14 21:24:38		  weechat.bar.nicklist.filling_left_right = vertical
+2015-11-14 21:24:38		  weechat.bar.nicklist.filling_top_bottom = columns_vertical
+2015-11-14 21:24:38		  weechat.bar.nicklist.hidden = off
+2015-11-14 21:24:38		  weechat.bar.nicklist.items = "buffer_nicklist"
+2015-11-14 21:24:38		  weechat.bar.nicklist.position = right
+2015-11-14 21:24:38		  weechat.bar.nicklist.priority = 200
+2015-11-14 21:24:38		  weechat.bar.nicklist.separator = on
+2015-11-14 21:24:38		  weechat.bar.nicklist.size = 0
+2015-11-14 21:24:38		  weechat.bar.nicklist.size_max = 0
+2015-11-14 21:24:38		  weechat.bar.nicklist.type = window
+2015-11-14 21:24:38		[look] (irc.conf)
+2015-11-14 21:24:38		  irc.look.color_nicks_in_nicklist = off
+2015-11-14 21:24:38		19 options (matching with "*nicklist*")
+2015-11-14 21:25:53		Mouse enabled
+2015-11-14 21:26:03		Debug enabled for mouse (normal)
+2015-11-14 21:26:09		Mouse: button1-event-down, (59,15) -> (59,15)
+2015-11-14 21:26:09		Mouse: button1, (59,15) -> (59,15)
+2015-11-14 21:26:09		Command for key: "/window ${_window_number}"
+2015-11-14 21:26:09		Executing command: "/window 1" on buffer "core.weechat"
+2015-11-14 21:26:10		Mouse: button1-event-down, (79,14) -> (79,14)
+2015-11-14 21:26:10		Mouse: button1, (79,14) -> (79,14)
+2015-11-14 21:26:10		Command for key: "/window ${_window_number}"
+2015-11-14 21:26:10		Executing command: "/window 1" on buffer "core.weechat"
+2015-11-14 21:26:18		Debug disabled for mouse
+2015-11-14 21:27:11		script: downloading list of scripts...
+2015-11-14 21:27:12		script: 299 scripts for WeeChat 1.3
+2015-11-14 21:28:44	=!=	Too few arguments for command "/query" (help on command: /help query)
+2015-11-14 21:31:35		No server
+2015-11-14 21:31:40		No server
+2015-11-14 21:34:23		Option changed: irc.server_default.nicks = "r0ked"  (default: "")
+2015-11-14 21:34:42		Option changed: irc.server_default.ssl_verify = off  (default: on)
+2015-11-14 21:36:18	=!=	irc: unable to add temporary server "freenode" because the addition of temporary servers with command /connect is currently disabled
+2015-11-14 21:36:18	=!=	irc: if you want to add a standard server, use the command "/server add" (see /help server); if you really want to add a temporary server (NOT SAVED), turn on the option irc.look.temporary_servers
+2015-11-14 22:10:02		[irc]  /server  list|listfull [<server>]
+2015-11-14 22:10:02		                add <server> <hostname>[/<port>] [-temp] [-<option>[=<value>]] [-no<option>]
+2015-11-14 22:10:02		                copy|rename <server> <new_name>
+2015-11-14 22:10:02		                reorder <server> [<server>...]
+2015-11-14 22:10:02		                del|keep <server>
+2015-11-14 22:10:02		                deloutq|jump|raw
+2015-11-14 22:10:02		list, add or remove IRC servers
+2015-11-14 22:10:02		    list: list servers (without argument, this list is displayed)
+2015-11-14 22:10:02		listfull: list servers with detailed info for each server
+2015-11-14 22:10:02		     add: add a new server
+2015-11-14 22:10:02		  server: server name, for internal and display use
+2015-11-14 22:10:02		hostname: name or IP address of server, with optional port (default: 6667), many addresses can be separated by a comma
+2015-11-14 22:10:02		    temp: add a temporary server (not saved)
+2015-11-14 22:10:02		  option: set option for server (for boolean option, value can be omitted)
+2015-11-14 22:10:02		nooption: set boolean option to 'off' (for example: -nossl)
+2015-11-14 22:10:02		    copy: duplicate a server
+2015-11-14 22:10:02		  rename: rename a server
+2015-11-14 22:10:02		 reorder: reorder list of servers
+2015-11-14 22:10:02		    keep: keep server in config file (for temporary servers only)
+2015-11-14 22:10:02		     del: delete a server
+2015-11-14 22:10:02		 deloutq: delete messages out queue for all servers (all messages WeeChat is currently sending)
+2015-11-14 22:10:02		    jump: jump to server buffer
+2015-11-14 22:10:02		     raw: open buffer with raw IRC data
+2015-11-14 22:10:02		Examples:
+2015-11-14 22:10:02		  /server listfull
+2015-11-14 22:10:02		  /server add freenode chat.freenode.net
+2015-11-14 22:10:02		  /server add freenode chat.freenode.net/6697 -ssl -autoconnect
+2015-11-14 22:10:02		  /server add chatspike irc.chatspike.net/6667,irc.duckspike.net/6667
+2015-11-14 22:10:02		  /server copy freenode freenode-test
+2015-11-14 22:10:02		  /server rename freenode-test freenode2
+2015-11-14 22:10:02		  /server reorder freenode2 freenode
+2015-11-14 22:10:02		  /server del freenode
+2015-11-14 22:10:02		  /server deloutq
+2015-11-14 22:11:07		irc: server rizon added
+2015-11-14 22:13:49		irc: server euirc added
+2015-11-14 22:14:22	=!=	irc: server "euirc" already exists, can't add it!
+2015-11-14 22:14:35		irc: server irchighway added
+2015-11-14 22:14:56		irc: server irchighway has been deleted
+2015-11-14 22:15:02		irc: server irchighway added
+2015-11-14 22:15:52	=!=	Error with command "/server lsit" (help on command: /help server)
+2015-11-14 22:15:55		All servers:
+2015-11-14 22:15:55		   rizon
+2015-11-14 22:15:55		   euirc
+2015-11-14 22:15:55		   irchighway
+2015-11-14 22:15:58		All servers:
+2015-11-14 22:15:58		Server: rizon [not connected]
+2015-11-14 22:15:58		  addresses. . . . . . : 'irc.rizon.net/6667'
+2015-11-14 22:15:58		  proxy. . . . . . . . :   ('')
+2015-11-14 22:15:58		  ipv6 . . . . . . . . :   (on)
+2015-11-14 22:15:58		  ssl. . . . . . . . . :   (off)
+2015-11-14 22:15:58		  ssl_cert . . . . . . :   ('')
+2015-11-14 22:15:58		  ssl_priorities . . . :   ('NORMAL:-VERS-SSL3.0')
+2015-11-14 22:15:58		  ssl_dhkey_size . . . :   (2048)
+2015-11-14 22:15:58		  ssl_fingerprint. . . :   ('')
+2015-11-14 22:15:58		  ssl_verify . . . . . :   (off)
+2015-11-14 22:15:58		  password . . . . . . :   (hidden)
+2015-11-14 22:15:58		  capabilities . . . . :   ('')
+2015-11-14 22:15:58		  sasl_mechanism . . . :   ('plain')
+2015-11-14 22:15:58		  sasl_username. . . . :   ('')
+2015-11-14 22:15:58		  sasl_password. . . . :   (hidden)
+2015-11-14 22:15:58		  sasl_key. .  . . . . :   ('')
+2015-11-14 22:15:58		  sasl_timeout . . . . :   (15 seconds)
+2015-11-14 22:15:58		  sasl_fail. . . . . . :   ('continue')
+2015-11-14 22:15:58		  autoconnect. . . . . : on
+2015-11-14 22:15:58		  autoreconnect. . . . :   (on)
+2015-11-14 22:15:58		  autoreconnect_delay. :   (10 seconds)
+2015-11-14 22:15:58		  nicks. . . . . . . . :   ('r0ked')
+2015-11-14 22:15:58		  username . . . . . . :   ('robertgz')
+2015-11-14 22:15:58		  realname . . . . . . :   ('')
+2015-11-14 22:15:58		  local_hostname . . . :   ('')
+2015-11-14 22:15:58		  command. . . . . . . :   ('')
+2015-11-14 22:15:58		  command_delay. . . . :   (0 seconds)
+2015-11-14 22:15:58		  autojoin . . . . . . :   ('')
+2015-11-14 22:15:58		  autorejoin . . . . . :   (off)
+2015-11-14 22:15:58		  autorejoin_delay . . :   (30 seconds)
+2015-11-14 22:15:58		  connection_timeout . :   (60 seconds)
+2015-11-14 22:15:58		  anti_flood_prio_high :   (2 seconds)
+2015-11-14 22:15:58		  anti_flood_prio_low. :   (2 seconds)
+2015-11-14 22:15:58		  away_check . . . . . :   (0 minutes)
+2015-11-14 22:15:58		  away_check_max_nicks :   (25)
+2015-11-14 22:15:58		  default_msg_kick . . :   ('')
+2015-11-14 22:15:58		  default_msg_part . . :   ('WeeChat %v')
+2015-11-14 22:15:58		  default_msg_quit . . :   ('WeeChat %v')
+2015-11-14 22:15:58		  notify . . . . . . . :   ('')
+2015-11-14 22:15:58		Server: euirc [not connected]
+2015-11-14 22:15:58		  addresses. . . . . . : 'irc.euirc.net/6667'
+2015-11-14 22:15:58		  proxy. . . . . . . . :   ('')
+2015-11-14 22:15:58		  ipv6 . . . . . . . . :   (on)
+2015-11-14 22:15:58		  ssl. . . . . . . . . :   (off)
+2015-11-14 22:15:58		  ssl_cert . . . . . . :   ('')
+2015-11-14 22:15:58		  ssl_priorities . . . :   ('NORMAL:-VERS-SSL3.0')
+2015-11-14 22:15:58		  ssl_dhkey_size . . . :   (2048)
+2015-11-14 22:15:58		  ssl_fingerprint. . . :   ('')
+2015-11-14 22:15:58		  ssl_verify . . . . . :   (off)
+2015-11-14 22:15:58		  password . . . . . . :   (hidden)
+2015-11-14 22:15:58		  capabilities . . . . :   ('')
+2015-11-14 22:15:58		  sasl_mechanism . . . :   ('plain')
+2015-11-14 22:15:58		  sasl_username. . . . :   ('')
+2015-11-14 22:15:58		  sasl_password. . . . :   (hidden)
+2015-11-14 22:15:58		  sasl_key. .  . . . . :   ('')
+2015-11-14 22:15:58		  sasl_timeout . . . . :   (15 seconds)
+2015-11-14 22:15:58		  sasl_fail. . . . . . :   ('continue')
+2015-11-14 22:15:58		  autoconnect. . . . . : on
+2015-11-14 22:15:58		  autoreconnect. . . . :   (on)
+2015-11-14 22:15:58		  autoreconnect_delay. :   (10 seconds)
+2015-11-14 22:15:58		  nicks. . . . . . . . :   ('r0ked')
+2015-11-14 22:15:58		  username . . . . . . :   ('robertgz')
+2015-11-14 22:15:58		  realname . . . . . . :   ('')
+2015-11-14 22:15:58		  local_hostname . . . :   ('')
+2015-11-14 22:15:58		  command. . . . . . . :   ('')
+2015-11-14 22:15:58		  command_delay. . . . :   (0 seconds)
+2015-11-14 22:15:58		  autojoin . . . . . . :   ('')
+2015-11-14 22:15:58		  autorejoin . . . . . :   (off)
+2015-11-14 22:15:58		  autorejoin_delay . . :   (30 seconds)
+2015-11-14 22:15:58		  connection_timeout . :   (60 seconds)
+2015-11-14 22:15:58		  anti_flood_prio_high :   (2 seconds)
+2015-11-14 22:15:58		  anti_flood_prio_low. :   (2 seconds)
+2015-11-14 22:15:58		  away_check . . . . . :   (0 minutes)
+2015-11-14 22:15:58		  away_check_max_nicks :   (25)
+2015-11-14 22:15:58		  default_msg_kick . . :   ('')
+2015-11-14 22:15:58		  default_msg_part . . :   ('WeeChat %v')
+2015-11-14 22:15:58		  default_msg_quit . . :   ('WeeChat %v')
+2015-11-14 22:15:58		  notify . . . . . . . :   ('')
+2015-11-14 22:15:58		Server: irchighway [not connected]
+2015-11-14 22:15:58		  addresses. . . . . . : 'irc.irchighway.net/6667'
+2015-11-14 22:15:58		  proxy. . . . . . . . :   ('')
+2015-11-14 22:15:58		  ipv6 . . . . . . . . :   (on)
+2015-11-14 22:15:58		  ssl. . . . . . . . . :   (off)
+2015-11-14 22:15:58		  ssl_cert . . . . . . :   ('')
+2015-11-14 22:15:58		  ssl_priorities . . . :   ('NORMAL:-VERS-SSL3.0')
+2015-11-14 22:15:58		  ssl_dhkey_size . . . :   (2048)
+2015-11-14 22:15:58		  ssl_fingerprint. . . :   ('')
+2015-11-14 22:15:58		  ssl_verify . . . . . :   (off)
+2015-11-14 22:15:58		  password . . . . . . :   (hidden)
+2015-11-14 22:15:58		  capabilities . . . . :   ('')
+2015-11-14 22:15:58		  sasl_mechanism . . . :   ('plain')
+2015-11-14 22:15:58		  sasl_username. . . . :   ('')
+2015-11-14 22:15:58		  sasl_password. . . . :   (hidden)
+2015-11-14 22:15:58		  sasl_key. .  . . . . :   ('')
+2015-11-14 22:15:58		  sasl_timeout . . . . :   (15 seconds)
+2015-11-14 22:15:58		  sasl_fail. . . . . . :   ('continue')
+2015-11-14 22:15:58		  autoconnect. . . . . :   (off)
+2015-11-14 22:15:58		  autoreconnect. . . . :   (on)
+2015-11-14 22:15:58		  autoreconnect_delay. :   (10 seconds)
+2015-11-14 22:15:58		  nicks. . . . . . . . :   ('r0ked')
+2015-11-14 22:15:58		  username . . . . . . :   ('robertgz')
+2015-11-14 22:15:58		  realname . . . . . . :   ('')
+2015-11-14 22:15:58		  local_hostname . . . :   ('')
+2015-11-14 22:15:58		  command. . . . . . . :   ('')
+2015-11-14 22:15:58		  command_delay. . . . :   (0 seconds)
+2015-11-14 22:15:58		  autojoin . . . . . . :   ('')
+2015-11-14 22:15:58		  autorejoin . . . . . :   (off)
+2015-11-14 22:15:58		  autorejoin_delay . . :   (30 seconds)
+2015-11-14 22:15:58		  connection_timeout . :   (60 seconds)
+2015-11-14 22:15:58		  anti_flood_prio_high :   (2 seconds)
+2015-11-14 22:15:58		  anti_flood_prio_low. :   (2 seconds)
+2015-11-14 22:15:58		  away_check . . . . . :   (0 minutes)
+2015-11-14 22:15:58		  away_check_max_nicks :   (25)
+2015-11-14 22:15:58		  default_msg_kick . . :   ('')
+2015-11-14 22:15:58		  default_msg_part . . :   ('WeeChat %v')
+2015-11-14 22:15:58		  default_msg_quit . . :   ('WeeChat %v')
+2015-11-14 22:15:58		  notify . . . . . . . :   ('')
+2015-11-14 22:17:49	=!=	irc: unable to add temporary server "freenode" because the addition of temporary servers with command /connect is currently disabled
+2015-11-14 22:17:49	=!=	irc: if you want to add a standard server, use the command "/server add" (see /help server); if you really want to add a temporary server (NOT SAVED), turn on the option irc.look.temporary_servers
+2015-11-14 22:17:59		All servers:
+2015-11-14 22:17:59		   rizon
+2015-11-14 22:17:59		   euirc
+2015-11-14 22:17:59		   irchighway
+2015-11-14 22:18:52		irc: server freenode added
+2015-11-14 22:21:17		[script]  /script  list [-o|-i]
+2015-11-14 22:21:17		                   search <text>
+2015-11-14 22:21:17		                   show <script>
+2015-11-14 22:21:17		                   load|unload|reload <script> [<script>...]
+2015-11-14 22:21:17		                   autoload|noautoload|toggleautoload <script> [<script>...]
+2015-11-14 22:21:17		                   install|remove|installremove|hold [-q] <script> [<script>...]
+2015-11-14 22:21:17		                   upgrade
+2015-11-14 22:21:17		                   update
+2015-11-14 22:21:17		WeeChat scripts manager
+2015-11-14 22:21:17		          list: list loaded scripts (all languages)
+2015-11-14 22:21:17		            -o: send list of loaded scripts to buffer
+2015-11-14 22:21:17		            -i: copy list of loaded scripts in command line (for sending to buffer)
+2015-11-14 22:21:17		        search: search scripts by tags or text and display result on scripts buffer
+2015-11-14 22:21:17		          show: show detailed info about a script
+2015-11-14 22:21:17		          load: load script(s)
+2015-11-14 22:21:17		        unload: unload script(s)
+2015-11-14 22:21:17		        reload: reload script(s)
+2015-11-14 22:21:17		      autoload: autoload the script
+2015-11-14 22:21:17		    noautoload: do not autoload the script
+2015-11-14 22:21:17		toggleautoload: toggle autoload
+2015-11-14 22:21:17		       install: install/upgrade script(s)
+2015-11-14 22:21:17		        remove: remove script(s)
+2015-11-14 22:21:17		 installremove: install or remove script(s), depending on current state
+2015-11-14 22:21:17		          hold: hold/unhold script(s) (a script held will not be upgraded any more and cannot be removed)
+2015-11-14 22:21:17		            -q: quiet mode: do not display messages
+2015-11-14 22:21:17		       upgrade: upgrade all installed scripts which are obsolete (new version available)
+2015-11-14 22:21:17		        update: update local scripts cache
+2015-11-14 22:21:17		Without argument, this command opens a buffer with list of scripts.
+2015-11-14 22:21:17		On script buffer, the possible status for each script are:
+2015-11-14 22:21:17		  * i a H r N
+2015-11-14 22:21:17		  | | | | | |
+2015-11-14 22:21:17		  | | | | | obsolete (new version available)
+2015-11-14 22:21:17		  | | | | running (loaded)
+2015-11-14 22:21:17		  | | | held
+2015-11-14 22:21:17		  | | autoloaded
+2015-11-14 22:21:17		  | installed
+2015-11-14 22:21:17		  popular script
+2015-11-14 22:21:17		Keys on script buffer:
+2015-11-14 22:21:17		  alt+i  install script
+2015-11-14 22:21:17		  alt+r  remove script
+2015-11-14 22:21:17		  alt+l  load script
+2015-11-14 22:21:17		  alt+L  reload script
+2015-11-14 22:21:17		  alt+u  unload script
+2015-11-14 22:21:17		  alt+A  autoload script
+2015-11-14 22:21:17		  alt+h  (un)hold script
+2015-11-14 22:21:17		  alt+v  view script
+2015-11-14 22:21:17		Input allowed on script buffer:
+2015-11-14 22:21:17		  i/r/l/L/u/h  action on script (same as keys above)
+2015-11-14 22:21:17		  q            close buffer
+2015-11-14 22:21:17		  $            refresh buffer
+2015-11-14 22:21:17		  s:x,y        sort buffer using keys x and y (see /help script.look.sort)
+2015-11-14 22:21:17		  s:           reset sort (use default sort)
+2015-11-14 22:21:17		  word(s)      filter scripts: search word(s) in scripts (description, tags, ...)
+2015-11-14 22:21:17		  *            remove filter
+2015-11-14 22:21:17		Mouse actions on script buffer:
+2015-11-14 22:21:17		  wheel         scroll list
+2015-11-14 22:21:17		  left button   select script
+2015-11-14 22:21:17		  right button  install/remove script
+2015-11-14 22:21:17		Examples:
+2015-11-14 22:21:17		  /script search url
+2015-11-14 22:21:17		  /script install iset.pl buffers.pl
+2015-11-14 22:21:17		  /script remove iset.pl
+2015-11-14 22:21:17		  /script hold urlserver.py
+2015-11-14 22:21:17		  /script reload urlserver
+2015-11-14 22:21:17		  /script upgrade
+2015-11-14 22:22:19		script: script "auth.rb" can not be installed because plugin "ruby" is not loaded
+2015-11-14 22:22:52		script: script "auth.rb" can not be installed because plugin "ruby" is not loaded
+2015-11-14 22:23:03	=!=	No help available, "load" is not a command or an option
+2015-11-14 22:23:05		[core]
+2015-11-14 22:23:05		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
+2015-11-14 22:23:05		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2015-11-14 22:23:05		[alias]
+2015-11-14 22:23:05		  AAWAY    AME      ANICK    BYE      CHAT     CLOSE    IG       K        LEAVE    MSGBUF   N        REDRAW   SIGNOFF  UB       V        WC       WII    
+2015-11-14 22:23:05		  alias    AMSG     BEEP     C        CL       EXIT     J        KB       M        MUB      Q        SAY      T        UMODE    W        WI       WW     
+2015-11-14 22:23:05		[charset]
+2015-11-14 22:23:05		  charset
+2015-11-14 22:23:05		[exec]
+2015-11-14 22:23:05		  exec
+2015-11-14 22:23:05		[irc]
+2015-11-14 22:23:05		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who       
+2015-11-14 22:23:05		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois     
+2015-11-14 22:23:05		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas    
+2015-11-14 22:23:05		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops 
+2015-11-14 22:23:05		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops   
+2015-11-14 22:23:05		[logger]
+2015-11-14 22:23:05		  logger
+2015-11-14 22:23:05		[relay]
+2015-11-14 22:23:05		  relay
+2015-11-14 22:23:05		[script]
+2015-11-14 22:23:05		  script
+2015-11-14 22:23:05		[tcl]
+2015-11-14 22:23:05		  tcl
+2015-11-14 22:23:05		[trigger]
+2015-11-14 22:23:05		  trigger
+2015-11-14 22:23:05		[xfer]
+2015-11-14 22:23:05		  me  xfer
+2015-11-14 22:23:11	=!=	No help available, "ruby" is not a command or an option
+2015-11-14 22:23:36		[core]  /plugin  list|listfull [<name>]
+2015-11-14 22:23:36		                 load <filename> [<arguments>]
+2015-11-14 22:23:36		                 autoload [<arguments>]
+2015-11-14 22:23:36		                 reload [<name>|* [<arguments>]]
+2015-11-14 22:23:36		                 unload [<name>]
+2015-11-14 22:23:36		list/load/unload plugins
+2015-11-14 22:23:36		     list: list loaded plugins
+2015-11-14 22:23:36		 listfull: list loaded plugins (verbose)
+2015-11-14 22:23:36		     load: load a plugin
+2015-11-14 22:23:36		 autoload: autoload plugins in system or user directory
+2015-11-14 22:23:36		   reload: reload a plugin (if no name given, unload all plugins, then autoload plugins)
+2015-11-14 22:23:36		   unload: unload a plugin (if no name given, unload all plugins)
+2015-11-14 22:23:36		 filename: plugin (file) to load
+2015-11-14 22:23:36		     name: a plugin name
+2015-11-14 22:23:36		arguments: arguments given to plugin on load
+2015-11-14 22:23:36		Without argument, this command lists loaded plugins.
+2015-11-14 22:24:10	=!=	Error: unable to load plugin "ruby": dlopen(ruby, 10): no suitable image found.  Did find:
+2015-11-14 22:24:10		/usr/local/lib/ruby: not a file
+2015-11-14 22:24:10		/usr/lib/ruby: not a file
+2015-11-14 22:24:10	=!=	If you're trying to load a script and not a C plugin, try command to load scripts (/perl, /python, ...)
+2015-11-14 22:24:27	=!=	No help available, "ruby" is not a command or an option
+2015-11-14 22:26:53		script: script "auth.rb" can not be installed because plugin "ruby" is not loaded
+2015-11-14 22:26:59		script: script "ruby" not found
+2015-11-14 22:31:12		script: plugin "python" is not loaded
+2015-11-14 22:38:07		script: 299 scripts for WeeChat 1.3
+2015-11-14 22:38:07		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-14 22:38:38		python: loading script "/Users/robertgz/.dotfiles.bkup/config/weechat/python/theme.py"
+2015-11-14 22:38:38		python: registered script "theme", version 0.1-dev (WeeChat theme manager)
+2015-11-14 22:38:38		Theme saved to "/Users/robertgz/.dotfiles.bkup/config/weechat/themes/_backup.theme"
+2015-11-14 22:39:03		No theme loaded
+2015-11-14 22:55:54		Option changed: irc.look.smart_filter = on
+2015-11-14 22:56:16		Filter "irc_smart" added:
+2015-11-14 22:56:16		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: * 
+2015-11-14 22:56:34		Option changed: irc.look.smart_filter_delay = 5
+2015-11-14 22:56:57		[core]  /buffer  list
+2015-11-14 22:56:57		                 clear [<number>|<name>|-merged|-all [<number>|<name>...]]
+2015-11-14 22:56:57		                 move <number>|-|+
+2015-11-14 22:56:57		                 swap <number1>|<name1> [<number2>|<name2>]
+2015-11-14 22:56:57		                 merge <number>
+2015-11-14 22:56:57		                 unmerge [<number>|-all]
+2015-11-14 22:56:57		                 hide [<number>|<name>|-all [<number>|<name>...]]
+2015-11-14 22:56:57		                 unhide [<number>|<name>|-all [<number>|<name>...]]
+2015-11-14 22:56:57		                 renumber [<number1> [<number2> [<start>]]]
+2015-11-14 22:56:57		                 close [<n1>[-<n2>]|<name>]
+2015-11-14 22:56:57		                 notify <level>
+2015-11-14 22:56:57		                 localvar
+2015-11-14 22:56:57		                 set <property> <value>
+2015-11-14 22:56:57		                 get <property>
+2015-11-14 22:56:57		                 <number>|-|+|<name>
+2015-11-14 22:56:57		manage buffers
+2015-11-14 22:56:57		    list: list buffers (without argument, this list is displayed)
+2015-11-14 22:56:57		   clear: clear buffer content (number for a buffer, -merged for merged buffers, -all for all buffers, or nothing for current buffer)
+2015-11-14 22:56:57		    move: move buffer in the list (may be relative, for example -1); "-" = move to first buffer number, "+" = move to last buffer number + 1
+2015-11-14 22:56:57		    swap: swap two buffers (swap with current buffer if only one number/name given)
+2015-11-14 22:56:57		   merge: merge current buffer to another buffer (chat area will be mix of both buffers)
+2015-11-14 22:56:57		          (by default ctrl-x switches between merged buffers)
+2015-11-14 22:56:57		 unmerge: unmerge buffer from other buffers which have same number
+2015-11-14 22:56:57		    hide: hide the buffer
+2015-11-14 22:56:57		  unhide: unhide the buffer
+2015-11-14 22:56:57		renumber: renumber buffers (works only if option weechat.look.buffer_auto_renumber is off)
+2015-11-14 22:56:57		   close: close buffer (number/range or name is optional)
+2015-11-14 22:56:57		  notify: set notify level for current buffer: this level determines whether buffer will be added to hotlist or not:
+2015-11-14 22:56:57		               none: never
+2015-11-14 22:56:57		          highlight: for highlights only
+2015-11-14 22:56:57		            message: for messages from users + highlights
+2015-11-14 22:56:57		                all: all messages
+2015-11-14 22:56:57		              reset: reset to default value (all)
+2015-11-14 22:56:57		localvar: display local variables for current buffer
+2015-11-14 22:56:57		     set: set a property for current buffer
+2015-11-14 22:56:57		     get: display a property of current buffer
+2015-11-14 22:56:57		  number: jump to buffer by number, possible prefix:
+2015-11-14 22:56:57		          '+': relative jump, add number to current
+2015-11-14 22:56:57		          '-': relative jump, sub number to current
+2015-11-14 22:56:57		          '*': jump to number, using option "weechat.look.jump_current_to_previous_buffer"
+2015-11-14 22:56:57		       -: jump to first buffer number
+2015-11-14 22:56:57		       +: jump to last buffer number
+2015-11-14 22:56:57		    name: jump to buffer by (partial) name
+2015-11-14 22:56:57		Examples:
+2015-11-14 22:56:57		  clear current buffer:
+2015-11-14 22:56:57		    /buffer clear
+2015-11-14 22:56:57		  move buffer to number 5:
+2015-11-14 22:56:57		    /buffer move 5
+2015-11-14 22:56:57		  swap buffer 1 with 3:
+2015-11-14 22:56:57		    /buffer swap 1 3
+2015-11-14 22:56:57		  swap buffer #weechat with current buffer:
+2015-11-14 22:56:57		    /buffer swap #weechat
+2015-11-14 22:56:57		  merge with core buffer:
+2015-11-14 22:56:57		    /buffer merge 1
+2015-11-14 22:56:57		  unmerge buffer:
+2015-11-14 22:56:57		    /buffer unmerge
+2015-11-14 22:56:57		  close current buffer:
+2015-11-14 22:56:57		    /buffer close
+2015-11-14 22:56:57		  close buffers 5 to 7:
+2015-11-14 22:56:57		    /buffer close 5-7
+2015-11-14 22:56:57		  jump to #weechat:
+2015-11-14 22:56:57		    /buffer #weechat
+2015-11-14 22:56:57		  jump to next buffer:
+2015-11-14 22:56:57		    /buffer +1
+2015-11-14 22:56:57		  jump to last buffer number:
+2015-11-14 22:56:57		    /buffer +
+2015-11-14 22:57:19	=!=	Error with command "/buffer lit" (help on command: /help buffer)
+2015-11-14 22:57:23		Buffers list:
+2015-11-14 22:57:23		  [1] core.weechat (notify: all)
+2015-11-14 22:57:23		  [1] irc.server.rizon (notify: all)
+2015-11-14 22:57:23		  [1] irc.server.euirc (notify: all)
+2015-11-14 22:58:34		[core]  /window  list
+2015-11-14 22:58:34		                 -1|+1|b#|up|down|left|right [-window <number>]
+2015-11-14 22:58:34		                 <number>
+2015-11-14 22:58:34		                 splith|splitv [-window <number>] [<pct>]
+2015-11-14 22:58:34		                 resize [-window <number>] [+/-]<pct>
+2015-11-14 22:58:34		                 balance
+2015-11-14 22:58:34		                 merge [-window <number>] [all]
+2015-11-14 22:58:34		                 page_up|page_down [-window <number>]
+2015-11-14 22:58:34		                 refresh
+2015-11-14 22:58:34		                 scroll [-window <number>] [+/-]<value>[s|m|h|d|M|y]
+2015-11-14 22:58:34		                 scroll_horiz [-window <number>] [+/-]<value>[%]
+2015-11-14 22:58:34		                 scroll_up|scroll_down|scroll_top|scroll_bottom|scroll_beyond_end|scroll_previous_highlight|scroll_next_highlight|scroll_unread [-window <number>]
+2015-11-14 22:58:34		                 swap [-window <number>] [up|down|left|right]
+2015-11-14 22:58:34		                 zoom [-window <number>]
+2015-11-14 22:58:34		                 bare [<delay>]
+2015-11-14 22:58:34		manage windows
+2015-11-14 22:58:34		         list: list opened windows (without argument, this list is displayed)
+2015-11-14 22:58:34		           -1: jump to previous window
+2015-11-14 22:58:34		           +1: jump to next window
+2015-11-14 22:58:34		           b#: jump to next window displaying buffer number #
+2015-11-14 22:58:34		           up: switch to window above current one
+2015-11-14 22:58:34		         down: switch to window below current one
+2015-11-14 22:58:34		         left: switch to window on the left
+2015-11-14 22:58:34		        right: switch to window on the right
+2015-11-14 22:58:34		       number: window number (see /window list)
+2015-11-14 22:58:34		       splith: split current window horizontally
+2015-11-14 22:58:34		       splitv: split current window vertically
+2015-11-14 22:58:34		       resize: resize window size, new size is <pct> percentage of parent window
+2015-11-14 22:58:34		      balance: balance the sizes of all windows
+2015-11-14 22:58:34		        merge: merge window with another (all = keep only one window)
+2015-11-14 22:58:34		      page_up: scroll one page up
+2015-11-14 22:58:34		    page_down: scroll one page down
+2015-11-14 22:58:34		      refresh: refresh screen
+2015-11-14 22:58:34		       scroll: scroll a number of lines (+/-N) or with time: s=seconds, m=minutes, h=hours, d=days, M=months, y=years
+2015-11-14 22:58:34		 scroll_horiz: scroll horizontally a number of columns (+/-N) or percentage of window size (this scrolling is possible only on buffers with free content)
+2015-11-14 22:58:34		    scroll_up: scroll a few lines up
+2015-11-14 22:58:34		  scroll_down: scroll a few lines down
+2015-11-14 22:58:34		   scroll_top: scroll to top of buffer
+2015-11-14 22:58:34		scroll_bottom: scroll to bottom of buffer
+2015-11-14 22:58:34		scroll_beyond_end: scroll beyond the end of buffer
+2015-11-14 22:58:34		scroll_previous_highlight: scroll to previous highlight
+2015-11-14 22:58:34		scroll_next_highlight: scroll to next highlight
+2015-11-14 22:58:34		scroll_unread: scroll to unread marker
+2015-11-14 22:58:34		         swap: swap buffers of two windows (with optional direction for target window)
+2015-11-14 22:58:34		         zoom: zoom on window
+2015-11-14 22:58:34		         bare: toggle bare display (with optional delay in seconds for automatic return to standard display mode)
+2015-11-14 22:58:34		For splith and splitv, pct is a percentage which represents size of new window, computed with current window as size reference. For example 25 means create a new window with size = current_size / 4
+2015-11-14 22:58:34		Examples:
+2015-11-14 22:58:34		  jump to window displaying buffer #1:
+2015-11-14 22:58:34		    /window b1
+2015-11-14 22:58:34		  scroll 2 lines up:
+2015-11-14 22:58:34		    /window scroll -2
+2015-11-14 22:58:34		  scroll 2 days up:
+2015-11-14 22:58:34		    /window scroll -2d
+2015-11-14 22:58:34		  scroll to beginning of current day:
+2015-11-14 22:58:34		    /window scroll -d
+2015-11-14 22:58:34		  zoom on window #2:
+2015-11-14 22:58:34		    /window zoom -window 2
+2015-11-14 22:58:34		  enable bare display for 2 seconds:
+2015-11-14 22:58:34		    /window bare 2
+2015-11-14 22:58:57		Windows list:
+2015-11-14 22:58:57		[1] (0:0;204x25) 
+2015-11-14 23:00:32	=!=	Error with command "/window close" (help on command: /help window)
+2015-11-14 23:03:47		python: scripts unloaded
+2015-11-14 23:05:14		script: 299 scripts for WeeChat 1.3
+2015-11-14 23:05:14		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-14 23:10:08	=!=	Error: unknown command "/mychannels" (type /help for help)
+2015-11-14 23:10:49		Buffers list:
+2015-11-14 23:10:49		  [1] core.weechat (notify: all)
+2015-11-14 23:10:49		  [1] irc.server.rizon (notify: all)
+2015-11-14 23:10:49		  [1] irc.server.euirc (notify: all)
+2015-11-14 23:10:49		  [2] irc.euirc.#nanaone (notify: all)
+2015-11-14 23:23:40		Options saved to sec.conf
+2015-11-14 23:23:40		Options saved to weechat.conf
+2015-11-14 23:23:40		Options saved to plugins.conf
+2015-11-14 23:23:40		Options saved to charset.conf
+2015-11-14 23:23:40		Options saved to logger.conf
+2015-11-14 23:23:40		Options saved to exec.conf
+2015-11-14 23:23:40		Options saved to trigger.conf
+2015-11-14 23:23:40		Options saved to alias.conf
+2015-11-14 23:23:40		Options saved to xfer.conf
+2015-11-14 23:23:40		Options saved to irc.conf
+2015-11-14 23:23:40		Options saved to relay.conf
+2015-11-14 23:23:40		Options saved to script.conf
+2015-11-14 23:25:10		[crypt] (sec.conf)
+2015-11-14 23:25:10		  sec.crypt.cipher = aes256
+2015-11-14 23:25:10		  sec.crypt.hash_algo = sha256
+2015-11-14 23:25:10		  sec.crypt.passphrase_file = ""
+2015-11-14 23:25:10		  sec.crypt.salt = on
+2015-11-14 23:25:10		[startup] (weechat.conf)
+2015-11-14 23:25:10		  weechat.startup.command_after_plugins = ""
+2015-11-14 23:25:10		  weechat.startup.command_before_plugins = ""
+2015-11-14 23:25:10		  weechat.startup.display_logo = on
+2015-11-14 23:25:10		  weechat.startup.display_version = on
+2015-11-14 23:25:10		  weechat.startup.sys_rlimit = ""
+2015-11-14 23:25:10		[look] (weechat.conf)
+2015-11-14 23:25:10		  weechat.look.align_end_of_lines = message
+2015-11-14 23:25:10		  weechat.look.bar_more_down = "++"
+2015-11-14 23:25:10		  weechat.look.bar_more_left = "<<"
+2015-11-14 23:25:10		  weechat.look.bar_more_right = ">>"
+2015-11-14 23:25:10		  weechat.look.bar_more_up = "--"
+2015-11-14 23:25:10		  weechat.look.bare_display_exit_on_input = on
+2015-11-14 23:25:10		  weechat.look.bare_display_time_format = "%H:%M"
+2015-11-14 23:25:10		  weechat.look.buffer_auto_renumber = on
+2015-11-14 23:25:10		  weechat.look.buffer_notify_default = all
+2015-11-14 23:25:10		  weechat.look.buffer_position = end
+2015-11-14 23:25:10		  weechat.look.buffer_search_case_sensitive = off
+2015-11-14 23:25:10		  weechat.look.buffer_search_force_default = off
+2015-11-14 23:25:10		  weechat.look.buffer_search_regex = off
+2015-11-14 23:25:10		  weechat.look.buffer_search_where = prefix_message
+2015-11-14 23:25:10		  weechat.look.buffer_time_format = "%H:%M:%S"
+2015-11-14 23:25:10		  weechat.look.color_basic_force_bold = off
+2015-11-14 23:25:10		  weechat.look.color_inactive_buffer = on
+2015-11-14 23:25:10		  weechat.look.color_inactive_message = on
+2015-11-14 23:25:10		  weechat.look.color_inactive_prefix = on
+2015-11-14 23:25:10		  weechat.look.color_inactive_prefix_buffer = on
+2015-11-14 23:25:10		  weechat.look.color_inactive_time = off
+2015-11-14 23:25:10		  weechat.look.color_inactive_window = on
+2015-11-14 23:25:10		  weechat.look.color_nick_offline = off
+2015-11-14 23:25:10		  weechat.look.color_pairs_auto_reset = 5
+2015-11-14 23:25:10		  weechat.look.color_real_white = off
+2015-11-14 23:25:10		  weechat.look.command_chars = ""
+2015-11-14 23:25:10		  weechat.look.command_incomplete = off
+2015-11-14 23:25:10		  weechat.look.confirm_quit = off
+2015-11-14 23:25:10		  weechat.look.confirm_upgrade = off
+2015-11-14 23:25:10		  weechat.look.day_change = on
+2015-11-14 23:25:10		  weechat.look.day_change_message_1date = "-- %a, %d %b %Y --"
+2015-11-14 23:25:10		  weechat.look.day_change_message_2dates = "-- %%a, %%d %%b %%Y (%a, %d %b %Y) --"
+2015-11-14 23:25:10		  weechat.look.eat_newline_glitch = off
+2015-11-14 23:25:10		  weechat.look.emphasized_attributes = ""
+2015-11-14 23:25:10		  weechat.look.highlight = ""
+2015-11-14 23:25:10		  weechat.look.highlight_regex = ""
+2015-11-14 23:25:10		  weechat.look.highlight_tags = ""
+2015-11-14 23:25:10		  weechat.look.hotlist_add_conditions = "${away} || ${buffer.num_displayed} == 0"
+2015-11-14 23:25:10		  weechat.look.hotlist_buffer_separator = ", "
+2015-11-14 23:25:10		  weechat.look.hotlist_count_max = 2
+2015-11-14 23:25:10		  weechat.look.hotlist_count_min_msg = 2
+2015-11-14 23:25:10		  weechat.look.hotlist_names_count = 3
+2015-11-14 23:25:10		  weechat.look.hotlist_names_length = 0
+2015-11-14 23:25:10		  weechat.look.hotlist_names_level = 12
+2015-11-14 23:25:10		  weechat.look.hotlist_names_merged_buffers = off
+2015-11-14 23:25:10		  weechat.look.hotlist_prefix = "H: "
+2015-11-14 23:25:10		  weechat.look.hotlist_remove = merged
+2015-11-14 23:25:10		  weechat.look.hotlist_short_names = on
+2015-11-14 23:25:10		  weechat.look.hotlist_sort = group_time_asc
+2015-11-14 23:25:10		  weechat.look.hotlist_suffix = ""
+2015-11-14 23:25:10		  weechat.look.hotlist_unique_numbers = on
+2015-11-14 23:25:10		  weechat.look.input_cursor_scroll = 20
+2015-11-14 23:25:10		  weechat.look.input_share = none
+2015-11-14 23:25:10		  weechat.look.input_share_overwrite = off
+2015-11-14 23:25:10		  weechat.look.input_undo_max = 32
+2015-11-14 23:25:10		  weechat.look.item_buffer_filter = "*"
+2015-11-14 23:25:10		  weechat.look.item_buffer_zoom = "!"
+2015-11-14 23:25:10		  weechat.look.item_mouse_status = "M"
+2015-11-14 23:25:10		  weechat.look.item_time_format = "%H:%M"
+2015-11-14 23:25:10		  weechat.look.jump_current_to_previous_buffer = on
+2015-11-14 23:25:10		  weechat.look.jump_previous_buffer_when_closing = on
+2015-11-14 23:25:10		  weechat.look.jump_smart_back_to_buffer = on
+2015-11-14 23:25:10		  weechat.look.key_bind_safe = on
+2015-11-14 23:25:10		  weechat.look.key_grab_delay = 800
+2015-11-14 23:25:10		  weechat.look.mouse = on  (default: off)
+2015-11-14 23:25:10		  weechat.look.mouse_timer_delay = 100
+2015-11-14 23:25:10		  weechat.look.nick_prefix = ""
+2015-11-14 23:25:10		  weechat.look.nick_suffix = ""
+2015-11-14 23:25:10		  weechat.look.paste_bracketed = on
+2015-11-14 23:25:10		  weechat.look.paste_bracketed_timer_delay = 10
+2015-11-14 23:25:10		  weechat.look.paste_max_lines = 1
+2015-11-14 23:25:10		  weechat.look.prefix_action = " *"
+2015-11-14 23:25:10		  weechat.look.prefix_align = right
+2015-11-14 23:25:10		  weechat.look.prefix_align_max = 0
+2015-11-14 23:25:10		  weechat.look.prefix_align_min = 0
+2015-11-14 23:25:10		  weechat.look.prefix_align_more = "+"
+2015-11-14 23:25:10		  weechat.look.prefix_align_more_after = on
+2015-11-14 23:25:10		  weechat.look.prefix_buffer_align = right
+2015-11-14 23:25:10		  weechat.look.prefix_buffer_align_max = 0
+2015-11-14 23:25:10		  weechat.look.prefix_buffer_align_more = "+"
+2015-11-14 23:25:10		  weechat.look.prefix_buffer_align_more_after = on
+2015-11-14 23:25:10		  weechat.look.prefix_error = "=!="
+2015-11-14 23:25:10		  weechat.look.prefix_join = "-->"
+2015-11-14 23:25:10		  weechat.look.prefix_network = "--"
+2015-11-14 23:25:10		  weechat.look.prefix_quit = "<--"
+2015-11-14 23:25:10		  weechat.look.prefix_same_nick = ""
+2015-11-14 23:25:10		  weechat.look.prefix_suffix = "|"
+2015-11-14 23:25:10		  weechat.look.quote_nick_prefix = "<"
+2015-11-14 23:25:10		  weechat.look.quote_nick_suffix = ">"
+2015-11-14 23:25:10		  weechat.look.quote_time_format = "%H:%M:%S"
+2015-11-14 23:25:10		  weechat.look.read_marker = line
+2015-11-14 23:25:10		  weechat.look.read_marker_always_show = off
+2015-11-14 23:25:10		  weechat.look.read_marker_string = "- "
+2015-11-14 23:25:10		  weechat.look.save_config_on_exit = on
+2015-11-14 23:25:10		  weechat.look.save_layout_on_exit = none
+2015-11-14 23:25:10		  weechat.look.scroll_amount = 3
+2015-11-14 23:25:10		  weechat.look.scroll_bottom_after_switch = off
+2015-11-14 23:25:10		  weechat.look.scroll_page_percent = 100
+2015-11-14 23:25:10		  weechat.look.search_text_not_found_alert = on
+2015-11-14 23:25:10		  weechat.look.separator_horizontal = "-"
+2015-11-14 23:25:10		  weechat.look.separator_vertical = ""
+2015-11-14 23:25:10		  weechat.look.tab_width = 1
+2015-11-14 23:25:10		  weechat.look.time_format = "%a, %d %b %Y %T"
+2015-11-14 23:25:10		  weechat.look.window_auto_zoom = off
+2015-11-14 23:25:10		  weechat.look.window_separator_horizontal = on
+2015-11-14 23:25:10		  weechat.look.window_separator_vertical = on
+2015-11-14 23:25:10		  weechat.look.window_title = "WeeChat ${info:version}"
+2015-11-14 23:25:10		  weechat.look.word_chars_highlight = "!\u00A0,-,_,|,alnum"
+2015-11-14 23:25:10		  weechat.look.word_chars_input = "!\u00A0,-,_,|,alnum"
+2015-11-14 23:25:10		[color] (weechat.conf)
+2015-11-14 23:25:10		  weechat.color.bar_more = lightmagenta
+2015-11-14 23:25:10		  weechat.color.chat = default
+2015-11-14 23:25:10		  weechat.color.chat_bg = default
+2015-11-14 23:25:10		  weechat.color.chat_buffer = white
+2015-11-14 23:25:10		  weechat.color.chat_channel = white
+2015-11-14 23:25:10		  weechat.color.chat_day_change = cyan
+2015-11-14 23:25:10		  weechat.color.chat_delimiters = green
+2015-11-14 23:25:10		  weechat.color.chat_highlight = yellow
+2015-11-14 23:25:10		  weechat.color.chat_highlight_bg = magenta
+2015-11-14 23:25:10		  weechat.color.chat_host = cyan
+2015-11-14 23:25:10		  weechat.color.chat_inactive_buffer = default
+2015-11-14 23:25:10		  weechat.color.chat_inactive_window = default
+2015-11-14 23:25:10		  weechat.color.chat_nick = lightcyan
+2015-11-14 23:25:10		  weechat.color.chat_nick_colors = "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue"
+2015-11-14 23:25:10		  weechat.color.chat_nick_offline = default
+2015-11-14 23:25:10		  weechat.color.chat_nick_offline_highlight = default
+2015-11-14 23:25:10		  weechat.color.chat_nick_offline_highlight_bg = blue
+2015-11-14 23:25:10		  weechat.color.chat_nick_other = cyan
+2015-11-14 23:25:10		  weechat.color.chat_nick_prefix = green
+2015-11-14 23:25:10		  weechat.color.chat_nick_self = white
+2015-11-14 23:25:10		  weechat.color.chat_nick_suffix = green
+2015-11-14 23:25:10		  weechat.color.chat_prefix_action = white
+2015-11-14 23:25:10		  weechat.color.chat_prefix_buffer = brown
+2015-11-14 23:25:10		  weechat.color.chat_prefix_buffer_inactive_buffer = default
+2015-11-14 23:25:10		  weechat.color.chat_prefix_error = yellow
+2015-11-14 23:25:10		  weechat.color.chat_prefix_join = lightgreen
+2015-11-14 23:25:10		  weechat.color.chat_prefix_more = lightmagenta
+2015-11-14 23:25:10		  weechat.color.chat_prefix_network = magenta
+2015-11-14 23:25:10		  weechat.color.chat_prefix_quit = lightred
+2015-11-14 23:25:10		  weechat.color.chat_prefix_suffix = green
+2015-11-14 23:25:10		  weechat.color.chat_read_marker = magenta
+2015-11-14 23:25:10		  weechat.color.chat_read_marker_bg = default
+2015-11-14 23:25:10		  weechat.color.chat_server = brown
+2015-11-14 23:25:10		  weechat.color.chat_tags = red
+2015-11-14 23:25:10		  weechat.color.chat_text_found = yellow
+2015-11-14 23:25:10		  weechat.color.chat_text_found_bg = lightmagenta
+2015-11-14 23:25:10		  weechat.color.chat_time = default
+2015-11-14 23:25:10		  weechat.color.chat_time_delimiters = brown
+2015-11-14 23:25:10		  weechat.color.chat_value = cyan
+2015-11-14 23:25:10		  weechat.color.emphasized = yellow
+2015-11-14 23:25:10		  weechat.color.emphasized_bg = magenta
+2015-11-14 23:25:10		  weechat.color.input_actions = lightgreen
+2015-11-14 23:25:10		  weechat.color.input_text_not_found = red
+2015-11-14 23:25:10		  weechat.color.nicklist_away = cyan
+2015-11-14 23:25:10		  weechat.color.nicklist_group = green
+2015-11-14 23:25:10		  weechat.color.nicklist_offline = blue
+2015-11-14 23:25:10		  weechat.color.separator = blue
+2015-11-14 23:25:10		  weechat.color.status_count_highlight = magenta
+2015-11-14 23:25:10		  weechat.color.status_count_msg = brown
+2015-11-14 23:25:10		  weechat.color.status_count_other = default
+2015-11-14 23:25:10		  weechat.color.status_count_private = green
+2015-11-14 23:25:10		  weechat.color.status_data_highlight = lightmagenta
+2015-11-14 23:25:10		  weechat.color.status_data_msg = yellow
+2015-11-14 23:25:10		  weechat.color.status_data_other = default
+2015-11-14 23:25:10		  weechat.color.status_data_private = lightgreen
+2015-11-14 23:25:10		  weechat.color.status_filter = green
+2015-11-14 23:25:10		  weechat.color.status_more = yellow
+2015-11-14 23:25:10		  weechat.color.status_mouse = green
+2015-11-14 23:25:10		  weechat.color.status_name = white
+2015-11-14 23:25:10		  weechat.color.status_name_ssl = lightgreen
+2015-11-14 23:25:10		  weechat.color.status_nicklist_count = default
+2015-11-14 23:25:10		  weechat.color.status_number = yellow
+2015-11-14 23:25:10		  weechat.color.status_time = default
+2015-11-14 23:25:10		[completion] (weechat.conf)
+2015-11-14 23:25:10		  weechat.completion.base_word_until_cursor = on
+2015-11-14 23:25:10		  weechat.completion.command_inline = on
+2015-11-14 23:25:10		  weechat.completion.default_template = "%(nicks)|%(irc_channels)"
+2015-11-14 23:25:10		  weechat.completion.nick_add_space = on
+2015-11-14 23:25:10		  weechat.completion.nick_completer = ":"
+2015-11-14 23:25:10		  weechat.completion.nick_first_only = off
+2015-11-14 23:25:10		  weechat.completion.nick_ignore_chars = "[]`_-^"
+2015-11-14 23:25:10		  weechat.completion.partial_completion_alert = on
+2015-11-14 23:25:10		  weechat.completion.partial_completion_command = off
+2015-11-14 23:25:10		  weechat.completion.partial_completion_command_arg = off
+2015-11-14 23:25:10		  weechat.completion.partial_completion_count = on
+2015-11-14 23:25:10		  weechat.completion.partial_completion_other = off
+2015-11-14 23:25:10		[history] (weechat.conf)
+2015-11-14 23:25:10		  weechat.history.display_default = 5
+2015-11-14 23:25:10		  weechat.history.max_buffer_lines_minutes = 0
+2015-11-14 23:25:10		  weechat.history.max_buffer_lines_number = 4096
+2015-11-14 23:25:10		  weechat.history.max_commands = 100
+2015-11-14 23:25:10		  weechat.history.max_visited_buffers = 50
+2015-11-14 23:25:10		[network] (weechat.conf)
+2015-11-14 23:25:10		  weechat.network.connection_timeout = 60
+2015-11-14 23:25:10		  weechat.network.gnutls_ca_file = "/etc/ssl/certs/ca-certificates.crt"
+2015-11-14 23:25:10		  weechat.network.gnutls_handshake_timeout = 30
+2015-11-14 23:25:10		  weechat.network.proxy_curl = ""
+2015-11-14 23:25:10		[plugin] (weechat.conf)
+2015-11-14 23:25:10		  weechat.plugin.autoload = "*"
+2015-11-14 23:25:10		  weechat.plugin.debug = off
+2015-11-14 23:25:10		  weechat.plugin.extension = ".so,.dll"
+2015-11-14 23:25:10		  weechat.plugin.path = "%h/plugins"
+2015-11-14 23:25:10		  weechat.plugin.save_config_on_unload = on
+2015-11-14 23:25:10		[bar] (weechat.conf)
+2015-11-14 23:25:10		  weechat.bar.input.color_bg = default
+2015-11-14 23:25:10		  weechat.bar.input.color_delim = cyan
+2015-11-14 23:25:10		  weechat.bar.input.color_fg = default
+2015-11-14 23:25:10		  weechat.bar.input.conditions = ""
+2015-11-14 23:25:10		  weechat.bar.input.filling_left_right = vertical
+2015-11-14 23:25:10		  weechat.bar.input.filling_top_bottom = horizontal
+2015-11-14 23:25:10		  weechat.bar.input.hidden = off
+2015-11-14 23:25:10		  weechat.bar.input.items = "[input_prompt]+(away),[input_search],[input_paste],input_text"
+2015-11-14 23:25:10		  weechat.bar.input.position = bottom
+2015-11-14 23:25:10		  weechat.bar.input.priority = 1000
+2015-11-14 23:25:10		  weechat.bar.input.separator = off
+2015-11-14 23:25:10		  weechat.bar.input.size = 1
+2015-11-14 23:25:10		  weechat.bar.input.size_max = 0
+2015-11-14 23:25:10		  weechat.bar.input.type = window
+2015-11-14 23:25:10		  weechat.bar.nicklist.color_bg = default
+2015-11-14 23:25:10		  weechat.bar.nicklist.color_delim = cyan
+2015-11-14 23:25:10		  weechat.bar.nicklist.color_fg = default
+2015-11-14 23:25:10		  weechat.bar.nicklist.conditions = "${nicklist}"
+2015-11-14 23:25:10		  weechat.bar.nicklist.filling_left_right = vertical
+2015-11-14 23:25:10		  weechat.bar.nicklist.filling_top_bottom = columns_vertical
+2015-11-14 23:25:10		  weechat.bar.nicklist.hidden = off
+2015-11-14 23:25:10		  weechat.bar.nicklist.items = "buffer_nicklist"
+2015-11-14 23:25:10		  weechat.bar.nicklist.position = right
+2015-11-14 23:25:10		  weechat.bar.nicklist.priority = 200
+2015-11-14 23:25:10		  weechat.bar.nicklist.separator = on
+2015-11-14 23:25:10		  weechat.bar.nicklist.size = 0
+2015-11-14 23:25:10		  weechat.bar.nicklist.size_max = 0
+2015-11-14 23:25:10		  weechat.bar.nicklist.type = window
+2015-11-14 23:25:10		  weechat.bar.status.color_bg = blue
+2015-11-14 23:25:10		  weechat.bar.status.color_delim = cyan
+2015-11-14 23:25:10		  weechat.bar.status.color_fg = default
+2015-11-14 23:25:10		  weechat.bar.status.conditions = ""
+2015-11-14 23:25:10		  weechat.bar.status.filling_left_right = vertical
+2015-11-14 23:25:10		  weechat.bar.status.filling_top_bottom = horizontal
+2015-11-14 23:25:10		  weechat.bar.status.hidden = off
+2015-11-14 23:25:10		  weechat.bar.status.items = "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],completion"
+2015-11-14 23:25:10		  weechat.bar.status.position = bottom
+2015-11-14 23:25:10		  weechat.bar.status.priority = 500
+2015-11-14 23:25:10		  weechat.bar.status.separator = off
+2015-11-14 23:25:10		  weechat.bar.status.size = 1
+2015-11-14 23:25:10		  weechat.bar.status.size_max = 0
+2015-11-14 23:25:10		  weechat.bar.status.type = window
+2015-11-14 23:25:10		  weechat.bar.title.color_bg = blue
+2015-11-14 23:25:10		  weechat.bar.title.color_delim = cyan
+2015-11-14 23:25:10		  weechat.bar.title.color_fg = default
+2015-11-14 23:25:10		  weechat.bar.title.conditions = ""
+2015-11-14 23:25:10		  weechat.bar.title.filling_left_right = vertical
+2015-11-14 23:25:10		  weechat.bar.title.filling_top_bottom = horizontal
+2015-11-14 23:25:10		  weechat.bar.title.hidden = off
+2015-11-14 23:25:10		  weechat.bar.title.items = "buffer_title"
+2015-11-14 23:25:10		  weechat.bar.title.position = top
+2015-11-14 23:25:10		  weechat.bar.title.priority = 500
+2015-11-14 23:25:10		  weechat.bar.title.separator = off
+2015-11-14 23:25:10		  weechat.bar.title.size = 1
+2015-11-14 23:25:10		  weechat.bar.title.size_max = 0
+2015-11-14 23:25:10		  weechat.bar.title.type = window
+2015-11-14 23:25:10		[var] (plugins.conf)
+2015-11-14 23:25:10		  plugins.var.fifo.fifo = "on"
+2015-11-14 23:25:10		  plugins.var.lua.check_license = "off"
+2015-11-14 23:25:10		  plugins.var.perl.check_license = "off"
+2015-11-14 23:25:10		  plugins.var.python.check_license = "off"
+2015-11-14 23:25:10		  plugins.var.ruby.check_license = "off"
+2015-11-14 23:25:10		  plugins.var.tcl.check_license = "off"
+2015-11-14 23:25:10		[default] (charset.conf)
+2015-11-14 23:25:10		  charset.default.decode = "iso-8859-1"
+2015-11-14 23:25:10		  charset.default.encode = ""
+2015-11-14 23:25:10		[look] (logger.conf)
+2015-11-14 23:25:10		  logger.look.backlog = 20
+2015-11-14 23:25:10		[color] (logger.conf)
+2015-11-14 23:25:10		  logger.color.backlog_end = default
+2015-11-14 23:25:10		  logger.color.backlog_line = default
+2015-11-14 23:25:10		[file] (logger.conf)
+2015-11-14 23:25:10		  logger.file.auto_log = on
+2015-11-14 23:25:10		  logger.file.flush_delay = 120
+2015-11-14 23:25:10		  logger.file.info_lines = off
+2015-11-14 23:25:10		  logger.file.mask = "$plugin.$name.weechatlog"
+2015-11-14 23:25:10		  logger.file.name_lower_case = on
+2015-11-14 23:25:10		  logger.file.nick_prefix = ""
+2015-11-14 23:25:10		  logger.file.nick_suffix = ""
+2015-11-14 23:25:10		  logger.file.path = "%h/logs/"
+2015-11-14 23:25:10		  logger.file.replacement_char = "_"
+2015-11-14 23:25:10		  logger.file.time_format = "%Y-%m-%d %H:%M:%S"
+2015-11-14 23:25:10		[command] (exec.conf)
+2015-11-14 23:25:10		  exec.command.default_options = ""
+2015-11-14 23:25:10		  exec.command.purge_delay = 0
+2015-11-14 23:25:10		[color] (exec.conf)
+2015-11-14 23:25:10		  exec.color.flag_finished = lightred
+2015-11-14 23:25:10		  exec.color.flag_running = lightgreen
+2015-11-14 23:25:10		[look] (trigger.conf)
+2015-11-14 23:25:10		  trigger.look.enabled = on
+2015-11-14 23:25:10		  trigger.look.monitor_strip_colors = off
+2015-11-14 23:25:10		[color] (trigger.conf)
+2015-11-14 23:25:10		  trigger.color.flag_command = lightgreen
+2015-11-14 23:25:10		  trigger.color.flag_conditions = yellow
+2015-11-14 23:25:10		  trigger.color.flag_regex = lightcyan
+2015-11-14 23:25:10		  trigger.color.flag_return_code = lightmagenta
+2015-11-14 23:25:10		  trigger.color.regex = white
+2015-11-14 23:25:10		  trigger.color.replace = cyan
+2015-11-14 23:25:10		  trigger.color.trigger = green
+2015-11-14 23:25:10		  trigger.color.trigger_disabled = red
+2015-11-14 23:25:10		[trigger] (trigger.conf)
+2015-11-14 23:25:10		  trigger.trigger.beep.arguments = ""
+2015-11-14 23:25:10		  trigger.trigger.beep.command = "/print -beep"
+2015-11-14 23:25:10		  trigger.trigger.beep.conditions = "${tg_displayed} && (${tg_highlight} || ${tg_msg_pv})"
+2015-11-14 23:25:10		  trigger.trigger.beep.enabled = on
+2015-11-14 23:25:10		  trigger.trigger.beep.hook = print
+2015-11-14 23:25:10		  trigger.trigger.beep.regex = ""
+2015-11-14 23:25:10		  trigger.trigger.beep.return_code = ok
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.arguments = "5000|input_text_display;5000|history_add;5000|irc_command_auth"
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.command = ""
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.conditions = ""
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.enabled = on
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.hook = modifier
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.regex = "==^((/(msg|m|quote) +nickserv +(id|identify|register|ghost +[^ ]+|release +[^ ]+|regain +[^ ]+) +)|/oper +[^ ]+ +|/quote +pass +|/set +[^ ]*password[^ ]* +|/secure +(passphrase|decrypt|set +[^ ]+) +)(.*)==${re:1}${hide:*,${re:+}}"
+2015-11-14 23:25:10		  trigger.trigger.cmd_pass.return_code = ok
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.arguments = "5000|irc_message_auth"
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.command = ""
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.conditions = ""
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.enabled = on
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.hook = modifier
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.regex = "==^(.*(id|identify|register|ghost +[^ ]+|release +[^ ]+) +)(.*)==${re:1}${hide:*,${re:+}}"
+2015-11-14 23:25:10		  trigger.trigger.msg_auth.return_code = ok
+2015-11-14 23:25:10		  trigger.trigger.server_pass.arguments = "5000|input_text_display;5000|history_add"
+2015-11-14 23:25:10		  trigger.trigger.server_pass.command = ""
+2015-11-14 23:25:10		  trigger.trigger.server_pass.conditions = ""
+2015-11-14 23:25:10		  trigger.trigger.server_pass.enabled = on
+2015-11-14 23:25:10		  trigger.trigger.server_pass.hook = modifier
+2015-11-14 23:25:10		  trigger.trigger.server_pass.regex = "==^(/(server|connect) .*-(sasl_)?password=)([^ ]+)(.*)==${re:1}${hide:*,${re:4}}${re:5}"
+2015-11-14 23:25:10		  trigger.trigger.server_pass.return_code = ok
+2015-11-14 23:25:10		[cmd] (alias.conf)
+2015-11-14 23:25:10		  alias.cmd.AAWAY = "allserv /away"
+2015-11-14 23:25:10		  alias.cmd.AME = "allchan /me"
+2015-11-14 23:25:10		  alias.cmd.AMSG = "allchan /msg *"
+2015-11-14 23:25:10		  alias.cmd.ANICK = "allserv /nick"
+2015-11-14 23:25:10		  alias.cmd.BEEP = "print -beep"
+2015-11-14 23:25:10		  alias.cmd.BYE = "quit"
+2015-11-14 23:25:10		  alias.cmd.C = "buffer clear"
+2015-11-14 23:25:10		  alias.cmd.CHAT = "dcc chat"
+2015-11-14 23:25:10		  alias.cmd.CL = "buffer clear"
+2015-11-14 23:25:10		  alias.cmd.CLOSE = "buffer close"
+2015-11-14 23:25:10		  alias.cmd.EXIT = "quit"
+2015-11-14 23:25:10		  alias.cmd.IG = "ignore"
+2015-11-14 23:25:10		  alias.cmd.J = "join"
+2015-11-14 23:25:10		  alias.cmd.K = "kick"
+2015-11-14 23:25:10		  alias.cmd.KB = "kickban"
+2015-11-14 23:25:10		  alias.cmd.LEAVE = "part"
+2015-11-14 23:25:10		  alias.cmd.M = "msg"
+2015-11-14 23:25:10		  alias.cmd.MSGBUF = "command -buffer $1 * /input send $2-"
+2015-11-14 23:25:10		  alias.cmd.MUB = "unban *"
+2015-11-14 23:25:10		  alias.cmd.N = "names"
+2015-11-14 23:25:10		  alias.cmd.Q = "query"
+2015-11-14 23:25:10		  alias.cmd.REDRAW = "window refresh"
+2015-11-14 23:25:10		  alias.cmd.SAY = "msg *"
+2015-11-14 23:25:10		  alias.cmd.SIGNOFF = "quit"
+2015-11-14 23:25:10		  alias.cmd.T = "topic"
+2015-11-14 23:25:10		  alias.cmd.UB = "unban"
+2015-11-14 23:25:10		  alias.cmd.UMODE = "mode $nick"
+2015-11-14 23:25:10		  alias.cmd.V = "command core version"
+2015-11-14 23:25:10		  alias.cmd.W = "who"
+2015-11-14 23:25:10		  alias.cmd.WC = "window merge"
+2015-11-14 23:25:10		  alias.cmd.WI = "whois"
+2015-11-14 23:25:10		  alias.cmd.WII = "whois $1 $1"
+2015-11-14 23:25:10		  alias.cmd.WW = "whowas"
+2015-11-14 23:25:10		[completion] (alias.conf)
+2015-11-14 23:25:10		  alias.completion.MSGBUF = "%(buffers_plugins_names)"
+2015-11-14 23:25:10		[look] (xfer.conf)
+2015-11-14 23:25:10		  xfer.look.auto_open_buffer = on
+2015-11-14 23:25:10		  xfer.look.progress_bar_size = 20
+2015-11-14 23:25:10		  xfer.look.pv_tags = "notify_private"
+2015-11-14 23:25:10		[color] (xfer.conf)
+2015-11-14 23:25:10		  xfer.color.status_aborted = lightred
+2015-11-14 23:25:10		  xfer.color.status_active = lightblue
+2015-11-14 23:25:10		  xfer.color.status_connecting = yellow
+2015-11-14 23:25:10		  xfer.color.status_done = lightgreen
+2015-11-14 23:25:10		  xfer.color.status_failed = lightred
+2015-11-14 23:25:10		  xfer.color.status_waiting = lightcyan
+2015-11-14 23:25:10		  xfer.color.text = default
+2015-11-14 23:25:10		  xfer.color.text_bg = default
+2015-11-14 23:25:10		  xfer.color.text_selected = white
+2015-11-14 23:25:10		[network] (xfer.conf)
+2015-11-14 23:25:10		  xfer.network.blocksize = 65536
+2015-11-14 23:25:10		  xfer.network.fast_send = on
+2015-11-14 23:25:10		  xfer.network.own_ip = ""
+2015-11-14 23:25:10		  xfer.network.port_range = ""
+2015-11-14 23:25:10		  xfer.network.speed_limit = 0
+2015-11-14 23:25:10		  xfer.network.timeout = 300
+2015-11-14 23:25:10		[file] (xfer.conf)
+2015-11-14 23:25:10		  xfer.file.auto_accept_chats = off
+2015-11-14 23:25:10		  xfer.file.auto_accept_files = off
+2015-11-14 23:25:10		  xfer.file.auto_accept_nicks = ""
+2015-11-14 23:25:10		  xfer.file.auto_check_crc32 = off
+2015-11-14 23:25:10		  xfer.file.auto_rename = on
+2015-11-14 23:25:10		  xfer.file.auto_resume = on
+2015-11-14 23:25:10		  xfer.file.convert_spaces = on
+2015-11-14 23:25:10		  xfer.file.download_path = "%h/xfer"
+2015-11-14 23:25:10		  xfer.file.upload_path = "~"
+2015-11-14 23:25:10		  xfer.file.use_nick_in_filename = on
+2015-11-14 23:25:10		[look] (irc.conf)
+2015-11-14 23:25:10		  irc.look.buffer_open_before_autojoin = on
+2015-11-14 23:25:10		  irc.look.buffer_open_before_join = off
+2015-11-14 23:25:10		  irc.look.buffer_switch_autojoin = on
+2015-11-14 23:25:10		  irc.look.buffer_switch_join = on
+2015-11-14 23:25:10		  irc.look.color_nicks_in_names = off
+2015-11-14 23:25:10		  irc.look.color_nicks_in_nicklist = off
+2015-11-14 23:25:10		  irc.look.color_nicks_in_server_messages = on
+2015-11-14 23:25:10		  irc.look.color_pv_nick_like_channel = on
+2015-11-14 23:25:10		  irc.look.ctcp_time_format = "%a, %d %b %Y %T %z"
+2015-11-14 23:25:10		  irc.look.display_away = local
+2015-11-14 23:25:10		  irc.look.display_ctcp_blocked = on
+2015-11-14 23:25:10		  irc.look.display_ctcp_reply = on
+2015-11-14 23:25:10		  irc.look.display_ctcp_unknown = on
+2015-11-14 23:25:10		  irc.look.display_host_join = on
+2015-11-14 23:25:10		  irc.look.display_host_join_local = on
+2015-11-14 23:25:10		  irc.look.display_host_quit = on
+2015-11-14 23:25:10		  irc.look.display_join_message = "329,332,333,366"
+2015-11-14 23:25:10		  irc.look.display_old_topic = on
+2015-11-14 23:25:10		  irc.look.display_pv_away_once = on
+2015-11-14 23:25:10		  irc.look.display_pv_back = on
+2015-11-14 23:25:10		  irc.look.highlight_channel = "$nick"
+2015-11-14 23:25:10		  irc.look.highlight_pv = "$nick"
+2015-11-14 23:25:10		  irc.look.highlight_server = "$nick"
+2015-11-14 23:25:10		  irc.look.highlight_tags_restrict = "irc_privmsg,irc_notice"
+2015-11-14 23:25:10		  irc.look.item_away_message = on
+2015-11-14 23:25:10		  irc.look.item_channel_modes_hide_args = "k"
+2015-11-14 23:25:10		  irc.look.item_display_server = buffer_plugin
+2015-11-14 23:25:10		  irc.look.item_nick_modes = on
+2015-11-14 23:25:10		  irc.look.item_nick_prefix = on
+2015-11-14 23:25:10		  irc.look.join_auto_add_chantype = off
+2015-11-14 23:25:10		  irc.look.msgbuffer_fallback = current
+2015-11-14 23:25:10		  irc.look.new_channel_position = none
+2015-11-14 23:25:10		  irc.look.new_pv_position = none
+2015-11-14 23:25:10		  irc.look.nick_color_force = ""
+2015-11-14 23:25:10		  irc.look.nick_color_hash = sum
+2015-11-14 23:25:10		  irc.look.nick_color_stop_chars = "_|["
+2015-11-14 23:25:10		  irc.look.nick_completion_smart = speakers
+2015-11-14 23:25:10		  irc.look.nick_mode = prefix
+2015-11-14 23:25:10		  irc.look.nick_mode_empty = off
+2015-11-14 23:25:10		  irc.look.nicks_hide_password = "nickserv"
+2015-11-14 23:25:10		  irc.look.notice_as_pv = auto
+2015-11-14 23:25:10		  irc.look.notice_welcome_redirect = on
+2015-11-14 23:25:10		  irc.look.notice_welcome_tags = ""
+2015-11-14 23:25:10		  irc.look.notify_tags_ison = "notify_message"
+2015-11-14 23:25:10		  irc.look.notify_tags_whois = "notify_message"
+2015-11-14 23:25:10		  irc.look.part_closes_buffer = off
+2015-11-14 23:25:10		  irc.look.pv_buffer = independent
+2015-11-14 23:25:10		  irc.look.pv_tags = "notify_private"
+2015-11-14 23:25:10		  irc.look.raw_messages = 256
+2015-11-14 23:25:10		  irc.look.server_buffer = merge_with_core
+2015-11-14 23:25:10		  irc.look.smart_filter = on
+2015-11-14 23:25:10		  irc.look.smart_filter_delay = 5
+2015-11-14 23:25:10		  irc.look.smart_filter_join = on
+2015-11-14 23:25:10		  irc.look.smart_filter_join_unmask = 30
+2015-11-14 23:25:10		  irc.look.smart_filter_mode = "+"
+2015-11-14 23:25:10		  irc.look.smart_filter_nick = on
+2015-11-14 23:25:10		  irc.look.smart_filter_quit = on
+2015-11-14 23:25:10		  irc.look.temporary_servers = off
+2015-11-14 23:25:10		  irc.look.topic_strip_colors = off
+2015-11-14 23:25:10		[color] (irc.conf)
+2015-11-14 23:25:10		  irc.color.input_nick = lightcyan
+2015-11-14 23:25:10		  irc.color.item_away = yellow
+2015-11-14 23:25:10		  irc.color.item_channel_modes = default
+2015-11-14 23:25:10		  irc.color.item_lag_counting = default
+2015-11-14 23:25:10		  irc.color.item_lag_finished = yellow
+2015-11-14 23:25:10		  irc.color.item_nick_modes = default
+2015-11-14 23:25:10		  irc.color.message_join = green
+2015-11-14 23:25:10		  irc.color.message_quit = red
+2015-11-14 23:25:10		  irc.color.mirc_remap = "1,-1:darkgray"
+2015-11-14 23:25:10		  irc.color.nick_prefixes = "q:lightred;a:lightcyan;o:lightgreen;h:lightmagenta;v:yellow;*:lightblue"
+2015-11-14 23:25:10		  irc.color.notice = green
+2015-11-14 23:25:10		  irc.color.reason_quit = default
+2015-11-14 23:25:10		  irc.color.topic_current = default
+2015-11-14 23:25:10		  irc.color.topic_new = white
+2015-11-14 23:25:10		  irc.color.topic_old = default
+2015-11-14 23:25:10		[network] (irc.conf)
+2015-11-14 23:25:10		  irc.network.alternate_nick = on
+2015-11-14 23:25:10		  irc.network.autoreconnect_delay_growing = 2
+2015-11-14 23:25:10		  irc.network.autoreconnect_delay_max = 600
+2015-11-14 23:25:10		  irc.network.ban_mask_default = "*!$ident@$host"
+2015-11-14 23:25:10		  irc.network.channel_encode = off
+2015-11-14 23:25:10		  irc.network.colors_receive = on
+2015-11-14 23:25:10		  irc.network.colors_send = on
+2015-11-14 23:25:10		  irc.network.lag_check = 60
+2015-11-14 23:25:10		  irc.network.lag_max = 1800
+2015-11-14 23:25:10		  irc.network.lag_min_show = 500
+2015-11-14 23:25:10		  irc.network.lag_reconnect = 0
+2015-11-14 23:25:10		  irc.network.lag_refresh_interval = 1
+2015-11-14 23:25:10		  irc.network.notify_check_ison = 1
+2015-11-14 23:25:10		  irc.network.notify_check_whois = 5
+2015-11-14 23:25:10		  irc.network.send_unknown_commands = off
+2015-11-14 23:25:10		  irc.network.whois_double_nick = off
+2015-11-14 23:25:10		[server_default] (irc.conf)
+2015-11-14 23:25:10		  irc.server_default.addresses = ""
+2015-11-14 23:25:10		  irc.server_default.anti_flood_prio_high = 2
+2015-11-14 23:25:10		  irc.server_default.anti_flood_prio_low = 2
+2015-11-14 23:25:10		  irc.server_default.autoconnect = off
+2015-11-14 23:25:10		  irc.server_default.autojoin = ""
+2015-11-14 23:25:10		  irc.server_default.autoreconnect = on
+2015-11-14 23:25:10		  irc.server_default.autoreconnect_delay = 10
+2015-11-14 23:25:10		  irc.server_default.autorejoin = off
+2015-11-14 23:25:10		  irc.server_default.autorejoin_delay = 30
+2015-11-14 23:25:10		  irc.server_default.away_check = 0
+2015-11-14 23:25:10		  irc.server_default.away_check_max_nicks = 25
+2015-11-14 23:25:10		  irc.server_default.capabilities = ""
+2015-11-14 23:25:10		  irc.server_default.command = ""
+2015-11-14 23:25:10		  irc.server_default.command_delay = 0
+2015-11-14 23:25:10		  irc.server_default.connection_timeout = 60
+2015-11-14 23:25:10		  irc.server_default.default_msg_kick = ""
+2015-11-14 23:25:10		  irc.server_default.default_msg_part = "WeeChat %v"
+2015-11-14 23:25:10		  irc.server_default.default_msg_quit = "WeeChat %v"
+2015-11-14 23:25:10		  irc.server_default.ipv6 = on
+2015-11-14 23:25:10		  irc.server_default.local_hostname = ""
+2015-11-14 23:25:10		  irc.server_default.nicks = "r0ked"  (default: "")
+2015-11-14 23:25:10		  irc.server_default.notify = ""
+2015-11-14 23:25:10		  irc.server_default.password = ""
+2015-11-14 23:25:10		  irc.server_default.proxy = ""
+2015-11-14 23:25:10		  irc.server_default.realname = ""
+2015-11-14 23:25:10		  irc.server_default.sasl_fail = continue
+2015-11-14 23:25:10		  irc.server_default.sasl_key = ""
+2015-11-14 23:25:10		  irc.server_default.sasl_mechanism = plain
+2015-11-14 23:25:10		  irc.server_default.sasl_password = ""
+2015-11-14 23:25:10		  irc.server_default.sasl_timeout = 15
+2015-11-14 23:25:10		  irc.server_default.sasl_username = ""
+2015-11-14 23:25:10		  irc.server_default.ssl = off
+2015-11-14 23:25:10		  irc.server_default.ssl_cert = ""
+2015-11-14 23:25:10		  irc.server_default.ssl_dhkey_size = 2048
+2015-11-14 23:25:10		  irc.server_default.ssl_fingerprint = ""
+2015-11-14 23:25:10		  irc.server_default.ssl_priorities = "NORMAL:-VERS-SSL3.0"
+2015-11-14 23:25:10		  irc.server_default.ssl_verify = off  (default: on)
+2015-11-14 23:25:10		  irc.server_default.username = "robertgz"  (default: "")
+2015-11-14 23:25:10		[server] (irc.conf)
+2015-11-14 23:25:10		  irc.server.euirc.addresses = "irc.euirc.net/6667"  (default: (undefined))
+2015-11-14 23:25:10		  irc.server.euirc.anti_flood_prio_high
+2015-11-14 23:25:10		  irc.server.euirc.anti_flood_prio_low
+2015-11-14 23:25:10		  irc.server.euirc.autoconnect = on  (default: (undefined))
+2015-11-14 23:25:10		  irc.server.euirc.autojoin
+2015-11-14 23:25:10		  irc.server.euirc.autoreconnect
+2015-11-14 23:25:10		  irc.server.euirc.autoreconnect_delay
+2015-11-14 23:25:10		  irc.server.euirc.autorejoin
+2015-11-14 23:25:10		  irc.server.euirc.autorejoin_delay
+2015-11-14 23:25:10		  irc.server.euirc.away_check
+2015-11-14 23:25:10		  irc.server.euirc.away_check_max_nicks
+2015-11-14 23:25:10		  irc.server.euirc.capabilities
+2015-11-14 23:25:10		  irc.server.euirc.command
+2015-11-14 23:25:10		  irc.server.euirc.command_delay
+2015-11-14 23:25:10		  irc.server.euirc.connection_timeout
+2015-11-14 23:25:10		  irc.server.euirc.default_msg_kick
+2015-11-14 23:25:10		  irc.server.euirc.default_msg_part
+2015-11-14 23:25:10		  irc.server.euirc.default_msg_quit
+2015-11-14 23:25:10		  irc.server.euirc.ipv6
+2015-11-14 23:25:10		  irc.server.euirc.local_hostname
+2015-11-14 23:25:10		  irc.server.euirc.nicks
+2015-11-14 23:25:10		  irc.server.euirc.notify
+2015-11-14 23:25:10		  irc.server.euirc.password
+2015-11-14 23:25:10		  irc.server.euirc.proxy
+2015-11-14 23:25:10		  irc.server.euirc.realname
+2015-11-14 23:25:10		  irc.server.euirc.sasl_fail
+2015-11-14 23:25:10		  irc.server.euirc.sasl_key
+2015-11-14 23:25:10		  irc.server.euirc.sasl_mechanism
+2015-11-14 23:25:10		  irc.server.euirc.sasl_password
+2015-11-14 23:25:10		  irc.server.euirc.sasl_timeout
+2015-11-14 23:25:10		  irc.server.euirc.sasl_username
+2015-11-14 23:25:10		  irc.server.euirc.ssl
+2015-11-14 23:25:10		  irc.server.euirc.ssl_cert
+2015-11-14 23:25:10		  irc.server.euirc.ssl_dhkey_size
+2015-11-14 23:25:10		  irc.server.euirc.ssl_fingerprint
+2015-11-14 23:25:10		  irc.server.euirc.ssl_priorities
+2015-11-14 23:25:10		  irc.server.euirc.ssl_verify
+2015-11-14 23:25:10		  irc.server.euirc.username
+2015-11-14 23:25:10		  irc.server.freenode.addresses = "char.freenode.net/6667"  (default: (undefined))
+2015-11-14 23:25:10		  irc.server.freenode.anti_flood_prio_high
+2015-11-14 23:25:10		  irc.server.freenode.anti_flood_prio_low
+2015-11-14 23:25:10		  irc.server.freenode.autoconnect
+2015-11-14 23:25:10		  irc.server.freenode.autojoin
+2015-11-14 23:25:10		  irc.server.freenode.autoreconnect
+2015-11-14 23:25:10		  irc.server.freenode.autoreconnect_delay
+2015-11-14 23:25:10		  irc.server.freenode.autorejoin
+2015-11-14 23:25:10		  irc.server.freenode.autorejoin_delay
+2015-11-14 23:25:10		  irc.server.freenode.away_check
+2015-11-14 23:25:10		  irc.server.freenode.away_check_max_nicks
+2015-11-14 23:25:10		  irc.server.freenode.capabilities
+2015-11-14 23:25:10		  irc.server.freenode.command
+2015-11-14 23:25:10		  irc.server.freenode.command_delay
+2015-11-14 23:25:10		  irc.server.freenode.connection_timeout
+2015-11-14 23:25:10		  irc.server.freenode.default_msg_kick
+2015-11-14 23:25:10		  irc.server.freenode.default_msg_part
+2015-11-14 23:25:10		  irc.server.freenode.default_msg_quit
+2015-11-14 23:25:10		  irc.server.freenode.ipv6
+2015-11-14 23:25:10		  irc.server.freenode.local_hostname
+2015-11-14 23:25:10		  irc.server.freenode.nicks
+2015-11-14 23:25:10		  irc.server.freenode.notify
+2015-11-14 23:25:10		  irc.server.freenode.password
+2015-11-14 23:25:10		  irc.server.freenode.proxy
+2015-11-14 23:25:10		  irc.server.freenode.realname
+2015-11-14 23:25:10		  irc.server.freenode.sasl_fail
+2015-11-14 23:25:10		  irc.server.freenode.sasl_key
+2015-11-14 23:25:10		  irc.server.freenode.sasl_mechanism
+2015-11-14 23:25:10		  irc.server.freenode.sasl_password
+2015-11-14 23:25:10		  irc.server.freenode.sasl_timeout
+2015-11-14 23:25:10		  irc.server.freenode.sasl_username
+2015-11-14 23:25:10		  irc.server.freenode.ssl
+2015-11-14 23:25:10		  irc.server.freenode.ssl_cert
+2015-11-14 23:25:10		  irc.server.freenode.ssl_dhkey_size
+2015-11-14 23:25:10		  irc.server.freenode.ssl_fingerprint
+2015-11-14 23:25:10		  irc.server.freenode.ssl_priorities
+2015-11-14 23:25:10		  irc.server.freenode.ssl_verify
+2015-11-14 23:25:10		  irc.server.freenode.username
+2015-11-14 23:25:10		  irc.server.irchighway.addresses = "irc.irchighway.net/6667"  (default: (undefined))
+2015-11-14 23:25:10		  irc.server.irchighway.anti_flood_prio_high
+2015-11-14 23:25:10		  irc.server.irchighway.anti_flood_prio_low
+2015-11-14 23:25:10		  irc.server.irchighway.autoconnect
+2015-11-14 23:25:10		  irc.server.irchighway.autojoin
+2015-11-14 23:25:10		  irc.server.irchighway.autoreconnect
+2015-11-14 23:25:10		  irc.server.irchighway.autoreconnect_delay
+2015-11-14 23:25:10		  irc.server.irchighway.autorejoin
+2015-11-14 23:25:10		  irc.server.irchighway.autorejoin_delay
+2015-11-14 23:25:10		  irc.server.irchighway.away_check
+2015-11-14 23:25:10		  irc.server.irchighway.away_check_max_nicks
+2015-11-14 23:25:10		  irc.server.irchighway.capabilities
+2015-11-14 23:25:10		  irc.server.irchighway.command
+2015-11-14 23:25:10		  irc.server.irchighway.command_delay
+2015-11-14 23:25:10		  irc.server.irchighway.connection_timeout
+2015-11-14 23:25:10		  irc.server.irchighway.default_msg_kick
+2015-11-14 23:25:10		  irc.server.irchighway.default_msg_part
+2015-11-14 23:25:10		  irc.server.irchighway.default_msg_quit
+2015-11-14 23:25:10		  irc.server.irchighway.ipv6
+2015-11-14 23:25:10		  irc.server.irchighway.local_hostname
+2015-11-14 23:25:10		  irc.server.irchighway.nicks
+2015-11-14 23:25:10		  irc.server.irchighway.notify
+2015-11-14 23:25:10		  irc.server.irchighway.password
+2015-11-14 23:25:10		  irc.server.irchighway.proxy
+2015-11-14 23:25:10		  irc.server.irchighway.realname
+2015-11-14 23:25:10		  irc.server.irchighway.sasl_fail
+2015-11-14 23:25:10		  irc.server.irchighway.sasl_key
+2015-11-14 23:25:10		  irc.server.irchighway.sasl_mechanism
+2015-11-14 23:25:10		  irc.server.irchighway.sasl_password
+2015-11-14 23:25:10		  irc.server.irchighway.sasl_timeout
+2015-11-14 23:25:10		  irc.server.irchighway.sasl_username
+2015-11-14 23:25:10		  irc.server.irchighway.ssl
+2015-11-14 23:25:10		  irc.server.irchighway.ssl_cert
+2015-11-14 23:25:10		  irc.server.irchighway.ssl_dhkey_size
+2015-11-14 23:25:10		  irc.server.irchighway.ssl_fingerprint
+2015-11-14 23:25:10		  irc.server.irchighway.ssl_priorities
+2015-11-14 23:25:10		  irc.server.irchighway.ssl_verify
+2015-11-14 23:25:10		  irc.server.irchighway.username
+2015-11-14 23:25:10		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-14 23:25:10		  irc.server.rizon.anti_flood_prio_high
+2015-11-14 23:25:10		  irc.server.rizon.anti_flood_prio_low
+2015-11-14 23:25:10		  irc.server.rizon.autoconnect = on  (default: (undefined))
+2015-11-14 23:25:10		  irc.server.rizon.autojoin
+2015-11-14 23:25:10		  irc.server.rizon.autoreconnect
+2015-11-14 23:25:10		  irc.server.rizon.autoreconnect_delay
+2015-11-14 23:25:10		  irc.server.rizon.autorejoin
+2015-11-14 23:25:10		  irc.server.rizon.autorejoin_delay
+2015-11-14 23:25:10		  irc.server.rizon.away_check
+2015-11-14 23:25:10		  irc.server.rizon.away_check_max_nicks
+2015-11-14 23:25:10		  irc.server.rizon.capabilities
+2015-11-14 23:25:10		  irc.server.rizon.command
+2015-11-14 23:25:10		  irc.server.rizon.command_delay
+2015-11-14 23:25:10		  irc.server.rizon.connection_timeout
+2015-11-14 23:25:10		  irc.server.rizon.default_msg_kick
+2015-11-14 23:25:10		  irc.server.rizon.default_msg_part
+2015-11-14 23:25:10		  irc.server.rizon.default_msg_quit
+2015-11-14 23:25:10		  irc.server.rizon.ipv6
+2015-11-14 23:25:10		  irc.server.rizon.local_hostname
+2015-11-14 23:25:10		  irc.server.rizon.nicks
+2015-11-14 23:25:10		  irc.server.rizon.notify
+2015-11-14 23:25:10		  irc.server.rizon.password
+2015-11-14 23:25:10		  irc.server.rizon.proxy
+2015-11-14 23:25:10		  irc.server.rizon.realname
+2015-11-14 23:25:10		  irc.server.rizon.sasl_fail
+2015-11-14 23:25:10		  irc.server.rizon.sasl_key
+2015-11-14 23:25:10		  irc.server.rizon.sasl_mechanism
+2015-11-14 23:25:10		  irc.server.rizon.sasl_password
+2015-11-14 23:25:10		  irc.server.rizon.sasl_timeout
+2015-11-14 23:25:10		  irc.server.rizon.sasl_username
+2015-11-14 23:25:10		  irc.server.rizon.ssl
+2015-11-14 23:25:10		  irc.server.rizon.ssl_cert
+2015-11-14 23:25:10		  irc.server.rizon.ssl_dhkey_size
+2015-11-14 23:25:10		  irc.server.rizon.ssl_fingerprint
+2015-11-14 23:25:10		  irc.server.rizon.ssl_priorities
+2015-11-14 23:25:10		  irc.server.rizon.ssl_verify
+2015-11-14 23:25:10		  irc.server.rizon.username
+2015-11-14 23:25:10		[look] (relay.conf)
+2015-11-14 23:25:10		  relay.look.auto_open_buffer = on
+2015-11-14 23:25:10		  relay.look.raw_messages = 256
+2015-11-14 23:25:10		[color] (relay.conf)
+2015-11-14 23:25:10		  relay.color.client = cyan
+2015-11-14 23:25:10		  relay.color.status_active = lightblue
+2015-11-14 23:25:10		  relay.color.status_auth_failed = lightred
+2015-11-14 23:25:10		  relay.color.status_connecting = yellow
+2015-11-14 23:25:10		  relay.color.status_disconnected = lightred
+2015-11-14 23:25:10		  relay.color.status_waiting_auth = brown
+2015-11-14 23:25:10		  relay.color.text = default
+2015-11-14 23:25:10		  relay.color.text_bg = default
+2015-11-14 23:25:10		  relay.color.text_selected = white
+2015-11-14 23:25:10		[network] (relay.conf)
+2015-11-14 23:25:10		  relay.network.allowed_ips = ""
+2015-11-14 23:25:10		  relay.network.bind_address = ""
+2015-11-14 23:25:10		  relay.network.clients_purge_delay = 0
+2015-11-14 23:25:10		  relay.network.compression_level = 6
+2015-11-14 23:25:10		  relay.network.ipv6 = on
+2015-11-14 23:25:10		  relay.network.max_clients = 5
+2015-11-14 23:25:10		  relay.network.password = ""
+2015-11-14 23:25:10		  relay.network.ssl_cert_key = "%h/ssl/relay.pem"
+2015-11-14 23:25:10		  relay.network.ssl_priorities = "NORMAL:-VERS-SSL3.0"
+2015-11-14 23:25:10		  relay.network.websocket_allowed_origins = ""
+2015-11-14 23:25:10		[irc] (relay.conf)
+2015-11-14 23:25:10		  relay.irc.backlog_max_minutes = 1440
+2015-11-14 23:25:10		  relay.irc.backlog_max_number = 256
+2015-11-14 23:25:10		  relay.irc.backlog_since_last_disconnect = on
+2015-11-14 23:25:10		  relay.irc.backlog_tags = "irc_privmsg"
+2015-11-14 23:25:10		  relay.irc.backlog_time_format = "[%H:%M] "
+2015-11-14 23:25:10		[look] (script.conf)
+2015-11-14 23:25:10		  script.look.columns = "%s %n %V %v %u | %d | %t"
+2015-11-14 23:25:10		  script.look.diff_color = on
+2015-11-14 23:25:10		  script.look.diff_command = "auto"
+2015-11-14 23:25:10		  script.look.display_source = on
+2015-11-14 23:25:10		  script.look.quiet_actions = on
+2015-11-14 23:25:10		  script.look.sort = "p,n"
+2015-11-14 23:25:10		  script.look.translate_description = on
+2015-11-14 23:25:10		  script.look.use_keys = on
+2015-11-14 23:25:10		[color] (script.conf)
+2015-11-14 23:25:10		  script.color.status_autoloaded = cyan
+2015-11-14 23:25:10		  script.color.status_held = white
+2015-11-14 23:25:10		  script.color.status_installed = lightcyan
+2015-11-14 23:25:10		  script.color.status_obsolete = lightmagenta
+2015-11-14 23:25:10		  script.color.status_popular = yellow
+2015-11-14 23:25:10		  script.color.status_running = lightgreen
+2015-11-14 23:25:10		  script.color.status_unknown = lightred
+2015-11-14 23:25:10		  script.color.text = default
+2015-11-14 23:25:10		  script.color.text_bg = default
+2015-11-14 23:25:10		  script.color.text_bg_selected = red
+2015-11-14 23:25:10		  script.color.text_date = default
+2015-11-14 23:25:10		  script.color.text_date_selected = white
+2015-11-14 23:25:10		  script.color.text_delimiters = default
+2015-11-14 23:25:10		  script.color.text_description = default
+2015-11-14 23:25:10		  script.color.text_description_selected = white
+2015-11-14 23:25:10		  script.color.text_extension = default
+2015-11-14 23:25:10		  script.color.text_extension_selected = white
+2015-11-14 23:25:10		  script.color.text_name = cyan
+2015-11-14 23:25:10		  script.color.text_name_selected = lightcyan
+2015-11-14 23:25:10		  script.color.text_selected = white
+2015-11-14 23:25:10		  script.color.text_tags = brown
+2015-11-14 23:25:10		  script.color.text_tags_selected = yellow
+2015-11-14 23:25:10		  script.color.text_version = magenta
+2015-11-14 23:25:10		  script.color.text_version_loaded = default
+2015-11-14 23:25:10		  script.color.text_version_loaded_selected = white
+2015-11-14 23:25:10		  script.color.text_version_selected = lightmagenta
+2015-11-14 23:25:10		[scripts] (script.conf)
+2015-11-14 23:25:10		  script.scripts.autoload = on
+2015-11-14 23:25:10		  script.scripts.cache_expire = 1440
+2015-11-14 23:25:10		  script.scripts.hold = ""
+2015-11-14 23:25:10		  script.scripts.path = "%h/script"
+2015-11-14 23:25:10		  script.scripts.url = "http://weechat.org/files/plugins.xml.gz"
+2015-11-14 23:25:10		  script.scripts.url_force_https = on
+2015-11-14 23:25:10		734 options (matching with "*")
+2015-11-14 23:25:22		[color] (weechat.conf)
+2015-11-14 23:25:22		  weechat.color.status_name_ssl = lightgreen
+2015-11-14 23:25:22		[server_default] (irc.conf)
+2015-11-14 23:25:22		  irc.server_default.ssl = off
+2015-11-14 23:25:22		  irc.server_default.ssl_cert = ""
+2015-11-14 23:25:22		  irc.server_default.ssl_dhkey_size = 2048
+2015-11-14 23:25:22		  irc.server_default.ssl_fingerprint = ""
+2015-11-14 23:25:22		  irc.server_default.ssl_priorities = "NORMAL:-VERS-SSL3.0"
+2015-11-14 23:25:22		  irc.server_default.ssl_verify = off  (default: on)
+2015-11-14 23:25:22		[server] (irc.conf)
+2015-11-14 23:25:22		  irc.server.euirc.ssl
+2015-11-14 23:25:22		  irc.server.euirc.ssl_cert
+2015-11-14 23:25:22		  irc.server.euirc.ssl_dhkey_size
+2015-11-14 23:25:22		  irc.server.euirc.ssl_fingerprint
+2015-11-14 23:25:22		  irc.server.euirc.ssl_priorities
+2015-11-14 23:25:22		  irc.server.euirc.ssl_verify
+2015-11-14 23:25:22		  irc.server.freenode.ssl
+2015-11-14 23:25:22		  irc.server.freenode.ssl_cert
+2015-11-14 23:25:22		  irc.server.freenode.ssl_dhkey_size
+2015-11-14 23:25:22		  irc.server.freenode.ssl_fingerprint
+2015-11-14 23:25:22		  irc.server.freenode.ssl_priorities
+2015-11-14 23:25:22		  irc.server.freenode.ssl_verify
+2015-11-14 23:25:22		  irc.server.irchighway.ssl
+2015-11-14 23:25:22		  irc.server.irchighway.ssl_cert
+2015-11-14 23:25:22		  irc.server.irchighway.ssl_dhkey_size
+2015-11-14 23:25:22		  irc.server.irchighway.ssl_fingerprint
+2015-11-14 23:25:22		  irc.server.irchighway.ssl_priorities
+2015-11-14 23:25:22		  irc.server.irchighway.ssl_verify
+2015-11-14 23:25:22		  irc.server.rizon.ssl
+2015-11-14 23:25:22		  irc.server.rizon.ssl_cert
+2015-11-14 23:25:22		  irc.server.rizon.ssl_dhkey_size
+2015-11-14 23:25:22		  irc.server.rizon.ssl_fingerprint
+2015-11-14 23:25:22		  irc.server.rizon.ssl_priorities
+2015-11-14 23:25:22		  irc.server.rizon.ssl_verify
+2015-11-14 23:25:22		[network] (relay.conf)
+2015-11-14 23:25:22		  relay.network.ssl_cert_key = "%h/ssl/relay.pem"
+2015-11-14 23:25:22		  relay.network.ssl_priorities = "NORMAL:-VERS-SSL3.0"
+2015-11-14 23:25:22		33 options (matching with "*ssl*")
+2015-11-14 23:25:48		Option changed: irc.server_default.ssl = on  (default: off)
+2015-11-14 23:25:58		Options saved to sec.conf
+2015-11-14 23:25:58		Options saved to weechat.conf
+2015-11-14 23:25:58		Options saved to plugins.conf
+2015-11-14 23:25:58		Options saved to charset.conf
+2015-11-14 23:25:58		Options saved to logger.conf
+2015-11-14 23:25:58		Options saved to exec.conf
+2015-11-14 23:25:58		Options saved to trigger.conf
+2015-11-14 23:25:58		Options saved to alias.conf
+2015-11-14 23:25:58		Options saved to xfer.conf
+2015-11-14 23:25:58		Options saved to irc.conf
+2015-11-14 23:25:58		Options saved to relay.conf
+2015-11-14 23:25:58		Options saved to script.conf
+2015-11-14 23:26:06		Buffers list:
+2015-11-14 23:26:06		  [1] core.weechat (notify: all)
+2015-11-14 23:26:06		  [1] irc.server.rizon (notify: all)
+2015-11-14 23:26:06		  [1] irc.server.euirc (notify: all)
+2015-11-14 23:26:06		  [2] irc.euirc.#nanaone (notify: all)
+2015-11-14 23:26:15		Buffers list:
+2015-11-14 23:26:15		  [1] core.weechat (notify: all)
+2015-11-14 23:26:15		  [1] irc.server.rizon (notify: all)
+2015-11-14 23:26:15		  [1] irc.server.euirc (notify: all)
+2015-11-14 23:26:15		  [2] irc.euirc.#nanaone (notify: all)
+2015-11-14 23:26:25		[core]  /buffer  list
+2015-11-14 23:26:25		                 clear [<number>|<name>|-merged|-all [<number>|<name>...]]
+2015-11-14 23:26:25		                 move <number>|-|+
+2015-11-14 23:26:25		                 swap <number1>|<name1> [<number2>|<name2>]
+2015-11-14 23:26:25		                 merge <number>
+2015-11-14 23:26:25		                 unmerge [<number>|-all]
+2015-11-14 23:26:25		                 hide [<number>|<name>|-all [<number>|<name>...]]
+2015-11-14 23:26:25		                 unhide [<number>|<name>|-all [<number>|<name>...]]
+2015-11-14 23:26:25		                 renumber [<number1> [<number2> [<start>]]]
+2015-11-14 23:26:25		                 close [<n1>[-<n2>]|<name>]
+2015-11-14 23:26:25		                 notify <level>
+2015-11-14 23:26:25		                 localvar
+2015-11-14 23:26:25		                 set <property> <value>
+2015-11-14 23:26:25		                 get <property>
+2015-11-14 23:26:25		                 <number>|-|+|<name>
+2015-11-14 23:26:25		manage buffers
+2015-11-14 23:26:25		    list: list buffers (without argument, this list is displayed)
+2015-11-14 23:26:25		   clear: clear buffer content (number for a buffer, -merged for merged buffers, -all for all buffers, or nothing for current buffer)
+2015-11-14 23:26:25		    move: move buffer in the list (may be relative, for example -1); "-" = move to first buffer number, "+" = move to last buffer number + 1
+2015-11-14 23:26:25		    swap: swap two buffers (swap with current buffer if only one number/name given)
+2015-11-14 23:26:25		   merge: merge current buffer to another buffer (chat area will be mix of both buffers)
+2015-11-14 23:26:25		          (by default ctrl-x switches between merged buffers)
+2015-11-14 23:26:25		 unmerge: unmerge buffer from other buffers which have same number
+2015-11-14 23:26:25		    hide: hide the buffer
+2015-11-14 23:26:25		  unhide: unhide the buffer
+2015-11-14 23:26:25		renumber: renumber buffers (works only if option weechat.look.buffer_auto_renumber is off)
+2015-11-14 23:26:25		   close: close buffer (number/range or name is optional)
+2015-11-14 23:26:25		  notify: set notify level for current buffer: this level determines whether buffer will be added to hotlist or not:
+2015-11-14 23:26:25		               none: never
+2015-11-14 23:26:25		          highlight: for highlights only
+2015-11-14 23:26:25		            message: for messages from users + highlights
+2015-11-14 23:26:25		                all: all messages
+2015-11-14 23:26:25		              reset: reset to default value (all)
+2015-11-14 23:26:25		localvar: display local variables for current buffer
+2015-11-14 23:26:25		     set: set a property for current buffer
+2015-11-14 23:26:25		     get: display a property of current buffer
+2015-11-14 23:26:25		  number: jump to buffer by number, possible prefix:
+2015-11-14 23:26:25		          '+': relative jump, add number to current
+2015-11-14 23:26:25		          '-': relative jump, sub number to current
+2015-11-14 23:26:25		          '*': jump to number, using option "weechat.look.jump_current_to_previous_buffer"
+2015-11-14 23:26:25		       -: jump to first buffer number
+2015-11-14 23:26:25		       +: jump to last buffer number
+2015-11-14 23:26:25		    name: jump to buffer by (partial) name
+2015-11-14 23:26:25		Examples:
+2015-11-14 23:26:25		  clear current buffer:
+2015-11-14 23:26:25		    /buffer clear
+2015-11-14 23:26:25		  move buffer to number 5:
+2015-11-14 23:26:25		    /buffer move 5
+2015-11-14 23:26:25		  swap buffer 1 with 3:
+2015-11-14 23:26:25		    /buffer swap 1 3
+2015-11-14 23:26:25		  swap buffer #weechat with current buffer:
+2015-11-14 23:26:25		    /buffer swap #weechat
+2015-11-14 23:26:25		  merge with core buffer:
+2015-11-14 23:26:25		    /buffer merge 1
+2015-11-14 23:26:25		  unmerge buffer:
+2015-11-14 23:26:25		    /buffer unmerge
+2015-11-14 23:26:25		  close current buffer:
+2015-11-14 23:26:25		    /buffer close
+2015-11-14 23:26:25		  close buffers 5 to 7:
+2015-11-14 23:26:25		    /buffer close 5-7
+2015-11-14 23:26:25		  jump to #weechat:
+2015-11-14 23:26:25		    /buffer #weechat
+2015-11-14 23:26:25		  jump to next buffer:
+2015-11-14 23:26:25		    /buffer +1
+2015-11-14 23:26:25		  jump to last buffer number:
+2015-11-14 23:26:25		    /buffer +
+2015-11-14 23:27:13		Buffers list:
+2015-11-14 23:27:13		  [1] core.weechat (notify: all)
+2015-11-14 23:27:13		  [1] irc.server.rizon (notify: all)
+2015-11-14 23:27:13		  [1] irc.server.euirc (notify: all)
+2015-11-14 23:27:13		  [2] irc.euirc.#nanaone (notify: all)
+2015-11-14 23:27:25		Buffers list:
+2015-11-14 23:27:25		  [1] core.weechat (notify: all)
+2015-11-14 23:27:53		Options saved to sec.conf
+2015-11-14 23:27:53		Options saved to weechat.conf
+2015-11-14 23:27:53		Options saved to plugins.conf
+2015-11-14 23:27:53		Options saved to charset.conf
+2015-11-14 23:27:53		Options saved to logger.conf
+2015-11-14 23:27:53		Options saved to exec.conf
+2015-11-14 23:27:53		Options saved to trigger.conf
+2015-11-14 23:27:53		Options saved to alias.conf
+2015-11-14 23:27:53		Options saved to xfer.conf
+2015-11-14 23:27:53		Options saved to irc.conf
+2015-11-14 23:27:53		Options saved to relay.conf
+2015-11-14 23:27:53		Options saved to script.conf
+2015-11-14 23:44:59		script: 299 scripts for WeeChat 1.3
+2015-11-14 23:44:59		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-14 23:46:41		Option changed: weechat.network.gnutls_ca_file = "/usr/share/curl/ca-bundle.crt"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2015-11-14 23:46:48		script: 299 scripts for WeeChat 1.3
+2015-11-14 23:46:48		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-14 23:49:08		[core]  /secure  passphrase <passphrase>|-delete
+2015-11-14 23:49:08		                 decrypt <passphrase>|-discard
+2015-11-14 23:49:08		                 set <name> <value>
+2015-11-14 23:49:08		                 del <name>
+2015-11-14 23:49:08		manage secured data (passwords or private data encrypted in file sec.conf)
+2015-11-14 23:49:08		passphrase: change the passphrase (without passphrase, data is stored as plain text in file sec.conf)
+2015-11-14 23:49:08		   -delete: delete passphrase
+2015-11-14 23:49:08		   decrypt: decrypt data still encrypted (it happens only if passphrase was not given on startup)
+2015-11-14 23:49:08		  -discard: discard all data still encrypted
+2015-11-14 23:49:08		       set: add or change secured data
+2015-11-14 23:49:08		       del: delete secured data
+2015-11-14 23:49:08		Without argument, this command displays secured data in a new buffer.
+2015-11-14 23:49:08		When a passphrase is used (data encrypted), it is asked by WeeChat on startup.
+2015-11-14 23:49:08		It is possible to set environment variable "WEECHAT_PASSPHRASE" to prevent the prompt (this same variable is used by WeeChat on /upgrade).
+2015-11-14 23:49:08		Secured data with format ${sec.data.xxx} can be used in:
+2015-11-14 23:49:08		  - command /eval
+2015-11-14 23:49:08		  - command line argument "--run-command"
+2015-11-14 23:49:08		  - options weechat.startup.command_{before|after}_plugins
+2015-11-14 23:49:08		  - other options that may contain a password or sensitive data (for example proxy, irc server and relay); see /help on the options to check if they are evaluated.
+2015-11-14 23:49:08		Examples:
+2015-11-14 23:49:08		  set a passphrase:
+2015-11-14 23:49:08		    /secure passphrase this is my passphrase
+2015-11-14 23:49:08		  encrypt freenode SASL password:
+2015-11-14 23:49:08		    /secure set freenode mypassword
+2015-11-14 23:49:08		    /set irc.server.freenode.sasl_password "${sec.data.freenode}"
+2015-11-14 23:49:08		  encrypt oftc password for nickserv:
+2015-11-14 23:49:08		    /secure set oftc mypassword
+2015-11-14 23:49:08		    /set irc.server.oftc.command "/msg nickserv identify ${sec.data.oftc}"
+2015-11-14 23:49:08		  alias to ghost the nick "mynick":
+2015-11-14 23:49:08		    /alias add ghost /eval /msg -server freenode nickserv ghost mynick ${sec.data.freenode}
+2015-11-14 23:51:26		Options saved to sec.conf
+2015-11-14 23:51:26		Options saved to weechat.conf
+2015-11-14 23:51:26		Options saved to plugins.conf
+2015-11-14 23:51:26		Options saved to charset.conf
+2015-11-14 23:51:26		Options saved to logger.conf
+2015-11-14 23:51:26		Options saved to exec.conf
+2015-11-14 23:51:26		Options saved to trigger.conf
+2015-11-14 23:51:26		Options saved to alias.conf
+2015-11-14 23:51:26		Options saved to xfer.conf
+2015-11-14 23:51:26		Options saved to irc.conf
+2015-11-14 23:51:26		Options saved to relay.conf
+2015-11-14 23:51:26		Options saved to script.conf
+2015-11-14 23:56:48		script: 299 scripts for WeeChat 1.3
+2015-11-14 23:56:48		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-14 23:56:57	=!=	Error: unknown command "/clear" (type /help for help)
+2015-11-14 23:59:46		script: 299 scripts for WeeChat 1.3
+2015-11-14 23:59:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 00:00:33	=!=	irc: server "all" not found
+2015-11-15 00:00:46		Buffers list:
+2015-11-15 00:00:46		  [1] core.weechat (notify: all)
+2015-11-15 00:00:46		  [1] irc.server.rizon (notify: all)
+2015-11-15 00:00:46		  [1] irc.server.euirc (notify: all)
+2015-11-15 00:01:23	=!=	You can not write text in this buffer
+2015-11-15 00:01:26		Buffers list:
+2015-11-15 00:01:26		  [1] core.weechat (notify: all)
+2015-11-15 00:01:26		  [1] irc.server.rizon (notify: all)
+2015-11-15 00:01:26		  [1] irc.server.euirc (notify: all)
+2015-11-15 00:01:54		Options saved to sec.conf
+2015-11-15 00:01:54		Options saved to weechat.conf
+2015-11-15 00:01:54		Options saved to plugins.conf
+2015-11-15 00:01:54		Options saved to charset.conf
+2015-11-15 00:01:54		Options saved to logger.conf
+2015-11-15 00:01:54		Options saved to exec.conf
+2015-11-15 00:01:54		Options saved to trigger.conf
+2015-11-15 00:01:54		Options saved to alias.conf
+2015-11-15 00:01:54		Options saved to xfer.conf
+2015-11-15 00:01:54		Options saved to irc.conf
+2015-11-15 00:01:54		Options saved to relay.conf
+2015-11-15 00:01:54		Options saved to script.conf
+2015-11-15 00:01:59		script: 299 scripts for WeeChat 1.3
+2015-11-15 00:01:59		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 00:05:53	=!=	Option "rizon*" not found (tip: you can use wildcard "*" in option to see a sublist)
+2015-11-15 00:06:02		[look] (weechat.conf)
+2015-11-15 00:06:02		  weechat.look.separator_horizontal = "-"
+2015-11-15 00:06:02		  weechat.look.window_separator_horizontal = on
+2015-11-15 00:06:02		[server] (irc.conf)
+2015-11-15 00:06:02		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-15 00:06:02		  irc.server.rizon.anti_flood_prio_high
+2015-11-15 00:06:02		  irc.server.rizon.anti_flood_prio_low
+2015-11-15 00:06:02		  irc.server.rizon.autoconnect = on  (default: (undefined))
+2015-11-15 00:06:02		  irc.server.rizon.autojoin
+2015-11-15 00:06:02		  irc.server.rizon.autoreconnect
+2015-11-15 00:06:02		  irc.server.rizon.autoreconnect_delay
+2015-11-15 00:06:02		  irc.server.rizon.autorejoin
+2015-11-15 00:06:02		  irc.server.rizon.autorejoin_delay
+2015-11-15 00:06:02		  irc.server.rizon.away_check
+2015-11-15 00:06:02		  irc.server.rizon.away_check_max_nicks
+2015-11-15 00:06:02		  irc.server.rizon.capabilities
+2015-11-15 00:06:02		  irc.server.rizon.command
+2015-11-15 00:06:02		  irc.server.rizon.command_delay
+2015-11-15 00:06:02		  irc.server.rizon.connection_timeout
+2015-11-15 00:06:02		  irc.server.rizon.default_msg_kick
+2015-11-15 00:06:02		  irc.server.rizon.default_msg_part
+2015-11-15 00:06:02		  irc.server.rizon.default_msg_quit
+2015-11-15 00:06:02		  irc.server.rizon.ipv6
+2015-11-15 00:06:02		  irc.server.rizon.local_hostname
+2015-11-15 00:06:02		  irc.server.rizon.nicks
+2015-11-15 00:06:02		  irc.server.rizon.notify
+2015-11-15 00:06:02		  irc.server.rizon.password
+2015-11-15 00:06:02		  irc.server.rizon.proxy
+2015-11-15 00:06:02		  irc.server.rizon.realname
+2015-11-15 00:06:02		  irc.server.rizon.sasl_fail
+2015-11-15 00:06:02		  irc.server.rizon.sasl_key
+2015-11-15 00:06:02		  irc.server.rizon.sasl_mechanism
+2015-11-15 00:06:02		  irc.server.rizon.sasl_password
+2015-11-15 00:06:02		  irc.server.rizon.sasl_timeout
+2015-11-15 00:06:02		  irc.server.rizon.sasl_username
+2015-11-15 00:06:02		  irc.server.rizon.ssl
+2015-11-15 00:06:02		  irc.server.rizon.ssl_cert
+2015-11-15 00:06:02		  irc.server.rizon.ssl_dhkey_size
+2015-11-15 00:06:02		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:06:02		  irc.server.rizon.ssl_priorities
+2015-11-15 00:06:02		  irc.server.rizon.ssl_verify
+2015-11-15 00:06:02		  irc.server.rizon.username
+2015-11-15 00:06:02		40 options (matching with "*rizon*")
+2015-11-15 00:07:09		Option changed: irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:07:30		Option changed: irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:07:40		Option changed: irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:07:47		Option changed: irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:07:52		Options saved to sec.conf
+2015-11-15 00:07:52		Options saved to weechat.conf
+2015-11-15 00:07:52		Options saved to plugins.conf
+2015-11-15 00:07:52		Options saved to charset.conf
+2015-11-15 00:07:52		Options saved to logger.conf
+2015-11-15 00:07:52		Options saved to exec.conf
+2015-11-15 00:07:52		Options saved to trigger.conf
+2015-11-15 00:07:52		Options saved to alias.conf
+2015-11-15 00:07:52		Options saved to xfer.conf
+2015-11-15 00:07:52		Options saved to irc.conf
+2015-11-15 00:07:52		Options saved to relay.conf
+2015-11-15 00:07:52		Options saved to script.conf
+2015-11-15 00:09:54		Option changed: irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 00:11:34		Option changed: irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 00:16:03		Option changed: relay.network.password = "weechatrb"  (default: "")
+2015-11-15 00:16:18		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-15 00:16:18		relay: relay "weechat" (port 9001) added
+2015-11-15 00:18:08		relay: SSL certificate and key have been set
+2015-11-15 00:18:22		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-15 00:18:22		relay: relay "ssl.weechat" (port 8000) added
+2015-11-15 00:18:57		relay: new client on port 8000: 1/ssl.weechat/127.0.0.1
+2015-11-15 00:18:57	=!=	relay: TLS handshake failed for client 1/ssl.weechat/127.0.0.1: error -15 An unexpected TLS packet was received.
+2015-11-15 00:18:57		relay: disconnected from client 1/ssl.weechat/127.0.0.1
+2015-11-15 00:19:07		relay: new client on port 8000: 1/ssl.weechat/127.0.0.1
+2015-11-15 00:19:07	=!=	relay: TLS handshake failed for client 1/ssl.weechat/127.0.0.1: error -15 An unexpected TLS packet was received.
+2015-11-15 00:19:07		relay: disconnected from client 1/ssl.weechat/127.0.0.1
+2015-11-15 00:19:54		relay: new client on port 8000: 1/ssl.weechat/127.0.0.1
+2015-11-15 00:19:54	=!=	relay: TLS handshake failed for client 1/ssl.weechat/127.0.0.1: error -15 An unexpected TLS packet was received.
+2015-11-15 00:19:54		relay: disconnected from client 1/ssl.weechat/127.0.0.1
+2015-11-15 00:20:38		relay: new client on port 8000: 1/ssl.weechat/127.0.0.1
+2015-11-15 00:20:38	=!=	relay: TLS handshake failed for client 1/ssl.weechat/127.0.0.1: error -15 An unexpected TLS packet was received.
+2015-11-15 00:20:38		relay: disconnected from client 1/ssl.weechat/127.0.0.1
+2015-11-15 00:21:11		relay: new client on port 9001: 1/weechat/127.0.0.1
+2015-11-15 00:23:10		[look] (weechat.conf)
+2015-11-15 00:23:10		  weechat.look.separator_horizontal = "-"
+2015-11-15 00:23:10		  weechat.look.window_separator_horizontal = on
+2015-11-15 00:23:10		[server] (irc.conf)
+2015-11-15 00:23:10		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.anti_flood_prio_high
+2015-11-15 00:23:10		  irc.server.rizon.anti_flood_prio_low
+2015-11-15 00:23:10		  irc.server.rizon.autoconnect = on  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.autojoin
+2015-11-15 00:23:10		  irc.server.rizon.autoreconnect
+2015-11-15 00:23:10		  irc.server.rizon.autoreconnect_delay
+2015-11-15 00:23:10		  irc.server.rizon.autorejoin
+2015-11-15 00:23:10		  irc.server.rizon.autorejoin_delay
+2015-11-15 00:23:10		  irc.server.rizon.away_check
+2015-11-15 00:23:10		  irc.server.rizon.away_check_max_nicks
+2015-11-15 00:23:10		  irc.server.rizon.capabilities
+2015-11-15 00:23:10		  irc.server.rizon.command
+2015-11-15 00:23:10		  irc.server.rizon.command_delay
+2015-11-15 00:23:10		  irc.server.rizon.connection_timeout
+2015-11-15 00:23:10		  irc.server.rizon.default_msg_kick
+2015-11-15 00:23:10		  irc.server.rizon.default_msg_part
+2015-11-15 00:23:10		  irc.server.rizon.default_msg_quit
+2015-11-15 00:23:10		  irc.server.rizon.ipv6
+2015-11-15 00:23:10		  irc.server.rizon.local_hostname
+2015-11-15 00:23:10		  irc.server.rizon.nicks
+2015-11-15 00:23:10		  irc.server.rizon.notify
+2015-11-15 00:23:10		  irc.server.rizon.password
+2015-11-15 00:23:10		  irc.server.rizon.proxy
+2015-11-15 00:23:10		  irc.server.rizon.realname
+2015-11-15 00:23:10		  irc.server.rizon.sasl_fail
+2015-11-15 00:23:10		  irc.server.rizon.sasl_key
+2015-11-15 00:23:10		  irc.server.rizon.sasl_mechanism
+2015-11-15 00:23:10		  irc.server.rizon.sasl_password
+2015-11-15 00:23:10		  irc.server.rizon.sasl_timeout
+2015-11-15 00:23:10		  irc.server.rizon.sasl_username
+2015-11-15 00:23:10		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:23:10		  irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:23:10		  irc.server.rizon.username
+2015-11-15 00:23:10		40 options (matching with "*rizon*")
+2015-11-15 00:23:31		[server] (irc.conf)
+2015-11-15 00:23:31		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:23:31		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:23:31		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:23:31		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:23:31		  irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 00:23:31		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:23:31		6 options (matching with "irc.server.rizon.ssl*")
+2015-11-15 00:24:07		relay: disconnected from client 1/weechat/127.0.0.1
+2015-11-15 00:26:41		[server] (irc.conf)
+2015-11-15 00:26:41		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:26:41		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:26:41		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:26:41		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:26:41		  irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 00:26:41		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:26:41		6 options (matching with "*rizon*ssl*")
+2015-11-15 00:27:22	=!=	irc: invalid priorities string, error at this position in string: "default"
+2015-11-15 00:27:22	=!=	Error: failed to set option "irc.server.rizon.ssl_priorities"
+2015-11-15 00:27:38		[core]  /set  [<option> [<value>]]
+2015-11-15 00:27:38		              diff [<option> [<option>...]]
+2015-11-15 00:27:38		              env [<variable> [<value>]]
+2015-11-15 00:27:38		set config options and environment variables
+2015-11-15 00:27:38		option: name of an option (wildcard "*" is allowed)
+2015-11-15 00:27:38		 value: new value for option, according to type:
+2015-11-15 00:27:38		          boolean: on, off or toggle
+2015-11-15 00:27:38		          integer: number, ++number or --number
+2015-11-15 00:27:38		           string: any string ("" for empty string)
+2015-11-15 00:27:38		            color: color name, ++number or --number
+2015-11-15 00:27:38		        Note: for all types, you can use null to remove option value (undefined value). This works only for some special plugin variables.
+2015-11-15 00:27:38		  diff: display only changed options
+2015-11-15 00:27:38		   env: display or set an environment variable (use value "" to unset a variable)
+2015-11-15 00:27:38		Examples:
+2015-11-15 00:27:38		  display options about highlight:
+2015-11-15 00:27:38		    /set *highlight*
+2015-11-15 00:27:38		  add a word to highlight:
+2015-11-15 00:27:38		    /set weechat.look.highlight "word"
+2015-11-15 00:27:38		  display changed options:
+2015-11-15 00:27:38		    /set diff
+2015-11-15 00:27:38		  display changed options in irc plugin:
+2015-11-15 00:27:38		    /set diff irc.*
+2015-11-15 00:27:38		  display value of environment variable LANG:
+2015-11-15 00:27:38		    /set env LANG
+2015-11-15 00:27:38		  set environment variable LANG and use it:
+2015-11-15 00:27:38		    /set env LANG fr_FR.UTF-8
+2015-11-15 00:27:38		    /upgrade
+2015-11-15 00:27:38		  unset environment variable ABC:
+2015-11-15 00:27:38		    /set env ABC ""
+2015-11-15 00:28:46		Option changed: irc.server.rizon.ssl_priorities = ""  (default: (undefined))
+2015-11-15 00:28:53		[server] (irc.conf)
+2015-11-15 00:28:53		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:28:53		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:28:53		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:28:53		  irc.server.rizon.ssl_priorities = ""  (default: (undefined))
+2015-11-15 00:28:53		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:28:53		5 options (matching with "irc.server.rizon.ssl_*")
+2015-11-15 00:29:45		[server] (irc.conf)
+2015-11-15 00:29:45		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.anti_flood_prio_high
+2015-11-15 00:29:45		  irc.server.rizon.anti_flood_prio_low
+2015-11-15 00:29:45		  irc.server.rizon.autoconnect = on  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.autojoin
+2015-11-15 00:29:45		  irc.server.rizon.autoreconnect
+2015-11-15 00:29:45		  irc.server.rizon.autoreconnect_delay
+2015-11-15 00:29:45		  irc.server.rizon.autorejoin
+2015-11-15 00:29:45		  irc.server.rizon.autorejoin_delay
+2015-11-15 00:29:45		  irc.server.rizon.away_check
+2015-11-15 00:29:45		  irc.server.rizon.away_check_max_nicks
+2015-11-15 00:29:45		  irc.server.rizon.capabilities
+2015-11-15 00:29:45		  irc.server.rizon.command
+2015-11-15 00:29:45		  irc.server.rizon.command_delay
+2015-11-15 00:29:45		  irc.server.rizon.connection_timeout
+2015-11-15 00:29:45		  irc.server.rizon.default_msg_kick
+2015-11-15 00:29:45		  irc.server.rizon.default_msg_part
+2015-11-15 00:29:45		  irc.server.rizon.default_msg_quit
+2015-11-15 00:29:45		  irc.server.rizon.ipv6
+2015-11-15 00:29:45		  irc.server.rizon.local_hostname
+2015-11-15 00:29:45		  irc.server.rizon.nicks
+2015-11-15 00:29:45		  irc.server.rizon.notify
+2015-11-15 00:29:45		  irc.server.rizon.password
+2015-11-15 00:29:45		  irc.server.rizon.proxy
+2015-11-15 00:29:45		  irc.server.rizon.realname
+2015-11-15 00:29:45		  irc.server.rizon.sasl_fail
+2015-11-15 00:29:45		  irc.server.rizon.sasl_key
+2015-11-15 00:29:45		  irc.server.rizon.sasl_mechanism
+2015-11-15 00:29:45		  irc.server.rizon.sasl_password
+2015-11-15 00:29:45		  irc.server.rizon.sasl_timeout
+2015-11-15 00:29:45		  irc.server.rizon.sasl_username
+2015-11-15 00:29:45		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:29:45		  irc.server.rizon.ssl_priorities = ""  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:29:45		  irc.server.rizon.username
+2015-11-15 00:29:45		38 options (matching with "irc.server.rizon.*")
+2015-11-15 00:32:26		[server] (irc.conf)
+2015-11-15 00:32:26		  irc.server.rizon.autoconnect = on  (default: (undefined))
+2015-11-15 00:32:26		1 option (matching with "irc.server.rizon.autoconnect")
+2015-11-15 00:32:31		Option changed: irc.server.rizon.autoconnect = off  (default: (undefined))
+2015-11-15 00:33:13	=!=	Error: failed to set option "irc.server.rizon.autoconnect"
+2015-11-15 00:33:23		Option changed: irc.server.rizon.nicks = "r0ked z0ya"  (default: (undefined))
+2015-11-15 00:33:46		Option changed: irc.server.rizon.sasl_username = "r0ked"  (default: (undefined))
+2015-11-15 00:36:11		Option changed: irc.server.rizon.sasl_password = "mrr00tkid"  (default: (undefined))
+2015-11-15 00:36:28		Option changed: irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:36:45		[server] (irc.conf)
+2015-11-15 00:36:45		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:36:45		1 option (matching with "irc.server.rizon.ssl_dhkey_size")
+2015-11-15 00:37:35		Buffers list:
+2015-11-15 00:37:35		  [1] core.weechat (notify: all)
+2015-11-15 00:37:35		  [1] irc.server.rizon (notify: all)
+2015-11-15 00:37:35		  [1] irc.server.euirc (notify: all)
+2015-11-15 00:37:35		  [2] relay.relay.list (notify: all)
+2015-11-15 00:38:17		[relay]  /relay  list|listfull|listrelay
+2015-11-15 00:38:17		                 add <name> <port>
+2015-11-15 00:38:17		                 del|stop|restart <name>
+2015-11-15 00:38:17		                 raw
+2015-11-15 00:38:17		                 sslcertkey
+2015-11-15 00:38:17		relay control
+2015-11-15 00:38:17		         list: list relay clients (only active relays)
+2015-11-15 00:38:17		     listfull: list relay clients (verbose, all relays)
+2015-11-15 00:38:17		    listrelay: list relays (name and port)
+2015-11-15 00:38:17		          add: add a relay (listen on a port)
+2015-11-15 00:38:17		          del: remove a relay (clients remain connected)
+2015-11-15 00:38:17		         stop: close the server socket (clients remain connected)
+2015-11-15 00:38:17		      restart: close the server socket and listen again on port (clients remain connected)
+2015-11-15 00:38:17		         name: relay name (see format below)
+2015-11-15 00:38:17		         port: port used for relay
+2015-11-15 00:38:17		          raw: open buffer with raw Relay data
+2015-11-15 00:38:17		   sslcertkey: set SSL certificate/key using path in option relay.network.ssl_cert_key
+2015-11-15 00:38:17		Relay name is: [ipv4.][ipv6.][ssl.]<protocol.name>
+2015-11-15 00:38:17		         ipv4: force use of IPv4
+2015-11-15 00:38:17		         ipv6: force use of IPv6
+2015-11-15 00:38:17		          ssl: enable SSL
+2015-11-15 00:38:17		protocol.name: protocol and name to relay:
+2015-11-15 00:38:17		                 - protocol "irc": name is the server to share (optional, if not given, the server name must be sent by client in command "PASS", with format: "PASS server:password")
+2015-11-15 00:38:17		                 - protocol "weechat" (name is not used)
+2015-11-15 00:38:17		The "irc" protocol allows any IRC client (including WeeChat itself) to connect on the port.
+2015-11-15 00:38:17		The "weechat" protocol allows a remote interface to connect on the port, see the list here: https://weechat.org/download/
+2015-11-15 00:38:17		Without argument, this command opens buffer with list of relay clients.
+2015-11-15 00:38:17		Examples:
+2015-11-15 00:38:17		  irc proxy, for server "freenode":
+2015-11-15 00:38:17		    /relay add irc.freenode 8000
+2015-11-15 00:38:17		  irc proxy, for server "freenode", with SSL:
+2015-11-15 00:38:17		    /relay add ssl.irc.freenode 8001
+2015-11-15 00:38:17		  irc proxy, for all servers (client will choose), with SSL:
+2015-11-15 00:38:17		    /relay add ssl.irc 8002
+2015-11-15 00:38:17		  weechat protocol:
+2015-11-15 00:38:17		    /relay add weechat 9000
+2015-11-15 00:38:17		  weechat protocol with SSL:
+2015-11-15 00:38:17		    /relay add ssl.weechat 9001
+2015-11-15 00:38:17		  weechat protocol with SSL, using only IPv4:
+2015-11-15 00:38:17		    /relay add ipv4.ssl.weechat 9001
+2015-11-15 00:38:17		  weechat protocol with SSL, using only IPv6:
+2015-11-15 00:38:17		    /relay add ipv6.ssl.weechat 9001
+2015-11-15 00:38:17		  weechat protocol with SSL, using IPv4 + IPv6:
+2015-11-15 00:38:17		    /relay add ipv4.ipv6.ssl.weechat 9001
+2015-11-15 00:38:32	=!=	relay: relay "-all" not found
+2015-11-15 00:38:36		relay: socket closed for ssl.weechat (port 8000)
+2015-11-15 00:39:04	=!=	Error with command "/relay lit" (help on command: /help relay)
+2015-11-15 00:39:07		No connected client for relay
+2015-11-15 00:39:32		relay: socket closed for weechat (port 9001)
+2015-11-15 00:41:35		Option changed: weechat.network.gnutls_ca_file = "/usr/share/curl/ca-bundle.crt"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2015-11-15 00:41:48		Buffers list:
+2015-11-15 00:41:48		  [1] core.weechat (notify: all)
+2015-11-15 00:41:48		  [1] irc.server.rizon (notify: all)
+2015-11-15 00:41:48		  [1] irc.server.euirc (notify: all)
+2015-11-15 00:41:53		Options saved to sec.conf
+2015-11-15 00:41:53		Options saved to weechat.conf
+2015-11-15 00:41:53		Options saved to plugins.conf
+2015-11-15 00:41:53		Options saved to charset.conf
+2015-11-15 00:41:53		Options saved to logger.conf
+2015-11-15 00:41:53		Options saved to exec.conf
+2015-11-15 00:41:53		Options saved to trigger.conf
+2015-11-15 00:41:53		Options saved to alias.conf
+2015-11-15 00:41:53		Options saved to xfer.conf
+2015-11-15 00:41:53		Options saved to irc.conf
+2015-11-15 00:41:53		Options saved to relay.conf
+2015-11-15 00:41:53		Options saved to script.conf
+2015-11-15 00:42:00		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-15 00:42:00		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-15 00:42:00		script: 299 scripts for WeeChat 1.3
+2015-11-15 00:42:00		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 00:42:38		[server] (irc.conf)
+2015-11-15 00:42:38		  irc.server.euirc.addresses = "irc.euirc.net/6667"  (default: (undefined))
+2015-11-15 00:42:38		  irc.server.euirc.anti_flood_prio_high
+2015-11-15 00:42:38		  irc.server.euirc.anti_flood_prio_low
+2015-11-15 00:42:38		  irc.server.euirc.autoconnect = on  (default: (undefined))
+2015-11-15 00:42:38		  irc.server.euirc.autojoin
+2015-11-15 00:42:38		  irc.server.euirc.autoreconnect
+2015-11-15 00:42:38		  irc.server.euirc.autoreconnect_delay
+2015-11-15 00:42:38		  irc.server.euirc.autorejoin
+2015-11-15 00:42:38		  irc.server.euirc.autorejoin_delay
+2015-11-15 00:42:38		  irc.server.euirc.away_check
+2015-11-15 00:42:38		  irc.server.euirc.away_check_max_nicks
+2015-11-15 00:42:38		  irc.server.euirc.capabilities
+2015-11-15 00:42:38		  irc.server.euirc.command
+2015-11-15 00:42:38		  irc.server.euirc.command_delay
+2015-11-15 00:42:38		  irc.server.euirc.connection_timeout
+2015-11-15 00:42:38		  irc.server.euirc.default_msg_kick
+2015-11-15 00:42:38		  irc.server.euirc.default_msg_part
+2015-11-15 00:42:38		  irc.server.euirc.default_msg_quit
+2015-11-15 00:42:38		  irc.server.euirc.ipv6
+2015-11-15 00:42:38		  irc.server.euirc.local_hostname
+2015-11-15 00:42:38		  irc.server.euirc.nicks
+2015-11-15 00:42:38		  irc.server.euirc.notify
+2015-11-15 00:42:38		  irc.server.euirc.password
+2015-11-15 00:42:38		  irc.server.euirc.proxy
+2015-11-15 00:42:38		  irc.server.euirc.realname
+2015-11-15 00:42:38		  irc.server.euirc.sasl_fail
+2015-11-15 00:42:38		  irc.server.euirc.sasl_key
+2015-11-15 00:42:38		  irc.server.euirc.sasl_mechanism
+2015-11-15 00:42:38		  irc.server.euirc.sasl_password
+2015-11-15 00:42:38		  irc.server.euirc.sasl_timeout
+2015-11-15 00:42:38		  irc.server.euirc.sasl_username
+2015-11-15 00:42:38		  irc.server.euirc.ssl
+2015-11-15 00:42:38		  irc.server.euirc.ssl_cert
+2015-11-15 00:42:38		  irc.server.euirc.ssl_dhkey_size
+2015-11-15 00:42:38		  irc.server.euirc.ssl_fingerprint
+2015-11-15 00:42:38		  irc.server.euirc.ssl_priorities
+2015-11-15 00:42:38		  irc.server.euirc.ssl_verify
+2015-11-15 00:42:38		  irc.server.euirc.username
+2015-11-15 00:42:38		38 options (matching with "irc.server.euirc.*")
+2015-11-15 00:42:46		[server] (irc.conf)
+2015-11-15 00:42:46		  irc.server.euirc.addresses = "irc.euirc.net/6667"  (default: (undefined))
+2015-11-15 00:42:46		1 option (matching with "irc.server.euirc.addresses")
+2015-11-15 00:43:10		Option changed: irc.server.euirc.addresses = "irc.ham.de.euirc.net"  (default: (undefined))
+2015-11-15 00:43:25		Option changed: irc.server.euirc.addresses = "irc.ham.de.euirc.net/6667"  (default: (undefined))
+2015-11-15 00:43:29		Options saved to sec.conf
+2015-11-15 00:43:29		Options saved to weechat.conf
+2015-11-15 00:43:29		Options saved to plugins.conf
+2015-11-15 00:43:29		Options saved to charset.conf
+2015-11-15 00:43:29		Options saved to logger.conf
+2015-11-15 00:43:29		Options saved to exec.conf
+2015-11-15 00:43:29		Options saved to trigger.conf
+2015-11-15 00:43:29		Options saved to alias.conf
+2015-11-15 00:43:29		Options saved to xfer.conf
+2015-11-15 00:43:29		Options saved to irc.conf
+2015-11-15 00:43:29		Options saved to relay.conf
+2015-11-15 00:43:29		Options saved to script.conf
+2015-11-15 00:43:42		[server] (irc.conf)
+2015-11-15 00:43:42		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.anti_flood_prio_high
+2015-11-15 00:43:42		  irc.server.rizon.anti_flood_prio_low
+2015-11-15 00:43:42		  irc.server.rizon.autoconnect = off  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.autojoin
+2015-11-15 00:43:42		  irc.server.rizon.autoreconnect
+2015-11-15 00:43:42		  irc.server.rizon.autoreconnect_delay
+2015-11-15 00:43:42		  irc.server.rizon.autorejoin
+2015-11-15 00:43:42		  irc.server.rizon.autorejoin_delay
+2015-11-15 00:43:42		  irc.server.rizon.away_check
+2015-11-15 00:43:42		  irc.server.rizon.away_check_max_nicks
+2015-11-15 00:43:42		  irc.server.rizon.capabilities
+2015-11-15 00:43:42		  irc.server.rizon.command
+2015-11-15 00:43:42		  irc.server.rizon.command_delay
+2015-11-15 00:43:42		  irc.server.rizon.connection_timeout
+2015-11-15 00:43:42		  irc.server.rizon.default_msg_kick
+2015-11-15 00:43:42		  irc.server.rizon.default_msg_part
+2015-11-15 00:43:42		  irc.server.rizon.default_msg_quit
+2015-11-15 00:43:42		  irc.server.rizon.ipv6
+2015-11-15 00:43:42		  irc.server.rizon.local_hostname
+2015-11-15 00:43:42		  irc.server.rizon.nicks = "r0ked z0ya"  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.notify
+2015-11-15 00:43:42		  irc.server.rizon.password
+2015-11-15 00:43:42		  irc.server.rizon.proxy
+2015-11-15 00:43:42		  irc.server.rizon.realname
+2015-11-15 00:43:42		  irc.server.rizon.sasl_fail
+2015-11-15 00:43:42		  irc.server.rizon.sasl_key
+2015-11-15 00:43:42		  irc.server.rizon.sasl_mechanism
+2015-11-15 00:43:42		  irc.server.rizon.sasl_password = "mrr00tkid"  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.sasl_timeout
+2015-11-15 00:43:42		  irc.server.rizon.sasl_username = "r0ked"  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.ssl_fingerprint
+2015-11-15 00:43:42		  irc.server.rizon.ssl_priorities = ""  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 00:43:42		  irc.server.rizon.username
+2015-11-15 00:43:42		38 options (matching with "*rizon.*")
+2015-11-15 00:44:05		Option changed: irc.server.rizon.autoconnect = off  (default: (undefined))
+2015-11-15 00:44:39		Buffers list:
+2015-11-15 00:44:39		  [1] core.weechat (notify: all)
+2015-11-15 00:44:39		  [1] irc.server.euirc (notify: all)
+2015-11-15 00:46:27		[server] (irc.conf)
+2015-11-15 00:46:27		  irc.server.euirc.addresses = "irc.ham.de.euirc.net/6667"  (default: (undefined))
+2015-11-15 00:46:27		1 option (matching with "irc.server.euirc.addresses")
+2015-11-15 00:47:05		Option changed: irc.server.euirc.addresses = "irc.ham.de.euirc.net/6697"  (default: (undefined))
+2015-11-15 00:47:16		Option changed: irc.server.euirc.ssl = on  (default: (undefined))
+2015-11-15 00:47:22		Option changed: irc.server.euirc.ssl_verify = on  (default: (undefined))
+2015-11-15 00:47:28		Options saved to sec.conf
+2015-11-15 00:47:28		Options saved to weechat.conf
+2015-11-15 00:47:28		Options saved to plugins.conf
+2015-11-15 00:47:28		Options saved to charset.conf
+2015-11-15 00:47:28		Options saved to logger.conf
+2015-11-15 00:47:28		Options saved to exec.conf
+2015-11-15 00:47:28		Options saved to trigger.conf
+2015-11-15 00:47:28		Options saved to alias.conf
+2015-11-15 00:47:28		Options saved to xfer.conf
+2015-11-15 00:47:28		Options saved to irc.conf
+2015-11-15 00:47:28		Options saved to relay.conf
+2015-11-15 00:47:28		Options saved to script.conf
+2015-11-15 00:47:31		relay: socket closed for weechat (port 9001)
+2015-11-15 00:47:31		relay: socket closed for ssl.weechat (port 8000)
+2015-11-15 00:47:32		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-15 00:47:32		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-15 00:47:32		script: 299 scripts for WeeChat 1.3
+2015-11-15 00:47:32		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 00:48:31		Option changed: irc.server.euirc.ssl_verify = off  (default: (undefined))
+2015-11-15 00:48:42		Options saved to sec.conf
+2015-11-15 00:48:42		Options saved to weechat.conf
+2015-11-15 00:48:42		Options saved to plugins.conf
+2015-11-15 00:48:42		Options saved to charset.conf
+2015-11-15 00:48:42		Options saved to logger.conf
+2015-11-15 00:48:42		Options saved to exec.conf
+2015-11-15 00:48:42		Options saved to trigger.conf
+2015-11-15 00:48:42		Options saved to alias.conf
+2015-11-15 00:48:42		Options saved to xfer.conf
+2015-11-15 00:48:42		Options saved to irc.conf
+2015-11-15 00:48:42		Options saved to relay.conf
+2015-11-15 00:48:42		Options saved to script.conf
+2015-11-15 00:48:47		relay: socket closed for weechat (port 9001)
+2015-11-15 00:48:47		relay: socket closed for ssl.weechat (port 8000)
+2015-11-15 00:48:48		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-15 00:48:48		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-15 00:48:48		script: 299 scripts for WeeChat 1.3
+2015-11-15 00:48:48		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 01:01:24		Option changed: irc.server.euirc.ssl_cert = "%h/ssl/nick.pem"  (default: (undefined))
+2015-11-15 01:01:38		Options saved to sec.conf
+2015-11-15 01:01:38		Options saved to weechat.conf
+2015-11-15 01:01:38		Options saved to plugins.conf
+2015-11-15 01:01:38		Options saved to charset.conf
+2015-11-15 01:01:38		Options saved to logger.conf
+2015-11-15 01:01:38		Options saved to exec.conf
+2015-11-15 01:01:38		Options saved to trigger.conf
+2015-11-15 01:01:38		Options saved to alias.conf
+2015-11-15 01:01:38		Options saved to xfer.conf
+2015-11-15 01:01:38		Options saved to irc.conf
+2015-11-15 01:01:38		Options saved to relay.conf
+2015-11-15 01:01:38		Options saved to script.conf
+2015-11-15 01:01:42		relay: socket closed for weechat (port 9001)
+2015-11-15 01:01:42		relay: socket closed for ssl.weechat (port 8000)
+2015-11-15 01:01:43		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-15 01:01:43		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-15 01:01:43		script: 299 scripts for WeeChat 1.3
+2015-11-15 01:01:43		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 01:03:49		[server] (irc.conf)
+2015-11-15 01:03:49		  irc.server.euirc.addresses = "irc.ham.de.euirc.net/6697"  (default: (undefined))
+2015-11-15 01:03:49		  irc.server.euirc.anti_flood_prio_high
+2015-11-15 01:03:49		  irc.server.euirc.anti_flood_prio_low
+2015-11-15 01:03:49		  irc.server.euirc.autoconnect = on  (default: (undefined))
+2015-11-15 01:03:49		  irc.server.euirc.autojoin
+2015-11-15 01:03:49		  irc.server.euirc.autoreconnect
+2015-11-15 01:03:49		  irc.server.euirc.autoreconnect_delay
+2015-11-15 01:03:49		  irc.server.euirc.autorejoin
+2015-11-15 01:03:49		  irc.server.euirc.autorejoin_delay
+2015-11-15 01:03:49		  irc.server.euirc.away_check
+2015-11-15 01:03:49		  irc.server.euirc.away_check_max_nicks
+2015-11-15 01:03:49		  irc.server.euirc.capabilities
+2015-11-15 01:03:49		  irc.server.euirc.command
+2015-11-15 01:03:49		  irc.server.euirc.command_delay
+2015-11-15 01:03:49		  irc.server.euirc.connection_timeout
+2015-11-15 01:03:49		  irc.server.euirc.default_msg_kick
+2015-11-15 01:03:49		  irc.server.euirc.default_msg_part
+2015-11-15 01:03:49		  irc.server.euirc.default_msg_quit
+2015-11-15 01:03:49		  irc.server.euirc.ipv6
+2015-11-15 01:03:49		  irc.server.euirc.local_hostname
+2015-11-15 01:03:49		  irc.server.euirc.nicks
+2015-11-15 01:03:49		  irc.server.euirc.notify
+2015-11-15 01:03:49		  irc.server.euirc.password
+2015-11-15 01:03:49		  irc.server.euirc.proxy
+2015-11-15 01:03:49		  irc.server.euirc.realname
+2015-11-15 01:03:49		  irc.server.euirc.sasl_fail
+2015-11-15 01:03:49		  irc.server.euirc.sasl_key
+2015-11-15 01:03:49		  irc.server.euirc.sasl_mechanism
+2015-11-15 01:03:49		  irc.server.euirc.sasl_password
+2015-11-15 01:03:49		  irc.server.euirc.sasl_timeout
+2015-11-15 01:03:49		  irc.server.euirc.sasl_username
+2015-11-15 01:03:49		  irc.server.euirc.ssl = on  (default: (undefined))
+2015-11-15 01:03:49		  irc.server.euirc.ssl_cert = "%h/ssl/nick.pem"  (default: (undefined))
+2015-11-15 01:03:49		  irc.server.euirc.ssl_dhkey_size
+2015-11-15 01:03:49		  irc.server.euirc.ssl_fingerprint
+2015-11-15 01:03:49		  irc.server.euirc.ssl_priorities
+2015-11-15 01:03:49		  irc.server.euirc.ssl_verify = off  (default: (undefined))
+2015-11-15 01:03:49		  irc.server.euirc.username
+2015-11-15 01:03:49		38 options (matching with "*euirc*")
+2015-11-15 01:05:09		python: loading script "/Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py"
+2015-11-15 01:05:09		python: stdout/stderr: Traceback (most recent call last):
+2015-11-15 01:05:09		python: stdout/stderr:   File "/Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py", line 5, in <module>
+2015-11-15 01:05:09		python: stdout/stderr:     from pync import Notifier
+2015-11-15 01:05:09		python: stdout/stderr: ImportError: No module named pync
+2015-11-15 01:05:09	=!=	python: unable to parse file "/Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py"
+2015-11-15 01:06:18		script: script "notification_center.py" is already installed and up-to-date
+2015-11-15 01:06:43		script: autoload enabled for script "notification_center.py"
+2015-11-15 01:06:52		python: loading script "/Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py"
+2015-11-15 01:06:52		python: stdout/stderr: Traceback (most recent call last):
+2015-11-15 01:06:52		python: stdout/stderr:   File "/Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py", line 5, in <module>
+2015-11-15 01:06:52		python: stdout/stderr:     from pync import Notifier
+2015-11-15 01:06:52		python: stdout/stderr: ImportError: No module named pync
+2015-11-15 01:06:52	=!=	python: unable to parse file "/Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py"
+2015-11-15 01:07:46		python: loading script "/Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py"
+2015-11-15 01:07:46		python: stdout/stderr: Traceback (most recent call last):
+2015-11-15 01:07:46		python: stdout/stderr:   File "/Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py", line 5, in <module>
+2015-11-15 01:07:46		python: stdout/stderr:     from pync import Notifier
+2015-11-15 01:07:46		python: stdout/stderr: ImportError: No module named pync
+2015-11-15 01:07:46	=!=	python: unable to parse file "/Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py"
+2015-11-15 01:07:57		python: script removed: /Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py
+2015-11-15 01:07:57		python: script removed: /Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py
+2015-11-15 01:08:02		python: loading script "/Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py"
+2015-11-15 01:08:02		python: stdout/stderr: Traceback (most recent call last):
+2015-11-15 01:08:02		python: stdout/stderr:   File "/Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py", line 5, in <module>
+2015-11-15 01:08:02		python: stdout/stderr:     from pync import Notifier
+2015-11-15 01:08:02		python: stdout/stderr: ImportError: No module named pync
+2015-11-15 01:08:02	=!=	python: unable to parse file "/Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py"
+2015-11-15 01:08:07		python: script removed: /Users/robertgz/.dotfiles.bkup/config/weechat/python/autoload/notification_center.py
+2015-11-15 01:08:07		python: script removed: /Users/robertgz/.dotfiles.bkup/config/weechat/python/notification_center.py
+2015-11-15 01:10:38		Option changed: weechat.bar.title.color_bg = red  (default: blue)
+2015-11-15 01:10:45	=!=	Error: failed to set option "weechat.bar.title.color_bg"
+2015-11-15 01:10:51		Option changed: weechat.bar.title.color_bg = 0  (default: blue)
+2015-11-15 01:10:53		Option changed: weechat.bar.title.color_bg = 1  (default: blue)
+2015-11-15 01:10:54		Option changed: weechat.bar.title.color_bg = 2  (default: blue)
+2015-11-15 01:10:56		Option changed: weechat.bar.title.color_bg = 3  (default: blue)
+2015-11-15 01:10:57		Option changed: weechat.bar.title.color_bg = 4  (default: blue)
+2015-11-15 01:10:59		Option changed: weechat.bar.title.color_bg = 5  (default: blue)
+2015-11-15 01:11:00		Option changed: weechat.bar.title.color_bg = 6  (default: blue)
+2015-11-15 01:11:02		Option changed: weechat.bar.title.color_bg = 7  (default: blue)
+2015-11-15 01:11:04		Option changed: weechat.bar.title.color_bg = 8  (default: blue)
+2015-11-15 01:11:07		Option changed: weechat.bar.title.color_bg = 0  (default: blue)
+2015-11-15 01:11:12		Option changed: weechat.bar.title.color_bg = 5  (default: blue)
+2015-11-15 01:11:14		Option changed: weechat.bar.title.color_bg = 4  (default: blue)
+2015-11-15 01:11:16		Option changed: weechat.bar.title.color_bg = 3  (default: blue)
+2015-11-15 01:11:22		Option changed: weechat.bar.title.color_bg = 2  (default: blue)
+2015-11-15 01:11:26		Option changed: weechat.bar.title.color_bg = 1  (default: blue)
+2015-11-15 01:11:40		Option changed: weechat.bar.title.color_fg = 0  (default: default)
+2015-11-15 01:11:48		Option changed: weechat.bar.title.color_bg = 1  (default: blue)
+2015-11-15 01:11:52		Option changed: weechat.bar.title.color_bg = 2  (default: blue)
+2015-11-15 01:11:55		Option changed: weechat.bar.title.color_bg = 0  (default: blue)
+2015-11-15 01:11:57		Option changed: weechat.bar.title.color_bg = 7  (default: blue)
+2015-11-15 01:12:00		Option changed: weechat.bar.title.color_bg = 6  (default: blue)
+2015-11-15 01:12:02		Option changed: weechat.bar.title.color_bg = 5  (default: blue)
+2015-11-15 01:12:03		Option changed: weechat.bar.title.color_bg = 4  (default: blue)
+2015-11-15 01:12:05		Option changed: weechat.bar.title.color_bg = 3  (default: blue)
+2015-11-15 01:12:20		Option changed: weechat.bar.status.color_bg = 1  (default: blue)
+2015-11-15 01:12:22		Option changed: weechat.bar.status.color_bg = 0  (default: blue)
+2015-11-15 01:12:29		Option changed: weechat.bar.title.color_bg = 1  (default: blue)
+2015-11-15 01:12:34		Option changed: weechat.bar.title.color_bg = 0  (default: blue)
+2015-11-15 01:12:39		Option changed: weechat.bar.title.color_fg = white  (default: default)
+2015-11-15 01:13:06		[core]  /key  list|listdefault|listdiff [<context>]
+2015-11-15 01:13:06		              bind <key> [<command> [<args>]]
+2015-11-15 01:13:06		              bindctxt <context> <key> [<command> [<args>]]
+2015-11-15 01:13:06		              unbind <key>
+2015-11-15 01:13:06		              unbindctxt <context> <key>
+2015-11-15 01:13:06		              reset <key>
+2015-11-15 01:13:06		              resetctxt <context> <key>
+2015-11-15 01:13:06		              resetall -yes [<context>]
+2015-11-15 01:13:06		              missing [<context>]
+2015-11-15 01:13:06		bind/unbind keys
+2015-11-15 01:13:06		       list: list all current keys (without argument, this list is displayed)
+2015-11-15 01:13:06		listdefault: list default keys
+2015-11-15 01:13:06		   listdiff: list differences between current and default keys (keys added, redefined or deleted)
+2015-11-15 01:13:06		    context: name of context ("default" or "search")
+2015-11-15 01:13:06		       bind: bind a command to a key or display command bound to key (for context "default")
+2015-11-15 01:13:06		   bindctxt: bind a command to a key or display command bound to key, for given context
+2015-11-15 01:13:06		    command: command (many commands can be separated by semicolons)
+2015-11-15 01:13:06		     unbind: remove a key binding (for context "default")
+2015-11-15 01:13:06		 unbindctxt: remove a key binding for given context
+2015-11-15 01:13:06		      reset: reset a key to default binding (for context "default")
+2015-11-15 01:13:06		  resetctxt: reset a key to default binding, for given context
+2015-11-15 01:13:06		   resetall: restore bindings to the default values and delete ALL personal bindings (use carefully!)
+2015-11-15 01:13:06		    missing: add missing keys (using default bindings), useful after installing new WeeChat version
+2015-11-15 01:13:06		When binding a command to a key, it is recommended to use key alt+k (or Esc then k), and then press the key to bind: this will insert key code in command line.
+2015-11-15 01:13:06		For context "mouse" (possible in context "cursor" too), key has format: "@area:key" or "@area1>area2:key" where area can be:
+2015-11-15 01:13:06		          *: any area on screen
+2015-11-15 01:13:06		       chat: chat area (any buffer)
+2015-11-15 01:13:06		  chat(xxx): char area for buffer with name "xxx" (full name including plugin)
+2015-11-15 01:13:06		     bar(*): any bar
+2015-11-15 01:13:06		   bar(xxx): bar "xxx"
+2015-11-15 01:13:06		    item(*): any bar item
+2015-11-15 01:13:06		  item(xxx): bar item "xxx"
+2015-11-15 01:13:06		Wildcard "*" is allowed in key to match many mouse events.
+2015-11-15 01:13:06		A special value for command with format "hsignal:name" can be used for context mouse, this will send the hsignal "name" with the focus hashtable as argument.
+2015-11-15 01:13:06		Another special value "-" can be used to disable key (it will be ignored when looking for keys).
+2015-11-15 01:13:06		Examples:
+2015-11-15 01:13:06		  key alt-x to toggle nicklist bar:
+2015-11-15 01:13:06		    /key bind meta-x /bar toggle nicklist
+2015-11-15 01:13:06		  key alt-r to jump to #weechat IRC channel:
+2015-11-15 01:13:06		    /key bind meta-r /buffer #weechat
+2015-11-15 01:13:06		  restore default binding for key alt-r:
+2015-11-15 01:13:06		    /key reset meta-r
+2015-11-15 01:13:06		  key "tab" to stop search in buffer:
+2015-11-15 01:13:06		    /key bindctxt search ctrl-I /input search_stop
+2015-11-15 01:13:06		  middle button of mouse on a nick to retrieve info on nick:
+2015-11-15 01:13:06		    /key bindctxt mouse @item(buffer_nicklist):button3 /msg nickserv info ${nick}
+2015-11-15 01:13:35		[startup] (weechat.conf)
+2015-11-15 01:13:35		  weechat.startup.command_after_plugins = ""
+2015-11-15 01:13:35		  weechat.startup.command_before_plugins = ""
+2015-11-15 01:13:35		  weechat.startup.display_logo = on
+2015-11-15 01:13:35		  weechat.startup.display_version = on
+2015-11-15 01:13:35		  weechat.startup.sys_rlimit = ""
+2015-11-15 01:13:35		[look] (weechat.conf)
+2015-11-15 01:13:35		  weechat.look.align_end_of_lines = message
+2015-11-15 01:13:35		  weechat.look.bar_more_down = "++"
+2015-11-15 01:13:35		  weechat.look.bar_more_left = "<<"
+2015-11-15 01:13:35		  weechat.look.bar_more_right = ">>"
+2015-11-15 01:13:35		  weechat.look.bar_more_up = "--"
+2015-11-15 01:13:35		  weechat.look.bare_display_exit_on_input = on
+2015-11-15 01:13:35		  weechat.look.bare_display_time_format = "%H:%M"
+2015-11-15 01:13:35		  weechat.look.buffer_auto_renumber = on
+2015-11-15 01:13:35		  weechat.look.buffer_notify_default = all
+2015-11-15 01:13:35		  weechat.look.buffer_position = end
+2015-11-15 01:13:35		  weechat.look.buffer_search_case_sensitive = off
+2015-11-15 01:13:35		  weechat.look.buffer_search_force_default = off
+2015-11-15 01:13:35		  weechat.look.buffer_search_regex = off
+2015-11-15 01:13:35		  weechat.look.buffer_search_where = prefix_message
+2015-11-15 01:13:35		  weechat.look.buffer_time_format = "%H:%M:%S"
+2015-11-15 01:13:35		  weechat.look.color_basic_force_bold = off
+2015-11-15 01:13:35		  weechat.look.color_inactive_buffer = on
+2015-11-15 01:13:35		  weechat.look.color_inactive_message = on
+2015-11-15 01:13:35		  weechat.look.color_inactive_prefix = on
+2015-11-15 01:13:35		  weechat.look.color_inactive_prefix_buffer = on
+2015-11-15 01:13:35		  weechat.look.color_inactive_time = off
+2015-11-15 01:13:35		  weechat.look.color_inactive_window = on
+2015-11-15 01:13:35		  weechat.look.color_nick_offline = off
+2015-11-15 01:13:35		  weechat.look.color_pairs_auto_reset = 5
+2015-11-15 01:13:35		  weechat.look.color_real_white = off
+2015-11-15 01:13:35		  weechat.look.command_chars = ""
+2015-11-15 01:13:35		  weechat.look.command_incomplete = off
+2015-11-15 01:13:35		  weechat.look.confirm_quit = off
+2015-11-15 01:13:35		  weechat.look.confirm_upgrade = off
+2015-11-15 01:13:35		  weechat.look.day_change = on
+2015-11-15 01:13:35		  weechat.look.day_change_message_1date = "-- %a, %d %b %Y --"
+2015-11-15 01:13:35		  weechat.look.day_change_message_2dates = "-- %%a, %%d %%b %%Y (%a, %d %b %Y) --"
+2015-11-15 01:13:35		  weechat.look.eat_newline_glitch = off
+2015-11-15 01:13:35		  weechat.look.emphasized_attributes = ""
+2015-11-15 01:13:35		  weechat.look.highlight = ""
+2015-11-15 01:13:35		  weechat.look.highlight_regex = ""
+2015-11-15 01:13:35		  weechat.look.highlight_tags = ""
+2015-11-15 01:13:35		  weechat.look.hotlist_add_conditions = "${away} || ${buffer.num_displayed} == 0"
+2015-11-15 01:13:35		  weechat.look.hotlist_buffer_separator = ", "
+2015-11-15 01:13:35		  weechat.look.hotlist_count_max = 2
+2015-11-15 01:13:35		  weechat.look.hotlist_count_min_msg = 2
+2015-11-15 01:13:35		  weechat.look.hotlist_names_count = 3
+2015-11-15 01:13:35		  weechat.look.hotlist_names_length = 0
+2015-11-15 01:13:35		  weechat.look.hotlist_names_level = 12
+2015-11-15 01:13:35		  weechat.look.hotlist_names_merged_buffers = off
+2015-11-15 01:13:35		  weechat.look.hotlist_prefix = "H: "
+2015-11-15 01:13:35		  weechat.look.hotlist_remove = merged
+2015-11-15 01:13:35		  weechat.look.hotlist_short_names = on
+2015-11-15 01:13:35		  weechat.look.hotlist_sort = group_time_asc
+2015-11-15 01:13:35		  weechat.look.hotlist_suffix = ""
+2015-11-15 01:13:35		  weechat.look.hotlist_unique_numbers = on
+2015-11-15 01:13:35		  weechat.look.input_cursor_scroll = 20
+2015-11-15 01:13:35		  weechat.look.input_share = none
+2015-11-15 01:13:35		  weechat.look.input_share_overwrite = off
+2015-11-15 01:13:35		  weechat.look.input_undo_max = 32
+2015-11-15 01:13:35		  weechat.look.item_buffer_filter = "*"
+2015-11-15 01:13:35		  weechat.look.item_buffer_zoom = "!"
+2015-11-15 01:13:35		  weechat.look.item_mouse_status = "M"
+2015-11-15 01:13:35		  weechat.look.item_time_format = "%H:%M"
+2015-11-15 01:13:35		  weechat.look.jump_current_to_previous_buffer = on
+2015-11-15 01:13:35		  weechat.look.jump_previous_buffer_when_closing = on
+2015-11-15 01:13:35		  weechat.look.jump_smart_back_to_buffer = on
+2015-11-15 01:13:35		  weechat.look.key_bind_safe = on
+2015-11-15 01:13:35		  weechat.look.key_grab_delay = 800
+2015-11-15 01:13:35		  weechat.look.mouse = on  (default: off)
+2015-11-15 01:13:35		  weechat.look.mouse_timer_delay = 100
+2015-11-15 01:13:35		  weechat.look.nick_prefix = ""
+2015-11-15 01:13:35		  weechat.look.nick_suffix = ""
+2015-11-15 01:13:35		  weechat.look.paste_bracketed = on
+2015-11-15 01:13:35		  weechat.look.paste_bracketed_timer_delay = 10
+2015-11-15 01:13:35		  weechat.look.paste_max_lines = 1
+2015-11-15 01:13:35		  weechat.look.prefix_action = " *"
+2015-11-15 01:13:35		  weechat.look.prefix_align = right
+2015-11-15 01:13:35		  weechat.look.prefix_align_max = 0
+2015-11-15 01:13:35		  weechat.look.prefix_align_min = 0
+2015-11-15 01:13:35		  weechat.look.prefix_align_more = "+"
+2015-11-15 01:13:35		  weechat.look.prefix_align_more_after = on
+2015-11-15 01:13:35		  weechat.look.prefix_buffer_align = right
+2015-11-15 01:13:35		  weechat.look.prefix_buffer_align_max = 0
+2015-11-15 01:13:35		  weechat.look.prefix_buffer_align_more = "+"
+2015-11-15 01:13:35		  weechat.look.prefix_buffer_align_more_after = on
+2015-11-15 01:13:35		  weechat.look.prefix_error = "=!="
+2015-11-15 01:13:35		  weechat.look.prefix_join = "-->"
+2015-11-15 01:13:35		  weechat.look.prefix_network = "--"
+2015-11-15 01:13:35		  weechat.look.prefix_quit = "<--"
+2015-11-15 01:13:35		  weechat.look.prefix_same_nick = ""
+2015-11-15 01:13:35		  weechat.look.prefix_suffix = "|"
+2015-11-15 01:13:35		  weechat.look.quote_nick_prefix = "<"
+2015-11-15 01:13:35		  weechat.look.quote_nick_suffix = ">"
+2015-11-15 01:13:35		  weechat.look.quote_time_format = "%H:%M:%S"
+2015-11-15 01:13:35		  weechat.look.read_marker = line
+2015-11-15 01:13:35		  weechat.look.read_marker_always_show = off
+2015-11-15 01:13:35		  weechat.look.read_marker_string = "- "
+2015-11-15 01:13:35		  weechat.look.save_config_on_exit = on
+2015-11-15 01:13:35		  weechat.look.save_layout_on_exit = none
+2015-11-15 01:13:35		  weechat.look.scroll_amount = 3
+2015-11-15 01:13:35		  weechat.look.scroll_bottom_after_switch = off
+2015-11-15 01:13:35		  weechat.look.scroll_page_percent = 100
+2015-11-15 01:13:35		  weechat.look.search_text_not_found_alert = on
+2015-11-15 01:13:35		  weechat.look.separator_horizontal = "-"
+2015-11-15 01:13:35		  weechat.look.separator_vertical = ""
+2015-11-15 01:13:35		  weechat.look.tab_width = 1
+2015-11-15 01:13:35		  weechat.look.time_format = "%a, %d %b %Y %T"
+2015-11-15 01:13:35		  weechat.look.window_auto_zoom = off
+2015-11-15 01:13:35		  weechat.look.window_separator_horizontal = on
+2015-11-15 01:13:35		  weechat.look.window_separator_vertical = on
+2015-11-15 01:13:35		  weechat.look.window_title = "WeeChat ${info:version}"
+2015-11-15 01:13:35		  weechat.look.word_chars_highlight = "!\u00A0,-,_,|,alnum"
+2015-11-15 01:13:35		  weechat.look.word_chars_input = "!\u00A0,-,_,|,alnum"
+2015-11-15 01:13:35		[color] (weechat.conf)
+2015-11-15 01:13:35		  weechat.color.bar_more = lightmagenta
+2015-11-15 01:13:35		  weechat.color.chat = default
+2015-11-15 01:13:35		  weechat.color.chat_bg = default
+2015-11-15 01:13:35		  weechat.color.chat_buffer = white
+2015-11-15 01:13:35		  weechat.color.chat_channel = white
+2015-11-15 01:13:35		  weechat.color.chat_day_change = cyan
+2015-11-15 01:13:35		  weechat.color.chat_delimiters = green
+2015-11-15 01:13:35		  weechat.color.chat_highlight = yellow
+2015-11-15 01:13:35		  weechat.color.chat_highlight_bg = magenta
+2015-11-15 01:13:35		  weechat.color.chat_host = cyan
+2015-11-15 01:13:35		  weechat.color.chat_inactive_buffer = default
+2015-11-15 01:13:35		  weechat.color.chat_inactive_window = default
+2015-11-15 01:13:35		  weechat.color.chat_nick = lightcyan
+2015-11-15 01:13:35		  weechat.color.chat_nick_colors = "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue"
+2015-11-15 01:13:35		  weechat.color.chat_nick_offline = default
+2015-11-15 01:13:35		  weechat.color.chat_nick_offline_highlight = default
+2015-11-15 01:13:35		  weechat.color.chat_nick_offline_highlight_bg = blue
+2015-11-15 01:13:35		  weechat.color.chat_nick_other = cyan
+2015-11-15 01:13:35		  weechat.color.chat_nick_prefix = green
+2015-11-15 01:13:35		  weechat.color.chat_nick_self = white
+2015-11-15 01:13:35		  weechat.color.chat_nick_suffix = green
+2015-11-15 01:13:35		  weechat.color.chat_prefix_action = white
+2015-11-15 01:13:35		  weechat.color.chat_prefix_buffer = brown
+2015-11-15 01:13:35		  weechat.color.chat_prefix_buffer_inactive_buffer = default
+2015-11-15 01:13:35		  weechat.color.chat_prefix_error = yellow
+2015-11-15 01:13:35		  weechat.color.chat_prefix_join = lightgreen
+2015-11-15 01:13:35		  weechat.color.chat_prefix_more = lightmagenta
+2015-11-15 01:13:35		  weechat.color.chat_prefix_network = magenta
+2015-11-15 01:13:35		  weechat.color.chat_prefix_quit = lightred
+2015-11-15 01:13:35		  weechat.color.chat_prefix_suffix = green
+2015-11-15 01:13:35		  weechat.color.chat_read_marker = magenta
+2015-11-15 01:13:35		  weechat.color.chat_read_marker_bg = default
+2015-11-15 01:13:35		  weechat.color.chat_server = brown
+2015-11-15 01:13:35		  weechat.color.chat_tags = red
+2015-11-15 01:13:35		  weechat.color.chat_text_found = yellow
+2015-11-15 01:13:35		  weechat.color.chat_text_found_bg = lightmagenta
+2015-11-15 01:13:35		  weechat.color.chat_time = default
+2015-11-15 01:13:35		  weechat.color.chat_time_delimiters = brown
+2015-11-15 01:13:35		  weechat.color.chat_value = cyan
+2015-11-15 01:13:35		  weechat.color.emphasized = yellow
+2015-11-15 01:13:35		  weechat.color.emphasized_bg = magenta
+2015-11-15 01:13:35		  weechat.color.input_actions = lightgreen
+2015-11-15 01:13:35		  weechat.color.input_text_not_found = red
+2015-11-15 01:13:35		  weechat.color.nicklist_away = cyan
+2015-11-15 01:13:35		  weechat.color.nicklist_group = green
+2015-11-15 01:13:35		  weechat.color.nicklist_offline = blue
+2015-11-15 01:13:35		  weechat.color.separator = blue
+2015-11-15 01:13:35		  weechat.color.status_count_highlight = magenta
+2015-11-15 01:13:35		  weechat.color.status_count_msg = brown
+2015-11-15 01:13:35		  weechat.color.status_count_other = default
+2015-11-15 01:13:35		  weechat.color.status_count_private = green
+2015-11-15 01:13:35		  weechat.color.status_data_highlight = lightmagenta
+2015-11-15 01:13:35		  weechat.color.status_data_msg = yellow
+2015-11-15 01:13:35		  weechat.color.status_data_other = default
+2015-11-15 01:13:35		  weechat.color.status_data_private = lightgreen
+2015-11-15 01:13:35		  weechat.color.status_filter = green
+2015-11-15 01:13:35		  weechat.color.status_more = yellow
+2015-11-15 01:13:35		  weechat.color.status_mouse = green
+2015-11-15 01:13:35		  weechat.color.status_name = white
+2015-11-15 01:13:35		  weechat.color.status_name_ssl = lightgreen
+2015-11-15 01:13:35		  weechat.color.status_nicklist_count = default
+2015-11-15 01:13:35		  weechat.color.status_number = yellow
+2015-11-15 01:13:35		  weechat.color.status_time = default
+2015-11-15 01:13:35		[completion] (weechat.conf)
+2015-11-15 01:13:35		  weechat.completion.base_word_until_cursor = on
+2015-11-15 01:13:35		  weechat.completion.command_inline = on
+2015-11-15 01:13:35		  weechat.completion.default_template = "%(nicks)|%(irc_channels)"
+2015-11-15 01:13:35		  weechat.completion.nick_add_space = on
+2015-11-15 01:13:35		  weechat.completion.nick_completer = ":"
+2015-11-15 01:13:35		  weechat.completion.nick_first_only = off
+2015-11-15 01:13:35		  weechat.completion.nick_ignore_chars = "[]`_-^"
+2015-11-15 01:13:35		  weechat.completion.partial_completion_alert = on
+2015-11-15 01:13:35		  weechat.completion.partial_completion_command = off
+2015-11-15 01:13:35		  weechat.completion.partial_completion_command_arg = off
+2015-11-15 01:13:35		  weechat.completion.partial_completion_count = on
+2015-11-15 01:13:35		  weechat.completion.partial_completion_other = off
+2015-11-15 01:13:35		[history] (weechat.conf)
+2015-11-15 01:13:35		  weechat.history.display_default = 5
+2015-11-15 01:13:35		  weechat.history.max_buffer_lines_minutes = 0
+2015-11-15 01:13:35		  weechat.history.max_buffer_lines_number = 4096
+2015-11-15 01:13:35		  weechat.history.max_commands = 100
+2015-11-15 01:13:35		  weechat.history.max_visited_buffers = 50
+2015-11-15 01:13:35		[network] (weechat.conf)
+2015-11-15 01:13:35		  weechat.network.connection_timeout = 60
+2015-11-15 01:13:35		  weechat.network.gnutls_ca_file = "/usr/share/curl/ca-bundle.crt"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2015-11-15 01:13:35		  weechat.network.gnutls_handshake_timeout = 30
+2015-11-15 01:13:35		  weechat.network.proxy_curl = ""
+2015-11-15 01:13:35		[plugin] (weechat.conf)
+2015-11-15 01:13:35		  weechat.plugin.autoload = "*"
+2015-11-15 01:13:35		  weechat.plugin.debug = off
+2015-11-15 01:13:35		  weechat.plugin.extension = ".so,.dll"
+2015-11-15 01:13:35		  weechat.plugin.path = "%h/plugins"
+2015-11-15 01:13:35		  weechat.plugin.save_config_on_unload = on
+2015-11-15 01:13:35		[bar] (weechat.conf)
+2015-11-15 01:13:35		  weechat.bar.input.color_bg = default
+2015-11-15 01:13:35		  weechat.bar.input.color_delim = cyan
+2015-11-15 01:13:35		  weechat.bar.input.color_fg = default
+2015-11-15 01:13:35		  weechat.bar.input.conditions = ""
+2015-11-15 01:13:35		  weechat.bar.input.filling_left_right = vertical
+2015-11-15 01:13:35		  weechat.bar.input.filling_top_bottom = horizontal
+2015-11-15 01:13:35		  weechat.bar.input.hidden = off
+2015-11-15 01:13:35		  weechat.bar.input.items = "[input_prompt]+(away),[input_search],[input_paste],input_text"
+2015-11-15 01:13:35		  weechat.bar.input.position = bottom
+2015-11-15 01:13:35		  weechat.bar.input.priority = 1000
+2015-11-15 01:13:35		  weechat.bar.input.separator = off
+2015-11-15 01:13:35		  weechat.bar.input.size = 1
+2015-11-15 01:13:35		  weechat.bar.input.size_max = 0
+2015-11-15 01:13:35		  weechat.bar.input.type = window
+2015-11-15 01:13:35		  weechat.bar.nicklist.color_bg = default
+2015-11-15 01:13:35		  weechat.bar.nicklist.color_delim = cyan
+2015-11-15 01:13:35		  weechat.bar.nicklist.color_fg = default
+2015-11-15 01:13:35		  weechat.bar.nicklist.conditions = "${nicklist}"
+2015-11-15 01:13:35		  weechat.bar.nicklist.filling_left_right = vertical
+2015-11-15 01:13:35		  weechat.bar.nicklist.filling_top_bottom = columns_vertical
+2015-11-15 01:13:35		  weechat.bar.nicklist.hidden = off
+2015-11-15 01:13:35		  weechat.bar.nicklist.items = "buffer_nicklist"
+2015-11-15 01:13:35		  weechat.bar.nicklist.position = right
+2015-11-15 01:13:35		  weechat.bar.nicklist.priority = 200
+2015-11-15 01:13:35		  weechat.bar.nicklist.separator = on
+2015-11-15 01:13:35		  weechat.bar.nicklist.size = 0
+2015-11-15 01:13:35		  weechat.bar.nicklist.size_max = 0
+2015-11-15 01:13:35		  weechat.bar.nicklist.type = window
+2015-11-15 01:13:35		  weechat.bar.status.color_bg = 0  (default: blue)
+2015-11-15 01:13:35		  weechat.bar.status.color_delim = cyan
+2015-11-15 01:13:35		  weechat.bar.status.color_fg = default
+2015-11-15 01:13:35		  weechat.bar.status.conditions = ""
+2015-11-15 01:13:35		  weechat.bar.status.filling_left_right = vertical
+2015-11-15 01:13:35		  weechat.bar.status.filling_top_bottom = horizontal
+2015-11-15 01:13:35		  weechat.bar.status.hidden = off
+2015-11-15 01:13:35		  weechat.bar.status.items = "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],completion"
+2015-11-15 01:13:35		  weechat.bar.status.position = bottom
+2015-11-15 01:13:35		  weechat.bar.status.priority = 500
+2015-11-15 01:13:35		  weechat.bar.status.separator = off
+2015-11-15 01:13:35		  weechat.bar.status.size = 1
+2015-11-15 01:13:35		  weechat.bar.status.size_max = 0
+2015-11-15 01:13:35		  weechat.bar.status.type = window
+2015-11-15 01:13:35		  weechat.bar.title.color_bg = 0  (default: blue)
+2015-11-15 01:13:35		  weechat.bar.title.color_delim = cyan
+2015-11-15 01:13:35		  weechat.bar.title.color_fg = white  (default: default)
+2015-11-15 01:13:35		  weechat.bar.title.conditions = ""
+2015-11-15 01:13:35		  weechat.bar.title.filling_left_right = vertical
+2015-11-15 01:13:35		  weechat.bar.title.filling_top_bottom = horizontal
+2015-11-15 01:13:35		  weechat.bar.title.hidden = off
+2015-11-15 01:13:35		  weechat.bar.title.items = "buffer_title"
+2015-11-15 01:13:35		  weechat.bar.title.position = top
+2015-11-15 01:13:35		  weechat.bar.title.priority = 500
+2015-11-15 01:13:35		  weechat.bar.title.separator = off
+2015-11-15 01:13:35		  weechat.bar.title.size = 1
+2015-11-15 01:13:35		  weechat.bar.title.size_max = 0
+2015-11-15 01:13:35		  weechat.bar.title.type = window
+2015-11-15 01:13:35		259 options (matching with "weechat.*")
+2015-11-15 01:16:02		Option changed: irc.server.euirc.autojoin = "#nanaone"  (default: (undefined))
+2015-11-15 01:16:19		[server_default] (irc.conf)
+2015-11-15 01:16:19		  irc.server_default.nicks = "r0ked"  (default: "")
+2015-11-15 01:16:19		1 option (matching with "irc.server_default.nicks")
+2015-11-15 01:16:37		Option changed: irc.server_default.nicks = "r0ked z0ya"  (default: "")
+2015-11-15 01:16:51		[server_default] (irc.conf)
+2015-11-15 01:16:51		  irc.server_default.realname = ""
+2015-11-15 01:16:51		1 option (matching with "irc.server_default.realname")
+2015-11-15 01:17:36		Buffers list:
+2015-11-15 01:17:36		  [1] core.weechat (notify: all)
+2015-11-15 01:17:36		  [1] irc.server.euirc (notify: all)
+2015-11-15 01:17:36		  [1] irc.server.rizon (notify: all)
+2015-11-15 01:17:48	=!=	Error with command "/buffer irc.rizon" (help on command: /help buffer)
+2015-11-15 01:18:02	=!=	irc: currently connecting to server "rizon"!
+2015-11-15 01:18:48		Option changed: irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 01:20:28		[server] (irc.conf)
+2015-11-15 01:20:28		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.anti_flood_prio_high
+2015-11-15 01:20:28		  irc.server.rizon.anti_flood_prio_low
+2015-11-15 01:20:28		  irc.server.rizon.autoconnect = off  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.autojoin
+2015-11-15 01:20:28		  irc.server.rizon.autoreconnect
+2015-11-15 01:20:28		  irc.server.rizon.autoreconnect_delay
+2015-11-15 01:20:28		  irc.server.rizon.autorejoin
+2015-11-15 01:20:28		  irc.server.rizon.autorejoin_delay
+2015-11-15 01:20:28		  irc.server.rizon.away_check
+2015-11-15 01:20:28		  irc.server.rizon.away_check_max_nicks
+2015-11-15 01:20:28		  irc.server.rizon.capabilities
+2015-11-15 01:20:28		  irc.server.rizon.command
+2015-11-15 01:20:28		  irc.server.rizon.command_delay
+2015-11-15 01:20:28		  irc.server.rizon.connection_timeout
+2015-11-15 01:20:28		  irc.server.rizon.default_msg_kick
+2015-11-15 01:20:28		  irc.server.rizon.default_msg_part
+2015-11-15 01:20:28		  irc.server.rizon.default_msg_quit
+2015-11-15 01:20:28		  irc.server.rizon.ipv6
+2015-11-15 01:20:28		  irc.server.rizon.local_hostname
+2015-11-15 01:20:28		  irc.server.rizon.nicks = "r0ked z0ya"  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.notify
+2015-11-15 01:20:28		  irc.server.rizon.password
+2015-11-15 01:20:28		  irc.server.rizon.proxy
+2015-11-15 01:20:28		  irc.server.rizon.realname
+2015-11-15 01:20:28		  irc.server.rizon.sasl_fail
+2015-11-15 01:20:28		  irc.server.rizon.sasl_key
+2015-11-15 01:20:28		  irc.server.rizon.sasl_mechanism
+2015-11-15 01:20:28		  irc.server.rizon.sasl_password = "mrr00tkid"  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.sasl_timeout
+2015-11-15 01:20:28		  irc.server.rizon.sasl_username = "r0ked"  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.ssl_fingerprint
+2015-11-15 01:20:28		  irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 01:20:28		  irc.server.rizon.username
+2015-11-15 01:20:28		38 options (matching with "irc.server.rizon.*")
+2015-11-15 01:20:38		Option changed: irc.server.rizon.nicks = ""  (default: (undefined))
+2015-11-15 01:20:51		Option changed: irc.server.rizon.nicks = "r0ked"  (default: (undefined))
+2015-11-15 01:21:14	=!=	Error: option "irc.server.rizon.sasl_*" not found
+2015-11-15 01:21:21		Option changed: irc.server.rizon.sasl_username = ""  (default: (undefined))
+2015-11-15 01:21:34		[server] (irc.conf)
+2015-11-15 01:21:34		  irc.server.rizon.sasl_password = "mrr00tkid"  (default: (undefined))
+2015-11-15 01:21:34		1 option (matching with "irc.server.rizon.sasl_password")
+2015-11-15 01:21:45	=!=	Error: option "delete" not found
+2015-11-15 01:21:52		[core]  /set  [<option> [<value>]]
+2015-11-15 01:21:52		              diff [<option> [<option>...]]
+2015-11-15 01:21:52		              env [<variable> [<value>]]
+2015-11-15 01:21:52		set config options and environment variables
+2015-11-15 01:21:52		option: name of an option (wildcard "*" is allowed)
+2015-11-15 01:21:52		 value: new value for option, according to type:
+2015-11-15 01:21:52		          boolean: on, off or toggle
+2015-11-15 01:21:52		          integer: number, ++number or --number
+2015-11-15 01:21:52		           string: any string ("" for empty string)
+2015-11-15 01:21:52		            color: color name, ++number or --number
+2015-11-15 01:21:52		        Note: for all types, you can use null to remove option value (undefined value). This works only for some special plugin variables.
+2015-11-15 01:21:52		  diff: display only changed options
+2015-11-15 01:21:52		   env: display or set an environment variable (use value "" to unset a variable)
+2015-11-15 01:21:52		Examples:
+2015-11-15 01:21:52		  display options about highlight:
+2015-11-15 01:21:52		    /set *highlight*
+2015-11-15 01:21:52		  add a word to highlight:
+2015-11-15 01:21:52		    /set weechat.look.highlight "word"
+2015-11-15 01:21:52		  display changed options:
+2015-11-15 01:21:52		    /set diff
+2015-11-15 01:21:52		  display changed options in irc plugin:
+2015-11-15 01:21:52		    /set diff irc.*
+2015-11-15 01:21:52		  display value of environment variable LANG:
+2015-11-15 01:21:52		    /set env LANG
+2015-11-15 01:21:52		  set environment variable LANG and use it:
+2015-11-15 01:21:52		    /set env LANG fr_FR.UTF-8
+2015-11-15 01:21:52		    /upgrade
+2015-11-15 01:21:52		  unset environment variable ABC:
+2015-11-15 01:21:52		    /set env ABC ""
+2015-11-15 01:22:14		[server] (irc.conf)
+2015-11-15 01:22:14		  irc.server.rizon.addresses = "irc.rizon.net/6667"  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.anti_flood_prio_high
+2015-11-15 01:22:14		  irc.server.rizon.anti_flood_prio_low
+2015-11-15 01:22:14		  irc.server.rizon.autoconnect = off  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.autojoin
+2015-11-15 01:22:14		  irc.server.rizon.autoreconnect
+2015-11-15 01:22:14		  irc.server.rizon.autoreconnect_delay
+2015-11-15 01:22:14		  irc.server.rizon.autorejoin
+2015-11-15 01:22:14		  irc.server.rizon.autorejoin_delay
+2015-11-15 01:22:14		  irc.server.rizon.away_check
+2015-11-15 01:22:14		  irc.server.rizon.away_check_max_nicks
+2015-11-15 01:22:14		  irc.server.rizon.capabilities
+2015-11-15 01:22:14		  irc.server.rizon.command
+2015-11-15 01:22:14		  irc.server.rizon.command_delay
+2015-11-15 01:22:14		  irc.server.rizon.connection_timeout
+2015-11-15 01:22:14		  irc.server.rizon.default_msg_kick
+2015-11-15 01:22:14		  irc.server.rizon.default_msg_part
+2015-11-15 01:22:14		  irc.server.rizon.default_msg_quit
+2015-11-15 01:22:14		  irc.server.rizon.ipv6
+2015-11-15 01:22:14		  irc.server.rizon.local_hostname
+2015-11-15 01:22:14		  irc.server.rizon.nicks = "r0ked"  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.notify
+2015-11-15 01:22:14		  irc.server.rizon.password
+2015-11-15 01:22:14		  irc.server.rizon.proxy
+2015-11-15 01:22:14		  irc.server.rizon.realname
+2015-11-15 01:22:14		  irc.server.rizon.sasl_fail
+2015-11-15 01:22:14		  irc.server.rizon.sasl_key
+2015-11-15 01:22:14		  irc.server.rizon.sasl_mechanism
+2015-11-15 01:22:14		  irc.server.rizon.sasl_password = "mrr00tkid"  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.sasl_timeout
+2015-11-15 01:22:14		  irc.server.rizon.sasl_username = ""  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.ssl_fingerprint
+2015-11-15 01:22:14		  irc.server.rizon.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 01:22:14		  irc.server.rizon.username
+2015-11-15 01:22:14		38 options (matching with "irc.server.rizon.*")
+2015-11-15 01:24:18		[server] (irc.conf)
+2015-11-15 01:24:18		  irc.server.rizon.sasl_password = "mrr00tkid"  (default: (undefined))
+2015-11-15 01:24:18		1 option (matching with "irc.server.rizon.sasl_password")
+2015-11-15 01:24:29		Option changed: irc.server.rizon.sasl_password = "undefined"  (default: (undefined))
+2015-11-15 01:24:49		[irc]  /server  list|listfull [<server>]
+2015-11-15 01:24:49		                add <server> <hostname>[/<port>] [-temp] [-<option>[=<value>]] [-no<option>]
+2015-11-15 01:24:49		                copy|rename <server> <new_name>
+2015-11-15 01:24:49		                reorder <server> [<server>...]
+2015-11-15 01:24:49		                del|keep <server>
+2015-11-15 01:24:49		                deloutq|jump|raw
+2015-11-15 01:24:49		list, add or remove IRC servers
+2015-11-15 01:24:49		    list: list servers (without argument, this list is displayed)
+2015-11-15 01:24:49		listfull: list servers with detailed info for each server
+2015-11-15 01:24:49		     add: add a new server
+2015-11-15 01:24:49		  server: server name, for internal and display use
+2015-11-15 01:24:49		hostname: name or IP address of server, with optional port (default: 6667), many addresses can be separated by a comma
+2015-11-15 01:24:49		    temp: add a temporary server (not saved)
+2015-11-15 01:24:49		  option: set option for server (for boolean option, value can be omitted)
+2015-11-15 01:24:49		nooption: set boolean option to 'off' (for example: -nossl)
+2015-11-15 01:24:49		    copy: duplicate a server
+2015-11-15 01:24:49		  rename: rename a server
+2015-11-15 01:24:49		 reorder: reorder list of servers
+2015-11-15 01:24:49		    keep: keep server in config file (for temporary servers only)
+2015-11-15 01:24:49		     del: delete a server
+2015-11-15 01:24:49		 deloutq: delete messages out queue for all servers (all messages WeeChat is currently sending)
+2015-11-15 01:24:49		    jump: jump to server buffer
+2015-11-15 01:24:49		     raw: open buffer with raw IRC data
+2015-11-15 01:24:49		Examples:
+2015-11-15 01:24:49		  /server listfull
+2015-11-15 01:24:49		  /server add freenode chat.freenode.net
+2015-11-15 01:24:49		  /server add freenode chat.freenode.net/6697 -ssl -autoconnect
+2015-11-15 01:24:49		  /server add chatspike irc.chatspike.net/6667,irc.duckspike.net/6667
+2015-11-15 01:24:49		  /server copy freenode freenode-test
+2015-11-15 01:24:49		  /server rename freenode-test freenode2
+2015-11-15 01:24:49		  /server reorder freenode2 freenode
+2015-11-15 01:24:49		  /server del freenode
+2015-11-15 01:24:49		  /server deloutq
+2015-11-15 01:25:00	=!=	No help available, "del" is not a command or an option
+2015-11-15 01:25:09		irc: server rizon has been deleted
+2015-11-15 01:25:44		irc: server rizon added
+2015-11-15 01:25:59		Option changed: irc.server.rizon.ssl = on  (default: (undefined))
+2015-11-15 01:26:23		Option changed: irc.server.rizon.ssl_cert = "%h/ssl/Rizon.pem"  (default: (undefined))
+2015-11-15 01:26:36		Option changed: irc.server.rizon.ssl_dhkey_size = 2048  (default: (undefined))
+2015-11-15 01:26:49		Option changed: irc.server.rizon.ssl_verify = off  (default: (undefined))
+2015-11-15 01:28:15		Option changed: irc.server.rizon.nicks = "r0kd"  (default: (undefined))
+2015-11-15 01:29:57		[irc]  /nick  [-all] <nick>
+2015-11-15 01:29:57		change current nick
+2015-11-15 01:29:57		-all: set new nick for all connected servers
+2015-11-15 01:29:57		nick: new nick
+2015-11-15 01:30:22		Options saved to sec.conf
+2015-11-15 01:30:22		Options saved to weechat.conf
+2015-11-15 01:30:22		Options saved to plugins.conf
+2015-11-15 01:30:22		Options saved to charset.conf
+2015-11-15 01:30:22		Options saved to logger.conf
+2015-11-15 01:30:22		Options saved to exec.conf
+2015-11-15 01:30:22		Options saved to trigger.conf
+2015-11-15 01:30:22		Options saved to alias.conf
+2015-11-15 01:30:22		Options saved to xfer.conf
+2015-11-15 01:30:22		Options saved to irc.conf
+2015-11-15 01:30:22		Options saved to relay.conf
+2015-11-15 01:30:22		Options saved to script.conf
+2015-11-15 01:30:22		Options saved to colorize_nicks.conf
+2015-11-15 01:31:56		[server] (irc.conf)
+2015-11-15 01:31:56		  irc.server.rizon.autoconnect
+2015-11-15 01:31:56		1 option (matching with "irc.server.rizon.autoconnect")
+2015-11-15 01:32:04		Option changed: irc.server.rizon.autoconnect = off  (default: (undefined))
+2015-11-15 01:32:49		Option changed: irc.server.rizon.autojoin = "#Mori"  (default: (undefined))
+2015-11-15 01:47:55		New key binding (context "mouse"): @chat:button1* => hsignal:coords
+2015-11-15 01:47:55		New key binding (context "mouse"): @chat:button1-event-* => hsignal:coords
+2015-11-15 01:47:55		New key binding (context "mouse"): @chat(perl.[*):button1 => hsignal:coords
+2015-11-15 01:47:55	=!=	Error with command "/alias copywin coords" (help on command: /help alias)
+2015-11-15 01:48:15	=!=	No help available, "completion" is not a command or an option
+2015-11-15 01:49:06		[python/completion]  /completion  [add <word> <text>|del <word>]
+2015-11-15 01:49:06		Word completions for WeeChat
+2015-11-15 01:49:06		add: adds a new completion, <word> => <text>.
+2015-11-15 01:49:06		del: deletes a completion.
+2015-11-15 01:49:06		Without arguments it displays current completions.
+2015-11-15 01:49:06		<word> will be replaced by <text> when pressing tab in input line,
+2015-11-15 01:49:06		where <word> is any word currently behind the cursor.
+2015-11-15 01:49:06		Setup:
+2015-11-15 01:49:06		For this script to work, you must add the template
+2015-11-15 01:49:06		%(completion_script) to the default completion template, use:
+2015-11-15 01:49:06		/set weechat.completion.default_template "%(nicks)|%(irc_channels)|%(completion_script)"
+2015-11-15 01:49:06		Examples:
+2015-11-15 01:49:06		/completion add wee WeeChat (typing wee<tab> will replace 'wee' by 'WeeChat')
+2015-11-15 01:49:06		/completion add weeurl http://www.weechat.org/
+2015-11-15 01:49:06		/completion add test This is a test!
+2015-11-15 01:50:06	[cmpl]	added: yt => http://www.youtube.com/
+2015-11-15 01:50:33		Options saved to sec.conf
+2015-11-15 01:50:33		Options saved to weechat.conf
+2015-11-15 01:50:33		Options saved to plugins.conf
+2015-11-15 01:50:33		Options saved to charset.conf
+2015-11-15 01:50:33		Options saved to logger.conf
+2015-11-15 01:50:33		Options saved to exec.conf
+2015-11-15 01:50:33		Options saved to trigger.conf
+2015-11-15 01:50:33		Options saved to alias.conf
+2015-11-15 01:50:33		Options saved to xfer.conf
+2015-11-15 01:50:33		Options saved to irc.conf
+2015-11-15 01:50:33		Options saved to relay.conf
+2015-11-15 01:50:33		Options saved to script.conf
+2015-11-15 01:50:33		Options saved to colorize_nicks.conf
+2015-11-15 20:04:57		relay: socket closed for weechat (port 9001)
+2015-11-15 20:04:57		relay: socket closed for ssl.weechat (port 8000)
+2015-11-15 20:04:57		python: scripts unloaded
+2015-11-15 20:04:57		perl: scripts unloaded
+2015-11-15 20:06:33		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-15 20:06:33		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-15 20:06:33	=!=	Error with command "/alias copywin coords" (help on command: /help alias)
+2015-11-15 20:06:33		perl scripts loaded: coords
+2015-11-15 20:06:33		python scripts loaded: buffer_autoclose, chanstat, colorize_nicks, completion
+2015-11-15 20:06:33		script: 299 scripts for WeeChat 1.3
+2015-11-15 20:06:33		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-15 20:07:03		[core]  /window  list
+2015-11-15 20:07:03		                 -1|+1|b#|up|down|left|right [-window <number>]
+2015-11-15 20:07:03		                 <number>
+2015-11-15 20:07:03		                 splith|splitv [-window <number>] [<pct>]
+2015-11-15 20:07:03		                 resize [-window <number>] [+/-]<pct>
+2015-11-15 20:07:03		                 balance
+2015-11-15 20:07:03		                 merge [-window <number>] [all]
+2015-11-15 20:07:03		                 page_up|page_down [-window <number>]
+2015-11-15 20:07:03		                 refresh
+2015-11-15 20:07:03		                 scroll [-window <number>] [+/-]<value>[s|m|h|d|M|y]
+2015-11-15 20:07:03		                 scroll_horiz [-window <number>] [+/-]<value>[%]
+2015-11-15 20:07:03		                 scroll_up|scroll_down|scroll_top|scroll_bottom|scroll_beyond_end|scroll_previous_highlight|scroll_next_highlight|scroll_unread [-window <number>]
+2015-11-15 20:07:03		                 swap [-window <number>] [up|down|left|right]
+2015-11-15 20:07:03		                 zoom [-window <number>]
+2015-11-15 20:07:03		                 bare [<delay>]
+2015-11-15 20:07:03		manage windows
+2015-11-15 20:07:03		         list: list opened windows (without argument, this list is displayed)
+2015-11-15 20:07:03		           -1: jump to previous window
+2015-11-15 20:07:03		           +1: jump to next window
+2015-11-15 20:07:03		           b#: jump to next window displaying buffer number #
+2015-11-15 20:07:03		           up: switch to window above current one
+2015-11-15 20:07:03		         down: switch to window below current one
+2015-11-15 20:07:03		         left: switch to window on the left
+2015-11-15 20:07:03		        right: switch to window on the right
+2015-11-15 20:07:03		       number: window number (see /window list)
+2015-11-15 20:07:03		       splith: split current window horizontally
+2015-11-15 20:07:03		       splitv: split current window vertically
+2015-11-15 20:07:03		       resize: resize window size, new size is <pct> percentage of parent window
+2015-11-15 20:07:03		      balance: balance the sizes of all windows
+2015-11-15 20:07:03		        merge: merge window with another (all = keep only one window)
+2015-11-15 20:07:03		      page_up: scroll one page up
+2015-11-15 20:07:03		    page_down: scroll one page down
+2015-11-15 20:07:03		      refresh: refresh screen
+2015-11-15 20:07:03		       scroll: scroll a number of lines (+/-N) or with time: s=seconds, m=minutes, h=hours, d=days, M=months, y=years
+2015-11-15 20:07:03		 scroll_horiz: scroll horizontally a number of columns (+/-N) or percentage of window size (this scrolling is possible only on buffers with free content)
+2015-11-15 20:07:03		    scroll_up: scroll a few lines up
+2015-11-15 20:07:03		  scroll_down: scroll a few lines down
+2015-11-15 20:07:03		   scroll_top: scroll to top of buffer
+2015-11-15 20:07:03		scroll_bottom: scroll to bottom of buffer
+2015-11-15 20:07:03		scroll_beyond_end: scroll beyond the end of buffer
+2015-11-15 20:07:03		scroll_previous_highlight: scroll to previous highlight
+2015-11-15 20:07:03		scroll_next_highlight: scroll to next highlight
+2015-11-15 20:07:03		scroll_unread: scroll to unread marker
+2015-11-15 20:07:03		         swap: swap buffers of two windows (with optional direction for target window)
+2015-11-15 20:07:03		         zoom: zoom on window
+2015-11-15 20:07:03		         bare: toggle bare display (with optional delay in seconds for automatic return to standard display mode)
+2015-11-15 20:07:03		For splith and splitv, pct is a percentage which represents size of new window, computed with current window as size reference. For example 25 means create a new window with size = current_size / 4
+2015-11-15 20:07:03		Examples:
+2015-11-15 20:07:03		  jump to window displaying buffer #1:
+2015-11-15 20:07:03		    /window b1
+2015-11-15 20:07:03		  scroll 2 lines up:
+2015-11-15 20:07:03		    /window scroll -2
+2015-11-15 20:07:03		  scroll 2 days up:
+2015-11-15 20:07:03		    /window scroll -2d
+2015-11-15 20:07:03		  scroll to beginning of current day:
+2015-11-15 20:07:03		    /window scroll -d
+2015-11-15 20:07:03		  zoom on window #2:
+2015-11-15 20:07:03		    /window zoom -window 2
+2015-11-15 20:07:03		  enable bare display for 2 seconds:
+2015-11-15 20:07:03		    /window bare 2
+2015-11-15 21:15:00		relay: new client on port 8000: 1/ssl.weechat/127.0.0.1
+2015-11-15 21:15:00	=!=	relay: TLS handshake failed for client 1/ssl.weechat/127.0.0.1: error -15 An unexpected TLS packet was received.
+2015-11-15 21:15:00		relay: disconnected from client 1/ssl.weechat/127.0.0.1
+2015-11-15 23:11:49	=!=	Error: unknown command "/clear" (type /help for help)
+2015-11-15 23:19:30		relay: socket closed for weechat (port 9001)
+2015-11-15 23:19:30		relay: socket closed for ssl.weechat (port 8000)
+2015-11-15 23:19:30		python: scripts unloaded
+2015-11-15 23:19:30		perl: scripts unloaded
+2015-11-18 21:07:57		relay: listening on port 8000 (relay: ssl.weechat, IPv4+6, max 5 clients)
+2015-11-18 21:07:57		relay: listening on port 9001 (relay: weechat, IPv4+6, max 5 clients)
+2015-11-18 21:07:57	=!=	Error with command "/alias copywin coords" (help on command: /help alias)
+2015-11-18 21:07:58		perl scripts loaded: coords
+2015-11-18 21:07:58		python scripts loaded: buffer_autoclose, chanstat, colorize_nicks, completion
+2015-11-18 21:07:58		script: downloading list of scripts...
+2015-11-18 21:07:58		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-11-18 21:07:59		script: 299 scripts for WeeChat 1.3
+2015-11-18 21:08:52		relay: socket closed for weechat (port 9001)
+2015-11-18 21:08:52		relay: socket closed for ssl.weechat (port 8000)
+2015-11-18 21:08:52		python: scripts unloaded
+2015-11-18 21:08:52		perl: scripts unloaded

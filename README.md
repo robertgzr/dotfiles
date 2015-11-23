@@ -28,13 +28,13 @@ Status
 * `✔` copy over stuff from old dotfiles (alias, env, functions)
 * Brewfile
 * `✔` move .dotfiles_old/config/*
+* `✔` finally get rid of prezto
 
 ### todo
 * look at the cgitparser files again!
 * ~~caskfile~~
 * move applescripts
 * write osx defaults
-* irssi
-* finally get rid of prezto
+* ~~irssi~~
 * config/mpv/scripts as submodules?
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)

@@ -36,5 +36,5 @@ Status
 * ~~caskfile~~
 * write osx defaults
 * ~~irssi~~
-* config/mpv/scripts as submodules?
+* ~~config/mpv/scripts as submodules~~
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)

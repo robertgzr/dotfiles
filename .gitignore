@@ -8,6 +8,9 @@ config/mpv/icc-cache/*
 
 config/transmision/*
 
+config/weechat/logs/
+config/weechat/*.log
+
 gh_api_token
 
 zsh/.*

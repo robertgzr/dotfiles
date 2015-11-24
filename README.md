@@ -29,11 +29,11 @@ Status
 * Brewfile
 * `✔` move .dotfiles_old/config/*
 * `✔` finally get rid of prezto
+* move applescripts
 
 ### todo
 * look at the cgitparser files again!
 * ~~caskfile~~
-* move applescripts
 * write osx defaults
 * ~~irssi~~
 * config/mpv/scripts as submodules?

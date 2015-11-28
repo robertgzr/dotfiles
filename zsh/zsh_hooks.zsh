@@ -14,8 +14,3 @@ function preexec {
   #autoload -Uz set_running_app
   #set_running_app
 }
-
-function postexec {
-  #autoload -Uz set_running_app
-  #set_running_app
-}

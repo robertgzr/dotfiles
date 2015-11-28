@@ -30,5 +30,7 @@ brew upgrade
 
 # run brew install scripts
 
+# move FF userChrome into profile dir
+
 # Test what you've done
 

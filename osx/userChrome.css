@@ -1,0 +1,84 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Remove Back button when there's nothing to go Back to */
+#ctraddon_back-button[disabled="true"] { display: none; }
+
+/* Remove Forward button when there's nothing to go Forward to */
+#ctraddon_forward-button[disabled="true"] { display: none; }
+
+#urlbar-container { max-width: 100% !important; }
+
+browser { background-color: #1E1E1E !important; }
+
+/* DEFAULT TOP STYLE */
+#main-window:not([privatebrowsingmode]) #TabsToolbar {
+  background-color: #282f36 !important;
+}
+#main-window:not([privatebrowsingmode]) #urlbar {
+    opacity: 0.9 !important;
+    background-color: var(--url-and-searchbar-background-color) !important;
+}
+/* END OF DEFAULT TOP STYLE */
+
+/* PRIVATE TOP STYLE */
+#main-window .private-browsing-indicator {
+    display: none !important;
+}
+#main-window #TabsToolbar {
+  background-color: #240031 !important;
+}
+#main-window #urlbar {
+    opacity: 0.8 !important;
+    background-color: transparent !important;
+}
+/* END OF PRIVATE TOP STYLE */
+/*
+#1d2227
+ */
+
+#TabsToolbar {
+    height: 35px !important;
+}
+
+#tabbrowser-tabs {
+    max-width: 600px !important;
+}
+
+#bookmarks-menu-button, #urlbar-container, #downloads-button, #PanelUI-menu-button {
+    padding-top: 4px !important;
+}
+
+/* Hide Australis tab styles */
+.tab-background-start, .tab-background-end {
+    visibility: hidden !important;
+}
+.tab-background-middle {
+    background: none !important;
+}
+.tab-background {
+    background: none !important;
+}
+
+.tabbrowser {
+    height: 50px !important;
+}
+/* tab selected */
+/*.tabbrowser-tab[selected] {
+    color: #f7f7f7 !important;
+    background: #31333B !important;
+    font-weight: none !important;
+}*/
+
+/* tab general */
+.tabbrowser-tab {
+/*    color: #BFBFBF !important;
+    border: 0px solid !important;
+    border-bottom: none !important;
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+    border-right: none !important;
+    border-left: none !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    background: #1E2024 !important;
+*/
+}

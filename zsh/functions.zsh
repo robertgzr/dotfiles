@@ -211,7 +211,14 @@ function encfsfs() {
     #ln -s /Volumes/Transcend/FSeagate/FS /Volumes/FakeSeagate;
 }
 
-# convenience to flash Atmega8
-function bootloadHID() {
-    ~/Development/git/bootloadHID/commandline/bootloadHID $1
+# ffmpeg -> gif script
+function gifenc() {
+  if [[ "$1" = "-h" ]]; then
+    print -n "Usage: gifenc [input] [output] [horizontal resolution for output] [fps]"
+  fi
+  palette="/tmp/palette.png"
+  filters="fps=$4,scale=$3:-1:flags=lanczos"
+  ffmpeg -nostats  -i $1 -vf "$filters,palettegen" -y $palette
+  ffmpeg -nostats -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $2
 }
+

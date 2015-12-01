@@ -10,15 +10,17 @@ DOT_DIR="$HOME/.dotfiles"
 # symlinks
 ln -sfv "$DOT_DIR/zsh/modules/fasd/fasd.rc" ~/.fasdrc
 ln -sfv "$DOT_DIR/zsh/zshenv" ~/.zshenv
+
 # bacause I made $DOT_DIR/zsh my ZDOTDIR
 ln -sfv "$DOT_DIR/zsh/zshrc" "$DOT_DIR/zsh/.zshrc"
 
-cd "$DOT_DIR/zsh/modules/info-functions/cgitparser"
-# make
+# build gitparser:
+# cd "$DOT_DIR/zsh/modules/info-functions/cgitparser"
 
-# .config git
+# .config dir -> home
 ln -sfv "$DOT_DIR/config" ~/.config
 
+# git-configs
 ln -sfv "$DOT_DIR/git/gitconfig" ~/.gitconfig
 ln -sfv "$DOT_DIR/git/gitignore_global" ~/.gitignore_global
 

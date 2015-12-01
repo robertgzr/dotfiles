@@ -33,9 +33,9 @@ Status
 
 ### todo
 * look at the cgitparser files again!
-* ~~caskfile~~
+* ~~caskfile~~ (part of brewfile)
 * write osx defaults
-* ~~irssi~~
+* ~~irssi~~ (switched to weechat)
 * ~~config/mpv/scripts as submodules~~
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
 * weechat certificates & SSH stuff

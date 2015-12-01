@@ -23,7 +23,8 @@
     filemode = false
 
 [alias]
-    st = status
+    st = status --porcelain --branch
+    sti = status --porcelain --branch --ignored
     sts = status -sb
     stl = ls-files -m -o --exclude-standard
     ci = commit

@@ -22,3 +22,6 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "zsh/modules/info-functions/go-gitparser"]
+	path = zsh/modules/info-functions/go-gitparser
+	url = https://bitbucket.org/robertgzr/go-gitparser

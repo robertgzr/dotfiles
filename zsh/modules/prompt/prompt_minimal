@@ -72,20 +72,20 @@ function prompt_minimal {
 
     zstyle ':git:info' verbose 'yes'
 
-    zstyle ':git:info:commit' format "$FG[000]@$FX[reset]%c"
+    zstyle ':git:info:commit' format "%c"
     zstyle ':git:info:branch' format "$FG[000]$FG[004]%b$FX[reset]"
 
-    zstyle ':git:info:ahead' format " ↑"
-    zstyle ':git:info:behind' format "↓"
+    zstyle ':git:info:ahead' format " ↑$FG[142]%A$FX[reset]"
+    zstyle ':git:info:behind' format "↓$FG[142]%B$FX[reset]"
 
     zstyle ':git:info:clean' format " $FG[002]✔$FX[reset]"
     zstyle ':git:info:dirty' format " $FG[001]✗$FX[reset]"
     zstyle ':git:info:unmerged' format "═"
-    zstyle ':git:info:modified' format "✱"
-    zstyle ':git:info:untracked' format "?"
+    zstyle ':git:info:modified' format " $FG[093]✱$FX[reset]"
+    zstyle ':git:info:untracked' format " ?"
 
     zstyle ':git:info:keys' format \
-        'status' "%b%c%A%B%C%D%m%U%u $FG[000]" \
+        'status' " %b$FG[000]@$FX[reset]%c%A%B%m%U%u%C%D" \
         'short' '%b%C%D $FG[000]'
 
     add-zsh-hook preexec prompt_preexec

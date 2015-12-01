@@ -29,8 +29,8 @@ function update_git_info()
     #local position_formatted
     local remote_format
     local remote_formatted
-    local unindexed_format
-    local unindexed_formatted
+    # local unindexed_format
+    # local unindexed_formatted
     local unmerged_format
     local unmerged_formatted
     local untracked_format
@@ -43,23 +43,31 @@ function update_git_info()
         return 1
     fi
 
+    # # Return if git-info is disabled.
+    # if ! is-true "${$(git config --bool prompt.showinfo):-true}"; then
+    #     return 1
+    # fi
+
     typeset -gA FORMAT_GIT_INFO
-    # local gitparser="$CGIT_DIR/build/cgit"
-    local gitparser="/tmp/bin/cgit"
+    local gitparser="/Users/robertgz/Development/go/bin/go-gitparser"
+    # local gitparser="/tmp/bin/cgit"
 
     GIT_INFO=`${gitparser} 2>/dev/null`
 
     CURRENT_GIT_INFO=("${(@s:,:)GIT_INFO}")
 
+    local commit=$CURRENT_GIT_INFO[1]
+    local branch=$CURRENT_GIT_INFO[2]
+    local remote=$CURRENT_GIT_INFO[3]
     local ahead=$CURRENT_GIT_INFO[4]
     local behind=$CURRENT_GIT_INFO[5]
-    local branch=$CURRENT_GIT_INFO[2]
-    local commit=$CURRENT_GIT_INFO[1]
-    local dirty=$CURRENT_GIT_INFO[7]
+    local untracked=$CURRENT_GIT_INFO[6]
+    local added=$CURRENT_GIT_INFO[7]
     local modified=$CURRENT_GIT_INFO[8]
-    local remote=$CURRENT_GIT_INFO[3]
-    local unmerged=$CURRENT_GIT_INFO[9]
-    local untracked=$CURRENT_GIT_INFO[10]
+    local deleted=$CURRENT_GIT_INFO[9]
+    local deleted=$CURRENT_GIT_INFO[10]
+    local renamed=$CURRENT_GIT_INFO[11]
+    local copied=$CURRENT_GIT_INFO[12]
 
     # Format commit
     zstyle -s ':git:info:commit' format 'commit_format'
@@ -120,7 +128,7 @@ function update_git_info()
     fi
 
     # Format dirty and clean
-    if (( dirty > 0 )) ; then
+    if (( added > 0 || deleted > 0 || renamed > 0 || copied > 0 || renamed > 0 )) ; then
         zstyle -s ':git:info:dirty' format 'dirty_format'
         zformat -f dirty_formatted "$dirty_format" "D:$dirty"
     else

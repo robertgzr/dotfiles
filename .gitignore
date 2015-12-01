@@ -16,4 +16,4 @@ gh_api_token
 
 zsh/.*
 zsh/tmp/
-zsh/modules/info-functions/cgitparser/cgitparser
+zsh/modules/info-functions/build/*

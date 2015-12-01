@@ -10,7 +10,6 @@ config/transmision/*
 
 config/weechat/logs/
 config/weechat/*.log
-config/weechat/chanstat/peak_data.csv
 
 gh_api_token
 

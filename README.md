@@ -30,6 +30,7 @@ Status
 * `✔` move .dotfiles_old/config/*
 * `✔` finally get rid of prezto
 * move applescripts
+* custom karabiner mappings
 
 ### todo
 * look at the cgitparser files again!
@@ -40,3 +41,5 @@ Status
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
 * weechat certificates & SSH stuff
 * finalize init.sh
+* python - pip
+* ruby - gems

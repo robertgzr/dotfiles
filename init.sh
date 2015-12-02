@@ -30,9 +30,16 @@ eval "$DOT_DIR/install/brew/install"
 brew update
 brew upgrade
 
-# run brew install scripts
+# eval Brewfile
 
 # move FF userChrome into profile dir
+
+# include karabiner-configuration into ~/Library/Application Support/Karabiner/private.xml
+#
+# <?xml version="1.0"?>
+# <root>
+#     <include path="$DOT_DIR/osx/karabiner/private.xml" />
+# </root>
 
 # Test what you've done
 

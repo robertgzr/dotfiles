@@ -2,7 +2,7 @@
 <root>
     <!-- Key Remaps -->
     <item>
-        <name>Remap Caps Lock to Hyper with Escape on Tap</name>
+        <name>Remap Caps Lock (⇪) to Hyper with Escape on Tap</name>
         <appendix>OS X doesn't have Hyper. This maps caps lock (actually F19) to Control + Shift + Option + Command, unless you tap it. Then it sends Escape.</appendix>
 
         <identifier>private.caps_lock_to_hyper_or_escape</identifier>
@@ -36,23 +36,50 @@
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
         </autogen>
     </item>
+    <!-- Make umlaut keys useful for coding, by assigning brackets and symbols to right modifier key combinations -->
     <item>
-        <name>Control+Ü to Backslash \</name>
-        <identifier>private.control_ue_to_backslash</identifier>
+        <name>Option-Right(⌥)+Ü to Backslash \</name>
+        <identifier>private.option_ue_to_backslash</identifier>
         <inputsource_only>GERMAN</inputsource_only>
         <autogen>
             --KeyOverlaidModifier--
-            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::CONTROL_L,
+            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::OPTION_R,
             KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
         </autogen>
     </item>
     <item>
-        <name>Option+Ü to Forward Slash /</name>
-        <identifier>private.option_ue_to_forward_slash</identifier>
+        <name>Shift-Right(⇧)+Ü to Forward Slash /</name>
+        <identifier>private.shift_right_ue_to_forward_slash</identifier>
+        <inputsource_only>GERMAN</inputsource_only>
         <autogen>
             --KeyOverlaidModifier--
-            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::OPTION_L,
+            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::SHIFT_R,
             KeyCode::KEY_7, ModifierFlag::SHIFT_L,
+        </autogen>
+    </item>
+    <item>
+        <name>Command-Right(⌘)+Ü to Pipe |</name>
+        <identifier>private.command_ue_to_pipe</identifier>
+        <inputsource_only>GERMAN</inputsource_only>
+        <autogen>
+            --KeyOverlaidModifier--
+            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::COMMAND_R,
+            KeyCode::KEY_7, ModifierFlag::OPTION_L,
+        </autogen>
+    </item>
+    <item>
+        <name>Shift-Right(⇧)+Ö/Ä to Curly Brackets {}</name>
+        <identifier>private.shift_right_ae_oe_to_curly_brackety</identifier>
+        <inputsource_only>GERMAN</inputsource_only>
+        <autogen>
+            --KeyOverlaidModifier--
+            KeyCode::GERMAN_O_UMLAUT, ModifierFlag::SHIFT_R,
+            KeyCode::KEY_8, ModifierFlag::OPTION_L,
+        </autogen>
+        <autogen>
+            --KeyOverlaidModifier--
+            KeyCode::GERMAN_A_UMLAUT, ModifierFlag::SHIFT_R,
+            KeyCode::KEY_9, ModifierFlag::OPTION_L,
         </autogen>
     </item>
     <!-- Special Triggers -->

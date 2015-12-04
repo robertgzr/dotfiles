@@ -14,9 +14,6 @@ ln -sfv "$DOT_DIR/zsh/zshenv" ~/.zshenv
 # bacause I made $DOT_DIR/zsh my ZDOTDIR
 ln -sfv "$DOT_DIR/zsh/zshrc" "$DOT_DIR/zsh/.zshrc"
 
-# build gitparser:
-# cd "$DOT_DIR/zsh/modules/info-functions/cgitparser"
-
 # .config dir -> home
 ln -sfv "$DOT_DIR/config" ~/.config
 
@@ -31,6 +28,10 @@ brew update
 brew upgrade
 
 # eval Brewfile
+
+# build go-gitparser
+# cd "$DOT_DIR/zsh/modules/info-functions/go-gitparser"
+# go build -o ../bin/go-gitparser
 
 # move FF userChrome into profile dir
 

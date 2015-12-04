@@ -15,4 +15,4 @@ gh_api_token
 
 zsh/.*
 zsh/tmp/
-zsh/modules/info-functions/build/*
+zsh/modules/info-functions/bin/

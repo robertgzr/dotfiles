@@ -49,8 +49,7 @@ function update_git_info()
     # fi
 
     typeset -gA FORMAT_GIT_INFO
-    local gitparser="/Users/robertgz/Development/go/bin/go-gitparser"
-    # local gitparser="/tmp/bin/cgit"
+    local gitparser="$ZDOTDIR/modules/info-functions/bin/go-gitparser"
 
     GIT_INFO=`${gitparser} 2>/dev/null`
 

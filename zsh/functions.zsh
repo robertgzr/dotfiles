@@ -138,6 +138,10 @@ function mpvp()
 {
     if [ "$#" = 0 ]; then
         mpv `pbp` --profile=ydl
+    elif [ "$1" = "-a" ]; then
+        mpv `pbp` --no-video --vo=null --term-osd=force --term-osd-bar=yes --term-osd-bar-chars="[+>-]" --term-playing-msg="> ${filename}" --input-app-events=yes --ytdl
+    elif [ "$1" = "-l" ]; then
+        mpv `pbp` --profile=ydl --loop
     elif [ "$#" = 1 ]; then
         mpv `pbp` --profile=ydl --ytdl-format=$1
     elif [ "$#" = 2 ]; then

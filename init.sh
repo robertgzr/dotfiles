@@ -4,43 +4,141 @@ export DOT_DIR
 
 DOT_DIR="$HOME/.dotfiles"
 
-# update dotfiles
-[ -d "$DOT_DIR/.git" ] && git --work-tree="$DOT_DIR" --git-dir="$DOT_DIR/.git" pull origin master
+local arch=`uname`
+local you=`whoami`
 
-# symlinks
-ln -sfv "$DOT_DIR/zsh/modules/fasd/fasd.rc" ~/.fasdrc
-ln -sfv "$DOT_DIR/zsh/zshenv" ~/.zshenv
+local iosevka_version="1.2.0"
+local golang_version="1.5.2"
 
-# bacause I made $DOT_DIR/zsh my ZDOTDIR
-ln -sfv "$DOT_DIR/zsh/zshrc" "$DOT_DIR/zsh/.zshrc"
+function update_dotfiles
+{
+    # update dotfiles
+    [ -d "$DOT_DIR/.git" ] && git --work-tree="$DOT_DIR" --git-dir="$DOT_DIR/.git" pull origin master
+    # update submodules
+    git submodule update --init --recursive
+}
 
-# .config dir -> home
-ln -sfv "$DOT_DIR/config" ~/.config
+function setup_git
+{
+    echo "[CONFIG] Git global configuration"
+    # git-configs
+    ln -sfv "$DOT_DIR/git/gitconfig" ~/.gitconfig
+    ln -sfv "$DOT_DIR/git/gitignore_global" ~/.gitignore_global
+}
 
-# git-configs
-ln -sfv "$DOT_DIR/git/gitconfig" ~/.gitconfig
-ln -sfv "$DOT_DIR/git/gitignore_global" ~/.gitignore_global
+function setup_homebrew
+{
+    echo "[BREW] Install"
+    eval "$DOT_DIR/install/brew/install"
+    echo "[BREW] Update"
+    brew update
+    echo "[BREW] Upgrade"
+    brew upgrade
+    # eval Brewfile
+    echo "[BREW] Evaluate Brewfile"
+    brew bundle
+}
 
+function setup_zsh
+{
+    echo "[ZSH] Link .zshrc"
+    # bacause I made $DOT_DIR/zsh my ZDOTDIR
+    ln -sfv "$DOT_DIR/zsh/zshrc" "$DOT_DIR/zsh/.zshrc"
 
-# install brew
-eval "$DOT_DIR/install/brew/install"
-brew update
-brew upgrade
+    echo "[ZSH] Link .zshenv and .fasd"
+    ln -sfv "$DOT_DIR/zsh/modules/fasd/fasd.rc" ~/.fasdrc
+    ln -sfv "$DOT_DIR/zsh/zshenv" ~/.zshenv
+}
 
-# eval Brewfile
+function setup_config
+{
+    echo "[CONFIG] Link .config directory into $HOME"
+    # .config dir -> home
+    ln -sfv "$DOT_DIR/config" ~/.config
+}
 
-# build go-gitparser
-# cd "$DOT_DIR/zsh/modules/info-functions/go-gitparser"
-# go build -o ../bin/go-gitparser
+function setup_go-gitparser
+{
+    echo "[ZSH] Build go-gitparser"
+    # build go-gitparser
+    cd "$DOT_DIR/zsh/modules/info-functions/go-gitparser"
+    go build
+}
 
-# move FF userChrome into profile dir
+function setup_golang_linux
+{
+    echo "[GOLANG] Download"
+    cd /tmp
+    wget "https://storage.googleapis.com/golang/go$golang_version.linux-amd64.tar.gz"
+    echo "[GOLANG] Install"
+    tar -C /usr/local -xzf "go$golang_version.linux-amd64.tar.gz"
+}
 
-# include karabiner-configuration into ~/Library/Application Support/Karabiner/private.xml
-#
-# <?xml version="1.0"?>
-# <root>
-#     <include path="$DOT_DIR/osx/karabiner/private.xml" />
-# </root>
+function setup_iosevka
+{
+    echo "[FONT] Downloading Iosevka $iosevka_version"
+    mkdir "/tmp/iosevka$iosevka_version" && cd "/tmp/iosevka$iosevka_version"
 
-# Test what you've done
+    wget "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-$iosevka_version.tar.bz2"
+    wget "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-slab-$iosevka_version.tar.bz2"
 
+    echo "[FONT] Installing Iosevka"
+    if [[ arch = "Darwin" ]]; then
+    # # #
+        tar -C ~/Library/Fonts -xzf "iosevka-slab-$iosevka_version.tar.bz2"
+        tar -C ~/Library/Fonts -xzf "iosevka-$iosevka_version.tar.bz2"
+    # # #
+    elif [[ arch = "Linux" ]]; then
+    # # #
+        tar -C /usr/local/share/fonts/truetype -xzf "iosevka-slab-$iosevka_version.tar.bz2"
+        tar -C /usr/local/share/fonts/truetype -xzf "iosevka-$iosevka_version.tar.bz2"
+    fi
+}
+
+function setup_karabiner
+{
+    # include karabiner-configuration into ~/Library/Application Support/Karabiner/private.xml
+    #
+    # <?xml version="1.0"?>
+    # <root>
+    #     <include path="$DOT_DIR/osx/karabiner/private.xml" />
+    # </root>
+}
+
+function setup_ff_userchrome
+{
+    # move FF userChrome into profile dir
+}
+
+function run
+{
+    echo "Hey, $you"
+    echo "SYSTEM SETUP VIA DOTFILES"
+
+    echo ">>> Update dotfile repository"
+    echo ">>> Load git submodules"
+    update_dotfiles()
+    setup_iosevka()
+    setup_zsh()
+    setup_config()
+    setup_git()
+
+    if [[ arch = "Darwin" ]]; then
+        echo ">>> Start OSX specific actions"
+        setup_homebrew()
+        echo "[OSX] Firefix userChrome mod"
+        setup_ff_userchrome()
+        echo "[OSX] Karabiner mods"
+        setup_karabiner()
+        # echo "[OSX] Set system defaults"
+        # defaults
+        #
+    # # #
+    elif [[ arch = "Linux" ]]; then
+        echo ">>> Start Linux specific actions"
+        setup_golang_linux()
+    fi
+    setup_go-gitparser()
+}
+
+run $@

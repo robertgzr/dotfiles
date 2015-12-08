@@ -56,8 +56,8 @@ user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101
 [ydl]
 profile-desc="Optimized for streaming with youtube-dl"
 
-# ytdl-format="bestvideo[height<=?720]+bestaudio/best"
-ytdl-format=22
+ytdl-format="bestvideo[height<=?720]+bestaudio/best"
+# ytdl-format=22
 hwdec=auto
 
 cache=8192

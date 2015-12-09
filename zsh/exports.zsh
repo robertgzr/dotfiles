@@ -1,16 +1,16 @@
 # ==== ENVS
 
 # Go
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/Development/go
+#export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/devel/go
 
 # Path
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/X11/bin
-export PATH=$PATH:$(brew --prefix homebrew/php/php54)/bin
+# export PATH=$PATH:$(brew --prefix homebrew/php/php54)/bin
 
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
+# export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
 # export PKG_CONFIG_PATH=/usr/local/opt/pyenv/versions/3.4.3/lib/pkgconfig/:/usr/local/opt/qt5/lib/pkgconfig:/usr/local/opt/oniguruma/lib/pkgconfig
 
@@ -39,10 +39,10 @@ export PAGER='less'
 export EDITOR="vim"
 export VISUAL="subl -n"
 
-export EAGLE_DIR=$HOME/Documents/eagle
+# export EAGLE_DIR=$HOME/Documents/eagle
 
 # GitHub token with no scope, used to get around API limits
-export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/gh_api_token)
+# export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/gh_api_token)
 
 # Python
 # export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
@@ -77,9 +77,9 @@ export JUNIT_HOME=$HOME/Development/CE-HTW/softwaretechnik/junit_test/
 
 
 # postgreSQL
-export PGDATA=/usr/local/pgsql/data
+# export PGDATA=/usr/local/pgsql/data
 
 # Arduino
-export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Contents/Java/
-export BOARD=uno
+# export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Contents/Java/
+# export BOARD=uno
 

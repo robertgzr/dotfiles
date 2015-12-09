@@ -4,11 +4,11 @@ export DOT_DIR
 
 DOT_DIR="$HOME/.dotfiles"
 
-local arch=`uname`
-local you=`whoami`
+arch=`uname`
+you=`whoami`
 
-local iosevka_version="1.2.0"
-local golang_version="1.5.2"
+iosevka_version="1.2.0"
+golang_version="1.5.2"
 
 function update_dotfiles
 {
@@ -83,12 +83,12 @@ function setup_iosevka
     wget "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-slab-$iosevka_version.tar.bz2"
 
     echo "[FONT] Installing Iosevka"
-    if [[ arch = "Darwin" ]]; then
+    if [[ "$arch" = "Darwin" ]]; then
     # # #
         tar -C ~/Library/Fonts -xzf "iosevka-slab-$iosevka_version.tar.bz2"
         tar -C ~/Library/Fonts -xzf "iosevka-$iosevka_version.tar.bz2"
     # # #
-    elif [[ arch = "Linux" ]]; then
+    elif [[ "$arch" = "Linux" ]]; then
     # # #
         tar -C /usr/local/share/fonts/truetype -xzf "iosevka-slab-$iosevka_version.tar.bz2"
         tar -C /usr/local/share/fonts/truetype -xzf "iosevka-$iosevka_version.tar.bz2"
@@ -97,6 +97,7 @@ function setup_iosevka
 
 function setup_karabiner
 {
+    echo "nothing"
     # include karabiner-configuration into ~/Library/Application Support/Karabiner/private.xml
     #
     # <?xml version="1.0"?>
@@ -107,38 +108,56 @@ function setup_karabiner
 
 function setup_ff_userchrome
 {
+    echo "not yet"
     # move FF userChrome into profile dir
 }
 
 function run
 {
-    echo "Hey, $you"
-    echo "SYSTEM SETUP VIA DOTFILES"
+    echo "Hey, $you ($arch)"
 
     echo ">>> Update dotfile repository"
     echo ">>> Load git submodules"
-    update_dotfiles()
-    setup_iosevka()
-    setup_zsh()
-    setup_config()
-    setup_git()
+    update_dotfiles
+    setup_iosevka
+    setup_zsh
+    setup_config
+    setup_git
 
-    if [[ arch = "Darwin" ]]; then
+    if [[ "$arch" = "Darwin" ]]; then
         echo ">>> Start OSX specific actions"
-        setup_homebrew()
+        setup_homebrew
         echo "[OSX] Firefix userChrome mod"
-        setup_ff_userchrome()
+        setup_ff_userchrome
         echo "[OSX] Karabiner mods"
-        setup_karabiner()
+        setup_karabiner
         # echo "[OSX] Set system defaults"
         # defaults
         #
     # # #
-    elif [[ arch = "Linux" ]]; then
+    elif [[ "$arch" = "Linux" ]]; then
         echo ">>> Start Linux specific actions"
-        setup_golang_linux()
+        setup_golang_linux
+        # setup linuxbrew for getting devel tools?
     fi
-    setup_go-gitparser()
+    setup_go-gitparser
 }
 
-run $@
+function test
+{
+    echo "Hey, $you ($arch)"
+    declare -i compl=0
+    [ -f "$ZDOTDIR/.zshrc" ] && echo "Has .zshrc" && compl+=1
+    [ -f "$HOME/.zshenv" ] && echo "Has ~/.zshenv" && compl+=1
+    [ -d "$HOME/.config" ] && echo "Has ~/.config" && compl+=1
+    [ -f "$HOME/.gitconfig" ] && echo "Has .gitconfig" && compl+=1
+    [ -f "$HOME/.gitignore_global" ] && echo "Has .gitignore_global" && compl+=1
+    [ "$arch" = "Darwin" ] && [ -f "/usr/local/bin/brew" ] && echo "Has Homebrew" && compl+=1
+    [ "$arch" = "Darwin" ] && [ -f "$HOME/Library/Fonts/iosevka-regular.ttf" ] && echo "Has Iosevka" && compl+=1
+    [ -f "$DOT_DIR/zsh/modules/info-functions/go-gitparser" ] && [ ! -z "$($DOT_DIR/zsh/modules/info-functions/go-gitparser)" ] && echo "go-gitparser works" && compl+=1
+    echo ">>> $compl/8 - $(( (100/8)*$compl ))% complete"
+}
+
+[ "$#" = 0 ] && run
+[ "$1" = "test" ] && test
+[ "$1" = "help" ] && echo "Usage: init.sh [test] [help]"

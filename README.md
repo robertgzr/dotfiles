@@ -33,14 +33,16 @@ Status
 * custom karabiner mappings
 
 ### todo
-* look at the cgitparser files again!
+* ~~look at the cgitparser files again!~~ (rewritten in Go)
 * ~~caskfile~~ (part of brewfile)
 * write osx defaults
 * ~~irssi~~ (switched to weechat)
 * ~~config/mpv/scripts as submodules~~
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
 * weechat certificates & SSH stuff
-* finalize init.sh
 * python - pip
 * ruby - gems
 * ableton demo converter folder automation
+* init.sh - more testing on linux
+* linuxbrew?
+* split Brewfile into groups of software and handle install via script

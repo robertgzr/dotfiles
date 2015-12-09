@@ -194,7 +194,7 @@ function streamit()
     STREAM_KEY="CC-D0B0431E-33ED-6E54-4D2A-F6825CACA9D0-38639"
 
     # File streaming
-    if [[ $1 ]]; then
+    if [[ ! -z "$1" ]]; then
         ffmpeg -i $1 -f matr -ac 2 -b:a $AUDIO_RATE -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p -s $OUTRES -preset $QUALITY -acodec libopus -application lowdelay -threads $THREADS -strict normal -bufsize $CBR "rtmp://stream.connectcast.tv/live/$STREAM_KEY"
     # Desktop streaming
     else;

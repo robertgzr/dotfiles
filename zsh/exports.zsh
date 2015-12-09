@@ -83,3 +83,8 @@ export JUNIT_HOME=$HOME/Development/CE-HTW/softwaretechnik/junit_test/
 # export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Contents/Java/
 # export BOARD=uno
 
+if [[ $(uname) = "Linux" && -d "$HOME/.linuxbrew" ]]; then
+	export PATH="$HOME/.linuxbrew/bin:$PATH"
+	export MANPATH="$HOME/linuxbrew/share/man:$MANPATH"
+	export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi

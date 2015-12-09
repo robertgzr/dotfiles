@@ -11,6 +11,8 @@ config/transmision/*
 config/weechat/logs/
 config/weechat/*.log
 config/weechat/script/plugins.xml.gz
+config/weechat/sec.conf
+config/weechat/ssl/
 
 gh_api_token
 

@@ -1,10 +1,18 @@
+#!/usr/bin/env zsh
+
 # Configure prompt behaviour
 
 autoload -Uz add-zsh-hook
 autoload -Uz is_autoloadable
 
-local zsh_prompts=(minimal rbz)
+declare -Ua zsh_prompts
+zsh_prompts=(
+	"minimal" 
+	"rbz"
+)
 local current_prompt=$zsh_prompts[1]
+
+source "$DOT_DIR/zsh/modules/prompt/prompt_minimal"
 
 function chprompt {
   if [[ $# > 0 ]]; then

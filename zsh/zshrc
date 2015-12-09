@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # ==== Basic ZSH
 
 fpath=(
@@ -32,8 +34,8 @@ if which pyenv-virtualenv-init > /dev/null; then
 fi
 
 # setup: THEFUCK
-if $(which thefuck-alias) > /dev/null; then
-    eval $(thefuck-alias fuck)
+if which thefuck-alias > /dev/null; then
+    eval "$(thefuck-alias fuck)"
 fi
 
 

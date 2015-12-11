@@ -97,7 +97,7 @@ function setup_iosevka
 
 function setup_karabiner
 {
-    echo "nothing"
+    echo "not yet"
     # include karabiner-configuration into ~/Library/Application Support/Karabiner/private.xml
     #
     # <?xml version="1.0"?>
@@ -133,7 +133,7 @@ function run
         setup_karabiner
         # echo "[OSX] Set system defaults"
         # defaults
-        #
+        # sublime text config
     # # #
     elif [[ "$arch" = "Linux" ]]; then
         echo ">>> Start Linux specific actions"

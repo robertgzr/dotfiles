@@ -14,7 +14,7 @@ function prompt_update_context {
 
     # prints nothing if whoami returns $USER -> local connection
     if [[ "$user" != "$USER" || -n "$SSH_CONNECTION" ]]; then
-         prompt_context=" $user@%m "
+         prompt_context="[$user@%m] "
     else
         prompt_context=""
     fi

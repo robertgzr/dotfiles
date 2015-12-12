@@ -9,6 +9,7 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/X11/bin
 # export PATH=$PATH:$(brew --prefix homebrew/php/php54)/bin
+export PATH=$PATH:/usr/lib/jvm/java-7-openjdk/bin
 
 # export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
@@ -72,8 +73,8 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 # export GEM_PATH=$DOT_DIR/gem
 
 # Java
-export JAVA_HOME=/Library/Java/Home
-export JUNIT_HOME=$HOME/Development/CE-HTW/softwaretechnik/junit_test/
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+# export JUNIT_HOME=$HOME/Development/CE-HTW/softwaretechnik/junit_test/
 
 
 # postgreSQL

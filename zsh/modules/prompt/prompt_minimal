@@ -1,3 +1,5 @@
+#!/bin/env zsh
+
 # Provide a minimal prompt interface
 
 # Sets up: pwd
@@ -5,6 +7,20 @@
 
 _prompt_minimal_start_time=$SECONDS
 
+# prints shell context if not than local machine
+function prompt_update_context {
+    local user=`whoami`
+    prompt_context=""
+
+    # prints nothing if whoami returns $USER -> local connection
+    if [[ "$user" != "$USER" || -n "$SSH_CONNECTION" ]]; then
+         prompt_context=" $user@%m "
+    else
+        prompt_context=""
+    fi
+}
+
+# prints the current directory (short/long format)
 function prompt_dir() {
     if [[ $1 = short ]]; then
         # shortend path behaviour
@@ -22,6 +38,7 @@ function prompt_dir() {
     fi
 }
 
+# prints the time since login to shell instance
 function prompt_paradox_print_elapsed_time {
   local end_time=$(( SECONDS - _prompt_minimal_start_time ))
   local hours minutes seconds remainder
@@ -43,7 +60,9 @@ function prompt_paradox_print_elapsed_time {
 
 # ==== Prompt constructor functions
 
+# executes prior to any command
 function prompt_precmd {
+    prompt_update_context
     prompt_dir short
 
     autoload -Uz update_git_info
@@ -51,7 +70,7 @@ function prompt_precmd {
         update_git_info
     fi
 
-    PROMPT='$FG[002]$prompt_pwd%{%f%}$FX[reset] $FG[255]> '
+    PROMPT='$prompt_context$FG[002]$prompt_pwd%{%f%}$FX[reset] $FG[255]> '
 
     if [[ -n "$FORMAT_GIT_INFO" ]]; then
         RPROMPT='$FORMAT_GIT_INFO[status]'
@@ -61,6 +80,7 @@ function prompt_precmd {
     prompt_paradox_print_elapsed_time
 }
 
+# executes prior to any command execution
 function prompt_preexec {
     _prompt_minimal_elapsed_time="$SECONDS"
 }

@@ -1,0 +1,4 @@
+" starting to use vim a little more
+" pathogen plugin manager
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()

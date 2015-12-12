@@ -1,4 +1,61 @@
 " starting to use vim a little more
+
 " pathogen plugin manager
-call pathogen#runtime_append_all_bundles()
+filetype off
+call pathogen#infect()
 call pathogen#helptags()
+filetype plugin indent on
+
+" centralize vimfiles
+set backupdir=$DOT_DIR/vim/backups
+set directory=$DOT_DIR/vim/swaps
+if exists("&undodir")
+	set undodir=$DOT_DIR/vim/undo
+endif
+
+" set colors here:
+set background=dark
+
+" solarized
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+
+set encoding=utf-8 nobomb
+set nocompatible
+syntax enable
+
+"" General settings
+set number
+set linebreak
+set showbreak=+++
+set textwidth=100
+set showmatch
+set visualbell
+
+set hlsearch
+set smartcase
+set ignorecase
+set incsearch
+
+set autoindent
+set shiftwidth=4
+set smartindent
+set smarttab
+set softtabstop=4
+set expandtab
+
+" always show status line
+set laststatus=2
+set noerrorbells
+set showmode
+set showcmd
+
+" allow backspace in INSERT mode
+set backspace=indent,eol,start
+
+if has("gui_vimr")
+	" Vimr specific stuff
+endif

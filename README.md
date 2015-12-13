@@ -47,3 +47,4 @@ Status
 * init.sh - more testing on linux
 * linuxbrew?
 * split Brewfile into groups of software and handle install via script
+* check gitparser behavior when branch name "foo_bar"

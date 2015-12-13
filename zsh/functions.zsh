@@ -1,4 +1,4 @@
-#
+#!/bin/env zsh
 # ze-best-zsh-config
 # Author:
 #   https://github.com/spicycode
@@ -226,3 +226,9 @@ function gifenc() {
   ffmpeg -nostats -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $2
 }
 
+function xvmup {
+    VBoxManage startvm i3-Xubuntu --type headless
+    if [[ "$1" = "-v" ]]; then
+        echo "xvmup 0.1 - Headless start of Xbuntu Virtual Machine"
+    fi
+}

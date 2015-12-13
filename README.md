@@ -31,6 +31,7 @@ Status
 * `✔` finally get rid of prezto
 * move applescripts
 * custom karabiner mappings
+* configure vim
 
 ### todo
 * ~~look at the cgitparser files again!~~ (rewritten in Go)

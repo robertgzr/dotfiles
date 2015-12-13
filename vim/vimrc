@@ -1,10 +1,26 @@
 " starting to use vim a little more
 
-" pathogen plugin manager
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
+"" Plugin Manager
+call plug#begin('~/.vim/plugged')
+" >>> Plugin list:
+" colorschemes
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+" interface
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+" ux
+Plug 'godlygeek/tabular'
+Plug 'scrooloose/syntastic'
+" lang specific
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
+" TDOD:
+" c/cpp
+" java
+" python
+" >>> End of Plugin List
+call plug#end()
 
 " centralize vimfiles
 set backupdir=$DOT_DIR/vim/backups
@@ -13,15 +29,11 @@ if exists("&undodir")
 	set undodir=$DOT_DIR/vim/undo
 endif
 
-" set colors here:
-set background=dark
-
-" solarized
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+" solarized options:
+"let g:solarized_termcolors=256
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
+"colorscheme solarized
 
 set encoding=utf-8 nobomb
 set nocompatible
@@ -30,7 +42,7 @@ syntax enable
 "" General settings
 set number
 set linebreak
-set showbreak=+++
+set showbreak=+++ 
 set textwidth=100
 set showmatch
 set visualbell
@@ -57,5 +69,21 @@ set showcmd
 set backspace=indent,eol,start
 
 if has("gui_vimr")
-	" Vimr specific stuff
+    " Vimr specific stuff
+    colorscheme dracula
+    set guifont=Iosevka:h12
 endif
+
+"" Plugin settings:
+
+" vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 1
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }

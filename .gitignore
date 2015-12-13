@@ -1,3 +1,5 @@
+# global gitignore
+
 config/flexget/.config-lock
 config/flexget/*.log
 config/flexget/log-*
@@ -15,6 +17,12 @@ config/weechat/sec.conf
 config/weechat/ssl/
 
 gh_api_token
+
+vim/.netrwhist
+vim/plugged/
+vim/undo/
+vim/swaps/
+vim/backups/
 
 zsh/.*
 zsh/tmp/

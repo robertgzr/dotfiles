@@ -1,4 +1,6 @@
-# python environment info
+#!/bin/env zsh
+
+# Python Environment Info
 
 function update_python_info {
     local virtualenv_format

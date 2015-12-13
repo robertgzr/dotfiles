@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # ==== Basic ZSH
 
 fpath=(
@@ -32,8 +34,8 @@ if which pyenv-virtualenv-init > /dev/null; then
 fi
 
 # setup: THEFUCK
-if $(which thefuck-alias) > /dev/null; then
-    eval $(thefuck-alias fuck)
+if which thefuck-alias > /dev/null; then
+    eval "$(thefuck-alias fuck)"
 fi
 
 
@@ -76,4 +78,5 @@ source $ZDOTDIR/modules/zsh-history-substring-search/zsh-history-substring-searc
 # Syntax Highlighting
 source $ZDOTDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# fuzzy search with fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

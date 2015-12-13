@@ -1,14 +1,8 @@
 # ==== ENVS
 
-# Go
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/Development/go
-
 # Path
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/opt/X11/bin
-export PATH=$PATH:$(brew --prefix homebrew/php/php54)/bin
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
@@ -39,11 +33,6 @@ export PAGER='less'
 export EDITOR="vim"
 export VISUAL="subl -n"
 
-export EAGLE_DIR=$HOME/Documents/eagle
-
-# GitHub token with no scope, used to get around API limits
-export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/gh_api_token)
-
 # Python
 # export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 # export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.12/lib/python2.7/site-packages
@@ -67,19 +56,16 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 # export CRMEASY_DB_PASS=pg
 # export SECRET_KEY='l6w=)99mi_^$=p9^d2=%8qvl7@fee$0=s=k$(@4cwldmjgyo1e'
 
-
 # Ruby
-# export GEM_PATH=$DOT_DIR/gem
-
-# Java
-export JAVA_HOME=/Library/Java/Home
-export JUNIT_HOME=$HOME/Development/CE-HTW/softwaretechnik/junit_test/
-
+export GEM_PATH=$DOT_DIR/gem
 
 # postgreSQL
-export PGDATA=/usr/local/pgsql/data
+# export PGDATA=/usr/local/pgsql/data
 
-# Arduino
-export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Contents/Java/
-export BOARD=uno
+if [[ $(uname) = "Linux" ]]; then
+    source $DOT_DIR/zsh/additionals/linux_exports.zsh
+fi
 
+if [[ $(uname) = "Darwin" ]]; then
+    source $DOT_DIR/zsh/additionals/osx_exports.zsh
+fi

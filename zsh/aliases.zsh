@@ -25,6 +25,12 @@ alias unhide="chflags nohidden"
 # alias py3='python3.5'
 alias py='python'
 
+# ==== Linux specific
+if [[ $(uname) = "Linux" ]]; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
+
 # ==== OSX specific
 alias cdf='cd "$(pfd)"'
 alias pushdf='pushd "$(pfd)"'

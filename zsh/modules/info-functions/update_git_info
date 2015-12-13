@@ -1,11 +1,9 @@
-#
+#!/usr/bin/env zsh
+
 # A Git Parser for ZSH
-# written in C
-#
+# written in Go
 
-export CGIT_DIR=${0:A:h}
-
-function update_git_info()
+function update_git_info
 {
     setopt LOCAL_OPTIONS
     local ahead_and_behind
@@ -49,10 +47,9 @@ function update_git_info()
     # fi
 
     typeset -gA FORMAT_GIT_INFO
-    local gitparser="$ZDOTDIR/modules/info-functions/bin/go-gitparser"
+    local gitparser="$ZDOTDIR/modules/info-functions/go-gitparser/go-gitparser"
 
     GIT_INFO=`${gitparser} 2>/dev/null`
-
     CURRENT_GIT_INFO=("${(@s:,:)GIT_INFO}")
 
     local commit=$CURRENT_GIT_INFO[1]
@@ -103,7 +100,7 @@ function update_git_info()
     fi
 
     if ! zstyle -t ':git:info' verbose; then
-        # indexed
+        # git info is deactivated, maybe...
         echo "not supported"
         return 1
     else

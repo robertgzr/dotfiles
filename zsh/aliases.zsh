@@ -27,8 +27,8 @@ alias py='python'
 
 # ==== Linux specific
 if [[ $(uname) = "Linux" ]]; then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
+    alias pbcopy='xclip -in'
+    alias pbpaste='xclip -out'
 fi
 
 # ==== OSX specific

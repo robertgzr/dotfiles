@@ -11,7 +11,8 @@ iosevka_version="1.2.0"
 golang_version="1.5.2"
 
 # TODO:
-# do vim config linking
+# vim config linking
+# create vim folders
 
 function update_dotfiles
 {

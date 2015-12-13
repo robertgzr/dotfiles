@@ -29,6 +29,8 @@ alias py='python'
 if [[ $(uname) = "Linux" ]]; then
     alias pbcopy='xclip -in'
     alias pbpaste='xclip -out'
+    alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && ssh'
+    alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && git'
 fi
 
 # ==== OSX specific

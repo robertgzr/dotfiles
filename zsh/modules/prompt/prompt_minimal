@@ -7,7 +7,6 @@
 
 _prompt_minimal_start_time=$SECONDS
 
-<<<<<<< HEAD
 # prints shell context if not than local machine
 function prompt_update_context {
     local user=`whoami`
@@ -20,25 +19,8 @@ function prompt_update_context {
         prompt_context=""
     fi
 }
-
+ 
 # prints the current directory (short/long format)
-||||||| merged common ancestors
-=======
-# prints shell context if not than local machine
-function prompt_update_context {
-    local user=`whoami`
-    prompt_context=""
-
-    # prints nothing if whoami returns $USER -> local connection
-    if [[ "$user" != "$USER" || -n "$SSH_CONNECTION" ]]; then
-         prompt_context="[$user@%m] "
-    else
-        prompt_context=""
-    fi
-}
-
-# prints the current directory (short/long format)
->>>>>>> 2005e44d1e91957bc60ff118f6a1dfcae225925a
 function prompt_dir() {
     if [[ $1 = short ]]; then
         # shortend path behaviour

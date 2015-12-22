@@ -33,6 +33,7 @@ Status
 * `✔` custom karabiner mappings
 * configure vim
 * `✔` write osx defaults
+* dock auto-config
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
 
 ### todo
@@ -48,3 +49,8 @@ Status
 * linuxbrew?
 * split Brewfile into groups of software and handle install via script
 * check gitparser behavior when branch name "foo_bar"
+
+Cheatsheets
+-----------
+* [OS X bootable installer](https://github.com/robertgzr/dotfiles/blob/master/osx/How-to-make-bootable-osx-installer.md)
+* [SSH everything](https://github.com/robertgzr/dotfiles/blob/master/osx/ssh-everything.md)

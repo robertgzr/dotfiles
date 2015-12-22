@@ -5,17 +5,11 @@ robertgzr's dotfiles
 
 inspired by [Lars Kappert](https://twitter.com/webprolific)'s [Getting started with dotfiles](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789)
 
-nice dotfile examples
-* https://github.com/webpro/dotfiles
-
-zsh startup time profiling
-* https://kev.inburke.com/kevin/profiling-zsh-startup-time/
-
-weechat-mac-ca-bundle gist:
-* https://gist.github.com/1stvamp/2158128
-
-Tame Spotlight:
-* http://tumblr.amitgupta.com/post/262471673/stopping-runaway-cpu-usage-by-mds-mdworker-and
+* [nice dotfile examples](https://github.com/webpro/dotfiles)
+* [zsh startup time profiling](https://kev.inburke.com/kevin/profiling-zsh-startup-time/)
+* [weechat-mac-ca-bundle gist](https://gist.github.com/1stvamp/2158128)
+* [Tame Spotlight](http://tumblr.amitgupta.com/post/262471673/stopping-runaway-cpu-usage-by-mds-mdworker-and)
+* [Restore OS X with OS X Recovery](https://support.apple.com/en-us/HT201314)
 
 Status
 ------
@@ -35,7 +29,7 @@ Status
 * `✔` write osx defaults
 * dock auto-config
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
-* minimal brewfile
+* minimal brewfile  
 
 ### todo
 * ~~c-gitparser~~ (rewritten in Go)

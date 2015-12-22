@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env zsh
 
 export DOT_DIR
 DOT_DIR="$HOME/.dotfiles"
@@ -60,12 +60,12 @@ function setup_config
     ln -sfv "$DOT_DIR/config" ~/.config
 }
 
-function setup_go-gitparser
+function setup_gogitparser
 {
     echo "[ZSH] Build go-gitparser"
     # build go-gitparser
     cd "$DOT_DIR/zsh/modules/info-functions/go-gitparser"
-    go build
+    eval "go build"
 }
 
 function setup_golang_linux
@@ -101,23 +101,33 @@ function setup_iosevka
 function setup_karabiner
 {
     echo "not yet"
-    # include karabiner-configuration into ~/Library/Application Support/Karabiner/private.xml
-    #
-    # <?xml version="1.0"?>
-    # <root>
-    #     <include path="$DOT_DIR/osx/karabiner/private.xml" />
-    # </root>
+    # include karabiner-configuration into $HOME/Library/Application Support/Karabiner/private.xml
+    [ ! -d "$HOME/Library/Application Support/Karabiner" ] && echo "Can't find Karabiner Config directory. Is Karabiner installed?"
+        return 1
+    if [ ! -f "$HOME/Library/Application Support/Karabiner/private.xml" ]; then
+        touch "$HOME/Library/Application Support/Karabiner/private.xml"
+        echo """<?xml version="1.0"?>
+<root>
+    <include path="$DOT_DIR/osx/karabiner/private.xml" />
+</root>""" >> "$HOME/Library/Application Support/Karabiner/private.xml"
+    else
+        echo "Has Karabiner config"
+    fi
 }
 
 function setup_ff_userchrome
 {
-    echo "not yet"
-    # move FF userChrome into profile dir
+    if [ ! -d "$HOME/Library/Application Support/Firefox/Profiles" ]; then
+        echo "Can't find FF profile folder at ~/Library/Application Support/Firefox/Profiles/"
+        return 1
+    else
+        open -a Finder "$HOME/Library/Application Support/Firefox/Profiles"
+    fi
 }
 
 function run
 {
-    echo "Hey, $you ($arch)"
+    echo "Hey, $you (on $arch)"
 
     echo ">>> Update dotfile repository"
     echo ">>> Load git submodules"
@@ -148,19 +158,65 @@ function run
 
 function test
 {
-    echo "Hey, $you ($arch)"
+    echo "Hey, $you (on $arch)"
     declare -i compl=0
-    [ -f "$ZDOTDIR/.zshrc" ] && echo "Has .zshrc" && compl+=1
-    [ -f "$HOME/.zshenv" ] && echo "Has ~/.zshenv" && compl+=1
-    [ -d "$HOME/.config" ] && echo "Has ~/.config" && compl+=1
-    [ -f "$HOME/.gitconfig" ] && echo "Has .gitconfig" && compl+=1
-    [ -f "$HOME/.gitignore_global" ] && echo "Has .gitignore_global" && compl+=1
-    [ "$arch" = "Darwin" ] && [ -f "/usr/local/bin/brew" ] && echo "Has Homebrew" && compl+=1
-    [ "$arch" = "Darwin" ] && [ -f "$HOME/Library/Fonts/iosevka-regular.ttf" ] && echo "Has Iosevka" && compl+=1
-    [ -f "$DOT_DIR/zsh/modules/info-functions/go-gitparser" ] && [ ! -z "$($DOT_DIR/zsh/modules/info-functions/go-gitparser)" ] && echo "go-gitparser works" && compl+=1
-    echo ">>> $compl/8 - $(( (100/8)*$compl ))% complete"
+    # test zsh config
+    if [ -f "$ZDOTDIR/.zshrc" ]; then
+        print -P "Has %F{green}.zshrc%f" && compl+=1
+    else
+        print -P "%F{red}! no .zshrc"
+    fi
+    if [ -f "$HOME/.zshenv" ]; then
+        print -P "Has %F{green}~/.zshenv%f" && compl+=1
+    else
+        print -P "%F{red}! no .zshenv %f"
+    fi
+    # check if config was symlinked
+    if [ -d "$HOME/.config" ]; then
+        print -P "Has %F{green}~/.config%f" && compl+=1
+    else
+        print -P "%F{red}! no ~/.config %f"
+    fi
+    # test git config
+    if [ -f "$HOME/.gitconfig" ]; then
+        print -P "Has %F{green}.gitconfig%f" && compl+=1
+    else
+        print -P "%F{red}! no .gitconfig %f"
+    fi
+    if [ -f "$HOME/.gitignore_global" ]; then
+        print -P "Has %F{green}.gitignore_global%f" && compl+=1
+    else
+        print -P "%F{red}! no global gitignore %f"
+    fi
+    # OSX: brew?
+    if [ "$arch" = "Darwin" ] && [ -f "/usr/local/bin/brew" ]; then
+        print -P "Has %F{green}Homebrew%f" && compl+=1
+    else
+        print -P "%F{red}! either no OSX or no homebrew %f"
+    fi
+    # OSX: font?
+    if [ "$arch" = "Darwin" ] && [ -f "$HOME/Library/Fonts/iosevka-regular.ttf" ]; then
+        print -P "Has %F{green}Iosevka%f" && compl+=1
+    else
+        print -P "%F{red}! no iosevka %f"
+    fi
+    # gitparser?
+    if [ ! -z "$($ZDOTDIR/modules/info-functions/go-gitparser/go-gitparser)" ]; then
+        print -P "%F{green}go-gitparser%f works" && compl+=1
+    else
+        print -P "%F{red}! can't evaluate go-gitparser %f"
+    fi
+    # karabiner config?
+    if [ -f "$HOME/Library/Application Support/Karabiner/private.xml" ]; then
+        print -P "Has %F{green}Karabiner%f custom keybindings" && compl+=1
+    else
+        print -P "%F{red}! no karabiner config%f"
+    fi
+
+    declare -i all=9
+    print -P "%B%K{blue}>>> $compl/$all - $(( ($compl/$all)*100 ))%% complete%k"
 }
 
-[ "$#" = 0 ] && run
+[ "$#" = 0 ] && print -P "Usage: init.sh [test] [run]"
+[ "$1" = "run" ] && run
 [ "$1" = "test" ] && test
-[ "$1" = "help" ] && echo "Usage: init.sh [test] [help]"

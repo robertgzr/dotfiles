@@ -1,7 +1,7 @@
 robertgzr's dotfiles
 ====================
 
-**!!! far from done !!!**
+**getting closer**
 
 inspired by [Lars Kappert](https://twitter.com/webprolific)'s [Getting started with dotfiles](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789)
 
@@ -30,16 +30,16 @@ Status
 * `✔` move .dotfiles_old/config/*
 * `✔` finally get rid of prezto
 * move applescripts
-* custom karabiner mappings
+* `✔` custom karabiner mappings
 * configure vim
+* `✔` write osx defaults
+* What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
 
 ### todo
-* ~~look at the cgitparser files again!~~ (rewritten in Go)
+* ~~c-gitparser~~ (rewritten in Go)
 * ~~caskfile~~ (part of brewfile)
-* write osx defaults
 * ~~irssi~~ (switched to weechat)
 * ~~config/mpv/scripts as submodules~~
-* What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
 * weechat certificates & SSH stuff
 * python - pip
 * ruby - gems

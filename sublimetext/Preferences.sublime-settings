@@ -1,0 +1,54 @@
+{
+    "color_scheme": "Packages/User/SublimeLinter/Dracula (SL).tmTheme",
+    "theme": "Spacegray.sublime-theme",
+    "spacegray_tabs_normal": true,
+    "spacegray_tabs_small": false,
+    "spacegray_tabs_xlarge": false,
+    "font_face": "Iosevka",
+    "font_options":
+    [
+        "subpixel_antialias"
+    ],
+    "font_size": 13,
+    "highlight_line": true,
+    "ignored_packages":
+    [
+        "Markdown",
+        "Vintage"
+    ],
+    "match_brackets_content": true,
+    "match_selection": true,
+    "match_tags": true,
+    "folder_exclude_patterns":
+    [
+        ".svn",
+        ".git",
+        ".DS_Store",
+        "__pycache__",
+        "*.pyc",
+        "*.pyo",
+        "*.exe",
+        "*.dll",
+        "*.obj",
+        "*.o",
+        "*.a",
+        "*.lib",
+        "*.so",
+        "*.dylib",
+        "*.ncb",
+        "*.sdf",
+        "*.suo",
+        "*.pdb",
+        "*.idb",
+        ".DS_Store",
+        "*.psd"
+    ],
+    "save_on_focus_lost": true,
+    "scroll_past_end": true,
+    "scroll_speed": 5.0,
+    "show_full_path": true,
+    "sidebar_default": true,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "word_wrap": true
+}

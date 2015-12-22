@@ -35,6 +35,7 @@ Status
 * `✔` write osx defaults
 * dock auto-config
 * What about sublime packages? [look](https://github.com/zenorocha/sublime-preferences)
+* minimal brewfile
 
 ### todo
 * ~~c-gitparser~~ (rewritten in Go)

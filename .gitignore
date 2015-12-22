@@ -12,7 +12,8 @@ config/transmision/*
 
 config/weechat/logs/
 config/weechat/*.log
-config/weechat/script/plugins.xml.gz
+config/weechat/script/plugins.*
+config/weechat/chanstat/peak_data.csv
 config/weechat/sec.conf
 config/weechat/ssl/
 

@@ -9,10 +9,6 @@ you=`whoami`
 iosevka_version="1.2.0"
 golang_version="1.5.2"
 
-# TODO:
-# vim config linking
-# create vim folders
-
 function update_dotfiles
 {
     # update dotfiles
@@ -98,9 +94,16 @@ function setup_iosevka
     fi
 }
 
+function setup_vim
+{
+    echo "[VIM] Setup"
+    ln -sfv $DOT_DIR/vim $HOME/.vim
+    ln -sfv $DOT_DIR/vim/vimrc $HOME/.vimrc
+}
+
 function setup_karabiner
 {
-    echo "not yet"
+    echo "[OSX] Karabiner mods"
     # include karabiner-configuration into $HOME/Library/Application Support/Karabiner/private.xml
     [ ! -d "$HOME/Library/Application Support/Karabiner" ] && echo "Can't find Karabiner Config directory. Is Karabiner installed?"
         return 1
@@ -117,12 +120,29 @@ function setup_karabiner
 
 function setup_ff_userchrome
 {
+    echo "[OSX] Firefix userChrome mod"
     if [ ! -d "$HOME/Library/Application Support/Firefox/Profiles" ]; then
         echo "Can't find FF profile folder at ~/Library/Application Support/Firefox/Profiles/"
         return 1
     else
         open -a Finder "$HOME/Library/Application Support/Firefox/Profiles"
     fi
+}
+
+function setup_osx_system
+{
+    echo "[OSX] Set system defaults"
+    zsh "$DOT_DIR/osx/defaults.sh"
+    echo "[OSX] Configure dock"
+    zsh "$DOT_DIR/osx/dock.sh"
+}
+
+function setup_sublimetext
+{
+    echo "[ST3] Move preferences into place"
+    # ~/Library/Application Support/Sublime Text 3/Packages/User/
+    ln -sfv "$DOT_DIR/sublimetext/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+    ln -sfv "$DOT_DIR/sublimetext/Package Control.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
 }
 
 function run
@@ -136,17 +156,15 @@ function run
     setup_zsh
     setup_config
     setup_git
+    setup_vim
 
     if [[ "$arch" = "Darwin" ]]; then
         echo ">>> Start OSX specific actions"
         setup_homebrew
-        echo "[OSX] Firefix userChrome mod"
         setup_ff_userchrome
-        echo "[OSX] Karabiner mods"
         setup_karabiner
-        # echo "[OSX] Set system defaults"
-        # defaults
-        # sublime text config
+        setup_osx_system
+        setup_sublimetext
     # # #
     elif [[ "$arch" = "Linux" ]]; then
         echo ">>> Start Linux specific actions"
@@ -217,6 +235,7 @@ function test
     print -P "%B%K{blue}>>> $compl/$all - $(( ($compl/$all)*100 ))%% complete%k"
 }
 
-[ "$#" = 0 ] && print -P "Usage: init.sh [test] [run]"
-[ "$1" = "run" ] && run
+[ "$#" = 0 ] && print -P "Usage: init.sh [test] [all]"
+[ "$1" = "all" ] && run
 [ "$1" = "test" ] && test
+# add option to run individual commands

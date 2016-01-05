@@ -23,6 +23,7 @@ function setup_git
     # git-configs
     ln -sfv "$DOT_DIR/git/gitconfig" ~/.gitconfig
     ln -sfv "$DOT_DIR/git/gitignore_global" ~/.gitignore_global
+    git config --global core.excludesfile ~/.gitignore_global
 }
 
 function setup_homebrew

@@ -68,7 +68,7 @@ function setup_golang_linux
 {
     echo "[GOLANG] Download"
     cd /tmp
-    wget "https://storage.googleapis.com/golang/go$golang_version.linux-amd64.tar.gz"
+    curl -O "https://storage.googleapis.com/golang/go$golang_version.linux-amd64.tar.gz"
     echo "[GOLANG] Install"
     tar -C /usr/local -xzf "go$golang_version.linux-amd64.tar.gz"
 }
@@ -78,8 +78,8 @@ function setup_iosevka
     echo "[FONT] Downloading Iosevka $iosevka_version"
     mkdir "/tmp/iosevka$iosevka_version" && cd "/tmp/iosevka$iosevka_version"
 
-    wget "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-$iosevka_version.tar.bz2"
-    wget "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-slab-$iosevka_version.tar.bz2"
+    curl -O "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-$iosevka_version.tar.bz2"
+    curl -O "https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/iosevka-slab-$iosevka_version.tar.bz2"
 
     echo "[FONT] Installing Iosevka"
     if [[ "$arch" = "Darwin" ]]; then
@@ -109,10 +109,12 @@ function setup_karabiner
         return 1
     if [ ! -f "$HOME/Library/Application Support/Karabiner/private.xml" ]; then
         touch "$HOME/Library/Application Support/Karabiner/private.xml"
-        echo """<?xml version="1.0"?>
+        cat > "$HOME/Library/Application Support/Karabiner/private.xml" <<EOF
+<?xml version="1.0"?>
 <root>
     <include path="$DOT_DIR/osx/karabiner/private.xml" />
-</root>""" >> "$HOME/Library/Application Support/Karabiner/private.xml"
+</root>
+EOF
     else
         echo "Has Karabiner config"
     fi
@@ -151,7 +153,7 @@ function run
 
     echo ">>> Update dotfile repository"
     echo ">>> Load git submodules"
-    update_dotfiles
+    # update_dotfiles
     setup_iosevka
     setup_zsh
     setup_config
@@ -171,7 +173,7 @@ function run
         setup_golang_linux
         # setup linuxbrew for getting devel tools?
     fi
-    setup_go-gitparser
+    setup_gogitparser
 }
 
 function test

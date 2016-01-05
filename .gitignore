@@ -1,5 +1,6 @@
-# global gitignore
+# dotfile gitignore
 
+config/flexget/config.yml
 config/flexget/.config-lock
 config/flexget/*.log
 config/flexget/log-*

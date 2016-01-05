@@ -2,9 +2,11 @@
 *~
 ._*
 Thumbs.db
-.DS_Store
+.DS_Store*
 Desktop.ini
 .idea
+ehthumbs.db
+Icon*
 
 # external
 .Spotlight-V100
@@ -14,6 +16,27 @@ Desktop.ini
 *.o
 *.out
 *.pyc
+*.so
+*.exe
+*.class
+*.com
+*.dll
+
+# logs and db
+*.log
+*.sql
+*.sqlite
+*.db
+
+# packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
 # web stuff
 node_modules

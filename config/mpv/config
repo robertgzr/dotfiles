@@ -18,7 +18,7 @@ softvol=yes
 softvol-max=200
 audio-channels=2
 # bs2b filter
-af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
+# af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
 
 #
 # Subtitles

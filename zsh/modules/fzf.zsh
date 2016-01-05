@@ -3,7 +3,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == *$DOT_DIR/fzf/bin* ]]; then
-  export PATH="$PATH:/Users/robertgz/.dotfiles.bkup/fzf/bin"
+  export PATH="$PATH:$DOT_DIR/fzf/bin"
 fi
 
 # Man path

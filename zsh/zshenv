@@ -5,7 +5,7 @@
 # exception: use '-f'
 #
 
-export DOT_DIR=$HOME/.dotfiles.bkup
+export DOT_DIR=$HOME/.dotfiles
 export ZDOTDIR=$DOT_DIR/zsh
 
 export PATH=/tmp/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin

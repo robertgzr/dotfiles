@@ -2,7 +2,7 @@
 # Author:
 #   https://github.com/spicycode
 #
-autoload -U compinit && compinit
+autoload -U compinit && compinit -u
 zmodload -i zsh/complist
 
 # man zshcontrib

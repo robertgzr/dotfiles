@@ -1,8 +1,11 @@
 # ==== ENVS
 
 # Path
+# Golang
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
+# Local Ruby Gems
+export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
@@ -55,9 +58,6 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 # export ENV_ROLE=development
 # export CRMEASY_DB_PASS=pg
 # export SECRET_KEY='l6w=)99mi_^$=p9^d2=%8qvl7@fee$0=s=k$(@4cwldmjgyo1e'
-
-# Ruby
-export GEM_PATH=$DOT_DIR/gem
 
 # postgreSQL
 # export PGDATA=/usr/local/pgsql/data

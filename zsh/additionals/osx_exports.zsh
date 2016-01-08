@@ -6,7 +6,7 @@ export PATH=$PATH:$(brew --prefix homebrew/php/php54)/bin
 
 # Go
 export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/Development/go
+export GOPATH=$HOME/devel/go
 
 # Eagle CAD
 export EAGLE_DIR=$HOME/Documents/eagle

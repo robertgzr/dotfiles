@@ -15,6 +15,8 @@ alias ....="cd ../../.."
 alias rmx='rm -rf'
 # recursive delete of .DS_Store files
 alias cleanups="find . -type f -name '*.DS_Store' -ls -delete"
+# genereate 256-shasums
+alias shasum2.56="shasum --algorithm 256"
 
 alias unhide="chflags nohidden"
 # alias rake='noglob rake'
@@ -44,6 +46,10 @@ alias caskx='cask zap'
 alias brewup='brew update && brew upgrade --all'
 alias brewx='brew remove --force'
 
+alias iterm='osascript -e "tell application \"iTerm2\" to (create window with profile \"Default\")"'
+alias imgcat='$HOME/.dotfiles/osx/imgcat.sh'
+alias imgls='$HOME/.dotfiles/osx/imgls.sh'
+
 # ==== Disable correction and globbing
 alias cd='nocorrect cd'
 alias cp='nocorrect cp'
@@ -65,9 +71,11 @@ alias grep="${aliases[grep]:-grep} --color=auto"
 
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
-alias m='f -e mpv'
-alias s='f -e subl'
+alias ss='f -i -e subl'
+alias vv='f -i -e nvim'
+alias oo='f -i -e open'
 
+alias minf="mediainfo"
 alias mpv="noglob mpv"
 alias vlc="noglob /opt/homebrew-cask/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC"
 alias cvlc="vlc --intf=rc"
@@ -76,3 +84,4 @@ alias ydl="youtube-dl"
 alias livestreamer="noglob livestreamer"
 alias saldl="noglob saldl"
 alias weechat="weechat -d $DOT_DIR/config/weechat"
+alias playme="play --buffer 318 -e mu -v 0.6 -d lowpass 3000"

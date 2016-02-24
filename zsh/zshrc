@@ -80,3 +80,8 @@ source $ZDOTDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fuzzy search with fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# command not found
+if brew command command-not-found-init > /dev/null; then
+  eval "$(brew command-not-found-init)"
+fi

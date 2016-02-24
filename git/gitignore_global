@@ -21,6 +21,7 @@ Icon*
 *.class
 *.com
 *.dll
+bin/
 
 # logs and db
 *.log

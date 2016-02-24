@@ -17,6 +17,8 @@ zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 # Fallback to built in ls colors
 zstyle ':completion:*' list-colors ''
 
+# zstyle ':completion:*' insert-tab false
+
 # Make the list prompt friendly
 zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
 
@@ -37,7 +39,6 @@ zstyle ':completion:*:*:kill:*' insert-ids single
 
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
-
 zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 # insert all expansions for expand completer

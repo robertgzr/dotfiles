@@ -1,11 +1,16 @@
 # ==== ENVS
 
+# Platform-specific preprocessing
+if [[ $(uname) = "Linux" ]]; then
+    source $DOT_DIR/zsh/additionals/linux_exports.zsh
+fi
+
+if [[ $(uname) = "Darwin" ]]; then
+    source $DOT_DIR/zsh/additionals/osx_exports.zsh
+fi
+
 # Path
-# Golang
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
-# Local Ruby Gems
-export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/universal-darwin:$GOAPPENGINE
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
@@ -33,7 +38,7 @@ export PAGER='less'
     export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
     export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
     export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
-export EDITOR="vim"
+export EDITOR="nvim"
 export VISUAL="subl -n"
 
 # Python
@@ -61,11 +66,3 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # postgreSQL
 # export PGDATA=/usr/local/pgsql/data
-
-if [[ $(uname) = "Linux" ]]; then
-    source $DOT_DIR/zsh/additionals/linux_exports.zsh
-fi
-
-if [[ $(uname) = "Darwin" ]]; then
-    source $DOT_DIR/zsh/additionals/osx_exports.zsh
-fi

@@ -9,6 +9,8 @@
 MAXENTRIES = 5
 PREFIX_LENGTH = 4
 
+local total_entries = 0
+
 function Set (t)
     local set = {}
     for _, v in pairs(t) do set[v] = true end
@@ -28,6 +30,7 @@ function add_files_at(index, files)
     for i = 1, #files do
         mp.commandv("loadfile", files[i], "append")
         mp.commandv("playlist_move", oldcount + i - 1, index + i - 1)
+        total_entries = total_entries + 1
     end
 end
 
@@ -67,7 +70,8 @@ function find_and_add_entries()
             return false
         end
         if EXTENSIONS[string.lower(ext)] then
-            if string.find(v, prefix) then return true end
+            return true
+            -- if string.find(v, prefix) then return true end
         end
         return false
     end)
@@ -124,6 +128,8 @@ function find_and_add_entries()
 
     add_files_at(pl_current + 1, append[1])
     add_files_at(pl_current, append[-1])
+    mp.msg.info(total_entries .. " more file(s) in playlist")
+    mp.osd_message(total_entries .. " more file(s) in playlist", 2)
 end
 
 mp.register_event("start-file", find_and_add_entries)

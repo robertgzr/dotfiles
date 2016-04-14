@@ -11,19 +11,20 @@
 -- visible.
 
 local options = require 'mp.options'
+local osd_state = false
 
 -- Options
 local o = {
     ass_formatting = true,
-    duration = 5,
+    duration = 60,
     -- debug = no,
     debug = yes,
 
     -- Text style
     -- font = "Source Sans Pro",
-    -- font="Gill Sans Light",
     -- font = ".HelveticaNeueDeskInterface-Regular",
-    font = "SFNS Text",
+    -- font = "SFNS Text",
+    font="Iosevka",
     font_size = 9,
     font_color = "FFFFFF",
     border_size = 0.8,
@@ -63,7 +64,8 @@ function main()
         header = "",
         file = "",
         video = "",
-        audio = ""
+        audio = "",
+        playlist = ""
     }
 
     o.ass_formatting = o.ass_formatting and has_vo_window()
@@ -79,8 +81,16 @@ function main()
     add_file(stats)
     add_video(stats)
     add_audio(stats)
+    add_playlist(stats)
 
-    mp.osd_message(join_stats(stats), o.duration)
+    -- toggle stats instead of just showing them for o.duration
+    if not osd_state then
+        mp.osd_message(join_stats(stats), o.duration)
+        osd_state = true
+    else
+        mp.osd_message("")
+        osd_state = false
+    end
 end
 
 
@@ -167,6 +177,29 @@ function add_header(s)
     end
 end
 
+function add_playlist(s)
+    local pl = mp.get_property_native("playlist", {})
+    local sec = "playlist"
+    s[sec] = ""
+    if pl_is_empty(pl) then
+        return
+    end
+
+    if not o.ass_formatting then
+        s.playlist = string.format("\n\nPlaylist:\n%s", mp.get_property_osd("playlist"))
+        return
+    end
+
+    s.playlist = string.format("\\N\\N{\\b1}Playlist:{\\b0}\\h\\h(%s/%s)\\N", pl_get_current(pl), #pl)
+    for k,f in pairs(pl) do
+        if f.current ~= nil then
+            s.playlist = s.playlist .. string.format("\\h\\h\\h{\\b1\\3c&HFE25bF&}▶ %s{\\b0\\3c&H262626&}\\N", f.filename)
+        else
+            s.playlist = s.playlist .. string.format("\\h\\h\\h\\h∙ %s\\N", f.filename)
+        end
+    end
+    -- append_property(s, sec, "playlist", {prefix="PL:", indent=""})
+end
 
 -- Format and append a property.
 -- A property whose value is either `nil` or empty (hereafter called "invalid")
@@ -229,6 +262,8 @@ function join_stats(s)
         r = r .. o.nl .. o.nl .. s.audio
     end
 
+    r = r .. s.playlist
+
     return r
 end
 
@@ -249,6 +284,19 @@ function has_audio()
     return r and r ~= "no" and r ~= ""
 end
 
+function pl_is_empty(pl)
+    if pl[2] == nil then
+        return true
+    end
+    return false
+end
+
+function pl_get_current(pl)
+    for k,f in pairs(pl) do
+        if f.current == true then return k end
+    end
+    return nil
+end
 
 function b(t)
     return o.b1 .. t .. o.b0

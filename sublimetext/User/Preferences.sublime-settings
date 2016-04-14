@@ -6,7 +6,8 @@
 	"caret_extra_width": 0,
 	"caret_style": "wide",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Lighter.tmTheme",
+	"color_scheme": "Packages/Theme - Farzher/Neon.tmTheme",
+	"find_selected_text": true,
 	"folder_exclude_patterns":
 	[
 		".svn",
@@ -74,7 +75,7 @@
 	"spacegray_tabs_normal": true,
 	"spacegray_tabs_small": false,
 	"spacegray_tabs_xlarge": false,
-	"theme": "Material-Theme.sublime-theme",
+	"theme": "Material-Theme-Darker.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true

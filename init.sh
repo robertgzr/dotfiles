@@ -144,8 +144,8 @@ function setup_sublimetext
 {
     echo "[ST3] Move preferences into place"
     # ~/Library/Application Support/Sublime Text 3/Packages/User/
-    ln -sfv "$DOT_DIR/sublimetext/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
-    ln -sfv "$DOT_DIR/sublimetext/Package Control.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
+    cp -v "$DOT_DIR/sublimetext/User/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+    cp -v "$DOT_DIR/sublimetext/User/Package Control.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
 }
 
 function run
@@ -155,7 +155,7 @@ function run
     echo ">>> Update dotfile repository"
     echo ">>> Load git submodules"
     # update_dotfiles
-    setup_iosevka
+    # setup_iosevka
     setup_zsh
     setup_config
     setup_git
@@ -171,10 +171,10 @@ function run
     # # #
     elif [[ "$arch" = "Linux" ]]; then
         echo ">>> Start Linux specific actions"
-        setup_golang_linux
+        # setup_golang_linux
         # setup linuxbrew for getting devel tools?
     fi
-    setup_gogitparser
+    # setup_gogitparser
 }
 
 function test

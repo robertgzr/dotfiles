@@ -177,10 +177,19 @@ function encfsfs() {
     encfs /Volumes/rTranscend/FSeagate/.encfs-raw /mnt/FakeSeagate
 }
 
-function xvmup {
-    VBoxManage startvm i3-Xubuntu --type headless
-    if [[ "$1" = "-v" ]]; then
-        echo "xvmup 0.1 - Headless start of Xbuntu Virtual Machine"
+function archboxctl {
+    if [[ "$1" = "start" ]]; then
+        VBoxManage startvm Arch --type headless &>/dev/null;
+        echo "archbox started."
+    elif [[ "$1" = "stop" ]]; then
+        VBoxManage controlvm Arch poweroff soft &>/dev/null;
+        echo "archbox stopped.";
+    elif [[ "$1" = "status" ]]; then
+        echo "$(VBoxManage showvminfo Arch | grep 'Guest OS\|State')"
+    elif [[ "$1" = "version" ]]; then
+        echo "archup 0.1 - Headless start of Arch Virtual Machine";
+    else
+        echo "usage: archboxctl [start|stop]";
     fi
 }
 

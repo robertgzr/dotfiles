@@ -1,4 +1,5 @@
 # dotfile gitignore
+config/nvim
 
 config/flexget/config.yml
 config/flexget/.config-lock
@@ -9,7 +10,7 @@ config/flexget/*.sqlite
 config/mpv/watch_later/*
 config/mpv/icc-cache/*
 
-config/transmision/*
+config/transmision/
 
 config/weechat/logs/
 config/weechat/*.log
@@ -25,6 +26,7 @@ vim/plugged/
 vim/undo/
 vim/swaps/
 vim/backups/
+vim/init.vim
 
 zsh/.*
 zsh/tmp/

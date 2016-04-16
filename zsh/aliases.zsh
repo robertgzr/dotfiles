@@ -50,6 +50,9 @@ alias iterm='osascript -e "tell application \"iTerm2\" to (create window with pr
 alias imgcat='$HOME/.dotfiles/osx/imgcat.sh'
 alias imgls='$HOME/.dotfiles/osx/imgls.sh'
 
+alias vim='/usr/local/bin/nvim'
+alias vvim='/usr/local/bin/vim'
+
 # ==== Disable correction and globbing
 alias cd='nocorrect cd'
 alias cp='nocorrect cp'

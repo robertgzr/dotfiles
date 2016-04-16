@@ -1,0 +1,8 @@
+{
+    // "shell": [ "/usr/local/bin/zsh"," --login", "-c", "$CMD" ],
+    "fmt_tab_width": 4,
+    "fmt_cmd":  ["goimports", "-srcdir", "$_dir"],
+    "ipc_timeout": 1,
+    "autocomplete_builtins": true,
+    "autocomplete_suggest_imports": true,
+}

@@ -203,3 +203,8 @@ function lopen {
     FOPEN=$(locate -l 1 $FILE)
     open $FOPEN
 }
+
+# encode input file with base64 and also encode filename
+function b64() {
+    base64 "$2" -i "$1" -o '$(echo "$1" | base64 "$2" -)';
+}

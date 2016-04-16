@@ -2,24 +2,24 @@
 
 "" Plugin Manager
 call plug#begin('~/.vim/plugged')
-" >>> Plugin list:
-" colorschemes
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-" interface
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'itchyny/lightline.vim'
-Plug 'airblade/vim-gitgutter'
-" ux
-Plug 'godlygeek/tabular'
-Plug 'scrooloose/syntastic'
-" lang specific
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
-" TDOD:
-" c/cpp
-" java
-" python
-" >>> End of Plugin List
+    " colorschemes
+    Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+    " interface
+    Plug 'itchyny/lightline.vim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'nathanaelkane/vim-indent-guides'
+    " ux
+    Plug 'godlygeek/tabular'
+    Plug 'scrooloose/syntastic'
+    Plug 'tpope/vim-fugitive'
+    Plug 'mhinz/vim-startify'
+    " lang specific
+    Plug 'fatih/vim-go', {'for': 'go'}
+    Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
+    " TDOD:
+    " c/cpp
+    " java
+    " python
 call plug#end()
 
 " centralize vimfiles
@@ -29,22 +29,16 @@ if exists("&undodir")
 	set undodir=$DOT_DIR/vim/undo
 endif
 
-" solarized options:
-"let g:solarized_termcolors=256
-"let g:solarized_contrast="high"
-"let g:solarized_visibility="high"
-"colorscheme solarized
-
-set encoding=utf-8 nobomb
-set nocompatible
+colorscheme dracula
 syntax enable
 
 "" General settings
+set encoding=utf-8 nobomb
+set nocompatible
 set number
 set linebreak
-set showbreak=+++ 
 set textwidth=100
-set showmatch
+set showbreak=+++
 set visualbell
 
 set hlsearch
@@ -52,18 +46,20 @@ set smartcase
 set ignorecase
 set incsearch
 
-set autoindent
+set tabstop=4
 set shiftwidth=4
-set smartindent
-set smarttab
 set softtabstop=4
 set expandtab
+set smarttab
+
+set autoindent
 
 " always show status line
 set laststatus=2
 set noerrorbells
 set showmode
 set showcmd
+set showmatch
 
 " allow backspace in INSERT mode
 set backspace=indent,eol,start
@@ -74,7 +70,72 @@ if has("gui_vimr")
     set guifont=Iosevka:h12
 endif
 
+" Disable tabs->spaces for Makefiles
+autocmd FileType make setlocal noexpandtab
+
 "" Plugin settings:
+
+" lightline
+let g:lightline = {
+    \ 'colorscheme': 'jellybeans',
+    \ 'mode_map': { 'c': 'NORMAL' },
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+    \ },
+    \ 'component_function': {
+    \   'modified': 'LightLineModified',
+    \   'readonly': 'LightLineReadonly',
+    \   'fugitive': 'LightLineFugitive',
+    \   'filename': 'LightLineFilename',
+    \   'fileformat': 'LightLineFileformat',
+    \   'filetype': 'LightLineFiletype',
+    \   'fileencoding': 'LightLineFileencoding',
+    \   'mode': 'LightLineMode',
+    \ },
+    \ 'subseparator': { 'left': '', 'right': '' },
+    \ 'separator': { 'left': '', 'right': '' },
+\ }
+
+function! LightLineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? ' '._ : ''
+  endif
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " vim-go
 let g:go_highlight_functions = 1

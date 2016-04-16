@@ -208,3 +208,8 @@ function lopen {
 function b64() {
     base64 "$2" -i "$1" -o '$(echo "$1" | base64 "$2" -)';
 }
+
+# return the number of files in a directory
+function tree-count() {
+    tree -C $1 | grep -e files$ | awk '{print $3}';
+}

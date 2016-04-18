@@ -27,32 +27,6 @@ alias unhide="chflags nohidden"
 # alias py3='python3.5'
 alias py='python'
 
-# ==== Linux specific
-if [[ $(uname) = "Linux" ]]; then
-    alias pbcopy='xclip -in'
-    alias pbpaste='xclip -out'
-    alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && ssh'
-    alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && git'
-fi
-
-# ==== OSX specific
-alias cdf='cd "$(pfd)"'
-alias pushdf='pushd "$(pfd)"'
-alias pbc='pbcopy'
-alias pbp='pbpaste'
-
-alias cask='brew cask'
-alias caskx='cask zap'
-alias brewup='brew update && brew upgrade --all'
-alias brewx='brew remove --force'
-
-alias iterm='osascript -e "tell application \"iTerm2\" to (create window with profile \"Default\")"'
-alias imgcat='$HOME/.dotfiles/osx/imgcat.sh'
-alias imgls='$HOME/.dotfiles/osx/imgls.sh'
-
-alias vim='/usr/local/bin/nvim'
-alias vvim='/usr/local/bin/vim'
-
 # ==== Disable correction and globbing
 alias cd='nocorrect cd'
 alias cp='nocorrect cp'
@@ -88,3 +62,31 @@ alias livestreamer="noglob livestreamer"
 alias saldl="noglob saldl"
 alias weechat="weechat -d $DOT_DIR/config/weechat"
 alias playme="play --buffer 318 -e mu -v 0.6 -d lowpass 3000"
+
+# ==== Linux specific
+if [[ $(uname) = "Linux" ]]; then
+    alias pbcopy='xclip -in'
+    alias pbpaste='xclip -out'
+    alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && ssh'
+    alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && git'
+fi
+
+# ==== OSX specific
+if [[ $(uname) = "Darwin" ]]; then
+    alias cdf='cd "$(pfd)"'
+    alias pushdf='pushd "$(pfd)"'
+    alias pbc='pbcopy'
+    alias pbp='pbpaste'
+
+    alias cask='brew cask'
+    alias caskx='cask zap'
+    alias brewup='brew update && brew upgrade --all'
+    alias brewx='brew remove --force'
+
+    alias iterm='osascript -e "tell application \"iTerm2\" to (create window with profile \"Default\")"'
+    alias imgcat='$HOME/.dotfiles/osx/imgcat.sh'
+    alias imgls='$HOME/.dotfiles/osx/imgls.sh'
+
+    alias vim='/usr/local/bin/nvim'
+    alias vvim='/usr/local/bin/vim'
+fi

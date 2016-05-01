@@ -87,6 +87,7 @@ if [[ $(uname) = "Darwin" ]]; then
     alias imgcat='$HOME/.dotfiles/osx/imgcat.sh'
     alias imgls='$HOME/.dotfiles/osx/imgls.sh'
 
-    alias vim='/usr/local/bin/nvim'
+    alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim'
     alias vvim='/usr/local/bin/vim'
+    alias neov='open -a Neovim'
 fi

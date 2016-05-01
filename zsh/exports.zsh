@@ -19,7 +19,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Setup terminal, and turn on colors
 export TERM=xterm-256color
 export CLICOLOR=1
-export LSCOLORS=Gxfxcxdxbxegedabagacad
+# export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 # Enable color in grep
 export GREP_OPTIONS='--color=auto'
@@ -39,7 +39,7 @@ export PAGER='less'
     export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
     export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 export EDITOR="vim"
-export VISUAL="subl -n"
+export VISUAL="vim"
 
 # Python
 # export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages

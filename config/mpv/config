@@ -42,8 +42,8 @@ no-border
 stop-screensaver
 cursor-autohide-fs-only
 osd-font='Iosevka'
-osd-font-size=26
-osd-scale=1
+osd-font-size=27
+osd-scale=1.1
 osd-scale-by-window=yes
 
 #

@@ -4,13 +4,13 @@
 
 fpath=(
     $ZDOTDIR/modules/*
-    $LUNCHY_DIR/lunchy-completion.zsh
+    $ZDOTDIR/modules/custom-completions
     /usr/local/share/zsh-completions
     /usr/local/share/zsh/site-functions
-    /usr/local/bin/
     ${fpath[@]}
 )
 
+# /usr/local/bin/
 source $ZDOTDIR/setopt.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/spectrum.zsh

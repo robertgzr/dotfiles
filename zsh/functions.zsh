@@ -58,61 +58,67 @@ function fzcd {
 
 function fzjj {
   local dir
-  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "$(dir)" || return 1
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "$dir" || return 1
 }
 
 # open using fzf
 function fzopen {
   local file
   local dir
-  file=$(fzf +m -0 -q "$1") && open "${file}"
+  file=$(fzf +m -0 -q "$1") && open "$file"
 }
 
 function fzmpv {
   local file
-  file=$(fzf +m -0 -q "mkv$ | mp4$ | 3gp$ $1") && mpv "$(file)"
+  file=$(fzf +m -0 -q "mkv$ | mp4$ | 3gp$ $1") && mpv "$file"
 }
 
 # full shell power: fzf + fasd
 # to open a file in sublime text
 function fzsubl {
   local file
-  file=$(fzf +m -0 -q "$1") && subl "$(file)" || return 1
+  file=$(fzf +m -0 -q "$1") && subl "$file" || return 1
 }
 
 function fzss {
   local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "${file}" || return 1
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "$file" || return 1
 }
 
 # full shell power: fzf + fasd
 # to open a file in sublime text
 function fzvim {
   local file
-  file=$(fzf +m -0 -q "$1") && nvim "$(file)" || return 1
+  file=$(fzf +m -0 -q "$1") && vim "$file" || return 1
 }
 
 function fzvv {
   local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && nvim "${file}" || return 1
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && nvim "$file" || return 1
+}
+
+function mpva()
+{
+  mpv --no-video --vo=null --term-osd=force --term-osd-bar=yes --term-osd-bar-chars="▌▓⟩░▐" --term-playing-msg="> ${filename}" --input-app-events=yes --ytdl $1
 }
 
 # mpv for lazy me
 function mpvp {
+    local PASTE="$(pbp)"
     if [[ $# -eq 0 ]];
     then
-      mpv `pbp` --profile=ydl
+      mpv $PASTE --profile=ydl
     elif [[ $# -eq 1 ]];
     then
       if [[ $1 = "-a" ]];
       then
-        mpv `pbp` --no-video --vo=null --term-osd=force --term-osd-bar=yes --term-osd-bar-chars="[+>-]" --term-playing-msg="> ${filename}" --input-app-events=yes --ytdl
+          mpva $PASTE
       elif [[ $1 = "-loop" ]];
       then
-        mpv `pbp` --profile=ydl --loop
+        mpv $PASTE --profile=ydl --loop
       elif [[ $1 = "fuck" ]]
       then
-        youtube-dl -F `pbp`
+        youtube-dl -F $PASTE
       else
         echo "figure something out please"
       fi
@@ -120,7 +126,7 @@ function mpvp {
     then
       if [[ $1 = "-f" ]];
       then
-        mpv `pbp` --profile=ydl --ytdl-format=$2
+        mpv $PASTE --profile=ydl --ytdl-format=$2
       else
         echo "something went wrong"
       fi
@@ -130,11 +136,6 @@ function mpvp {
       echo \t"-a"\t"plays only audio"
       echo \t"-loop"\t"loops endlessly"
     fi
-}
-
-function mpva()
-{
-  mpv --no-video --vo=null --term-osd=force --term-osd-bar=yes --term-osd-bar-chars="[+>-]" --term-playing-msg="> ${filename}" --input-app-events=yes --ytdl $1
 }
 
 # start firefox with dev-profile
@@ -168,13 +169,8 @@ function findershowall() {
 }
 
 function encfs-mount() {
-    echo "$(abspath $1)" /mnt/$2
-    encfs "$(abspath $1)" /mnt/$2
-}
-
-# encfs FakeSeagate shortcut
-function encfsfs() {
-    encfs /Volumes/rTranscend/FSeagate/.encfs-raw /mnt/FakeSeagate
+    echo "$(abspath $1)" $2
+    encfs "$(abspath $1)" $2
 }
 
 function archboxctl {
@@ -212,4 +208,24 @@ function b64() {
 # return the number of files in a directory
 function tree-count() {
     tree -C $1 | grep -e files$ | awk '{print $3}';
+}
+
+# docker gui convenience
+function startx() {
+    export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
+    defaults write org.macosforge.xquartz.X11 nolisten_tcp -boolean false
+
+    if [ -z "$(ps -ef|grep XQuartz|grep -v grep)" ]; then
+        open -a XQuartz
+    fi
+
+    if [ -z "$(lsof -i :6000)" ]; then
+        socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" & &>/dev/null
+    fi
+    # pid=$!
+    # eval $@ &>/dev/null
+    # kill $pid &>/dev/null
+}
+function stopx() {
+    pkill socat
 }

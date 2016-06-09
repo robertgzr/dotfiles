@@ -4,7 +4,7 @@
     <item>
         <name>Remap Caps Lock (⇪) to Hyper with Escape on Tap</name>
         <appendix>OS X doesn't have Hyper. This maps caps lock (actually F19) to Control + Shift + Option + Command, unless you tap it. Then it sends Escape.</appendix>
-        <not>ITERM2</not>
+        <!-- <not>ITERM2</not> -->
         <identifier>private.caps_lock_to_hyper_or_escape</identifier>
 
         <autogen>
@@ -116,23 +116,24 @@
         <appname>ITERM2</appname>
         <equal>com.googlecode.iterm2</equal>
     </appdef>
-    <item>
-        <name>Swap Hyper (Caps Lock) and Left Ctrl</name>
-        <identifier>private.swap_hyper_left_ctrl</identifier>
-        <only>ITERM2</only>
-        <autogen>
-            __KeyToKey__
-            KeyCode::CONTROL_L, 
+    
+    <!-- <item> -->
+    <!--     <name>Swap Hyper (Caps Lock) and Left Ctrl</name> -->
+    <!--     <identifier>private.swap_hyper_left_ctrl</identifier> -->
+    <!--     <only>ITERM2</only> -->
+    <!--     <autogen> -->
+    <!--         __KeyToKey__ -->
+    <!--         KeyCode::CONTROL_L, --> 
             
-            KeyCode::COMMAND_L,
-            ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-        </autogen>
-        <autogen>
-            --KeyOverlaidModifier--
-            KeyCode::F19, 
+    <!--         KeyCode::COMMAND_L, -->
+    <!--         ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, -->
+    <!--     </autogen> -->
+    <!--     <autogen> -->
+    <!--         --KeyOverlaidModifier-- -->
+    <!--         KeyCode::F19, --> 
             
-            KeyCode::CONTROL_L,
-            KeyCode::ESCAPE
-        </autogen>
-    </item>
+    <!--         KeyCode::CONTROL_L, -->
+    <!--         KeyCode::ESCAPE -->
+    <!--     </autogen> -->
+    <!-- </item> -->
 </root>

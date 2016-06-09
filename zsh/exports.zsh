@@ -66,3 +66,4 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # postgreSQL
 # export PGDATA=/usr/local/pgsql/data
+export FZF_DEFAULT_COMMAND='find .'

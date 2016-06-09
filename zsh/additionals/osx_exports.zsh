@@ -8,7 +8,7 @@ export TEXPATH=/usr/local/texlive/2015basic
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/devel/go
 
-export GOAPPENGINE=$HOME/devel/go_appengine/
+# export GOAPPENGINE=$HOME/devel/go_appengine/
 
 # Ruby Gems
 export GEMPATH=$HOME/.gem/ruby/2.0.0
@@ -28,3 +28,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home
 # Arduino
 export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Contents/Java/
 export BOARD=uno
+
+# Android
+ export ANDROID_HOME=/usr/local/opt/android-sdk

@@ -1,6 +1,5 @@
 " lightline
 let g:lightline = {
-    \ 'colorscheme': 'jellybeans',
     \ 'mode_map': { 'c': 'NORMAL' },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -15,10 +14,14 @@ let g:lightline = {
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
     \ },
-    \ 'subseparator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '▶', 'right': '◀' },
+    \ 'separator': { 'left': '', 'right': '' },
 \ }
-"    \ 'separator': { 'left': '', 'right': '' },
-"\ }
+
+    " \ 'subseparator': { 'left': '', 'right': '' },
+    " \ 'separator': { 'left': '', 'right': '' },
+let g:lightline.colorscheme = 'gruvbox'
+
 function! LightLineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction

@@ -9,41 +9,45 @@ if exists("&undodir")
 	set undodir=$DOT_DIR/vim/undo
 endif
 
-autocmd ColorScheme janah highlight Normal ctermbg=235
-" colorscheme dracula
-colorscheme janah
+colorscheme gruvbox
+set background=dark
 syntax enable
+if has("neovim-dot-app")
+    set guifont=Iosevka:h13
+end
+if has("vimr")
+    set guifont=Iosevka:h13
+    set linespace=-1
+    set guicursor+=a:blinkon0
+end
 
-    " Disable tabs->spaces for Makefiles
-autocmd FileType make setlocal noexpandtab
-" Activate Goyo on Markdown
-function! s:auto_goyo()
-  if &ft == 'markdown'
-    Goyo 80
-  elseif exists('#goyo')
-    let bufnr = bufnr('%')
-    Goyo!
-    execute 'b '.bufnr
-  endif
-endfunction
+" cursorlines
+set cursorline
+" set cursorcolumn
+" hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline!<CR>
+" cursorcolumn!<CR>
 
-augroup goyo_markdown
-  autocmd!
-  autocmd BufNewFile,BufRead * call s:auto_goyo()
-augroup END
+set fillchars=fold:-,vert:\│
 
+" share OSX clipboard
+set clipboard=unnamed
+" allow backspace in INSERT mode
+set backspace=indent,eol,start
+highlight Comment cterm=italic
+
+"" Some Autocommands
+"" For more see the components/plugin-settings.vim
+" toggle spell-check if filetype is markdown
 autocmd FileType markdown setlocal spell
+" Disable tabs->spaces for Makefiles
+autocmd FileType make setlocal noexpandtab
+autocmd FileType c setlocal foldmethod=syntax
+autocmd ColorScheme janah highlight Normal ctermbg=235
+"" modular settings:
 
-"" Plugin settings:
-source ~/.vim/components/plugin_lightline.vim
-source ~/.vim/components/plugin_various.vim
-
-" DISTRACTION FREE MODE FOR VIM
-" autocmd! User GoyoEnter Limelight
-" autocmd! User GoyoLeave Limelight!
-
-noremap <F12> :Goyo<CR>
-
-let g:limelight_default_coefficient = 0.5
-let g:limelight_paragraph_span = 1
-let g:limelight_priority = -1
+source ~/.vim/components/line.vim
+source ~/.vim/components/plugin-settings.vim
+source ~/.vim/components/keys.vim
+source ~/.vim/components/indent.vim

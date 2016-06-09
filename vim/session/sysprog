@@ -1,0 +1,97 @@
+let SessionLoad = 1
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/devel/CE-HTW/sysprog/4_pipe_file_rw
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +1 pipe_file_rw.c
+argglobal
+silent! argdel *
+argadd pipe_file_rw.c
+argadd pipe_file_rw.c
+edit pipe_file_rw.c
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+setlocal fdm=syntax
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+21
+normal! zo
+24
+normal! zo
+26
+normal! zo
+65
+normal! zo
+179
+normal! zo
+179
+normal! zo
+152
+normal! zo
+122
+normal! zo
+89
+normal! zo
+96
+normal! zo
+99
+normal! zo
+104
+normal! zo
+106
+normal! zo
+115
+normal! zo
+120
+normal! zo
+121
+normal! zo
+137
+normal! zo
+142
+normal! zo
+145
+normal! zo
+147
+normal! zo
+154
+normal! zo
+159
+normal! zo
+163
+normal! zo
+169
+normal! zo
+let s:l = 86 - ((74 * winheight(0) + 24) / 48)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+86
+normal! 024|
+tabnext 1
+if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

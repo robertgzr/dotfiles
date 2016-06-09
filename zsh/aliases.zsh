@@ -1,11 +1,18 @@
 # ==== ALIASES
 
 # Colorize output, add file type indicator, and put sizes in human readable format
-alias ls='ls -GFh'
+alias ls_='ls -GFh'
 # Same as above, but in long listing format
-alias ll='ls -GFhlS'
-alias la='ls -GFhla'
-alias ld='ls -ld */'
+alias ll_='/bin/ls -GFhlS'
+alias la_='/bin/ls -GFhla'
+alias ld_='/bin/ls -ld */'
+
+# use exa to replace ls
+alias ls='exa -G'
+alias ll='exa -lgHh --git --group-directories-first'
+alias la='exa -lagHh --git --group-directories-first'
+alias ld='exa -ld'
+alias lt='exa -lHhT'
 
 # dot expolding (not sure if neccessary)
 alias ..="cd .."
@@ -89,5 +96,7 @@ if [[ $(uname) = "Darwin" ]]; then
 
     alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim'
     alias vvim='/usr/local/bin/vim'
-    alias neov='open -a Neovim'
+    alias gvim='gnvim'
+
+    alias dockerup='eval $(docker-machine env default)'
 fi

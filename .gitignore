@@ -21,6 +21,8 @@ config/weechat/ssl/
 
 gh_api_token
 
+vim/init.vim
+vim/ginit.vim
 vim/.netrwhist
 vim/plugged/
 vim/undo/

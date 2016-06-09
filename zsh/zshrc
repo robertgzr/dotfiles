@@ -59,7 +59,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
 # ==== Custom Modules
 
 source $ZDOTDIR/modules/fasd.zsh
-source $ZDOTDIR/modules/fzf.zsh
 
 # source $ZDOTDIR/modules/zaw/zaw.zsh
 

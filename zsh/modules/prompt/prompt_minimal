@@ -42,19 +42,20 @@ function prompt_dir() {
 function prompt_paradox_print_elapsed_time {
   local end_time=$(( SECONDS - _prompt_minimal_start_time ))
   local hours minutes seconds remainder
+  local PreStr="⚑"
 
   if (( end_time >= 3600 )); then
     hours=$(( end_time / 3600 ))
     remainder=$(( end_time % 3600 ))
     minutes=$(( remainder / 60 ))
     seconds=$(( remainder % 60 ))
-    print -P "%B%F{red}>>> elapsed time ${hours}h${minutes}m${seconds}s%b"
+    print -P "%B%F{red}$PreStr elapsed time ${hours}h${minutes}m${seconds}s%b"
   elif (( end_time >= 60 )); then
     minutes=$(( end_time / 60 ))
     seconds=$(( end_time % 60 ))
-    print -P "%B%F{yellow}>>> elapsed time ${minutes}m${seconds}s%b"
+    print -P "%B%F{yellow}$PreStr elapsed time ${minutes}m${seconds}s%b"
   elif (( end_time > 10 )); then
-    print -P "%B%F{green}>>> elapsed time ${end_time}s%b"
+    print -P "%B%F{green}$PreStr elapsed time ${end_time}s%b"
   fi
 }
 
@@ -95,13 +96,13 @@ function prompt_minimal {
     zstyle ':git:info:commit' format "%c"
     zstyle ':git:info:branch' format "$FG[004]$FX[bold]%b$FX[reset]"
 
-    zstyle ':git:info:ahead' format "$BG[130]$FX[bold]↑ %A$FX[reset]"
-    zstyle ':git:info:behind' format "$BG[089]$FX[bold]↓ %B$FX[reset]"
+    zstyle ':git:info:ahead' format "$BG[019]$FX[bold]↑ %A$FX[reset]"
+    zstyle ':git:info:behind' format "$BG[124]$FX[bold]↓ %B$FX[reset]"
 
     zstyle ':git:info:clean' format " $FG[007]✔$FX[reset]"
-    zstyle ':git:info:dirty' format " $FG[001]✗$FX[reset]"
+    zstyle ':git:info:dirty' format " $FG[001]✘$FX[reset]"
     zstyle ':git:info:unmerged' format "═"
-    zstyle ':git:info:modified' format " $FG[093]✱$FX[reset]"
+    zstyle ':git:info:modified' format " $FG[093]Δ$FX[reset]"
     zstyle ':git:info:untracked' format " ?"
 
     zstyle ':git:info:keys' format \

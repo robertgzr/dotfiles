@@ -28,8 +28,10 @@ vim/plugged/
 vim/undo/
 vim/swaps/
 vim/backups/
-vim/init.vim
+vim/colors
+vim/spell/
 
 zsh/.*
 zsh/tmp/
 zsh/modules/info-functions/bin/
+zsh/modules/custom-completions

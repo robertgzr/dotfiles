@@ -1,7 +1,7 @@
 # HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=$ZSHDIR/tmp/zsh_history
+HISTFILE=$HOME/.zsh/zsh_history
 
 # bindkey '^R' zaw-history
 

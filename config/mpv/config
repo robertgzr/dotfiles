@@ -2,9 +2,10 @@
 #
 # Video
 #
-vo=opengl-hq:icc-profile-auto
+vo=opengl-hq:icc-profile-auto:icc-contrast=10000
+video-sync=display-resample
 #caca, null, opengl, opengl-hq, vaapi
-#hwdec=auto
+hwdec=auto
 hwdec=no
 framedrop=vo
 geometry=50%:50%
@@ -16,7 +17,7 @@ autofit-larger=80%x80%
 ao=coreaudio
 alang=jpn,ja,eng,en,ger,de
 softvol=yes
-softvol-max=200
+volume-max=200
 audio-channels=2.0
 # bs2b filter
 af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
@@ -45,11 +46,12 @@ osd-font='Iosevka'
 osd-font-size=27
 osd-scale=1.1
 osd-scale-by-window=yes
+osd-fractions=yes
 
 #
 # Misc.
 #
-screenshot-template=~/Pictures/Screenshots/mpv/mpv_screenshot_%n
+screenshot-template=~/Pictures/Screenshots/mpv/mpv_screenshot_%tY-%tm-%td__%tH-%tM-%tS
 screenshot-format=png
 user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
 

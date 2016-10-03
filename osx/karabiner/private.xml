@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <root>
+    <!-- APPLICATION DEFINITIONS -->
+    <appdef>
+        <appname>XQUARTZ</appname>
+        <equal>org.macosforge.xquartz.X11</equal>
+    </appdef>
+
     <!-- Key Remaps -->
     <item>
         <name>Remap Caps Lock (⇪) to Hyper with Escape on Tap</name>
@@ -117,6 +123,79 @@
         <equal>com.googlecode.iterm2</equal>
     </appdef>
     
+    <item>
+        <name>OSX VIM MODE</name>
+        <appendix>
+            includes:
+            * change tabs with Shift+j/k
+            * change application with CMD+J/K
+            * change windows with ALT+J/K
+        </appendix>
+        <identifier>private.osx_vim_mode</identifier>
+        <!-- Change tabs (at least in Chrome) -->
+        <!-- <autogen> -->
+        <!--     __KeyToKey__ -->
+        <!--     KeyCode::J, ModifierFlag::SHIFT_L, -->
+
+        <!--     KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L -->
+        <!-- </autogen> -->
+        <!-- <autogen> -->
+        <!--     __KeyToKey__ -->
+        <!--     KeyCode::K, ModifierFlag::SHIFT_L, -->
+
+        <!--     KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L -->
+        <!-- </autogen> -->
+        <!-- Change Applications -->
+        <autogen>
+            __KeyToKey__
+            KeyCode::J, ModifierFlag::COMMAND_L,
+
+            KeyCode::TAB, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::K, ModifierFlag::COMMAND_L,
+
+            KeyCode::TAB, ModifierFlag::COMMAND_L
+        </autogen>
+        <!-- Change windows -->
+        <autogen>
+            __KeyToKey__
+            KeyCode::K, ModifierFlag::OPTION_L,
+
+            KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::J, ModifierFlag::OPTION_L,
+
+            KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
+    <item>
+        <name>TMUX tabkey hack</name>
+        <appendix></appendix>
+        <identifier>private.tmux_tabkey</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::A,
+            ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+
+            KeyCode::A, ModifierFlag::CONTROL_L
+        </autogen>
+    </item>
+
+    <item>
+        <name>Osu! All on board</name>
+        <identifier>private.osu_all_board</identifier>
+        <only>XQUARTZ</only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::F11,
+
+            KeyCode::Z
+        </autogen>
+    </item> 
     <!-- <item> -->
     <!--     <name>Swap Hyper (Caps Lock) and Left Ctrl</name> -->
     <!--     <identifier>private.swap_hyper_left_ctrl</identifier> -->

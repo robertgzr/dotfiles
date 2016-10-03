@@ -1,0 +1,6 @@
+$pdflatex = 'xelatex --shell-escape -synctex=1 %O %S';
+$pdf_previewer = 'open -a Skim "%S"';
+$pdf_mode = 1;
+$pdf_update_method = 2;
+$pdf_update_signal = 'SIGHUP';
+$postscript_mode = $dvi_mode = 0;

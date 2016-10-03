@@ -2,11 +2,13 @@
 #
 # Video
 #
-vo=opengl-hq:icc-profile-auto:icc-contrast=10000
-video-sync=display-resample
+profile=opengl-hq
+# deband
+icc-profile-auto
+icc-contrast=10000
+# video-sync=display-resample
 #caca, null, opengl, opengl-hq, vaapi
 hwdec=auto
-hwdec=no
 framedrop=vo
 geometry=50%:50%
 autofit-larger=80%x80%
@@ -16,7 +18,6 @@ autofit-larger=80%x80%
 #
 ao=coreaudio
 alang=jpn,ja,eng,en,ger,de
-softvol=yes
 volume-max=200
 audio-channels=2.0
 # bs2b filter
@@ -58,9 +59,9 @@ user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101
 #
 # PROFILES
 #
-[ydl]
-profile-desc="Optimized for streaming with youtube-dl"
-ytdl-format="bestvideo[height<=?720]+bestaudio/best"
+[cacheplus]
+profile-desc="Optimized for streaming web video"
+# ytdl-format="bestvideo[height<=?720]+bestaudio/best"
 # ytdl-format=22
 hwdec=auto
 cache=8192

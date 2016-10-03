@@ -6,11 +6,10 @@ just all the stuff it takes for a fresh start
 Status
 ------
 ### todo
-* don't link all of .config/
-* proper weechat setup (maybe even as a client/server on pi)
+* proper weechat setup (using [w3](https://github.com/qguv/w3) & relay server on pi)
 * python - pip ?
 * ruby - gems ?
-* ableton demo converter folder automation
+* ableton-demo-converter folder automation
 * linuxbrew?
 * split Brewfile into groups of software and handle install via script
 * check gitparser behavior when branch name "foo_bar"
@@ -25,6 +24,7 @@ Status
 * osx defaults
 * sublime config
 * minimal brewfile  
+* don't link all of .config/
 
 Cheatsheets
 -----------

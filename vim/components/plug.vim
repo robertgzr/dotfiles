@@ -7,7 +7,6 @@ endfunction
 call plug#begin('~/.vim/plugged')
     " colorschemes
     " Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-    Plug 'mhinz/vim-janah'
     Plug 'trusktr/seti.vim'
     Plug 'morhetz/gruvbox'
     " interface
@@ -15,6 +14,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'shinchu/lightline-gruvbox.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'nathanaelkane/vim-indent-guides'
+    " Plug 'yggdroot/indentline'
     Plug 'junegunn/goyo.vim', {'for': 'markdown'}
     Plug 'junegunn/limelight.vim', {'for': 'markdown'}
     " ux
@@ -23,7 +23,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-easy-align'
     Plug 'tpope/vim-commentary'
     Plug 'chiel92/vim-autoformat'
-    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+    Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
     Plug 'scrooloose/syntastic'
     Plug 'godlygeek/tabular'
     Plug 'tpope/vim-fugitive'
@@ -31,13 +32,18 @@ call plug#begin('~/.vim/plugged')
     Plug 'raimondi/delimitmate'
     Plug 'xolox/vim-misc'
     Plug 'xolox/vim-session'
-    Plug 'DrawIt'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'tpope/vim-sleuth'
+    Plug 'valloric/matchtagalways'
+    Plug 'ajh17/VimCompletesMe'
     " neo stuff
     Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
     Plug 'Shougo/neosnippet'
     Plug 'Shougo/neosnippet-snippets'
     " lang specific
-    Plug 'zchee/deoplete-go'
+    Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make' }
 ""    Plug 'zchee/deoplete-clang'
     Plug 'fatih/vim-go', {'for': 'go'}
     Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
@@ -46,6 +52,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'suoto/vim-hdl', {'for': 'vhdl'}
     Plug 'othree/html5.vim', {'for': 'html'}
     Plug 'posva/vim-vue', {'for': 'vue'}
+    Plug 'lervag/vimtex', {'for': 'tex'}
     " TODO:
     " c/cpp
     " java

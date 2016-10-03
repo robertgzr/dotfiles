@@ -21,10 +21,10 @@ set smarttab
 
 " set autoindent
 filetype plugin indent on
-
 " set code folding method
 setlocal foldmethod=syntax
-
+" completion popup behavior
+set completeopt=longest,menuone
 " always show status line
 set laststatus=2
 set noerrorbells

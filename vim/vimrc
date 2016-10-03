@@ -6,14 +6,15 @@ source ~/.vim/components/plug.vim
 set backupdir=$DOT_DIR/vim/backups
 set directory=$DOT_DIR/vim/swaps
 if exists("&undodir")
-	set undodir=$DOT_DIR/vim/undo
+    set undodir=$DOT_DIR/vim/undo
 endif
 
-colorscheme gruvbox
-set background=dark
 syntax enable
+set background=dark
+colorscheme gruvbox
+
 if has("neovim-dot-app")
-    set guifont=Iosevka:h13
+    set guifont=Iosevka Light:h13
 end
 if has("vimr")
     set guifont=Iosevka:h13
@@ -37,16 +38,7 @@ set clipboard=unnamed
 set backspace=indent,eol,start
 highlight Comment cterm=italic
 
-"" Some Autocommands
-"" For more see the components/plugin-settings.vim
-" toggle spell-check if filetype is markdown
-autocmd FileType markdown setlocal spell
-" Disable tabs->spaces for Makefiles
-autocmd FileType make setlocal noexpandtab
-autocmd FileType c setlocal foldmethod=syntax
-autocmd ColorScheme janah highlight Normal ctermbg=235
-"" modular settings:
-
+source ~/.vim/components/autocmd.vim
 source ~/.vim/components/line.vim
 source ~/.vim/components/plugin-settings.vim
 source ~/.vim/components/keys.vim

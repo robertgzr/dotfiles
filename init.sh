@@ -149,22 +149,22 @@ function setup_iosevka()
 function setup_vim()
 {
     local current_func="vim"
-    report_status "Setup"
-    ln -sfv $DOT_DIR/vim $HOME/.vim
-    ln -sfv $DOT_DIR/vim/vimrc $HOME/.vimrc
+    report_status "Setup neovim"
+    ln -sfv "$DOT_DIR/vim" "$HOME/.vim"
+    ln -sfv "$DOT_DIR/vim" "$XDG_CONFIG_HOME/nvim"
     # make centralized folders
-    mkdir -pv $DOT_DIR/vim/backups
-    mkdir -pv $DOT_DIR/vim/swaps
-    mkdir -pv $DOT_DIR/vim/undo
+    mkdir -pv "$DOT_DIR/vim/backups"
+    mkdir -pv "$DOT_DIR/vim/swaps"
+    mkdir -pv "$DOT_DIR/vim/undo"
+
+    report_status "Install VimPlug"
+    if [ ! -f "$DOT_DIR/vim/autoload/plug.vim" ]; then
+	curl -fLo "$DOT_DIR/vim/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
+    fi
 
     report_status "Initial PlugUpdate"
-    $(which vim) +PlugUpdate +:q! +:q! &>/dev/null
+    $(which nvim) +PlugUpdate +:q! +:q! &>/dev/null
 
-    if [[ "$arch" = "Darwin" ]]; then
-        report_status "Linking config for NeoVim"
-        ln -sfv $DOT_DIR/vim $DOT_DIR/config/nvim
-        ln -sfv $DOT_DIR/vim/vimrc $DOT_DIR/config/nvim/init.vim
-    fi
     report_status "Finished setting up vim\n"
 }
 
@@ -223,6 +223,16 @@ function setup_sublimetext()
     cp -v "$DOT_DIR/sublimetext/User" "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
 }
 
+function setup_tmux()
+{
+    local current_func="tmux"
+    report_status "link tmux.conf"
+
+    if [ ! -f "$HOME/.tmux.conf" ]; then
+        ln -sfv "$DOT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+    fi
+}
+
 function test()
 {
     echo "Hey, $you (on $arch)"
@@ -241,19 +251,19 @@ function test()
     else
         report_error "missing .zshenv"
     fi
-    # vim?
+    # using nvim full time
     want+=1
-    if [ -f "$HOME/.vimrc" ]; then
-        report_success "vimrc" && compl+=1
-    else
-        report_error "missing vimrc"
-    fi
-    # OSX: nvim?
-    want+=1
-    if [ "$arch" = "Darwin" ] && [ -f "$HOME/.config/nvim/init.vim" ]; then
+    if [ -f "$XDG_CONFIG_HOME/nvim/init.vim" ]; then
         report_success "init.vim (neovim)" && compl+=1
     else
         report_error "no init.vim for neovim"
+    fi
+    # still need .vim folder
+    want+=1
+    if [ -d "$HOME/.vim" ]; then
+        report_success ".vim directory link" && compl+=1
+    else
+        report_error "missing .vim dir"
     fi
     # check if config was symlinked
     for app in $config_apps; do
@@ -310,6 +320,13 @@ function test()
             report_warning "can't evaluate go-gitparser";
         fi
     fi
+    # tmux
+    want+=1
+    if [ ! -f "$HOME/.tmux.conf" ]; then
+        report_error "missing tmux.conf"
+    else
+        report_success "tmux.conf" && compl+=1;
+    fi
 
     print -P "%B%K{blue}>>> $compl/$want complete%k"
 }
@@ -327,6 +344,7 @@ function run()
     setup_config
     setup_git
     setup_vim
+    setup_tmux
 
     if [[ "$arch" = "Darwin" ]]; then
         report_status "Start OSX specific actions"
@@ -369,6 +387,8 @@ function action()
             setup_git ;;
         "go-gitparser")
             setup_gogitparser ;;
+        "tmux")
+            setup_tmux ;;
         *)
             echo $usage ;;
     esac

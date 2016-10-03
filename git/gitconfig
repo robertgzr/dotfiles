@@ -5,9 +5,11 @@
 [github]
     user = robertgzr
 
+[pm.f1.htw-berlin.de]
+    user = "s0548432"
+
 [core]
 	excludesfile = /Users/robert/.gitignore_global
-    editor = vim
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -23,9 +25,9 @@
     filemode = false
 
 [alias]
-    st = status --porcelain --branch
+    stp = status --porcelain --branch
     sti = status --porcelain --branch --ignored
-    sts = status -sb
+    st = status -sb
     stl = ls-files -m -o --exclude-standard
     ci = commit
     br = branch
@@ -43,6 +45,7 @@
     show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
     ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
     pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    total-lines = "! git ls-tree -r master --name-only | xargs -I {} git blame --line-porcelain {} | sed -n 's/^author //p' | sort | uniq -c | sort -rn"
 
 [pager]
     diff = less
@@ -120,7 +123,6 @@
     followTags = true
 
 # URL shorthands
-
 [url "git@github.com:"]
 
     insteadOf = "gh:"

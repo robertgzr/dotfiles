@@ -13,11 +13,13 @@ Status
 * linuxbrew?
 * split Brewfile into groups of software and handle install via script
 * check gitparser behavior when branch name "foo_bar"
+* add latex stuff
 
 ### done
 * zsh
 * (n)vim
 * git
+* tmux
 * brew
 * terminal colorschemes
 * custom karabiner mappings

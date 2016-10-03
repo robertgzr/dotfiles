@@ -1,25 +1,10 @@
 # dotfile gitignore
 config/nvim
 
-config/flexget/config.yml
-config/flexget/.config-lock
-config/flexget/*.log
-config/flexget/log-*
-config/flexget/*.sqlite
-
-config/mpv/watch_later/*
-config/mpv/icc-cache/*
-
-config/transmision/
-
-config/weechat/logs/
-config/weechat/*.log
-config/weechat/script/plugins.*
-config/weechat/chanstat/peak_data.csv
-config/weechat/sec.conf
-config/weechat/ssl/
-
 gh_api_token
+
+mpv/watch_later/
+mpv/icc-cache/
 
 vim/init.vim
 vim/ginit.vim
@@ -30,6 +15,8 @@ vim/swaps/
 vim/backups/
 vim/colors
 vim/spell/
+vim/session
+vim/autoload/*.old
 
 zsh/.*
 zsh/tmp/

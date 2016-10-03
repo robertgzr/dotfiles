@@ -8,6 +8,10 @@
 export DOT_DIR=$HOME/.dotfiles
 export ZDOTDIR=$DOT_DIR/zsh
 
-export PATH=/tmp/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+
+export XDG_CONFIG_HOME="$HOME/Library/Application Support"
+export XDG_CACHE_HOME="$HOME/Library/Caches"
+export XDG_DATA_HOME="$HOME/Library"
 
 source $ZDOTDIR/exports.zsh

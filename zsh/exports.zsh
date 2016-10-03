@@ -10,7 +10,7 @@ if [[ $(uname) = "Darwin" ]]; then
 fi
 
 # Path
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/universal-darwin:$GOAPPENGINE
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
@@ -38,8 +38,13 @@ export PAGER='less'
     export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
     export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
     export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
-export EDITOR="vim"
-export VISUAL="vim"
+if which nvim > /dev/null; then
+    export EDITOR="NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim"
+    export VISUAL="NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim"
+else
+    export EDITOR="vim"
+    export VISUAL="vim"
+fi
 
 # Python
 # export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages

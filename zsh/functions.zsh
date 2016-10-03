@@ -104,10 +104,11 @@ function mpva()
 
 # mpv for lazy me
 function mpvp {
+    local PROFILE="--profile=cacheplus"
     local PASTE="$(pbp)"
     if [[ $# -eq 0 ]];
     then
-      mpv $PASTE --profile=ydl
+      mpv $PASTE $PROFILE
     elif [[ $# -eq 1 ]];
     then
       if [[ $1 = "-a" ]];
@@ -115,7 +116,7 @@ function mpvp {
           mpva $PASTE
       elif [[ $1 = "-loop" ]];
       then
-        mpv $PASTE --profile=ydl --loop
+        mpv $PASTE $PROFILE --loop
       elif [[ $1 = "fuck" ]]
       then
         youtube-dl -F $PASTE
@@ -126,7 +127,7 @@ function mpvp {
     then
       if [[ $1 = "-f" ]];
       then
-        mpv $PASTE --profile=ydl --ytdl-format=$2
+        mpv $PASTE $PROFILE --ytdl-format=$2
       else
         echo "something went wrong"
       fi

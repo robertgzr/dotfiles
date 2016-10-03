@@ -3,7 +3,7 @@
 # === Paths ===
 export X11PATH=/opt/X11
 export PHPPATH=$(brew --prefix homebrew/php/php54)
-export TEXPATH=/usr/local/texlive/2015basic
+export TEXPATH=/usr/local/texlive/2016basic
 # Go
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/devel/go

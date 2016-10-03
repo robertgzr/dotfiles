@@ -21,7 +21,6 @@ source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/history.zsh
 source $ZDOTDIR/zsh_hooks.zsh
 
-
 # ==== TODO
 
 # setup: Pyenv

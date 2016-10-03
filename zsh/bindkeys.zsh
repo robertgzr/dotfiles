@@ -25,7 +25,7 @@ bindkey "^[[H"    beginning-of-line                 # Fn-left arrow
 bindkey "^[[F"    end-of-line                       # Fn-right arrow
 
 bindkey ' ' magic-space
-bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
+# bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 
 # history substring search
 bindkey '^[[A' history-substring-search-up

@@ -53,20 +53,14 @@ alias cp="${aliases[cp]:-cp} -i"
 alias rm="${aliases[rm]:-rm} -i"
 alias grep="${aliases[grep]:-grep} --color=auto"
 
-alias j='fasd_cd -d'
-alias jj='fasd_cd -d -i'
-alias ss='f -i -e subl'
-alias vv='f -i -e nvim'
-alias oo='f -i -e open'
-
 alias minf="mediainfo"
-alias mpv="noglob mpv"
+# alias mpv="noglob mpv"
 alias vlc="noglob /opt/homebrew-cask/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC"
 alias cvlc="vlc --intf=rc"
-alias youtube-dl="noglob youtube-dl"
+# alias youtube-dl="noglob youtube-dl"
 alias ydl="youtube-dl"
 alias livestreamer="noglob livestreamer"
-alias saldl="noglob saldl"
+# alias saldl="noglob saldl"
 alias weechat="weechat -d $DOT_DIR/config/weechat"
 alias playme="play --buffer 318 -e mu -v 0.6 -d lowpass 3000"
 
@@ -100,3 +94,18 @@ if [[ $(uname) = "Darwin" ]]; then
 
     alias dockerup='eval $(docker-machine env default)'
 fi
+
+alias tmux="TERM=screen-256color-bce tmux"
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
+
+alias j='fasd_cd -d'
+alias jj='fasd_cd -d -i'
+alias ss='f -i -e subl'
+alias vv='f -i -e nvim'
+alias oo='f -i -e open'
+
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-dom-distiller &>/dev/null"
+alias htop="sudo htop"

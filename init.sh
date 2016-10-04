@@ -3,7 +3,7 @@
 DOT_DIR="$HOME/.dotfiles"
 export DOT_DIR
 
-XDG_CONFIG_HOME="$HOME/Library/Application Support"
+XDG_CONFIG_HOME="$HOME/.config"
 
 arch="$(uname)"
 you="$(whoami)"
@@ -84,14 +84,20 @@ function setup_config()
     local current_func="config"
     report_status "set up various application configs"
     # create .config if neccessary
-    if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
+    if [[ "$XDG_CONFIG_HOME" = "" ]]; then
         report_error "It appears XDG_CONFIG_HOME is not set..."
-        return
+	return
+    else
+        if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
+	    mkdir -pv "$XDG_CONFIG_HOME";
+        fi
     fi
 
     for app in $config_apps; do
         report_status "linking $app"
-        ln -sfv "$DOT_DIR/$app" "$XDG_CONFIG_HOME"
+        if [[ ! -f "$XDG_CONFIG_HOME/$app" ]]; then
+            ln -sfv "$DOT_DIR/$app" "$XDG_CONFIG_HOME"
+        fi
     done
 
     report_status "Finished setting up config dir\n"
@@ -150,8 +156,12 @@ function setup_vim()
 {
     local current_func="vim"
     report_status "Setup neovim"
-    ln -sfv "$DOT_DIR/vim" "$HOME/.vim"
-    ln -sfv "$DOT_DIR/vim" "$XDG_CONFIG_HOME/nvim"
+    if [[ ! "$HOME/.vim" ]]; then
+        ln -sfv "$DOT_DIR/vim" "$HOME/.vim"
+    fi
+    if [[ ! "$XDG_CONFIG_HOME/nvim" ]]; then
+        ln -sfv "$DOT_DIR/vim" "$XDG_CONFIG_HOME/nvim"
+    fi
     # make centralized folders
     mkdir -pv "$DOT_DIR/vim/backups"
     mkdir -pv "$DOT_DIR/vim/swaps"

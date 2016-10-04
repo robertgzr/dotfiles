@@ -20,7 +20,7 @@ let g:lightline = {
 
     " \ 'subseparator': { 'left': '', 'right': '' },
     " \ 'separator': { 'left': '', 'right': '' },
-let g:lightline.colorscheme = 'gruvbox'
+let g:lightline.colorscheme = 'solarized'
 
 function! LightLineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'

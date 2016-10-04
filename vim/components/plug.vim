@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
     Plug 'trusktr/seti.vim'
     Plug 'morhetz/gruvbox'
+    Plug 'iCyMind/NeoSolarized'
     " interface
     Plug 'itchyny/lightline.vim'
     Plug 'shinchu/lightline-gruvbox.vim'

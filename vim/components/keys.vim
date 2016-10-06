@@ -2,19 +2,21 @@
 command! W write
 
 " Hardmode
-let g:hardmode_msg = 'You are pathetic!'
-nnoremap <Left> :echo g:hardmode_msg<CR>
-vnoremap <Left> :echo g:hardmode_msg<CR>
-inoremap <Left> :echo g:hardmode_msg<CR>
-nnoremap <Right> :echo g:hardmode_msg<CR>
-vnoremap <Right> :echo g:hardmode_msg<CR>
-inoremap <Right> :echo g:hardmode_msg<CR>
-nnoremap <Up> :echo g:hardmode_msg<CR>
-vnoremap <Up> :echo g:hardmode_msg<CR>
-inoremap <Up> :echo g:hardmode_msg<CR>
-nnoremap <Down> :echo g:hardmode_msg<CR>
-vnoremap <Down> :echo g:hardmode_msg<CR>
-inoremap <Down> :echo g:hardmode_msg<CR>
+let g:hardmode_error = "Don't use the arrow keys!"
+nnoremap <left> :echoerr g:hardmode_error<CR>
+nnoremap <right> :echoerr g:hardmode_error<CR>
+nnoremap <up> :echoerr g:hardmode_error<CR>
+nnoremap <down> :echoerr g:hardmode_error<CR>
+
+vnoremap <left> :echoerr g:hardmode_error<CR>
+vnoremap <right> :echoerr g:hardmode_error<CR>
+vnoremap <up> :echoerr g:hardmode_error<CR>
+vnoremap <down> :echoerr g:hardmode_error<CR>
+
+inoremap <left> <Esc>:echoerr g:hardmode_error<CR>
+inoremap <right> <Esc>:echoerr g:hardmode_error<CR>
+inoremap <up> <Esc>:echoerr g:hardmode_error<CR>
+inoremap <down> <Esc>:echoerr g:hardmode_error<CR>
 
 " Buffer commands
 command! Wb write|bdelete
@@ -41,7 +43,6 @@ au FileType go map <Leader>ga :GoAlternate<CR>
 map <Leader>en :cnext<CR>
 map <Leader>ep :cprevious<CR>
 nnoremap <Leader>ea :cclose<CR>
-
 
 " completion
 " inoremap <expr> <CR> pumvisible() ? '\<C-y>' : '\<C-g>u\<CR>'

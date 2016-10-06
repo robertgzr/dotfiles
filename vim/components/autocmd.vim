@@ -11,3 +11,7 @@ autocmd ColorScheme janah highlight Normal ctermbg=235
 " autocmd BufWrite * :Autoformat
 autocmd TextChanged,TextChangedI <buffer> silent write
 
+" completion window
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd CompleteDone * if pumvisible() == 0|pclose|endif
+

@@ -2,33 +2,32 @@ function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
 
-" starting to use vim a little more
-"" Plugin Manager
+" Plugin Manager
 call plug#begin('~/.vim/plugged')
     " colorschemes
     " Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-    Plug 'trusktr/seti.vim'
-    Plug 'morhetz/gruvbox'
+    " Plug 'trusktr/seti.vim'
+    " Plug 'morhetz/gruvbox'
     Plug 'iCyMind/NeoSolarized'
     " interface
     Plug 'itchyny/lightline.vim'
-    Plug 'shinchu/lightline-gruvbox.vim'
+    " Plug 'shinchu/lightline-gruvbox.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'nathanaelkane/vim-indent-guides'
     " Plug 'yggdroot/indentline'
-    Plug 'junegunn/goyo.vim', {'for': 'markdown'}
-    Plug 'junegunn/limelight.vim', {'for': 'markdown'}
+    " Plug 'junegunn/goyo.vim', {'for': 'markdown'}
+    " Plug 'junegunn/limelight.vim', {'for': 'markdown'}
     " ux
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/vim-easy-align'
     Plug 'tpope/vim-commentary'
     Plug 'chiel92/vim-autoformat'
-    Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-    Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
+    " Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+    " Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
     Plug 'scrooloose/syntastic'
     Plug 'godlygeek/tabular'
-    Plug 'tpope/vim-fugitive'
+    " Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-startify'
     Plug 'raimondi/delimitmate'
     Plug 'xolox/vim-misc'
@@ -45,7 +44,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/neosnippet-snippets'
     " lang specific
     Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make' }
-""    Plug 'zchee/deoplete-clang'
+    " Plug 'zchee/deoplete-clang'
     Plug 'fatih/vim-go', {'for': 'go'}
     Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
     Plug 'peterhoeg/vim-qml', {'for': 'qml'}
@@ -60,3 +59,8 @@ call plug#begin('~/.vim/plugged')
     " python
     Plug 'equalsraf/neovim-gui-shim'
 call plug#end()
+
+" plugin settings
+for p in split(glob('./plugin-settings/*.vim'), '\n')
+    exe 'source' p
+endfor

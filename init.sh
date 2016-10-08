@@ -106,11 +106,16 @@ function setup_config()
 function setup_gogitparser()
 {
     local current_func="zsh"
-    report_status "Build go-gitparser"
-    # build go-gitparser
-    cd "$DOT_DIR/zsh/modules/info-functions/go-gitparser"
-    eval "go build"
-    report_status "Built go-gitparser\n"
+    report_status "Installing porcelain"
+    # check for Go Environment
+    if [[ -n "$GOPATH" ]]; then
+        report_error "No go environment found! Set GOPATH"
+    fi
+    eval "go get -u -v github.com/robertgzr/porcelain"
+    if [[ -n "$(which porcelain)" ]]; then
+        report_error "Couldn't find installed 'porcelain'!\nIs GOPATH/bin in PATH?"
+    fi
+    report_status "Installed porcelain\n"
 }
 
 function setup_golang_linux()
@@ -321,13 +326,13 @@ function test()
     fi
     # gitparser?
     want+=1
-    if [ ! -f "$ZDOTDIR/modules/info-function/go-gitparser/go-gitparser" ]; then
-        report_error "missing go-gitparser";
+    if [ ! -f "$GOPATH/bin/porcelain" ]; then
+        report_error "missing porcelain";
     else
-        if [ ! -z "$($ZDOTDIR/modules/info-functions/go-gitparser/go-gitparser)" ]; then
-            report_success "go-gitparser" && compl+=1;
+        if [ ! -z "$($GOPATH/bin/porcelain -fmt)" ]; then
+            report_success "porcelain" && compl+=1;
         else
-            report_warning "can't evaluate go-gitparser";
+            report_warning "can't evaluate porcelain";
         fi
     fi
     # tmux

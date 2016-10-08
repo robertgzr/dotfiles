@@ -17,7 +17,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # export PKG_CONFIG_PATH=/usr/local/opt/pyenv/versions/3.4.3/lib/pkgconfig/:/usr/local/opt/qt5/lib/pkgconfig:/usr/local/opt/oniguruma/lib/pkgconfig
 
 # Setup terminal, and turn on colors
-export TERM=xterm-256color
+export TERM=xterm-256color-italic
 export CLICOLOR=1
 # export LSCOLORS=Gxfxcxdxbxegedabagacad
 

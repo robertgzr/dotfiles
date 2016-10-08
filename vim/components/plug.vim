@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'chiel92/vim-autoformat'
     " Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
     " Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
+    Plug 'justinmk/vim-dirvish'
     Plug 'scrooloose/syntastic'
     Plug 'godlygeek/tabular'
     " Plug 'tpope/vim-fugitive'
@@ -57,10 +58,5 @@ call plug#begin('~/.vim/plugged')
     " c/cpp
     " java
     " python
-    Plug 'equalsraf/neovim-gui-shim'
+    " Plug 'equalsraf/neovim-gui-shim'
 call plug#end()
-
-" plugin settings
-for p in split(glob('./plugin-settings/*.vim'), '\n')
-    exe 'source' p
-endfor

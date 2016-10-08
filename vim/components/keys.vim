@@ -38,7 +38,8 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 au FileType go nmap <Leader>rt <Plug>(go-run-tab)
-au FileType go map <Leader>ga :GoAlternate<CR>
+au FileType go map <Leader>gg :GoAlternate<CR>
+au FileType go map <Leader>gi :GoInfo<CR>
 
 map <Leader>en :cnext<CR>
 map <Leader>ep :cprevious<CR>
@@ -77,3 +78,6 @@ smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
 xmap <expr><Tab> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_target)" :
   \ "\<Tab>"
+
+" terminal mode mappings
+tnoremap <ESC> <C-\><C-n>

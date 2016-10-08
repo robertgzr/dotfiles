@@ -9,7 +9,7 @@ function prompt_dir() {
         # shortend path behaviour
         local pwd="${PWD/#$HOME/~}"
 
-        if [[ "$pwd" == '(#m)[/~]' ]]; then
+        if [[ "$pwd" == (#m)[/~] ]]; then
             prompt_pwd="$MATCH"
             unset MATCH
         else
@@ -43,7 +43,6 @@ function prompt_paradox_print_elapsed_time {
 
 # executes prior to any command
 function prompt_precmd {
-    prompt_update_context
     prompt_dir
 
     PROMPT='$prompt_context$FG[002]$prompt_pwd%{%f%}$FX[reset] $FG[255]> '

@@ -1,30 +1,33 @@
 #!/usr/bin/env zsh
 # ==== FUNCTIONS
 
+# load seperate mpvp script
+source ./modules/mpvp.zsh
+
 # refresh ZSH configuration
 function source-zsh {
-  source "$ZDOTDIR/.zshrc"
+    source "$ZDOTDIR/.zshrc"
 }
 
 # Previews files in Quick Look.
 # Author:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 function ql {
-  if (( $# > 0 )); then
-    qlmanage -p "$@" &> /dev/null
-  fi
+    if (( $# > 0 )); then
+        qlmanage -p "$@" &> /dev/null
+    fi
 }
 
 # Displays the Mac OS X download history.
 # Author:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 function download-history {
-  local db
-  for db in ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV*; do
-    if grep -q 'LSQuarantineEvent' < <(sqlite3 "$db" .tables); then
-      sqlite3 "$db" 'SELECT LSQuarantineDataURLString FROM LSQuarantineEvent'
-    fi
-  done
+    local db
+    for db in ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV*; do
+        if grep -q 'LSQuarantineEvent' < <(sqlite3 "$db" .tables); then
+            sqlite3 "$db" 'SELECT LSQuarantineDataURLString FROM LSQuarantineEvent'
+        fi
+    done
 }
 
 # ==== Load more good stuff:
@@ -36,10 +39,10 @@ function mcd {
 }
 
 function abspath() {
-  # $1 : relative filename
-  if [ -d "$(dirname "$1")" ]; then
-    echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
-  fi
+    # $1 : relative filename
+    if [ -d "$(dirname "$1")" ]; then
+        echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+    fi
 }
 
 # == Fuzzy search scripts using fzf
@@ -51,92 +54,50 @@ function fzl {
 
 # cd using fzf
 function fzcd {
-  local file
-  local dir
-  file=$(fzf +m -0 -q "$1") && dir=$(dirname "$file") && cd "$dir"
+    local file
+    local dir
+    file=$(fzf +m -0 -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
 function fzjj {
-  local dir
-  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "$dir" || return 1
+    local dir
+    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "$dir" || return 1
 }
 
 # open using fzf
 function fzopen {
-  local file
-  local dir
-  file=$(fzf +m -0 -q "$1") && open "$file"
+    local file
+    local dir
+    file=$(fzf +m -0 -q "$1") && open "$file"
 }
 
 function fzmpv {
-  local file
-  file=$(fzf +m -0 -q "mkv$ | mp4$ | 3gp$ $1") && mpv "$file"
+    local file
+    file=$(fzf +m -0 -q "mkv$ | mp4$ | 3gp$ $1") && mpv "$file"
 }
 
 # full shell power: fzf + fasd
 # to open a file in sublime text
 function fzsubl {
-  local file
-  file=$(fzf +m -0 -q "$1") && subl "$file" || return 1
+    local file
+    file=$(fzf +m -0 -q "$1") && subl "$file" || return 1
 }
 
 function fzss {
-  local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "$file" || return 1
+    local file
+    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "$file" || return 1
 }
 
 # full shell power: fzf + fasd
 # to open a file in sublime text
 function fzvim {
-  local file
-  file=$(fzf +m -0 -q "$1") && vim "$file" || return 1
+    local file
+    file=$(fzf +m -0 -q "$1") && vim "$file" || return 1
 }
 
 function fzvv {
-  local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && nvim "$file" || return 1
-}
-
-function mpva()
-{
-  mpv --no-video --vo=null --term-osd=force --term-osd-bar=yes --term-osd-bar-chars="▌▓⟩░▐" --term-playing-msg="> ${filename}" --input-app-events=yes --ytdl $1
-}
-
-# mpv for lazy me
-function mpvp {
-    local PROFILE="--profile=cacheplus"
-    local PASTE="$(pbp)"
-    if [[ $# -eq 0 ]];
-    then
-      mpv $PASTE $PROFILE
-    elif [[ $# -eq 1 ]];
-    then
-      if [[ $1 = "-a" ]];
-      then
-          mpva $PASTE
-      elif [[ $1 = "-loop" ]];
-      then
-        mpv $PASTE $PROFILE --loop
-      elif [[ $1 = "fuck" ]]
-      then
-        youtube-dl -F $PASTE
-      else
-        echo "figure something out please"
-      fi
-    elif [[ $# -eq 2 ]];
-    then
-      if [[ $1 = "-f" ]];
-      then
-        mpv $PASTE $PROFILE --ytdl-format=$2
-      else
-        echo "something went wrong"
-      fi
-    else
-      echo "mpvp [options] <youtube-dl format> <profile>"
-      echo \n"Options:"
-      echo \t"-a"\t"plays only audio"
-      echo \t"-loop"\t"loops endlessly"
-    fi
+    local file
+    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "$file" || return 1
 }
 
 # start firefox with dev-profile

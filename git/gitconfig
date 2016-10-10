@@ -5,11 +5,14 @@
 [github]
     user = robertgzr
 
+[bitbucket]
+    user = robertgzr
+
 [pm.f1.htw-berlin.de]
     user = "s0548432"
 
 [core]
-	excludesfile = /Users/robert/.gitignore_global
+	excludesfile = ~/.gitignore_global
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -144,5 +147,3 @@
     insteadOf = "gist:"
 [http]
 	sslverify = true
-	#sslCAInfo = /Users/robertgz/.git-certs/htw_berlin.pem
-

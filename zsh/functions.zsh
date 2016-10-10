@@ -2,11 +2,11 @@
 # ==== FUNCTIONS
 
 # load seperate mpvp script
-source ./modules/mpvp.zsh
+source $ZDOTDIR/modules/mpvp.zsh
 
 # refresh ZSH configuration
 function source-zsh {
-    source "$ZDOTDIR/.zshrc"
+    source "$HOME/.zshrc"
 }
 
 # Previews files in Quick Look.

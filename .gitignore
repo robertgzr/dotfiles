@@ -6,7 +6,6 @@ gh_api_token
 mpv/watch_later/
 mpv/icc-cache/
 
-vim/init.vim
 vim/ginit.vim
 vim/.netrwhist
 vim/plugged/

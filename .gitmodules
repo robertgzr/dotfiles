@@ -19,3 +19,21 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "mpv/scripts/mpv-stats"]
+	path = mpv/scripts/mpv-stats
+	url = https://github.com/Argon-/mpv-stats
+[submodule "mpv/scripts/livestreamer_hook"]
+	path = mpv/scripts/livestreamer_hook
+	url = https://gist.github.com/selsta/cdb1e3172a87f6f028c6
+[submodule "mpv/scripts/mpv-plugin-streamcache"]
+	path = mpv/scripts/mpv-plugin-streamcache
+	url = https://github.com/lvml/mpv-plugin-streamcache
+[submodule "mpv/scripts/mpv-progressbar"]
+	path = mpv/scripts/mpv-progressbar
+	url = https://github.com/torque/mpv-progressbar
+[submodule "mpv/shaders/finesharp"]
+	path = mpv/shaders/finesharp
+	url = https://gist.github.com/igv/a9a21ad1f6dd7d0b4452
+[submodule "mpv/shaders/crossbilateral"]
+	path = mpv/shaders/crossbilateral
+	url = https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637

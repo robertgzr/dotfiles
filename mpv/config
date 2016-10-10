@@ -3,11 +3,13 @@
 # Video
 #
 profile=opengl-hq
+opengl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
 # deband
 icc-profile-auto
 icc-contrast=10000
 # video-sync=display-resample
-#caca, null, opengl, opengl-hq, vaapi
+# vo=caca
+# null, opengl, opengl-hq, vaapi
 hwdec=auto
 framedrop=vo
 geometry=50%:50%
@@ -27,25 +29,25 @@ af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
 # Subtitles
 #
 # slang=eng,en,ger,de
-sub-text-font='Gandhi Sans Bold'
-sub-text-border-size=2.4
-sub-text-font-size=44
-sub-text-margin-y=50
+# sub-font='Noto Sans'
+sub-font='Cronos Pro Semibold Caption'
+sub-border-size=2.8
+sub-font-size=45
+sub-margin-y=50
 sub-auto=fuzzy
-sub-text-spacing=0.5
-# ass override
-# ass-force-style-FontName='Gandhi Sans Bold',Default.Bold=1'
-ass-force-style=Kerning=yes
+sub-spacing=1
+sub-ass-force-style=Kerning=yes
 
 #
 # OSD
 #
+osc=no
 no-border
 stop-screensaver
 cursor-autohide-fs-only
 osd-font='Iosevka'
-osd-font-size=27
-osd-scale=1.1
+osd-font-size=25
+osd-scale=1
 osd-scale-by-window=yes
 osd-fractions=yes
 
@@ -74,27 +76,7 @@ profile-desc="3d"
 hwdec=no
 vf-add=stereo3d=sbs2l:mono
 
-[anime]
-profile-desc="flash3kyuu_deband with (s:eng/a:jpn)"
-hwdec=auto
-# vf-add=vapoursynth=~/.config/mpv/vapoursynth/f3kdb.py
-alang=ja
-slang=en
-
 [insane]
 profile-desc="OpenGL-HQ (scale-antiring/fbo:rgba16) + VS [insane] interpolation"
 vo=opengl-hq:scale-antiring=0.7:scale=ewa_lanczos:icc-profile-auto
 vf-add=vapoursynth=~/.config/mpv/vapoursynth/interpolation_insane.py
-vf-add=vapoursynth=~/.config/mpv/vapoursynth/f3kdb.py
-
-[no_ass]
-# ass-force-style=FontName=GandhiSans
-no-sub-ass
-sub-text-font='Gandhi Sans Bold Italic'
-sub-scale=1.1
-sub-text-margin-y=60
-
-[battery]
-profile-desc="battery saving mode"
-vo=opengl
-hwdec=auto

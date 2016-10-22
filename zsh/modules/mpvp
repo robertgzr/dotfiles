@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/zsh
 #
 # mpvp script to start mpv with content of the clipboard
 
@@ -9,7 +9,8 @@ function mpva()
 }
 
 # mpv for lazy me
-function mpvp {
+function mpvp
+{
     local usage="""mpvp [-a] [mpv options]\n
     -a\tplays only audio\n
     (mpv cli flags can append)
@@ -24,11 +25,13 @@ function mpvp {
     # mpvp main
     if [[ $1 = "-a" ]]; then
         echo "running: mpva ${@/-a/} $profile $paste";
-        mpva "${@/-a/}" "$profile" "$paste";
+        mpva "$profile" "${@/-a/}" "$paste";
     elif [[ $1 = "-h" ]]; then
             echo "$usage";
     else
         echo "running: mpv $@ $profile $paste"
-        mpv "$@" "$profile" "$paste"
+        mpv "$profile" "$@" "$paste"
     fi
 }
+
+mpvp $@

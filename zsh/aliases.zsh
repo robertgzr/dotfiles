@@ -72,6 +72,7 @@ if [[ $(uname) = "Darwin" ]]; then
     alias pbc='pbcopy'
     alias pbp='pbpaste'
 
+    alias brew='TERM=xterm-256color brew'
     alias cask='brew cask'
     alias caskx='cask zap'
     alias brewup='brew update && brew upgrade'

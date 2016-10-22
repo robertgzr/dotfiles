@@ -3,7 +3,7 @@ source ~/.vim/general.vim
 source ~/.vim/plug.vim
 
 " source plugin settings
-for p in split(glob('~/.vim/components/plugin-settings/*.vim'), '\n')
+for p in split(glob('~/.vim/plugin-settings/*.vim'), '\n')
     exe 'source' p
 endfor
 

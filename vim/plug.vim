@@ -48,12 +48,14 @@ call plug#begin('~/.vim/plugged')
     " Plug 'zchee/deoplete-clang'
     Plug 'fatih/vim-go', {'for': 'go'}
     Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
+    Plug 'DrawIt', {'on': 'DIstart'}
     Plug 'peterhoeg/vim-qml', {'for': 'qml'}
     Plug 'rust-lang/rust.vim', {'for': 'rust'}
     Plug 'suoto/vim-hdl', {'for': 'vhdl'}
     Plug 'othree/html5.vim', {'for': 'html'}
     Plug 'posva/vim-vue', {'for': 'vue'}
     Plug 'lervag/vimtex', {'for': 'tex'}
+    Plug 'cespare/vim-toml', {'for': 'toml'}
     " TODO:
     " c/cpp
     " java

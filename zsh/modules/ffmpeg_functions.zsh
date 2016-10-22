@@ -1,7 +1,8 @@
 #!/bin/env zsh
 
 # ffmpeg -> gif script
-function gifenc() {
+function gifenc()
+{
   if [[ "$1" = "-h" ]]; then
     print -n "Usage: gifenc [input] [output] [horizontal resolution for output] [fps]"
   fi

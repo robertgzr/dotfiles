@@ -3,11 +3,11 @@
 # ==== Basic ZSH
 
 fpath=(
-    $ZDOTDIR/modules/*
+    $ZDOTDIR/modules
     $ZDOTDIR/modules/custom-completions
     /usr/local/share/zsh-completions
     /usr/local/share/zsh/site-functions
-    ${fpath[@]}
+    $fpath
 )
 
 # /usr/local/bin/

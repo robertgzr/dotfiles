@@ -2,7 +2,7 @@
 # ==== FUNCTIONS
 
 # load seperate mpvp script
-source $ZDOTDIR/modules/mpvp.zsh
+autoload -Uz mpvp
 
 # refresh ZSH configuration
 function source-zsh {
@@ -31,8 +31,8 @@ function download-history {
 }
 
 # ==== Load more good stuff:
-source $DOT_DIR/zsh/additionals/ffmpeg_functions.zsh
-source $DOT_DIR/zsh/additionals/ze-best-zsh-config_functions.zsh
+source $DOT_DIR/zsh/modules/ffmpeg_functions.zsh
+source $DOT_DIR/zsh/modules/ze-best-zsh-config_functions.zsh
 
 function mcd {
     mkdir $1 && cd $1

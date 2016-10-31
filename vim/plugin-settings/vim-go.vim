@@ -16,3 +16,5 @@ let g:go_metalinter_autosave = 0
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
 let g:go_fmt_experimental = 1 " solves https://github.com/fatih/vim-go/issues/502
+let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 1

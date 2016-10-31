@@ -19,8 +19,12 @@ if [ ! -f "${SPARK}" ]; then
     exit 1
 fi
 
-IDLE=$(top -F -R -l3 | grep "CPU usage" | tail -1 | \
-      egrep -o '[0-9]{0,3}\.[0-9]{0,2}% idle' | sed 's/% idle//')
+TOP3=$(top -F -R -l3 | \
+    awk 'NR==12||NR==13||NR==14 {printf "%.1-5f%%: %-10s \n", $3, $2}')
+
+IDLE=$(top -F -R -l3 | \
+    grep "CPU usage" | tail -1 | \
+    egrep -o '[0-9]{0,3}\.[0-9]{0,2}% idle' | sed 's/% idle//')
 
 CURRENT=$(printf "%.0f" "$(echo 100 - "$IDLE" | bc)")
 
@@ -39,3 +43,5 @@ LC_ALL=en_US.UTF-8
 # that input contains at least one 100(%). Strip it afterwards.
 CHART=$( ( echo 100 ; cat "${HISTORY_FILE}" ) | ${SPARK})
 echo "${CHART:1}"
+echo "---"
+echo "${TOP3}"

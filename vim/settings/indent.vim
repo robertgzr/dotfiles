@@ -4,6 +4,9 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+" set autoindent
+filetype plugin indent on
+
 autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html   setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType vue    setlocal expandtab shiftwidth=2 softtabstop=2

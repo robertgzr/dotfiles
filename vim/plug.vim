@@ -1,69 +1,64 @@
 " Plugin Manager
-" TODO: write plugin documentation
 call plug#begin('~/.vim/plugged')
 
 " Core
-    Plug 'tpope/vim-commentary'
-    Plug 'raimondi/delimitmate'
-    Plug 'tpope/vim-surround'
-    Plug 'itchyny/lightline.vim'
-    Plug 'neomake/neomake'
+    Plug 'tpope/vim-commentary' " auto-comment using `gcc`
+    Plug 'cohama/lexima.vim' " auto-close parens, brackets, etc.
+    Plug 'tpope/vim-surround' " edit surroundings in pairs
+    Plug 'itchyny/lightline.vim' " lightweight status bar
+    " Plug 'neomake/neomake'
+    Plug 'sbdchd/neoformat' " async code formatter
+    Plug 'w0rp/ale' " linter framework
     " completion
     Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
         Plug 'zchee/deoplete-go',             { 'for': 'go', 'do': 'make' }
         Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
         Plug 'zchee/deoplete-clang',          { 'for': ['cpp', 'c'] }
+    Plug 'Shougo/echodoc.vim' " print completed documentation into command line
     " snippets
-    Plug 'sirver/UltiSnips'
-    	Plug 'honza/vim-snippets'
+    Plug 'Shougo/neosnippet'
+        Plug 'Shougo/neosnippet-snippets'
     " git
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'junegunn/vim-easy-align'
+    Plug 'tpope/vim-fugitive' " integration
+    Plug 'airblade/vim-gitgutter' " line status next to line nums
     " search
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
         Plug 'junegunn/fzf.vim'
-    " meta
-    Plug 'mhinz/vim-startify'
-    Plug 'justinmk/vim-dirvish'
-    Plug 'xolox/vim-session'
+
+    Plug 'justinmk/vim-dirvish' " folder browser
 
 " Misc
-    Plug 'majutsushi/tagbar'
-    Plug 'nathanaelkane/vim-indent-guides'
-    " Plug 'yggdroot/indentline'
-    " Plug 'chiel92/vim-autoformat'
-    Plug 'godlygeek/tabular'
-    Plug 'xolox/vim-misc'
-    Plug 'tpope/vim-repeat'
-    Plug 'jeffkreeftmeijer/vim-numbertoggle'
-    Plug 'tpope/vim-sleuth'
-    Plug 'valloric/matchtagalways'
-    Plug 'tweekmonster/braceless.vim'
-    Plug 'Shougo/echodoc.vim'
+    Plug 'junegunn/vim-easy-align' " auto-align code
+    Plug 'tpope/vim-sleuth' " auto-set shiftwidth and expandtab options
+    " Plug 'nathanaelkane/vim-indent-guides' " show indentation levels
+    Plug 'yggdroot/indentLine' " show indentation levels
+    Plug 'jeffkreeftmeijer/vim-numbertoggle' " absolute/relative line num
+    Plug 'valloric/matchtagalways' " visually match HTML tags enclosing cursor location
+    " Plug 'tpope/vim-repeat' " extend .-repeat to plugins
+    " Plug 'majutsushi/tagbar' " code minimap via ctags
+    " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
+    " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
+    Plug 'mattn/emmet-vim', { 'for': 'html' } " super-fast HTML editing
+    Plug 'tpope/vim-ragtag' " auto-close HTML/XML tags
 
 " WhoaDude
-    Plug 'DrawIt', {'on': 'DIstart'} " draw ascii arrows/boxes
+    Plug 'lilydjwg/colorizer' " set background of colour to that colour
+    " Plug 'DrawIt', {'on': 'DIstart'} " draw ascii arrows/boxes
 
 " Languages
-    Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries'}
-    Plug 'rust-lang/rust.vim',        { 'for': 'rust'}
-    Plug 'gabrielelana/vim-markdown', { 'for': 'markdown'}
+    " multi-language support with on-demand loading
+    Plug 'sheerun/vim-polyglot' 
+    Plug 'fatih/vim-go',            { 'for': 'go'}
+    Plug 'suoto/vim-hdl',           { 'for': 'vhdl'}
+
+" Markdown UX
     " Plug 'junegunn/goyo.vim',         { 'for': 'markdown'}
     " Plug 'junegunn/limelight.vim',    { 'for': 'markdown'}
-    Plug 'peterhoeg/vim-qml',         { 'for': 'qml'}
-    Plug 'suoto/vim-hdl',             { 'for': 'vhdl'}
-    Plug 'othree/html5.vim',          { 'for': 'html'}
-    Plug 'posva/vim-vue',             { 'for': 'vue'}
-    Plug 'lervag/vimtex',             { 'for': 'tex'}
-    Plug 'cespare/vim-toml',          { 'for': 'toml'}
-    Plug 'uarun/vim-protobuf',        { 'for': 'proto'}
-    " TODO:
-        " java
-        " python
 
 " Colorschemes
-    Plug 'iCyMind/NeoSolarized'
+    " Plug 'aereal/vim-colors-japanesque', { 'branch': 'robertgzr' }
+    Plug 'KeitaNakamura/neodark.vim'
+    " Plug 'iCyMind/NeoSolarized'
     " Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
     " Plug 'trusktr/seti.vim'
     " Plug 'morhetz/gruvbox'

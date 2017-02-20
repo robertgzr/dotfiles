@@ -3,6 +3,7 @@ set termguicolors
 set title
 set noshowmode
 set autowrite
+set inccommand=split
 
 set encoding=utf-8 nobomb
 " set nocompatible

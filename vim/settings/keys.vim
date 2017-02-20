@@ -35,9 +35,46 @@ nmap <F8> :TagbarToggle<CR>
 
 " deoplete rust mappings
 augroup filetype_rust
-    au FileType rust nmap <Leader>gd <plug>DeopleteRustGoToDefinitionDefault
-    au FileType rust nmap <Leader>d  <plug>DeopleteRustShowDocumentation
+    au FileType rust nmap <Leader>gd <plug>(DeopleteRustGoToDefinitionDefault)
+    au FileType rust nmap <Leader>d  <plug>(DeopleteRustShowDocumentation)
 augroup END
+
+" navigate popupu with Ctl-[J,K]
+inoremap <expr><C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
+inoremap <expr><C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
+
+" neosnippet mappings
+" imap <C-s> <Plug>(neosnippet_expand_or_jump)
+" smap <C-s> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-s> <Plug>(neosnippet_expand_or_jump)
+
+" tab completion
+imap <expr> <Tab> pumvisible() ?
+    \ "\<C-n>"
+    \ : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
+    \ : "\<Tab>"
+
+" expand/jump snippets with Tab
+smap <expr> <Tab> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \ : "\<Tab>"
+
+" move the popup list backwards
+inoremap <silent><expr> <S-Tab> pumvisible() ? 
+    \ "\<C-p>"
+    \ : "\<S-Tab>"
+
+" expand from popup with Enter or close popup
+imap <expr> <CR>
+    \ neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
+    \ : pumvisible() ? deoplete#close_popup() 
+    \ : "\<CR>"
+
+" Insert and reload popup
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-g> deoplete#undo_completion()
+inoremap <expr><C-l> deoplete#refresh()
 
 " Hardmode = not using arrow keys
 let g:hardmode_error = "Don't use the arrow keys!"

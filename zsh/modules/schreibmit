@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+function schreibmit()
+{
+    if [[ -z $1 ]]; then
+        echo "needs number!"
+        return
+    fi
+    touch "${1}_$( date "+%Y-%m-%d" ).md"
+}
+
+schreibmit $@

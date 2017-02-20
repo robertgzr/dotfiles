@@ -2,7 +2,7 @@
 let g:lightline = {
     \ 'mode_map': { 'c': 'NORMAL' },
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+    \   'left': [ [ 'mode', 'paste' ], [ 'filename'], ['fugitive','ale'] ]
     \ },
     \ 'component_function': {
     \   'modified': 'LightLineModified',
@@ -13,17 +13,28 @@ let g:lightline = {
     \   'filetype': 'LightLineFiletype',
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
+    \   'ale': 'LightLineALE',
     \ },
-    \ 'subseparator': { 'left': '▶', 'right': '◀' },
+    \ 'subseparator': { 'left': '', 'right': '' },
     \ 'separator': { 'left': '', 'right': '' },
 \ }
 
-    " \ 'subseparator': { 'left': '', 'right': '' },
-    " \ 'separator': { 'left': '', 'right': '' },
-
 " ========================================== "
 
-let g:lightline.colorscheme = 'solarized'
+function! LightLineUseSeperators(line, sepL, sepR, subsepL, subsepR)
+  let a:line.separator.left = a:sepL
+  let a:line.separator.right = a:sepR
+  let a:line.subseparator.left = a:subsepL
+  let a:line.subseparator.right = a:subsepR
+endfunction
+
+function! LightLineUsePowerline()
+  call LightLineUseSeperators(g:lightline, '', '', '', '')
+  let g:lightline.colorscheme = 'jellybeans'
+endfunction
+
+call LightLineUseSeperators(g:lightline, '', '', '|', '|')
+let g:lightline.colorscheme = 'neodark'
 
 " ========================================== "
 
@@ -42,7 +53,7 @@ function! LightLineFilename()
         \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 function! LightLineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+  if &filetype !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let _ = fugitive#head()
     return strlen(_) ? ' '._ : ''
   endif
@@ -55,8 +66,11 @@ function! LightLineFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fenc : &enc) : ''
 endfunction
 function! LightLineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+function! LightLineALE()
+  return ALEGetStatusLine()
 endfunction

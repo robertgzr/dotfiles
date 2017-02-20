@@ -1,5 +1,11 @@
 "" Some Autocommands
 
+" formatter
+augroup on_save
+    autocmd!
+    " autocmd BufWritePre * Neoformat
+augroup END
+
 " completion window
 augroup completion_window
     autocmd!

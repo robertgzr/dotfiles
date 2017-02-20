@@ -7,14 +7,20 @@ set softtabstop=4
 " set autoindent
 filetype plugin indent on
 
-autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
-autocmd FileType html   setlocal expandtab shiftwidth=2 softtabstop=2
-autocmd FileType vue    setlocal expandtab shiftwidth=2 softtabstop=2
+augroup indentation_filetypes
+    autocmd!
 
-autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType ruby   setlocal expandtab shiftwidth=2 softtabstop=2
-autocmd FileType go setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType html   setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType vue    setlocal expandtab shiftwidth=2 softtabstop=2
 
-autocmd FileType zsh setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType bash setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType sh setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType ruby   setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType go setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType c setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType cpp setlocal expandtab shiftwidth=4 softtabstop=4
+
+    autocmd FileType zsh setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType bash setlocal expandtab shiftwidth=4 softtabstop=4
+    autocmd FileType sh setlocal expandtab shiftwidth=4 softtabstop=4
+augroup END

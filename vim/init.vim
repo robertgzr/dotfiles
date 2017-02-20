@@ -7,10 +7,15 @@ for s:plugin in split(glob('~/.vim/settings/*.vim'), '\n')
 endfor
 
 " colorscheme options
-syntax enable
 let g:base16colorspace=256
+if has('syntax') && !exists('g:syntax_on')
+    syntax enable
+endif
+
+let g:neodark#background='gray'
+let g:neodark#use_256color=0
 set background=dark
-colorscheme NeoSolarized
+colorscheme neodark
 
 " share OSX clipboard
 set clipboard=unnamed
@@ -35,6 +40,12 @@ if exists('&undodir')
     set undodir=~/.vim/undo
 endif
 
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=nv
+endif
+
 " VimR options
 if has('gui_vimr')
+  call LightLineUsePowerline()
 end

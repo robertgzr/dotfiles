@@ -2,6 +2,7 @@ let g:deoplete#enable_at_startup = 1
 
 let g:deoplete#disable_auto_complete = 0
 let g:deoplete#enable_smart_case = 1
+
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
@@ -38,23 +39,3 @@ let g:deoplete#omni#input_patterns.tex =
             \  .  '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
             \  .  '|(?:include(?:only)?|input)\s*\{[^}]*'
             \  .')'
-
-" make jk work for completion popup
-inoremap <expr><C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
-inoremap <expr><C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
-" not tab completion
-inoremap <silent><expr> <tab>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ deoplete#mappings#manual_complete()
-	function! s:check_back_space() abort "{{{
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
-	endfunction"}}}
-" Insert and reload popup
-inoremap <expr><C-h>
-		\ deoplete#smart_close_popup()."\<C-h>"
-		inoremap <expr><BS>
-		\ deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-g> deoplete#undo_completion()
-inoremap <expr><C-l> deoplete#refresh()

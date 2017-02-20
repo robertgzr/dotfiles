@@ -1,10 +1,17 @@
 #!/bin/env ruby
 
-until File.exist?('./occupy.rb')
+unless File.exist?('./occupy.rb')
+  puts "need the occupy.rb library"
+  exit(1)
   # get occupy gem
 end
 
 require './occupy.rb'
+
+unless ARGV[0] != ''
+  puts USAGE
+  exit(1)
+end
 
 # InitFramework.new takes 2 arguments
 # - you can change the dotdir location (default: ~/.dotfiles)
@@ -75,7 +82,8 @@ end
 
 InitModule.new('tmux') do |tmux|
   tmux.links = [
-    InitLink.new(init, 'tmux/tmux.conf', Dir.home + '/.tmux.conf')
+    InitLink.new(init, 'tmux/tmux.conf', Dir.home + '/.tmux.conf'),
+    InitLink.new(init, 'tmux/colors.conf', Dir.home + '/.tmux.colors.conf')
   ]
 
   init.register(tmux)
@@ -127,8 +135,6 @@ InitModule.new('karabiner') do |kara|
       kara.links = [
         InitLink.new(init, 'osx/karabiner/private.xml', karadir)
       ]
-    else
-      kara.report_warning 'There is a private.xml installed... Aborting.'
     end
   else
     kara.report_warning 'Karabiner not installed?'
@@ -146,13 +152,18 @@ end
 
 # END of COMPONENTS
 
-init.dry_run if ARGV[0] == 'dry'
-init.run if ARGV[0] == 'run'
-init.test if ARGV[0] == 'test'
-puts %(Usage: ./init.rb [run | dry | test]
-
+USAGE = %(Usage: ./init.rb [run | dry | test]
 run\t install everything
 dry\t show what it is going to install
 test\t test the system
-
-) if ARGV[0] == 'help'
+)
+case ARGV[0]
+when 'dry'
+  init.dry_run
+when 'run'
+  init.run
+when 'test'
+  init.test
+else
+  puts USAGE
+end

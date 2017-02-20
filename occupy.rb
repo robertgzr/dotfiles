@@ -34,6 +34,7 @@ class InitFramework
     puts 'Running the tests'
     @modules.each(&:test)
   end
+
 end
 
 # InitLink wraps InitFramework links

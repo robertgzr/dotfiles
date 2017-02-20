@@ -1,6 +1,6 @@
 [user]
     name = Robert G.
-    email = robert.guenzler@student.htw-berlin.de
+    email = robertguenzler@gmail.com
 
 [github]
     user = robertgzr
@@ -127,20 +127,20 @@
 
 # URL shorthands
 [url "git@github.com:"]
-
     insteadOf = "gh:"
+    insteadOf = "https://github.com/"
     pushInsteadOf = "github:"
     pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
-
     insteadOf = "github:"
 
-[url "ssh://gogs@rbg.re:robertgzr/"]
+[url "gogs@rbg.re:robertgzr"]
     insteadOf = "rbg.re:"
+    insteadOf = "https://rbg.re/robertgzr"
+    insteadOf = "https://git.rbg.re/robertgzr"
 
 [url "git@gist.github.com:"]
-
     insteadOf = "gst:"
     insteadOf = "gist:"
     pushInsteadOf = "gist:"

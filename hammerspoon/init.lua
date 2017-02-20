@@ -2,7 +2,7 @@ conf = {
     super = {"cmd", "alt", "ctrl", "shift"},
     hotkeyAlterDuration = 0.5,
     windowAnimationDuration = 0.01,
-    windowHotkeyModal = false
+    windowHotkeyModal = true
 }
 
 hs.window.animationDuration = conf.windowAnimationDuration
@@ -13,42 +13,20 @@ hs.hotkey.bind(super, "R", function()
     hs.reload()
 end)
 
-function iterm_applescript (title, command)
-    local mpv = hs.application.find('mpv')
-    local osa = ""
-    title = "mpvp"
-    if mpv ~= nil then
-        -- use the old terminal
-        osa = [[
+function run_in_iterm (title, command)
+    local osa = [[
 tell application "iTerm2"
     activate
-    repeat with w in windows
-    tell w
-        if name is "]] .. title .. [[" then
-            tell current session
-                write text "]] .. command .. [["
-            end tell
-        end if
-    end tell
-    end repeat
-end tell
-]]
-    else
-        osa = [[
-tell application "iTerm2"
-    activate
-    set term to (create window with default profile)
+    set term to (create window with profile "dumb" command "]] .. command .. [[")
     tell term
         tell current session
             set rows to 15
             set columns to 100
             set name to "]] .. title ..[["
-            write text "]] .. command .. [["
         end tell
     end tell
 end tell
 ]]
-    end
     hs.osascript.applescript(osa)
 end
 
@@ -60,7 +38,7 @@ function launch_mpvp ()
         contentImage = hs.image.imageFromAppBundle('io.mpv'),
     }):send()
 
-    iterm_applescript('mpvp', 'mpvp')
+    run_in_iterm('mpvp', '~/.dotfiles/zsh/modules/mpvp')
 end
 function launch_mpvpa ()
     local pb = hs.pasteboard.readString()
@@ -70,7 +48,7 @@ function launch_mpvpa ()
         contentImage = hs.image.imageFromAppBundle('io.mpv'),
     }):send()
 
-    iterm_applescript('mpvp', 'mpvp -a')
+    run_in_iterm('mpvp', '~/.dotfiles/zsh/modules/mpvp -a')
 end
 
 function resizeLeftHalf ()
@@ -166,15 +144,15 @@ end
 local hot_mpv = hs.hotkey.modal.new(super, "M", "MPV Mode")
 -- function hot_mpv:exited() hs.alert.show("Normal Mode") end
 hot_mpv:bind('', 'escape', function () hot_mpv:exit() end)
-hot_mpv:bind('', 'M', function ()
+hot_mpv:bind('', 'M', function()
     launch_mpvp()
     hot_mpv:exit()
 end)
-hot_mpv:bind('', 'A', function ()
+hot_mpv:bind('', 'A', function()
     launch_mpvpa()
     hot_mpv:exit()
 end)
-hot_mpv:bind('', 'K', function ()
+hot_mpv:bind('', 'K', function()
     hs.application.find('mpv'):kill()
     hot_mpv:exit()
 end)
@@ -182,7 +160,7 @@ end)
 -- hs.hotkey.bind(super, "M", launch_mpvp)
 
 -- resize the current window to a small overlay
-hs.hotkey.bind(super, 'T', function ()
+hs.hotkey.bind(super, 'T', function()
     floatingVideo("topright")
 end)
 
@@ -190,14 +168,39 @@ end)
 if conf.windowHotkeyModal then
     local hot_win = hs.hotkey.modal.new(super, "W", "Window Mode")
     -- function hot_win:entered() hs.alert.show("Window Mode") end
-    function hot_win:exited() hs.alert.show("Normal Mode") end
-    hot_win:bind('', 'escape', function () hot_win:exit() end)
-    hot_win:bind('', 'H', resizeLeftHalf)
-    hot_win:bind('', 'K', resizeTopHalf)
-    hot_win:bind('', 'J', resizeBottomHalf)
-    hot_win:bind('', 'L', resizeRightHalf)
-    hot_win:bind('', 'F', resizeFullscreen)
-    hot_win:bind('', 'C', resizeCenter)
+    -- function hot_win:exited() hs.alert.show("Normal Mode") end
+    hot_win:bind('', 'escape', function()
+        hot_win:exit() 
+        hs.alert.show("Normal Mode")
+    end)
+    hot_win:bind('', 'H', function()
+        resizeLeftHalf()
+        hot_win:exit()
+    end)
+    hot_win:bind('', 'K', function()
+        resizeTopHalf()
+        hot_win:exit()
+    end)
+    hot_win:bind('', 'J', function()
+        resizeBottomHalf()
+        hot_win:exit()
+    end)
+    hot_win:bind('', 'L', function()
+        resizeRightHalf()
+        hot_win:exit()
+    end)
+    hot_win:bind('', 'F', function()
+        resizeFullscreen()
+        hot_win:exit()
+    end)
+    hot_win:bind('', 'C', function()
+        resizeCenter()
+        hot_win:exit()
+    end)
+    hot_win:bind('shift', 'H', hs.window.focusedWindow().moveOneScreenWest)
+    hot_win:bind('shift', 'J', hs.window.focusedWindow().moveOneScreenSouth)
+    hot_win:bind('shift', 'K', hs.window.focusedWindow().moveOneScreenNorth)
+    hot_win:bind('shift', 'L', hs.window.focusedWindow().moveOneScreenEast)
 else
     hs.hotkey.bind(super, 'H', resizeLeftHalf)
     hs.hotkey.bind(super, 'K', resizeTopHalf)
@@ -220,6 +223,6 @@ else
     end)
 end
 
-hs.hotkey.bind(super, 's', function()
-    hs.caffeinate.lockScreen()
-end)
+-- hs.hotkey.bind(super, 's', function()
+--     hs.caffeinate.lockScreen()
+-- end)

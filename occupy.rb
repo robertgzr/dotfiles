@@ -35,7 +35,7 @@ class InitFramework
     if m == 'all'
       @modules.each_value(&:install)
     else
-      @mod[m].install(false)
+      @modules[m].install(false)
     end
   end
 

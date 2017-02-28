@@ -10,29 +10,42 @@ class InitFramework
     dot = Dir.home + '/.dotfiles',
     config = Dir.home + '/.config'
   )
-    @modules = []
+    @modules = Hash.new
     @dotdir = dot
     @configdir = config
   end
 
   def register(new_module)
     raise 'Expected InitModule value' unless new_module.class == InitModule
-    @modules << new_module
+    # @modules << new_module
+    @modules[new_module.name] = new_module
   end
 
-  def dry_run
-    puts 'Installing modules (dry run)'
-    @modules.each { |m| m.install(true) }
+  def dry_run(m = 'all')
+    puts "Installing #{m} (dry run)"
+    if m == 'all'
+      @modules.each_value do |m| m.install(true) end
+    else
+      @modules[m].install(true)
+    end
   end
 
-  def run
-    puts 'Installing modules'
-    @modules.each(&:install)
+  def run(m = 'all')
+    puts 'Installing', m
+    if m == 'all'
+      @modules.each_value(&:install)
+    else
+      @mod[m].install(false)
+    end
   end
 
-  def test
-    puts 'Running the tests'
-    @modules.each(&:test)
+  def test(m = 'all')
+    puts "Running tests for #{m}"
+    if m == 'all'
+      @modules.each_value(&:test)
+    else
+      @modules[m].test
+    end
   end
 
 end

@@ -152,18 +152,30 @@ end
 
 # END of COMPONENTS
 
-USAGE = %(Usage: ./init.rb [run | dry | test]
+USAGE = %(Usage: ./init.rb [run | dry | test] <module>
 run\t install everything
 dry\t show what it is going to install
 test\t test the system
 )
 case ARGV[0]
 when 'dry'
-  init.dry_run
+  if ARGV[1]
+    init.dry_run(ARGV[1])
+  else
+    init.dry_run
+  end
 when 'run'
-  init.run
+  if ARGV[1]
+    init.run(ARGV[1])
+  else
+    init.run
+  end
 when 'test'
-  init.test
+  if ARGV[1]
+    init.test(ARGV[1])
+  else
+    init.test
+  end
 else
   puts USAGE
 end

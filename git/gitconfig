@@ -89,9 +89,7 @@
     # Use `hexdump` to diff binary files
     textconv = hexdump -v -C
     renames = copies
-    tool = vim
-[difftool "vim"]
-    cmd = vim
+    tool = vimdiff
 [difftool]
     prompt = false
 
@@ -110,9 +108,8 @@
     log = true
     conflictstyle = diff3
     defaultToUpstream = true
-    tool = vim
-[mergetool "vim"]
-    cmd = vim
+    tool = vimdiff
+[mergetool "vimdiff"]
     trustExitCode = true
 [mergetool]
     prompt = false

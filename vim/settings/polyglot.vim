@@ -3,6 +3,8 @@
 " Go
 " --> in seperate go.vim file
 
+" Rust
+" --> seperate rust.vim
 
 " LaTeX
 
@@ -30,6 +32,12 @@
 "     endif
 " endfunction
 
+" JSON
+augroup filetype_json
+    autocmd!
+    autocmd InsertEnter *.json setlocal concealcursor=
+    autocmd InsertLeave *.json setlocal concealcursor=inc
+augroup END
 
 " Markdown
 let g:vim_markdown_math = 1

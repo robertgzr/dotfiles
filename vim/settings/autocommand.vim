@@ -3,7 +3,7 @@
 " formatter
 augroup on_save
     autocmd!
-    " autocmd BufWritePre * Neoformat
+    autocmd BufWritePre * Neoformat
 augroup END
 
 " completion window

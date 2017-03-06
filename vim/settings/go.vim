@@ -30,6 +30,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 
 augroup filetype_go
+    autocmd!
     au FileType go nmap <Leader>r <Plug>(go-run)
     au FileType go nmap <Leader>rt <Plug>(go-run-tab)
     au FileType go nmap <Leader>b <Plug>(go-build)

@@ -9,6 +9,8 @@ call plug#begin('~/.vim/plugged')
     " Plug 'neomake/neomake'
     Plug 'sbdchd/neoformat' " async code formatter
     Plug 'w0rp/ale' " linter framework
+    " Language Server Client
+    Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
     " completion
     Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
         Plug 'zchee/deoplete-go',             { 'for': 'go', 'do': 'make' }
@@ -49,7 +51,8 @@ call plug#begin('~/.vim/plugged')
     " multi-language support with on-demand loading
     Plug 'sheerun/vim-polyglot' 
     Plug 'fatih/vim-go',            { 'for': 'go'}
-    Plug 'suoto/vim-hdl',           { 'for': 'vhdl'}
+    " Plug 'suoto/vim-hdl',           { 'for': 'vhdl'}
+    Plug 'racer-rust/vim-racer',     { 'for': 'rust' }
 
 " Markdown UX
     " Plug 'junegunn/goyo.vim',         { 'for': 'markdown'}

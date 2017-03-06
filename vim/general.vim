@@ -5,6 +5,9 @@ set noshowmode
 set autowrite
 set inccommand=split
 
+" !
+set hidden
+
 set encoding=utf-8 nobomb
 " set nocompatible
 set number
@@ -22,3 +25,5 @@ setlocal foldmethod=syntax
 " completion popup behavior
 set completeopt=longest,menuone
 set showmatch
+
+set lazyredraw

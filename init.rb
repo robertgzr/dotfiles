@@ -65,7 +65,7 @@ InitModule.new('vim') do |vim|
   end
 
   # update vim-plug
-  vim.shell('$(which nvim) +PlugUpdate +:q! +:q! &>/dev/null')
+  vim.shell('$(which nvim) +PlugUpdate +:qall')
 
   init.register(vim)
 end

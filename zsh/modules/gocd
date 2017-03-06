@@ -1,0 +1,13 @@
+# use fzf to search for a dir in gopath
+
+gocd() {
+    local cmd="command find -L ${GOPATH}/src \
+        -not -iwholename '*.git*' \
+        -not -iwholename '*.svn*' \
+        -type d -print 2> /dev/null"
+    local out=$(eval $cmd | fzf --height=50% --exit-0)
+    if [ -d "$out" ]; then
+        cd "$out"
+        zle reset-prompt
+    fi
+}

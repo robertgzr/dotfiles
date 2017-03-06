@@ -1,0 +1,8 @@
+#!/bin/env zsh
+
+function wego {
+    local CITY=Berlin
+    curl -s "wttr.in/${CITY}" | head -7
+}
+
+wego $@

@@ -1,18 +1,18 @@
 # ==== ALIASES
 
 # Colorize output, add file type indicator, and put sizes in human readable format
-alias ls_='/bin/ls -GFh'
+alias ls='/bin/ls -GFh'
 # Same as above, but in long listing format
-alias ll_='ls_ -lS'
-alias la_='ls_ -la'
-alias ld_='ls_ -ld */'
+alias ll='ls -lS'
+alias la='ls -la'
+alias ld='ls -ld */'
 
 # use exa to replace ls
-alias ls='exa -G'
-alias ll='exa -lgHh --git --group-directories-first'
-alias la='exa -lagHh --git --group-directories-first'
-alias ld='exa -ld'
-alias lt='exa -lHhT'
+alias exa='exa -G'
+alias exal='exa -lgHh --git --group-directories-first'
+alias exaa='exa -lagHh --git --group-directories-first'
+alias exad='exa -ld'
+alias exat='exa -lHhT'
 
 # dot expolding (not sure if neccessary)
 alias ..="cd .."
@@ -29,6 +29,7 @@ alias unhide="chflags nohidden"
 alias py='python'
 
 # ==== Disable correction and globbing
+alias ack='noglob ack'
 alias cd='nocorrect cd'
 alias cp='nocorrect cp'
 alias gcc='nocorrect gcc'
@@ -85,20 +86,26 @@ if [[ $(uname) = "Darwin" ]]; then
     alias vvim="$(which vim)"
     alias vim="$(which nvim)"
     alias gvim='gnvim'
+    alias vimdiff='nvim -d'
 
     alias dockerup='eval $(docker-machine env default)'
+
+    alias j='fasd_cd -d'
+    alias jj='fasd_cd -d -i'
+    alias vv='fzf-fasd-vim'
+
+    alias ssh='TERM=xterm-256color ssh'
+    alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-dom-distiller &>/dev/null"
+    alias htop="sudo htop"
 fi
 
-alias ta='tmux attach'
-alias tls='tmux ls'
-alias tat='tmux attach -t'
-alias tns='tmux new-session -s'
+if [ -f $(which tmux) ]; then
+    alias ta='tmux attach'
+    alias tls='tmux ls'
+    alias tat='tmux attach -t'
+    alias tns='tmux new-session -s'
+fi
 
-alias j='fasd_cd -d'
-alias jj='fasd_cd -d -i'
-alias ss='f -i -e subl'
-alias vv='f -i -e nvim'
-alias oo='f -i -e open'
-
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-dom-distiller &>/dev/null"
-alias htop="sudo htop"
+if [ -f $(which go) ]; then
+    alias gofat='go-analyze-binary-size'
+fi

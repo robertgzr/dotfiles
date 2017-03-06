@@ -1,7 +1,7 @@
-_FASD_DATA=$ZSH_DIR/tmp/fasd_data
+_FASD_DATA=$ZSHDIR/tmp/fasd_data
 # fasd data file, default $HOME/.fasd
 
-_FASD_BLACKLIST=$ZSH_DIR/tmp/fasd_blacklist
+_FASD_BLACKLIST=$ZSHDIR/tmp/fasd_blacklist
 # List of blacklisted strings. Commands matching them will not be processed. Default is "--help".
 
 # $_FASD_SHIFT

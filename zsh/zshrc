@@ -1,4 +1,12 @@
-#!/usr/bin/env zsh
+#!/bin/env zsh
+
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>/tmp/startlog.$$
+    set -o xtrace prompt_subst
+fi
 
 # ==== Basic ZSH
 
@@ -10,76 +18,87 @@ fpath=(
     $fpath
 )
 
-# /usr/local/bin/
+# platform-specific stuff
+case "$(uname)" in
+    Darwin)
+        source $ZDOTDIR/macos/aliases.zsh
+        source $ZDOTDIR/macos/exports.zsh
+        source $ZDOTDIR/macos/functions.zsh
+        ;;
+    Linux)
+        source $ZDOTDIR/linux/exports.zsh
+        ;;
+esac
+
+source $ZDOTDIR/exports.zsh
 source $ZDOTDIR/setopt.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/spectrum.zsh
 source $ZDOTDIR/prompt.zsh
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/bindkeys.zsh
 source $ZDOTDIR/functions.zsh
+source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/history.zsh
 source $ZDOTDIR/zsh_hooks.zsh
 
 # ==== TODO
 
 # setup: Pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-fi
+# if which pyenv > /dev/null; then
+#     eval "$(pyenv init -)"
+# fi
 
-if which pyenv-virtualenv-init > /dev/null; then
-    eval "$(pyenv virtualenv-init -)"
-fi
+# if which pyenv-virtualenv-init > /dev/null; then
+#     eval "$(pyenv virtualenv-init -)"
+# fi
 
 # setup: THEFUCK
-if which thefuck-alias > /dev/null; then
-    eval "$(thefuck-alias fuck)"
-fi
-
-
-# ==== zsh modules configuration envs
-
-# configure autosuggestion
-AUTOSUGGESTION_HIGHLIGHT_COLOR=fg=$FG[241]
-AUTOSUGGESTION_HIGHLIGHT_CURSOR=0
-AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
-
-# # histroy substring highlight colors
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
-HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
-
-# # activate highlighters
-# # to tweak > zsh/modules/zsh-syntax-highlighting/highlighters
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
-
+# if which thefuck-alias > /dev/null; then
+#     eval "$(thefuck-alias fuck)"
+# fi
 
 # ==== Custom Modules
 
-source $ZDOTDIR/modules/fasd.zsh
-
-# source $ZDOTDIR/modules/zaw/zaw.zsh
+# Syntax Highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # History Substring Search
-source $ZDOTDIR/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # fish like autosuggestions
-# source $ZDOTDIR/modules/zsh-autosuggestions/autosuggestions.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# init autosuggest
-# zle-line-init() {
-#     zle autosuggest-start
-# }
-# zle -N zle-line-init
-
-# Syntax Highlighting
-source $ZDOTDIR/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# j
+# eval "$(fasd --init posix-alias zsh-hook)"
+source $ZDOTDIR/modules/fasd.zsh
 
 # fuzzy search with fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# have to source bindkeys after modules
+# otherwise new zle widgets are not available
+source $ZDOTDIR/bindkeys.zsh
+
+# ==== zsh modules configuration envs
+
+# configure autosuggestion
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=10 #fg=$FG[241]
+
+# histroy substring highlight colors
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
+export HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+
+# activate highlighters
+# to tweak > zsh/modules/zsh-syntax-highlighting/highlighters
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
+
 # command not found
-if brew command command-not-found-init > /dev/null; then
-  eval "$(brew command-not-found-init)"
+# if brew command command-not-found-init > /dev/null; then
+#   eval "$(brew command-not-found-init)"
+# fi
+
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    set +o xtrace
+    exec 2>&3 3>&-
 fi

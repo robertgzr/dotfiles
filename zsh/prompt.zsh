@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/env zsh
 
 # prints the current directory (short/long format)
 function prompt_dir() {
@@ -18,8 +18,26 @@ function prompt_dir() {
     fi
 }
 
-# prints the time since login to shell instance
-function prompt_paradox_print_elapsed_time {
+function prompt_context {
+    prompt_ctx=""
+    # virtualenv
+    if [ -n "$VIRTUAL_ENV" ]; then
+        if [ -f "$VIRTUAL_ENV/__name__" ]; then
+            local name=$(cat $VIRTUAL_ENV/__name__)
+        elif [ $(basename $VIRTUAL_ENV) = "__" ]; then
+            local name=$(basename $(dirname $VIRTUAL_ENV))
+        else
+            local name=$(basename $VIRTUAL_ENV)
+        fi
+        local ctx_virtualenv="$FG[003]ː$name$FX[reset]"
+        prompt_ctx+="$ctx_virtualenv"
+    else
+        prompt_ctx=" "
+    fi
+}
+
+# time since login to shell instance
+function prompt_calc_session_duration {
     local end_time=$(( SECONDS - _prompt_minimal_start_time ))
     local hours minutes seconds remainder
     local PreStr="⚑"
@@ -29,13 +47,15 @@ function prompt_paradox_print_elapsed_time {
         remainder=$(( end_time % 3600 ))
         minutes=$(( remainder / 60 ))
         seconds=$(( remainder % 60 ))
-        print -P "%B%F{red}$PreStr elapsed time ${hours}h${minutes}m${seconds}s%b"
+        prompt_session_duration="$FG[001]$FX[bold]$PreStr elapsed time ${hours}h${minutes}m${seconds}s$FX[reset]"
     elif (( end_time >= 60 )); then
         minutes=$(( end_time / 60 ))
         seconds=$(( end_time % 60 ))
-        print -P "%B%F{yellow}$PreStr elapsed time ${minutes}m${seconds}s%b"
+        prompt_session_duration="$FG[002]$FX[bold]$PreStr elapsed time ${minutes}m${seconds}s$FX[reset]"
     elif (( end_time > 10 )); then
-        print -P "%B%F{green}$PreStr elapsed time ${end_time}s%b"
+        prompt_session_duration="$FG[006]$FX[bold]$PreStr elapsed time ${end_time}s$FX[reset]"
+    else
+        prompt_session_duration=""
     fi
 }
 
@@ -44,8 +64,10 @@ function prompt_paradox_print_elapsed_time {
 # executes prior to any command
 function prompt_precmd {
     prompt_dir
+    prompt_context
+    prompt_calc_session_duration
 
-    PROMPT='$prompt_context$FG[002]$prompt_pwd%{%f%}$FX[reset] $FG[255]> '
+    PROMPT='$FG[002]$prompt_pwd%{%f%}$FX[reset]$prompt_ctx$FG[256]> '
 
     # git status on the right
     if [[ -f "$(which porcelain)" ]]; then
@@ -53,7 +75,9 @@ function prompt_precmd {
     fi
 
     # Calc elapsed time
-    prompt_paradox_print_elapsed_time
+    if [ -n "$prompt_session_duration" ]; then
+        print -P "$prompt_session_duration"
+    fi
 }
 
 # executes prior to any command execution

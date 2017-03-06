@@ -3,10 +3,14 @@
 
 # load seperate mpvp script
 autoload -Uz mpvp
+autoload -Uz schreibmit
+autoload -Uz wego
+autoload -Uz gocd
+autoload -Uz go-analyze-binary-size
 
 # refresh ZSH configuration
 function source-zsh {
-    source "$HOME/.zshrc"
+    source "$ZDOTDIR/zshrc"
 }
 
 # Previews files in Quick Look.
@@ -53,51 +57,33 @@ function fzl {
 }
 
 # cd using fzf
-function fzcd {
+function fcd {
     local file
     local dir
     file=$(fzf +m -0 -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-function fzjj {
+# jj using fzf
+function fjj {
     local dir
     dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "$dir" || return 1
 }
 
 # open using fzf
-function fzopen {
+function fopen {
     local file
     local dir
     file=$(fzf +m -0 -q "$1") && open "$file"
 }
 
-function fzmpv {
+function fmpv {
     local file
     file=$(fzf +m -0 -q "mkv$ | mp4$ | 3gp$ $1") && mpv "$file"
 }
 
-# full shell power: fzf + fasd
-# to open a file in sublime text
-function fzsubl {
+function fzf-fasd-vim {
     local file
-    file=$(fzf +m -0 -q "$1") && subl "$file" || return 1
-}
-
-function fzss {
-    local file
-    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "$file" || return 1
-}
-
-# full shell power: fzf + fasd
-# to open a file in sublime text
-function fzvim {
-    local file
-    file=$(fzf +m -0 -q "$1") && vim "$file" || return 1
-}
-
-function fzvv {
-    local file
-    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "$file" || return 1
+    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "$file" || return 1
 }
 
 # start firefox with dev-profile

@@ -1,16 +1,7 @@
 # ==== ENVS
 
-# Platform-specific preprocessing
-if [[ $(uname) = "Linux" ]]; then
-    source $DOT_DIR/zsh/additionals/linux_exports.zsh
-fi
-
-if [[ $(uname) = "Darwin" ]]; then
-    source $DOT_DIR/zsh/additionals/osx_exports.zsh
-fi
-
 # Path
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 # Lime Config
@@ -39,11 +30,11 @@ export PAGER='less'
     export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
     export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 if which nvim > /dev/null; then
-    export EDITOR="NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim"
-    export VISUAL="NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim"
+    export EDITOR="$(which nvim)"
+    export VISUAL=$EDITOR
 else
-    export EDITOR="vim"
-    export VISUAL="vim"
+    export EDITOR="$(which vim)"
+    export VISUAL=$EDITOR
 fi
 
 # Python

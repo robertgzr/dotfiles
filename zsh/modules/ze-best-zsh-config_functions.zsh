@@ -6,18 +6,15 @@
 function zsh_recompile {
   autoload -U zrecompile
   rm -f ~/.zsh/*.zwc
-  [[ -f ~/.zshrc ]] && zrecompile -p ~/.zshrc
-  [[ -f ~/.zshrc.zwc.old ]] && rm -f ~/.zshrc.zwc.old
+  [[ -f $ZDOTDIR/.zshrc ]] && zrecompile -p $ZDOTDIR/.zshrc
 
-  for f in ~/.zsh/**/*.zsh; do
-    [[ -f $f ]] && zrecompile -p $f
-    [[ -f $f.zwc.old ]] && rm -f $f.zwc.old
-  done
+  # for f in $ZDOTDIR/.zsh/**/*.zsh; do
+  #   [[ -f $f ]] && zrecompile -p $f
+  # done
 
-  [[ -f ~/.zcompdump ]] && zrecompile -p ~/.zcompdump
-  [[ -f ~/.zcompdump.zwc.old ]] && rm -f ~/.zcompdump.zwc.old
+  [[ -f $ZDOTDIR/.zcompdump ]] && zrecompile -p $ZDOTDIR/.zcompdump
 
-  source ~/.zshrc
+  source $ZDOTDIR/.zshrc
 }
 
 # extractor works for multiple archive types

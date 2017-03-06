@@ -1,4 +1,6 @@
 # ==== OSX ENVS ===
+export XDG_CACHE_HOME="$HOME/Library/Caches"
+export XDG_DATA_HOME="$HOME/Library"
 
 # === Paths ===
 export X11PATH=/opt/X11
@@ -7,6 +9,8 @@ export TEXPATH=/usr/local/texlive/2016basic
 # Go
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/devel/go
+# Rust
+export RUST_SRC_PATH=$HOME/devel/rust/multirust/rustc-1.13.0/src
 
 # export GOAPPENGINE=$HOME/devel/go_appengine/
 
@@ -19,7 +23,8 @@ export GEMPATH=$HOME/.gem/ruby/2.0.0
 export EAGLE_DIR=$HOME/Documents/eagle
 
 # GitHub token with no scope, used to get around API limits
-export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/gh_api_token)
+export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/brew_api_token)
+export GORELEASER_GITHUB_API_TOKEN=$(cat $DOT_DIR/goreleaser_api_token)
 
 # Java
 # export JAVA_HOME=$(/usr/libexec/java_home)

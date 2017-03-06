@@ -6,13 +6,11 @@ profile=opengl-hq
 opengl-pbo=yes
 # opengl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
 # deband
-icc-profile-auto
-icc-contrast=10000
-video-sync=display-resample
-fs-black-out-screens
+# icc-profile-auto
+# icc-contrast=10000
+# video-sync=display-resample
 # vo=caca
 # null, opengl, opengl-hq, vaapi
-hwdec=auto
 framedrop=vo
 geometry=50%:50%
 autofit-larger=80%x80%
@@ -32,10 +30,10 @@ af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
 # Subtitles
 #
 # slang=eng,en,ger,de
-# sub-font='Noto Sans'
-sub-font='Cronos Pro Semibold Caption'
-sub-border-size=2.8
-sub-font-size=45
+# sub-font='Cronos Pro Bold Display'
+sub-font='Rosario Bold'
+sub-border-size=2
+# sub-font-size=45
 sub-margin-y=50
 sub-auto=fuzzy
 sub-spacing=1

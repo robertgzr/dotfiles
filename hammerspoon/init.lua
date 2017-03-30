@@ -1,3 +1,6 @@
+require("hs.ipc")
+hs.ipc.cliInstall()
+
 conf = {
     super = {"cmd", "alt", "ctrl", "shift"},
     hotkeyAlterDuration = 0.5,

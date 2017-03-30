@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "hs.caffeinate.lockScreen()" | hs -r

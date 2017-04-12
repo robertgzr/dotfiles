@@ -173,7 +173,7 @@
         </autogen>
     </item>
     <item>
-        <name>TMUX tabkey hack</name>
+        <name>TMUX Hyperkey</name>
         <appendix></appendix>
         <identifier>private.tmux_tabkey</identifier>
         <autogen>
@@ -181,7 +181,7 @@
             KeyCode::A,
             ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
 
-            KeyCode::A, ModifierFlag::CONTROL_L
+            KeyCode::B, ModifierFlag::CONTROL_L
         </autogen>
     </item>
 

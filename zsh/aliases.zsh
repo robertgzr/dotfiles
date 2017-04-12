@@ -8,9 +8,9 @@ alias la='ls -la'
 alias ld='ls -ld */'
 
 # use exa to replace ls
-alias exa='exa -G'
-alias exal='exa -lgHh --git --group-directories-first'
-alias exaa='exa -lagHh --git --group-directories-first'
+alias exa_='/usr/local/bin/exa'
+alias exa='exa -@ -lgHh --git --group-directories-first'
+alias exaa='exa -a'
 alias exad='exa -ld'
 alias exat='exa -lHhT'
 

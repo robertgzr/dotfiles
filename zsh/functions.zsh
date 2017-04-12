@@ -123,18 +123,23 @@ function encfs-mount() {
 }
 
 function archboxctl {
-    if [[ "$1" = "start" ]]; then
+    if [[ "$1" = "up" || "$1" == "start" ]]; then
         VBoxManage startvm Arch --type headless &>/dev/null;
         echo "archbox started."
-    elif [[ "$1" = "stop" ]]; then
+    elif [[ "$1" = "down" || "$1" == "stop" ]]; then
         VBoxManage controlvm Arch poweroff soft &>/dev/null;
         echo "archbox stopped.";
+    elif [[ "$1" == "restart" ]]; then
+        archboxctl down && archboxctl up
     elif [[ "$1" = "status" ]]; then
         echo "$(VBoxManage showvminfo Arch | grep 'Guest OS\|State')"
-    elif [[ "$1" = "version" ]]; then
-        echo "archup 0.1 - Headless start of Arch Virtual Machine";
+    elif [[ "$1" = "freeze" ]]; then
+        VBoxManage controlvm Arch savestate;
+        echo "archbox frozen."
+    elif [[ "$1" = "login" ]]; then
+        ssh archbox;
     else
-        echo "usage: archboxctl [start|stop]";
+        echo "usage: archboxctl [up|down|status|login]";
     fi
 }
 

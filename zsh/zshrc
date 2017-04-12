@@ -21,10 +21,12 @@ fpath=(
 # platform-specific stuff
 case "$(uname)" in
     Darwin)
+	zsh_plugin_path=/usr/local/opt
         source $ZDOTDIR/macos/aliases.zsh
         source $ZDOTDIR/macos/functions.zsh
         ;;
     Linux)
+	zsh_plugin_path=/usr/share/zsh/plugins
         ;;
 esac
 
@@ -56,14 +58,13 @@ source $ZDOTDIR/zsh_hooks.zsh
 
 # ==== Custom Modules
 
+
 # Syntax Highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source $zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # History Substring Search
-source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
-
+source $zsh_plugin_path/zsh-history-substring-search/zsh-history-substring-search.zsh
 # fish like autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $zsh_plugin_path/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # j
 # eval "$(fasd --init posix-alias zsh-hook)"

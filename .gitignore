@@ -15,9 +15,9 @@ vim/swaps/
 vim/backups/
 vim/colors
 vim/spell/
-vim/session
-vim/sessions
-vim/autoload/*.old
+vim/session/
+vim/sessions/
+vim/autoload/
 
 zsh/.*
 zsh/tmp/

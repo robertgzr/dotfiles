@@ -7,15 +7,19 @@ for s:plugin in split(glob('~/.vim/settings/*.vim'), '\n')
 endfor
 
 " colorscheme options
+set termguicolors
+set t_Co=256
 let g:base16colorspace=256
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
-let g:neodark#background='gray'
-let g:neodark#use_256color=0
+" let g:neodark#background='gray'
+" let g:neodark#use_256color=0
 set background=dark
-colorscheme neodark
+" colorscheme neodark
+colorscheme onehalfdark
+" hi Normal ctermbg=NONE guibg=NONE
 
 " share OSX clipboard
 set clipboard=unnamed
@@ -28,8 +32,8 @@ set cursorline
 " set cursorcolumn
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>c :set cursorline!<CR>
-" cursorcolumn!<CR>
+nnoremap <Leader>cl :set cursorline!<CR>
+nnoremap <Leader>cc :set cursorcolumn!<CR>
 
 set fillchars=fold:-,vert:\│
 

@@ -2,7 +2,20 @@
 let g:lightline = {
     \ 'mode_map': { 'c': 'NORMAL' },
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'filename'], ['fugitive','ale'] ]
+    \   'left': [
+    \       ['mode', 'paste'],
+    \       ['filename'],
+    \       ['fugitive', 'ale']
+    \   ],
+    \   'right': [
+    \       ['lineinfo', 'tabstatus'],
+    \       ['percent'],
+    \       ['fileformat', 'fileencoding', 'filetype'],
+    \       ['in_progress']
+    \   ]
+    \ },
+    \ 'component': {
+    \   'lineinfo': '%3l:%-2v',
     \ },
     \ 'component_function': {
     \   'modified': 'LightLineModified',
@@ -14,6 +27,7 @@ let g:lightline = {
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
     \   'ale': 'LightLineALE',
+    \   'tabstatus': 'LightLineTabStatus',
     \ },
     \ 'subseparator': { 'left': '', 'right': '' },
     \ 'separator': { 'left': '', 'right': '' },
@@ -30,11 +44,11 @@ endfunction
 
 function! LightLineUsePowerline()
   call LightLineUseSeperators(g:lightline, '', '', '', '')
-  let g:lightline.colorscheme = 'jellybeans'
 endfunction
 
 call LightLineUseSeperators(g:lightline, '', '', '|', '|')
-let g:lightline.colorscheme = 'neodark'
+" let g:lightline.colorscheme = 'neodark'
+let g:lightline.colorscheme = 'onehalfdark'
 
 " ========================================== "
 
@@ -73,4 +87,9 @@ function! LightLineMode()
 endfunction
 function! LightLineALE()
   return ALEGetStatusLine()
+endfunction
+function! LightLineTabStatus()
+  return  &tabstop
+    \   . (&expandtab == 1 ? '->' : '<>')
+    \   . &shiftwidth
 endfunction

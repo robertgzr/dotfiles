@@ -8,15 +8,15 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 
 " deoplete-go
-let g:deoplete#sources#go#gocode_binary = '' " $GOPATH.'/bin/gocode'
+" let g:deoplete#sources#go#gocode_binary = '' " $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#package_dot = 0
 let g:deoplete#sources#go#pointer = 1
-let g:deoplete#sources#go#sort_class = [] " ['package', 'func', 'type', 'var', 'const']
+" let g:deoplete#sources#go#sort_class = [] " ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache = 0
-let g:deoplete#sources#go#json_directory = '' "$HOME.'/.cache/deoplete/go/'.$GOOS.'_'.$GOARCH
+" let g:deoplete#sources#go#json_directory = '' "$HOME.'/.cache/deoplete/go/'.$GOOS.'_'.$GOARCH
 let g:deoplete#sources#go#align_class = 1
 let g:deoplete#sources#go#cgo = 0
-let g:deoplete#sources#go#goos = ''
+" let g:deoplete#sources#go#goos = ''
 
 " deoplete-rust
 let g:deoplete#sources#rust#racer_binary = $HOME.'/.cargo/bin/racer'
@@ -29,6 +29,8 @@ let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTool
 let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
 " let g:deoplete#sources#clang#std
 " let g:deoplete#sources#clang#flags
+
+let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 
 " deoplete-latex
 let g:deoplete#omni#input_patterns.tex =

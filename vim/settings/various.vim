@@ -13,6 +13,13 @@ let g:mta_filetypes = {
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
+let g:fzf_buffers_jump = 1
+let g:fzf_action = {
+    \ 'ctrl-q': 'bdelete',
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit'
+    \ }
 
 " VIM-HDL
 let g:vimhdl_conf_file = ''

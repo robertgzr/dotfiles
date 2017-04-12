@@ -1,5 +1,6 @@
 " <Leader> key
-" set mapleader = ','
+" set mapleader = <space>
+map <space> <Leader>
 
 " because this is annoying
 command! W write
@@ -39,6 +40,8 @@ augroup filetype_rust
     au FileType rust nmap <Leader>d  <plug>(DeopleteRustShowDocumentation)
 augroup END
 
+inoremap <expr><C-c> deoplete#mappings#manual_complete()
+
 " navigate popupu with Ctl-[J,K]
 inoremap <expr><C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
 inoremap <expr><C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
@@ -60,14 +63,14 @@ smap <expr> <Tab> neosnippet#expandable_or_jumpable() ?
     \ : "\<Tab>"
 
 " move the popup list backwards
-inoremap <silent><expr> <S-Tab> pumvisible() ? 
+inoremap <silent><expr> <S-Tab> pumvisible() ?
     \ "\<C-p>"
     \ : "\<S-Tab>"
 
 " expand from popup with Enter or close popup
 imap <expr> <CR>
     \ neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
-    \ : pumvisible() ? deoplete#close_popup() 
+    \ : pumvisible() ? deoplete#close_popup()
     \ : "\<CR>"
 
 " Insert and reload popup

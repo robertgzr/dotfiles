@@ -1,9 +1,9 @@
 " .vimrc#General settings
-set termguicolors
 set title
 set noshowmode
 set autowrite
 set inccommand=split
+set showcmd
 
 " !
 set hidden

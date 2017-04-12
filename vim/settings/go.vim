@@ -1,16 +1,16 @@
 " deactivate vim-polyglot go support
 let g:polyglot_disabled = ['go']
+let g:neoformat_enabled_go = []
 
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 let g:go_metalinter_autosave = 0
 let g:go_auto_type_info = 0
 
-let g:go_fmt_command = 'goimports' " 'gofmt'
+let g:go_fmt_command = 'gofmt' " 'goimports'
 let g:go_fmt_fail_silently = 1
 
 let g:go_term_enabled = 1
 let g:go_term_mode = 'split'
-let g:go_list_type = 'quickfix'
 
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet'] " , 'golint']
@@ -45,4 +45,5 @@ augroup filetype_go
     au FileType go nmap <Leader>dd <Plug>(go-def)
     au FileType go nmap <Leader>im <Plug>(go-implements)
     au FileType go nmap <Leader>rn <Plug>(go-rename)
+    au FileType go nmap <Leader>f <Plug>(go-imports)
 augroup END

@@ -5,3 +5,10 @@ let g:ale_statusline_format = [g:ale_sign_error.' %d', g:ale_sign_warning.'%d', 
 let g:ale_echo_msg_error_str = 'err'
 let g:ale_echo_msg_warning_str = 'warn'
 let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
+
+nmap <Leader>k <Plug>(ale_previous_wrap)
+nmap <Leader>j <Plug>(ale_next_wrap)
+
+let g:ale_linters = {
+    \   'go':   ['gofmt -e', 'go vet', 'golint'],
+\ }

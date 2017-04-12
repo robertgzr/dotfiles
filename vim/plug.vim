@@ -10,12 +10,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'sbdchd/neoformat' " async code formatter
     Plug 'w0rp/ale' " linter framework
     " Language Server Client
-    Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
+    " Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
     " completion
     Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
+        Plug 'Shougo/deoplete-rct',           { 'for': 'ruby' }
         Plug 'zchee/deoplete-go',             { 'for': 'go', 'do': 'make' }
-        Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
         Plug 'zchee/deoplete-clang',          { 'for': ['cpp', 'c'] }
+        Plug 'zchee/deoplete-jedi',           { 'for': 'python' }
+        Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
     Plug 'Shougo/echodoc.vim' " print completed documentation into command line
     " snippets
     Plug 'Shougo/neosnippet'
@@ -49,7 +51,7 @@ call plug#begin('~/.vim/plugged')
 
 " Languages
     " multi-language support with on-demand loading
-    Plug 'sheerun/vim-polyglot' 
+    Plug 'sheerun/vim-polyglot'
     Plug 'fatih/vim-go',            { 'for': 'go'}
     " Plug 'suoto/vim-hdl',           { 'for': 'vhdl'}
     Plug 'racer-rust/vim-racer',     { 'for': 'rust' }
@@ -59,6 +61,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'junegunn/limelight.vim',    { 'for': 'markdown'}
 
 " Colorschemes
+    Plug 'sonph/onehalf', { 'rtp': 'vim/' }
     " Plug 'aereal/vim-colors-japanesque', { 'branch': 'robertgzr' }
     Plug 'KeitaNakamura/neodark.vim'
     " Plug 'iCyMind/NeoSolarized'

@@ -12,3 +12,13 @@ export ZSHDIR=$HOME/.zsh
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# load platform specific exports
+case "$(uname)" in
+    Darwin)
+        source $ZDOTDIR/macos/exports.zsh
+        ;;
+    Linux)
+        source $ZDOTDIR/linux/exports.zsh
+        ;;
+esac

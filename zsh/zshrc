@@ -111,3 +111,10 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     set +o xtrace
     exec 2>&3 3>&-
 fi
+
+# start tmux session 'al' if alacritty terminal
+if [ -f $(which tmux) ]; then
+    if [[ "$ALACRITTY" == "1" ]]; then
+        tmux -2 new-session -A -s al
+    fi
+fi

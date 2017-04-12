@@ -13,15 +13,17 @@ function prompt_dir() {
             prompt_pwd="$MATCH"
             unset MATCH
         else
-            prompt_pwd="$FG[002]$FX[no-bold]$FX[italic]${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+            prompt_pwd="$FX[no-bold]$FX[italic]${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
         fi
     fi
 }
 
+# TODO: needs attention!
 function prompt_context {
     prompt_ctx=""
     # virtualenv
     if [ -n "$VIRTUAL_ENV" ]; then
+        prompt_ctx += " "
         if [ -f "$VIRTUAL_ENV/__name__" ]; then
             local name=$(cat $VIRTUAL_ENV/__name__)
         elif [ $(basename $VIRTUAL_ENV) = "__" ]; then
@@ -31,12 +33,11 @@ function prompt_context {
         fi
         local ctx_virtualenv="$FG[003]ː$name$FX[reset]"
         prompt_ctx+="$ctx_virtualenv"
-    else
-        prompt_ctx=" "
     fi
 }
 
 # time since login to shell instance
+# TODO: not useful. find a way to log command execution time if >5sec
 function prompt_calc_session_duration {
     local end_time=$(( SECONDS - _prompt_minimal_start_time ))
     local hours minutes seconds remainder
@@ -67,7 +68,8 @@ function prompt_precmd {
     prompt_context
     prompt_calc_session_duration
 
-    PROMPT='$FG[002]$prompt_pwd%{%f%}$FX[reset]$prompt_ctx$FG[256]> '
+    prompt_glyph="❱ "
+    PROMPT='$FG[002]$prompt_pwd$FX[reset]$prompt_ctx$FX[reset] $prompt_glyph'
 
     # git status on the right
     if [[ -f "$(which porcelain)" ]]; then

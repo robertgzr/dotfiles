@@ -1,18 +1,20 @@
 # ==== ALIASES
 
 # Colorize output, add file type indicator, and put sizes in human readable format
-alias ls='/bin/ls -GFh'
+alias ls='ls -GFh --color=force'
 # Same as above, but in long listing format
 alias ll='ls -lS'
 alias la='ls -la'
 alias ld='ls -ld */'
 
-# use exa to replace ls
-alias exa_='/usr/local/bin/exa'
-alias exa='exa -@ -lgHh --git --group-directories-first'
-alias exaa='exa -a'
-alias exad='exa -ld'
-alias exat='exa -lHhT'
+# exa can replace ls if you have it
+if [[ -f $(which exa) ]]; then
+    alias exa_='/usr/local/bin/exa'
+    alias exa='exa -@ -lgHh --git --group-directories-first'
+    alias exaa='exa -a'
+    alias exad='exa -ld'
+    alias exat='exa -lHhT'
+fi
 
 # dot expolding (not sure if neccessary)
 alias ..="cd .."
@@ -43,11 +45,11 @@ alias cp="${aliases[cp]:-cp} -i"
 alias rm="${aliases[rm]:-rm} -i"
 alias grep="${aliases[grep]:-grep} --color=auto"
 
-
 alias find='noglob find'
 alias chickenfind="find / -name"
 alias history='noglob history'
 alias locate='noglob locate'
+alias rg='noglob rg'
 
 alias minf="mediainfo"
 alias mpv="noglob mpv"

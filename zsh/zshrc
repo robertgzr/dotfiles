@@ -32,11 +32,11 @@ case "$(uname)" in
         ;;
     Linux)
         # Syntax Highlighting
-        source $zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         # History Substring Search
-        source $zsh_plugin_path/zsh-history-substring-search/zsh-history-substring-search.zsh
+        source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
         # fish like autosuggestions
-        source $zsh_plugin_path/zsh-autosuggestions/zsh-autosuggestions.zsh
+        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
 esac
 

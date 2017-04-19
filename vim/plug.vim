@@ -43,18 +43,19 @@ call plug#begin('~/.vim/plugged')
     " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
     Plug 'mattn/emmet-vim', { 'for': 'html' } " super-fast HTML editing
-    Plug 'tpope/vim-ragtag' " auto-close HTML/XML tags
+    Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml'] } " auto-close HTML/XML tags
 
 " WhoaDude
     Plug 'lilydjwg/colorizer' " set background of colour to that colour
     " Plug 'DrawIt', {'on': 'DIstart'} " draw ascii arrows/boxes
 
 " Languages
-    " multi-language support with on-demand loading
+    " multi-language support with lazy loading
     Plug 'sheerun/vim-polyglot'
     Plug 'fatih/vim-go',            { 'for': 'go'}
     " Plug 'suoto/vim-hdl',           { 'for': 'vhdl'}
     Plug 'racer-rust/vim-racer',     { 'for': 'rust' }
+    Plug 'posva/vim-vue', { 'for': 'vue' }
 
 " Markdown UX
     " Plug 'junegunn/goyo.vim',         { 'for': 'markdown'}

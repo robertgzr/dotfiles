@@ -21,7 +21,7 @@ set ignorecase
 set incsearch
 
 " set code folding method
-setlocal foldmethod=syntax
+" setlocal foldmethod=syntax
 " completion popup behavior
 set completeopt=longest,menuone
 set showmatch

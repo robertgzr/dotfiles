@@ -47,8 +47,7 @@ function! LightLineUsePowerline()
 endfunction
 
 call LightLineUseSeperators(g:lightline, '', '', '|', '|')
-" let g:lightline.colorscheme = 'neodark'
-let g:lightline.colorscheme = 'onehalfdark'
+let g:lightline.colorscheme = 'neodark'
 
 " ========================================== "
 

@@ -11,4 +11,5 @@ nmap <Leader>j <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
     \   'go':   ['gofmt -e', 'go vet', 'golint'],
+    \   'javascript': ['eslint'],
 \ }

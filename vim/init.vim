@@ -14,12 +14,10 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
-" let g:neodark#background='gray'
-" let g:neodark#use_256color=0
+let g:neodark#background='#272727'
+let g:neodark#use_256color=0
 set background=dark
-" colorscheme neodark
-colorscheme onehalfdark
-" hi Normal ctermbg=NONE guibg=NONE
+colorscheme neodark
 
 " share OSX clipboard
 set clipboard=unnamed
@@ -52,4 +50,6 @@ endif
 " VimR options
 if has('gui_vimr')
   call LightLineUsePowerline()
+else
+  hi Normal ctermbg=NONE guibg=NONE
 end

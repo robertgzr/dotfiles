@@ -21,12 +21,22 @@ fpath=(
 # platform-specific stuff
 case "$(uname)" in
     Darwin)
-	zsh_plugin_path=/usr/local/opt
         source $ZDOTDIR/macos/aliases.zsh
         source $ZDOTDIR/macos/functions.zsh
+        # Syntax Highlighting
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        # History Substring Search
+        source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
+        # fish like autosuggestions
+        source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
     Linux)
-	zsh_plugin_path=/usr/share/zsh/plugins
+        # Syntax Highlighting
+        source $zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        # History Substring Search
+        source $zsh_plugin_path/zsh-history-substring-search/zsh-history-substring-search.zsh
+        # fish like autosuggestions
+        source $zsh_plugin_path/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
 esac
 
@@ -58,20 +68,12 @@ source $ZDOTDIR/zsh_hooks.zsh
 
 # ==== Custom Modules
 
-
-# Syntax Highlighting
-source $zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# History Substring Search
-source $zsh_plugin_path/zsh-history-substring-search/zsh-history-substring-search.zsh
-# fish like autosuggestions
-source $zsh_plugin_path/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # j
 # eval "$(fasd --init posix-alias zsh-hook)"
 source $ZDOTDIR/modules/fasd.zsh
 
 # fuzzy search with fzf
-if [ -f ~/.fzf.zsh ]; then
+if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
 fi
 # use ripgrep for fzf file search
@@ -80,7 +82,7 @@ fi
 # --hidden : search hidden files/dirs
 # --follow : follow symlinks
 # --glob : additional conditions (here: ignorr everything in .git/)
-if [ -f $(which rg) ]; then
+if [[ -f $(which rg) ]]; then
     export FZF_DEFALT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 fi
 
@@ -114,7 +116,7 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 
 # start tmux session 'al' if alacritty terminal
-if [ -f $(which tmux) ]; then
+if [[ -f $(which tmux) ]]; then
     if [[ "$ALACRITTY" == "1" ]]; then
         tmux -2 new-session -A -s al
     fi

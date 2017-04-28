@@ -1,7 +1,7 @@
 #!/bin/env ruby
 
 unless File.exist?('./occupy.rb')
-  puts "need the occupy.rb library"
+  puts 'need the occupy.rb library'
   exit(1)
   # get occupy gem
 end
@@ -116,11 +116,7 @@ InitModule.new('hammerspoon') do |hs|
 end
 
 InitModule.new('porcelain') do |porc|
-  unless ENV.key?('GOPATH')
-    porc.report_error 'No Go environment found! Set GOPATH'
-  end
-
-  porc.shell('go get -u github.com/robertgzr/porcelain')
+  porc.shell('curl -L https://github.com/robertgzr/porcelain/releases/download/v0.1.1/porcelain_linux_amd64.tar.gz | tar xz && mv -fv ./porcelain /usr/local/bin/porcelain')
   unless porc.shell('which porcelain')
     porc.report_warning "Couldn't find 'porcelain'!\nIs GOPATH/bin in your PATH?"
   end
@@ -156,7 +152,7 @@ USAGE = %(Usage: ./init.rb [run | dry | test] <module>
 run\t install everything
 dry\t show what it is going to install
 test\t test the system
-)
+).freeze
 case ARGV[0]
 when 'dry'
   if ARGV[1]

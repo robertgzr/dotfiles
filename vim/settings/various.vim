@@ -1,4 +1,3 @@
-let g:NumberToggleTrigger = '<Leader>ln'
 let g:echodoc_enable_at_startup = 1
 
 " matchtagalways
@@ -41,3 +40,22 @@ let g:neoformat_basic_format_trim = 1
 " let g:gruvbox_italicize_comments = 1
 " let g:gruvbox_invert_selection = 0
 
+" gitgutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_signs = 1
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_column_always = 1
+
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▎'
+let g:gitgutter_sign_removed_first_line = '▀'
+let g:gitgutter_sign_modified_removed = '▎'
+
+" Minimal UX
+let g:limelight_default_coefficient = 0.7
+let g:limelight_paragraph_span = 2
+let g:goyo_height = 85
+let g:goyo_width = 80
+let g:goyo_linenr = 1

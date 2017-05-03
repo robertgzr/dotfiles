@@ -1,6 +1,11 @@
 " <Leader> key
-" set mapleader = <space>
-map <space> <Leader>
+let g:mapleader = ' '
+nmap "\" :echoerr "<Space> is <Leader>"
+
+noremap j gj
+noremap k gk
+
+map q: :q
 
 " because this is annoying
 command! W write
@@ -19,7 +24,7 @@ map <Leader>fl :FzfLines<CR>
 map <Leader>fbl :FzfBLines<CR>
 map <Leader>fll :FzfLocate<CR>
 
-noremap <M-g> :Goyo<CR>
+nmap <M-g> :Goyo<CR>
 
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
@@ -32,52 +37,14 @@ nnoremap <Leader>ea :cclose<CR>
 " escape terminal mode with <esc>
 tnoremap <Esc> <C-\><C-n>
 
-nmap <F8> :TagbarToggle<CR>
-
-" deoplete rust mappings
-augroup filetype_rust
-    au FileType rust nmap <Leader>gd <plug>(DeopleteRustGoToDefinitionDefault)
-    au FileType rust nmap <Leader>d  <plug>(DeopleteRustShowDocumentation)
-augroup END
-
-inoremap <expr><C-c> deoplete#mappings#manual_complete()
-
-" navigate popupu with Ctl-[J,K]
-inoremap <expr><C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
-inoremap <expr><C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
+" nmap <F8> :TagbarToggle<CR>
+nmap <F1> :GitGutterToggle<CR>
+nmap <F2> :GitGutterLineHighlightsToggle<CR>
 
 " neosnippet mappings
 " imap <C-s> <Plug>(neosnippet_expand_or_jump)
 " smap <C-s> <Plug>(neosnippet_expand_or_jump)
 " xmap <C-s> <Plug>(neosnippet_expand_or_jump)
-
-" tab completion
-imap <expr> <Tab> pumvisible() ?
-    \ "\<C-n>"
-    \ : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
-    \ : "\<Tab>"
-
-" expand/jump snippets with Tab
-smap <expr> <Tab> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \ : "\<Tab>"
-
-" move the popup list backwards
-inoremap <silent><expr> <S-Tab> pumvisible() ?
-    \ "\<C-p>"
-    \ : "\<S-Tab>"
-
-" expand from popup with Enter or close popup
-imap <expr> <CR>
-    \ neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
-    \ : pumvisible() ? deoplete#close_popup()
-    \ : "\<CR>"
-
-" Insert and reload popup
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-g> deoplete#undo_completion()
-inoremap <expr><C-l> deoplete#refresh()
 
 " Hardmode = not using arrow keys
 let g:hardmode_error = "Don't use the arrow keys!"

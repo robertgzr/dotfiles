@@ -3,7 +3,7 @@ set title
 set noshowmode
 set autowrite
 set inccommand=split
-set showcmd
+set noshowcmd
 
 " !
 set hidden
@@ -22,8 +22,6 @@ set incsearch
 
 " set code folding method
 " setlocal foldmethod=syntax
-" completion popup behavior
-set completeopt=longest,menuone
-set showmatch
 
+set pumheight=10
 set lazyredraw

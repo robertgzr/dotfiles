@@ -35,4 +35,6 @@ export ARDUINODIR=/opt/homebrew-cask/Caskroom/arduino/1.6.5-r5/Arduino.app/Conte
 export BOARD=uno
 
 # Android
- export ANDROID_HOME=/usr/local/opt/android-sdk
+ # export ANDROID_HOME=/usr/local/opt/android-sdk
+ export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools

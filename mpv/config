@@ -42,14 +42,14 @@ sub-ass-force-style=Kerning=yes
 #
 # OSD
 #
-osc=no
+# osc=no
 no-border
 stop-screensaver
 cursor-autohide-fs-only
 osd-font='Iosevka'
-osd-font-size=25
-osd-scale=1
-osd-scale-by-window=yes
+# osd-font-size=25
+# osd-scale=1
+# osd-scale-by-window=yes
 osd-fractions=yes
 
 #

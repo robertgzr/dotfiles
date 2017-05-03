@@ -1,1 +1,0 @@
-/Users/robert/.config/mpv/scripts/mpv-progressbar/build/progressbar.lua

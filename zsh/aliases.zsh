@@ -24,8 +24,6 @@ alias cleanups="find . -type f -name '*.DS_Store' -ls -delete"
 # genereate 256-shasums
 alias shasum2.56="shasum --algorithm 256"
 
-alias unhide="chflags nohidden"
-
 # alias py2='python2.7'
 # alias py3='python3.5'
 alias py='python'
@@ -45,6 +43,7 @@ alias cp="${aliases[cp]:-cp} -i"
 alias rm="${aliases[rm]:-rm} -i"
 alias grep="${aliases[grep]:-grep} --color=auto"
 
+alias git='noglob git'
 alias find='noglob find'
 alias chickenfind="find / -name"
 alias history='noglob history'
@@ -70,6 +69,8 @@ fi
 
 # ==== OSX specific
 if [[ $(uname) = "Darwin" ]]; then
+    alias unhide="chflags nohidden"
+
     alias cdf='cd "$(pfd)"'
     alias pushdf='pushd "$(pfd)"'
     alias pbc='pbcopy'
@@ -85,11 +86,6 @@ if [[ $(uname) = "Darwin" ]]; then
     alias imgcat='$HOME/.dotfiles/osx/imgcat.sh'
     alias imgls='$HOME/.dotfiles/osx/imgls.sh'
 
-    alias vvim="$(which vim)"
-    alias vim="$(which nvim)"
-    alias gvim='gnvim'
-    alias vimdiff='nvim -d'
-
     alias dockerup='eval $(docker-machine env default)'
 
     alias j='fasd_cd -d'
@@ -101,7 +97,14 @@ if [[ $(uname) = "Darwin" ]]; then
     alias htop="sudo htop"
 fi
 
-if [ -f $(which tmux) ]; then
+if [[ -f $(which nvim) ]]; then
+    alias vvim="$(which vim)"
+    alias vim="$(which nvim)"
+    alias gvim='gnvim'
+    alias vimdiff='nvim -d'
+fi
+
+if [[ -f $(which tmux) ]]; then
     alias ta='tmux attach'
     alias tls='tmux ls'
     alias tat='tmux attach -t'

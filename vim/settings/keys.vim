@@ -40,6 +40,7 @@ tnoremap <Esc> <C-\><C-n>
 " nmap <F8> :TagbarToggle<CR>
 nmap <F1> :GitGutterToggle<CR>
 nmap <F2> :GitGutterLineHighlightsToggle<CR>
+nmap <F3> :Goyo<CR>
 
 " neosnippet mappings
 " imap <C-s> <Plug>(neosnippet_expand_or_jump)

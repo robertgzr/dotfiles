@@ -25,8 +25,8 @@ let g:deoplete#sources#rust#disable_keymap = 1
 let g:deoplete#sources#rust#documentation_max_height = 20
 
 " deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
+" let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+" let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
 " let g:deoplete#sources#clang#std
 " let g:deoplete#sources#clang#flags
 

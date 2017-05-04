@@ -17,7 +17,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
         Plug 'Shougo/deoplete-rct',           { 'for': 'ruby' }
         Plug 'zchee/deoplete-go',             { 'for': 'go', 'do': 'make' }
-        Plug 'zchee/deoplete-clang',          { 'for': ['cpp', 'c'] }
+        " Plug 'zchee/deoplete-clang',          { 'for': ['cpp', 'c', 'objc'] }
+        Plug 'tweekmonster/deoplete-clang2',  { 'for': ['cpp', 'c', 'objc'] }
         Plug 'zchee/deoplete-jedi',           { 'for': 'python' }
         Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
     Plug 'Shougo/echodoc.vim' " print completed documentation into command line

@@ -20,6 +20,21 @@ let g:fzf_action = {
     \ 'ctrl-v': 'vsplit'
     \ }
 
+" fzf + ripgrep
+" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+command! -bang -nargs=* Find call fzf#vim#grep('rg'
+    \ . ' --column'
+    \ . ' --line-number'
+    \ . ' --no-heading'
+    \ . ' --fixed-strings'
+    \ . ' --ignore-case'
+    \ . ' --no-ignore'
+    \ . ' --hidden'
+    \ . ' --follow'
+    \ . ' --glob "!.git/*"'
+    \ . ' --color "always"'
+    \ . ' '.shellescape(<q-args>), 1, <bang>0)
+
 " VIM-HDL
 let g:vimhdl_conf_file = ''
 

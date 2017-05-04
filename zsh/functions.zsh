@@ -6,7 +6,7 @@ autoload -Uz mpvp
 autoload -Uz schreibmit
 autoload -Uz wego
 autoload -Uz gocd
-autoload -Uz go-analyze-binary-size
+autoload -Uz gofat
 autoload -Uz lockmac
 
 # refresh ZSH configuration

@@ -110,7 +110,3 @@ if [[ -f $(which tmux) ]]; then
     alias tat='tmux attach -t'
     alias tns='tmux new-session -s'
 fi
-
-if [ -f $(which go) ]; then
-    alias gofat='go-analyze-binary-size'
-fi

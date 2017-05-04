@@ -1,0 +1,12 @@
+#!/bin/sh
+
+gofat() {
+    eval "$(go build -work -a "${1}" 2>&1)" && find "${WORK}" -type f -name "*.a" -print0 | xargs --null -I{} du -hxs "{}" | sort -rh | sed -e s:"$WORK"/::g
+    return
+}
+
+if [[ -f $(which go) ]]; then
+    gofat $@
+else
+    echo "Go not installed"
+fi

@@ -40,7 +40,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'yggdroot/indentLine' " show indentation levels
     Plug 'valloric/matchtagalways' " visually match HTML tags enclosing cursor location
     " Plug 'tpope/vim-repeat' " extend .-repeat to plugins
-    " Plug 'majutsushi/tagbar' " code minimap via ctags
+    " Plug 'ludovicchabant/vim-gutentags' " manage tags files
+    Plug 'majutsushi/tagbar' " code minimap via ctags
     " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
     Plug 'mattn/emmet-vim', { 'for': 'html' } " super-fast HTML editing

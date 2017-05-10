@@ -26,7 +26,7 @@ let g:lightline = {
     \   'filetype': 'LightLineFiletype',
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
-    \   'ale': 'LightLineALE',
+    \   'ale': 'ALEGetStatusLine',
     \   'tabstatus': 'LightLineTabStatus',
     \ },
     \ 'subseparator': { 'left': '', 'right': '' },
@@ -57,6 +57,7 @@ endfunction
 function! LightLineReadonly()
   return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
 endfunction
+
 function! LightLineFilename()
   return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
@@ -65,6 +66,7 @@ function! LightLineFilename()
         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
         \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
+
 function! LightLineFugitive()
   if &filetype !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let _ = fugitive#head()
@@ -72,6 +74,7 @@ function! LightLineFugitive()
   endif
   return ''
 endfunction
+
 function! LightLineFileformat()
   return winwidth(0) > 70 ? &fileformat : ''
 endfunction
@@ -84,9 +87,7 @@ endfunction
 function! LightLineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
-function! LightLineALE()
-  return ALEGetStatusLine()
-endfunction
+
 function! LightLineTabStatus()
   return  &tabstop
     \   . (&expandtab == 1 ? '->' : '<>')

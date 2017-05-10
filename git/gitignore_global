@@ -22,6 +22,7 @@ Icon*
 *.com
 *.dll
 bin/
+tags
 
 # logs and db
 *.log

@@ -17,17 +17,16 @@ nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
 
 " FZF
-map <Leader>ff :FzfFiles<CR>
-map <Leader>fb :FzfBuffers<CR>
-map <Leader>fh :FzfHistory<CR>
-map <Leader>fl :FzfLines<CR>
-map <Leader>fbl :FzfBLines<CR>
-map <Leader>fll :FzfLocate<CR>
+nmap <Leader>ff :FzfFiles<CR>
+nmap <Leader>fb :FzfBuffers<CR>
+nmap <Leader>fh :FzfHistory<CR>
+nmap <Leader>fl :FzfLines<CR>
+nmap <Leader>fbl :FzfBLines<CR>
+nmap <Leader>fll :FzfLocate<CR>
+nmap <Leader>ft :FzfTags<CR>
 
-nmap <M-g> :Goyo<CR>
-
+nmap <Leader>tb :TagbarToggle<CR>
 nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
 
 " spotlight jumping
 map <Leader>en :cnext<CR>
@@ -37,7 +36,6 @@ nnoremap <Leader>ea :cclose<CR>
 " escape terminal mode with <esc>
 tnoremap <Esc> <C-\><C-n>
 
-" nmap <F8> :TagbarToggle<CR>
 nmap <F1> :GitGutterToggle<CR>
 nmap <F2> :GitGutterLineHighlightsToggle<CR>
 nmap <F3> :Goyo<CR>

@@ -70,6 +70,14 @@ InitModule.new('vim') do |vim|
   init.register(vim)
 end
 
+InitModule.new('ctags') do |tags|
+  tag.links = [
+    InitLink.new(init, 'ctags/ctags', Dir.home + '/.ctags')
+  ]
+
+  init.register(tags)
+end
+
 InitModule.new('zsh') do |zsh|
   zsh.links = [
     InitLink.new(init, 'zsh/zshrc', init.dotdir + '/zsh/.zshrc'),

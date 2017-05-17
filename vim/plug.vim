@@ -46,6 +46,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
     Plug 'mattn/emmet-vim', { 'for': 'html' } " super-fast HTML editing
     Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml', 'markdown'] } " auto-close HTML/XML tags
+    Plug 'editorconfig/editorconfig-vim'
 
 " WhoaDude
     Plug 'lilydjwg/colorizer' " set background of colour to that colour

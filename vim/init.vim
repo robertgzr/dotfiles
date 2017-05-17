@@ -2,7 +2,7 @@
 source ~/.vim/general.vim
 source ~/.vim/plug.vim
 " source more vim settings
-for s:plugin in split(glob('~/.vim/settings/*.vim'), '\n')
+for s:plugin in split(glob('~/.vim/user/*.vim'), '\n')
     exe 'source' s:plugin
 endfor
 

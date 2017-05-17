@@ -5,7 +5,7 @@ let g:lightline = {
     \   'left': [
     \       ['mode', 'paste'],
     \       ['filename'],
-    \       ['fugitive', 'ale']
+    \       ['fugitive', 'ale', 'gutentags'],
     \   ],
     \   'right': [
     \       ['lineinfo', 'tabstatus'],
@@ -28,6 +28,7 @@ let g:lightline = {
     \   'mode': 'LightLineMode',
     \   'ale': 'ALEGetStatusLine',
     \   'tabstatus': 'LightLineTabStatus',
+    \   'gutentags': 'gutentags#statusline'
     \ },
     \ 'subseparator': { 'left': '', 'right': '' },
     \ 'separator': { 'left': '', 'right': '' },

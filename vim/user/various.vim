@@ -1,5 +1,11 @@
 let g:echodoc_enable_at_startup = 1
 
+" easy window splitting
+command! -nargs=0 SplitVertical vspl|wincmd l|enew
+command! -nargs=0 SplitHorizontal spl|wincmd j|enew
+nmap <C-w>\| :SplitVertical<CR>
+nmap <C-w>- :SplitHorizontal<CR>
+
 " matchtagalways
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = {

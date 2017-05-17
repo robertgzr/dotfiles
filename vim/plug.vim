@@ -36,8 +36,8 @@ call plug#begin('~/.vim/plugged')
 " Misc
     Plug 'junegunn/vim-easy-align' " auto-align code
     Plug 'tpope/vim-sleuth' " auto-set shiftwidth and expandtab options
-    " Plug 'nathanaelkane/vim-indent-guides' " show indentation levels
-    Plug 'yggdroot/indentLine' " show indentation levels
+    Plug 'nathanaelkane/vim-indent-guides' " show indentation levels
+    " Plug 'yggdroot/indentLine' " show indentation levels
     Plug 'valloric/matchtagalways' " visually match HTML tags enclosing cursor location
     " Plug 'tpope/vim-repeat' " extend .-repeat to plugins
     " Plug 'ludovicchabant/vim-gutentags' " manage tags files
@@ -50,13 +50,14 @@ call plug#begin('~/.vim/plugged')
 " WhoaDude
     Plug 'lilydjwg/colorizer' " set background of colour to that colour
     " Plug 'DrawIt', {'on': 'DIstart'} " draw ascii arrows/boxes
-    Plug 'hkupty/nvimux'
+    " Plug 'hkupty/nvimux'
 
 " Languages
     " multi-language support with lazy loading
     Plug 'sheerun/vim-polyglot'
     Plug 'fatih/vim-go',         { 'for': 'go'}
     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+    Plug 'timonv/vim-cargo',     { 'for': 'rust' }
     Plug 'posva/vim-vue',        { 'for': 'vue' }
     " Plug 'suoto/vim-hdl',        { 'for': 'vhdl'}
 

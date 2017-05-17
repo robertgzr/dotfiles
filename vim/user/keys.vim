@@ -1,14 +1,13 @@
 " <Leader> key
 let g:mapleader = ' '
-nmap "\" :echoerr "<Space> is <Leader>"
 
+" speed
 noremap j gj
 noremap k gk
 
-map q: :q
-
 " because this is annoying
 command! W write
+map q: :q
 
 " Buffer commands
 command! Wb write|bdelete

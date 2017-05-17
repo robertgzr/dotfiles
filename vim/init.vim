@@ -28,7 +28,7 @@ endif
 colorscheme neodark
 
 " share OSX clipboard
-set clipboard=unnamed
+" set clipboard=unnamed
 " allow backspace in INSERT mode
 set backspace=indent,eol,start
 

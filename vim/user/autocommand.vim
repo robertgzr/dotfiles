@@ -1,6 +1,6 @@
 "" Some Autocommands
 
-augroup on_save
+augroup metagrp
     autocmd!
     " autocmd BufWritePre * Neoformat
 augroup END
@@ -53,4 +53,4 @@ augroup ctype_toggle
     au FileType c,cpp command! -nargs=0 CAlternate call s:c_alternate()
     au FileType c nmap <Leader>a :CAlternate<CR>
     au FileType cpp nmap <Leader>a :CAlternate<CR>
-augroup END
+augroup EN

@@ -16,8 +16,12 @@ let g:ale_lint_on_insert_leave = 1
 
 nmap <C-k> <Plug>(ale_previous_wrap)
 nmap <C-j> <Plug>(ale_next_wrap)
+nmap <C-a>d <Plug>(ale_detail)
 
 let g:ale_linters = {
 \   'go':   ['go vet', 'golint', 'gofmt'],
 \   'javascript': ['eslint'],
+\   'c': ['gcc'],
 \ }
+
+let g:ale_c_gcc_options = '-std=c99 -Wall'

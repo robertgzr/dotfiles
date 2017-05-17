@@ -16,6 +16,9 @@ let g:mta_filetypes = {
     \ 'vue'   : 1
 \}
 
+call lexima#add_rule({'char': '<Space>', 'at': '* \[\%#]', 'insert_after': '', 'filetype': 'markdown'})
+call lexima#add_rule({'char': '<Space>', 'at': '\[ \%#]', 'insert_after': '<Space>', 'filetype': 'markdown'})
+
 " fzf
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_buffers_jump = 1
@@ -26,7 +29,7 @@ let g:fzf_action = {
     \ 'ctrl-v': 'vsplit'
     \ }
 
-" fzf + ripgrep
+" fzf + ripgrep => :Find
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 command! -bang -nargs=* Find call fzf#vim#grep('rg'
     \ . ' --column'

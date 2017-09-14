@@ -1,4 +1,4 @@
-" <Leader> key
+" <Leader> key to <space>
 let g:mapleader = ' '
 
 " speed
@@ -18,14 +18,10 @@ nmap gB :bprevious<CR>
 " FZF
 nmap <Leader>ff :FzfFiles<CR>
 nmap <Leader>fb :FzfBuffers<CR>
-nmap <Leader>fh :FzfHistory<CR>
-nmap <Leader>fl :FzfLines<CR>
-nmap <Leader>fbl :FzfBLines<CR>
-nmap <Leader>fll :FzfLocate<CR>
-nmap <Leader>ft :FzfTags<CR>
 
 nmap <Leader>tb :TagbarToggle<CR>
 nmap ga <Plug>(EasyAlign)
+vmap <Enter> <Plug>(EasyAlign)
 
 " spotlight jumping
 map <Leader>en :cnext<CR>
@@ -37,8 +33,16 @@ tnoremap <Esc> <C-\><C-n>
 
 nmap <F1> :GitGutterToggle<CR>
 nmap <F2> :GitGutterLineHighlightsToggle<CR>
-nmap <F3> :Goyo<CR>
 
+nmap <Leader>f :Neoformat<CR>
+
+" easy window splitting
+command! -nargs=0 SplitVertical vspl|wincmd l|enew
+command! -nargs=0 SplitHorizontal spl|wincmd j|enew
+nmap <C-w>\| :SplitVertical<CR>
+nmap <C-w>- :SplitHorizontal<CR>
+
+nmap <Leader>ct :call deoplete#toggle()<CR>
 " neosnippet mappings
 " imap <C-s> <Plug>(neosnippet_expand_or_jump)
 " smap <C-s> <Plug>(neosnippet_expand_or_jump)

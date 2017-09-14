@@ -22,6 +22,7 @@ let g:ale_linters = {
 \   'go':   ['go vet', 'golint', 'gofmt'],
 \   'javascript': ['eslint'],
 \   'c': ['gcc'],
+\   'rust': ['rustfmt'],
 \ }
 
 let g:ale_c_gcc_options = '-std=c99 -Wall'

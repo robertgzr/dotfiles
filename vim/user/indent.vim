@@ -29,5 +29,11 @@ augroup END
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_color_change_percent = 5
-
-" indentLine plugin
+"
+" indentline config
+" let g:indentline_setColors = 0
+" let g:indentLine_color_color_term = 239
+" let g:indentLine_color_color_gui = '#333333'
+" let g:indentLine_color_color_dark = 1
+" let g:indentLine_char = '┊'
+" let g:indentLine_char = '.'

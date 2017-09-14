@@ -49,7 +49,7 @@ augroup filetype_go
     au FileType go nmap <Leader>i <Plug>(go-info)
     au FileType go nmap <Leader>db <Plug>(go-doc-browser)
     au FileType go nmap <Leader>d <Plug>(go-doc)
-    au FileType go nmap <Leader>dd <Plug>(go-def)
+    au FileType go nmap <Leader>j <Plug>(go-def)
     au FileType go nmap <Leader>im <Plug>(go-implements)
     au FileType go nmap <Leader>rn <Plug>(go-rename)
     au FileType go nmap <Leader>f <Plug>(go-imports)

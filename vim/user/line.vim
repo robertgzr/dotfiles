@@ -5,7 +5,7 @@ let g:lightline = {
     \   'left': [
     \       ['mode', 'paste'],
     \       ['filename'],
-    \       ['fugitive', 'ale', 'gutentags'],
+    \       ['fugitive', 'ale', 'gutentags', 'obsession'],
     \   ],
     \   'right': [
     \       ['lineinfo', 'tabstatus'],
@@ -28,7 +28,8 @@ let g:lightline = {
     \   'mode': 'LightLineMode',
     \   'ale': 'ALEGetStatusLine',
     \   'tabstatus': 'LightLineTabStatus',
-    \   'gutentags': 'gutentags#statusline'
+    \   'gutentags': 'gutentags#statusline',
+    \   'obsession': 'LightLineObession'
     \ },
     \ 'subseparator': { 'left': '', 'right': '' },
     \ 'separator': { 'left': '', 'right': '' },
@@ -48,10 +49,8 @@ function! LightLineUsePowerline()
 endfunction
 
 call LightLineUseSeperators(g:lightline, '', '', '|', '|')
-let g:lightline.colorscheme = 'neodark'
 
 " ========================================== "
-
 function! LightLineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
@@ -93,4 +92,7 @@ function! LightLineTabStatus()
   return  &tabstop
     \   . (&expandtab == 1 ? '->' : '<>')
     \   . &shiftwidth
+endfunction
+function! LightLineObsession()
+  return '%{ObessesionStatus()}'
 endfunction

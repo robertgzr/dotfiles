@@ -21,4 +21,4 @@ function! NumberToggle()
   endif
 endfunc
 
-nmap <Leader>ln :call NumberToggle<CR>
+nmap <Leader>ln :call NumberToggle()<CR>

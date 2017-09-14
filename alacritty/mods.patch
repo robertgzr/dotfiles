@@ -1,0 +1,51 @@
+diff --git a/src/config.rs b/src/config.rs
+index 61ca554..efb3e53 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -414,6 +414,7 @@ impl<'a> de::Deserialize<'a> for ActionWrapper {
+                     "Paste" => Action::Paste,
+                     "Copy" => Action::Copy,
+                     "PasteSelection" => Action::PasteSelection,
++                    "OpenNewWindow" => Action::OpenNewWindow,
+                     "Quit" => Action::Quit,
+                     _ => return Err(E::invalid_value(Unexpected::Str(value), &self)),
+                 }))
+@@ -951,7 +952,8 @@ fn rgb_from_hex<'a, D>(deserializer: D) -> ::std::result::Result<Rgb, D::Error>
+ impl FromStr for Rgb {
+     type Err = ();
+     fn from_str(s: &str) -> ::std::result::Result<Rgb, ()> {
+-        let mut chars = s.chars();
++        let new = s.replace("#", "0x");
++        let mut chars = new.chars();
+         let mut rgb = Rgb::default();
+ 
+         macro_rules! component {
+diff --git a/src/input.rs b/src/input.rs
+index f11aec3..443cd3e 100644
+--- a/src/input.rs
++++ b/src/input.rs
+@@ -157,6 +157,9 @@ pub enum Action {
+     /// Run given command
+     Command(String, Vec<String>),
+ 
++    /// Opens a new window on macOS
++    OpenNewWindow,
++
+     /// Quits Alacritty.
+     Quit,
+ }
+@@ -198,6 +201,14 @@ impl Action {
+                     },
+                 }
+             },
++            Action::OpenNewWindow => {
++                ::std::process::Command::new("/usr/local/bin/alacritty")
++                    .spawn()
++                    .map(|child| { println!("subproces pid: {}", child.id()) })
++                    .unwrap_or_else(|err| {
++                        warn!("Error spawning subprocess. {}", Red(err));
++                    });
++            }
+             Action::Quit => {
+                 // FIXME should do a more graceful shutdown
+                 ::std::process::exit(0);

@@ -52,10 +52,14 @@ source $ZDOTDIR/zsh_hooks.zsh
 
 # ==== TODO
 
-# setup: Pyenv
-# if which pyenv > /dev/null; then
-#     eval "$(pyenv init -)"
-# fi
+# setup: pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
+# setup: rbenv
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
 
 # if which pyenv-virtualenv-init > /dev/null; then
 #     eval "$(pyenv virtualenv-init -)"
@@ -116,8 +120,8 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 
 # start tmux session 'al' if alacritty terminal
-if [[ -f $(which tmux) ]]; then
-    if [[ "$ALACRITTY" == "1" ]]; then
-        tmux -2 new-session -A -s al
-    fi
-fi
+# if [[ -f $(which tmux) ]]; then
+#     if [[ "$ALACRITTY" == "1" ]]; then
+#         tmux -2 new-session -A -s al
+#     fi
+# fi

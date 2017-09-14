@@ -1,19 +1,21 @@
 # ==== ALIASES
 
 # Colorize output, add file type indicator, and put sizes in human readable format
-alias ls='ls -GFh --color=force'
+alias ls='ls -GFh'
 # Same as above, but in long listing format
 alias ll='ls -lS'
 alias la='ls -la'
-alias ld='ls -ld */'
+alias lsd='ls -ld */'
+alias l='ll'
 
 # exa can replace ls if you have it
 if [[ -f $(which exa) ]]; then
     alias exa_='/usr/local/bin/exa'
-    alias exa='exa -@ -lgHh --git --group-directories-first'
-    alias exaa='exa -a'
-    alias exad='exa -ld'
-    alias exat='exa -lHhT'
+    alias exa='exa -lgHh --git --group-directories-first'
+    alias exaa='exa -a@'
+    alias exad='exa -d'
+    alias exat='exa -T'
+    alias l='exa'
 fi
 
 # dot expolding (not sure if neccessary)
@@ -36,8 +38,8 @@ alias gcc='nocorrect gcc'
 alias grep='nocorrect grep'
 alias man='nocorrect man'
 alias ln='nocorrect ln'
-alias mv='nocorrect mv'
-alias rm='nocorrect rm'
+alias mv='nocorrect mv -i'
+alias rm='nocorrect rm -i'
 
 alias cp="${aliases[cp]:-cp} -i"
 alias rm="${aliases[rm]:-rm} -i"
@@ -56,7 +58,7 @@ alias youtube-dl="noglob youtube-dl"
 alias ydl="noglob youtube-dl"
 alias livestreamer="noglob livestreamer"
 alias saldl="noglob saldl"
-# alias weechat="weechat -d $DOT_DIR/config/weechat"
+alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
 alias playme="play --buffer 318 -e mu -v 0.6 -d lowpass 3000"
 
 # ==== Linux specific
@@ -100,6 +102,10 @@ fi
 if [[ -f $(which nvim) ]]; then
     alias vvim="$(which vim)"
     alias vim="$(which nvim)"
+
+    alias vvi="$(which vi)"
+    alias vi="$(which nvim)"
+
     alias gvim='gnvim'
     alias vimdiff='nvim -d'
 fi

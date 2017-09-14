@@ -1,3 +1,4 @@
+# vim: ft=zsh
 # use fzf to search for a dir in gopath
 
 gocd() {
@@ -5,7 +6,7 @@ gocd() {
         -not -iwholename '*.git*' \
         -not -iwholename '*.svn*' \
         -type d -print 2> /dev/null"
-    local out=$(eval $cmd | fzf --height=50% --exit-0)
+    local out=$(eval $cmd | fzf --height=50% --exit-0 -q "$1")
     if [ -d "$out" ]; then
         cd "$out"
         zle reset-prompt

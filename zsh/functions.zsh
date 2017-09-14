@@ -87,29 +87,6 @@ function fzf-fasd-vim {
     file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "$file" || return 1
 }
 
-# start firefox with dev-profile
-function firefoxcli() {
-    $FIREFOX --new-instance -P "dev";
-}
-
-# Execute a command in the same directory but in a new tab
-# function tcmd() {
-#   if [[  $TERM_PROGRAM != iTerm.app ]]; then
-#       open -a Terminal
-#       return 0
-#   fi
-#   # First, get the directory for the new tab
-#   ThisDirectory=$PWD
-
-#   if [[ $# == 0  ]]; then
-#         print "usage: $0 [commands]"
-#         return 1
-#   fi
-
-#   osascript <<-eof
-# eof
-# }
-
 # set AppleShowAllFiles to TRUE or FALSE
 function findershowall() {
     defaults write com.apple.finder AppleShowAllFiles $1;
@@ -120,27 +97,6 @@ function findershowall() {
 function encfs-mount() {
     echo "$(abspath $1)" $2
     encfs "$(abspath $1)" $2
-}
-
-function archboxctl {
-    if [[ "$1" = "up" || "$1" == "start" ]]; then
-        VBoxManage startvm Arch --type headless &>/dev/null;
-        echo "archbox started."
-    elif [[ "$1" = "down" || "$1" == "stop" ]]; then
-        VBoxManage controlvm Arch poweroff soft &>/dev/null;
-        echo "archbox stopped.";
-    elif [[ "$1" == "restart" ]]; then
-        archboxctl down && archboxctl up
-    elif [[ "$1" = "status" ]]; then
-        echo "$(VBoxManage showvminfo Arch | grep 'Guest OS\|State')"
-    elif [[ "$1" = "freeze" ]]; then
-        VBoxManage controlvm Arch savestate;
-        echo "archbox frozen."
-    elif [[ "$1" = "login" ]]; then
-        ssh archbox;
-    else
-        echo "usage: archboxctl [up|down|status|login]";
-    fi
 }
 
 # locate & open
@@ -162,24 +118,4 @@ function b64() {
 # return the number of files in a directory
 function tree-count() {
     tree -C $1 | grep -e files$ | awk '{print $3}';
-}
-
-# docker gui convenience
-function startx() {
-    export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
-    defaults write org.macosforge.xquartz.X11 nolisten_tcp -boolean false
-
-    if [ -z "$(ps -ef|grep XQuartz|grep -v grep)" ]; then
-        open -a XQuartz
-    fi
-
-    if [ -z "$(lsof -i :6000)" ]; then
-        socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" & &>/dev/null
-    fi
-    # pid=$!
-    # eval $@ &>/dev/null
-    # kill $pid &>/dev/null
-}
-function stopx() {
-    pkill socat
 }

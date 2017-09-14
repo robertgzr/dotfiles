@@ -21,19 +21,43 @@ function prompt_dir() {
 # TODO: needs attention!
 function prompt_context {
     prompt_ctx=""
-    # virtualenv
-    if [ -n "$VIRTUAL_ENV" ]; then
-        prompt_ctx += " "
-        if [ -f "$VIRTUAL_ENV/__name__" ]; then
-            local name=$(cat $VIRTUAL_ENV/__name__)
-        elif [ $(basename $VIRTUAL_ENV) = "__" ]; then
-            local name=$(basename $(dirname $VIRTUAL_ENV))
-        else
-            local name=$(basename $VIRTUAL_ENV)
-        fi
-        local ctx_virtualenv="$FG[003]ː$name$FX[reset]"
-        prompt_ctx+="$ctx_virtualenv"
+    # goenv
+    if [ -n "$GOENV" ]; then
+        prompt_ctx+=" → "
+        prompt_ctx+="$FG[004]$GOENV$FX[reset]"
     fi
+
+    # pyenv
+    if [[ ! -z "$(which pyenv)" ]]; then
+        pyv="$(pyenv version-name)"
+        if [[ $pyv != "system" ]]; then
+            prompt_ctx+=" → "
+            prompt_ctx+="$FG[003]$pyv$FX[reset]"
+        fi
+    fi
+
+    # rbenv
+    if [[ ! -z "$(which rbenv)" ]]; then
+        rbv="$(rbenv version-name)"
+        if [[ $rbv != "system" ]]; then
+            prompt_ctx+=" → "
+            prompt_ctx+="$FG[001]$rbv$FX[reset]"
+        fi
+    fi
+
+    # virtualenv
+    # if [ -n "$VIRTUAL_ENV" ]; then
+    #     prompt_ctx += " "
+    #     if [ -f "$VIRTUAL_ENV/__name__" ]; then
+    #         local name=$(cat $VIRTUAL_ENV/__name__)
+    #     elif [ $(basename $VIRTUAL_ENV) = "__" ]; then
+    #         local name=$(basename $(dirname $VIRTUAL_ENV))
+    #     else
+    #         local name=$(basename $VIRTUAL_ENV)
+    #     fi
+    #     local ctx_virtualenv="$FG[003]ː$name$FX[reset]"
+    #     prompt_ctx+="$ctx_virtualenv"
+    # fi
 }
 
 # time since login to shell instance
@@ -66,7 +90,7 @@ function prompt_calc_session_duration {
 function prompt_precmd {
     prompt_dir
     prompt_context
-    prompt_calc_session_duration
+    # prompt_calc_session_duration
 
     prompt_glyph="❱ "
     PROMPT='$FG[002]$prompt_pwd$FX[reset]$prompt_ctx$FX[reset] $prompt_glyph'
@@ -76,10 +100,9 @@ function prompt_precmd {
         RPROMPT='$(porcelain -fmt)'
     fi
 
-    # Calc elapsed time
-    if [ -n "$prompt_session_duration" ]; then
-        print -P "$prompt_session_duration"
-    fi
+    # if [ -n "$prompt_session_duration" ]; then
+    #     print -P "$prompt_session_duration"
+    # fi
 }
 
 # executes prior to any command execution

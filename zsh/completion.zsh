@@ -42,7 +42,7 @@ zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 # insert all expansions for expand completer
-# zstyle ':completion:*:expand:*' tag-order all-expansions
+zstyle ':completion:*:expand:*' tag-order all-expansions
 
 # match uppercase from lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -109,4 +109,3 @@ zstyle ':filter-select' rotate-list yes
 zstyle ':filter-select' case-insensitive yes
 # see below
 zstyle ':filter-select' extended-search no
-

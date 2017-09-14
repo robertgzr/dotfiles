@@ -1,11 +1,14 @@
 # ==== ENVS
 
 # Path
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE
+# go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:
+# rust
+export PATH=$PATH:$HOME/.cargo/bin
+# the rest
+export PATH=$PATH:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE:$OPAMROOT/system/bin
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
-# Lime Config
-# export PKG_CONFIG_PATH=/usr/local/opt/pyenv/versions/3.4.3/lib/pkgconfig/:/usr/local/opt/qt5/lib/pkgconfig:/usr/local/opt/oniguruma/lib/pkgconfig
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color-italic
@@ -37,9 +40,6 @@ else
 fi
 
 # Python
-# export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
-# export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.12/lib/python2.7/site-packages
-
 export PYENV_ROOT=/usr/local/var/pyenv
 
 # UTF-8 locale fix for Python

@@ -10,7 +10,7 @@ env:
   # a few issues with programs relying on terminfo and the
   # `tput` command
   ALACRITTY: 1
-  TERM: xterm-256color-italic
+  TERM: xterm-256color
 
 # Window dimensions in character columns and lines
 # (changes require restart)
@@ -18,11 +18,20 @@ dimensions:
   columns: 189
   lines: 43
 
+# Adds this many blank pixels of padding around the window
+# Units are physical pixels; this is not DPI aware.
+# (change requires restart)
+padding:
+  x: 5
+  y: 5
+
 # The FreeType rasterizer needs to know the device DPI for best results
 # (changes require restart)
 dpi:
-  x: 227.0
-  y: 227.0
+  x: 226.0
+  y: 226.0
+  # x: 149.0
+  # y: 149.0
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
@@ -35,26 +44,37 @@ font:
   # The normal (roman) font face to use.
   normal:
     family: Iosevka
+    # - family: Inziu Iosevka J
     # Style can be specified to pick a specific face.
-    style: Regular
+    style: Light
 
   # The bold font face
   bold:
     family: Iosevka
+    # - family: Inziu Iosevka J
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Bold
 
   # The italic font face
   italic:
     family: Iosevka
+    # - family: Inziu Iosevka J
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
 
   # Point size of the font
-  size: 11.0
+  size: 12.0
+
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
+    x: 0.0
+    y: 0.0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
     x: 0.0
     y: 0.0
 
@@ -74,35 +94,47 @@ custom_cursor_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x1e1e1e'
-    foreground: '0xf7f6ec'
+    background: '#1C1C1C' # sumi
+    foreground: '#FEDFE1' # sakura
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x343935'
-    cursor: '0xedcf4f'
+    text: '#080808' # kuro
+    cursor: '#CB1B45' # kurenai
 
   # Normal colors
+  # theme: nihoncolors
   normal:
-    black:   '0xedcf4f'
-    red:     '0xcf3f61'
-    green:   '0x7bb75b'
-    yellow:  '0xe9b32a'
-    blue:    '0x4c9ad4'
-    magenta: '0xa57fc4'
-    cyan:    '0x389aad'
-    white:   '0xfafaf6'
+    black:   '#0C0C0C' # ro
+    red:     '#DB4D6D' # nakabeni
+    green:   '#227D51' # midori
+    yellow:  '#F7C242' # hanaba
+    blue:    '#2EA9DF' # tsuyukusa 
+    magenta: '#66327C' # fuji
+    cyan:    '#1E88A8' # hanaasagi
+    white:   '#FEDFE1' # sakura
 
   # Bright colors
   bright:
-    black:   '0x595b59'
-    red:     '0xd18fa6'
-    green:   '0x767f2c'
-    yellow:  '0x78592f'
-    blue:    '0x135979'
-    magenta: '0x604291'
-    cyan:    '0x76bbca'
-    white:   '0xb2b5ae'
+    black:   '#434343' # keshizumi
+    red:     '#F596AA' # momo
+    green:   '#6A8372' # oitake
+    yellow:  '#FAD689' # usuki
+    blue:    '#005CAF' # ruri
+    magenta: '#B28FCE' # usu
+    cyan:    '#7DB9DE' # wasurenagusa
+    white:   '#FFFFFB' # gofun
+
+  # Dim colors (Optional)
+  dim:
+#   black:   '0x333333'
+#   red:     '0xf2777a'
+#   green:   '0x99cc99'
+#   yellow:  '0xffcc66'
+#   blue:    '0x6699cc'
+#   magenta: '0xcc99cc'
+#   cyan:    '0x66cccc'
+#   white:   '0xdddddd'
 
 # Visual Bell
 #
@@ -129,6 +161,10 @@ colors:
 visual_bell:
   animation: EaseOutExpo
   duration: 0
+
+# Background opacity
+# background_opacity: 0.97
+background_opacity: 1.0
 
 # Key bindings
 #
@@ -159,15 +195,24 @@ visual_bell:
 # be escape sequences, but they can be configured to send arbitrary strings of
 # bytes. Possible values of `action` include `Paste` and `PasteSelection`.
 key_bindings:
-  - { key: V,        mods: Command, action: Paste                        }
-  - { key: C,        mods: Command, action: Copy                         }
-  - { key: Q,        mods: Command, action: Quit                         }
-  - { key: W,        mods: Command, action: Quit                         }
+  # - { key: N,        mods: Command,         action: OpenNewWindow        }
+  - { key: V,        mods: Command,         action: Paste                }
+  - { key: C,        mods: Command,         action: Copy                 }
+  - { key: Q,        mods: Command,         action: Quit                 }
+  - { key: W,        mods: Command,         action: Quit                 }
+  # - { key: Up,       mods: Command|Shift,   action: ScrollUp             }
+  # - { key: Down,     mods: Command|Shift,   action: ScrollDown           }
+  # - { key: PageUp,   mods: Shift,           action: PageUp               }
+  # - { key: PageDown, mods: Shift,           action: PageDown             }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
-  - { key: Home,                    chars: "\x1b[1~",  mode: ~AppCursor  }
+  - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
-  - { key: End,                     chars: "\x1b[4~",  mode: ~AppCursor  }
+  - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
+  - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~"                   }
+  - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
   - { key: PageUp,                  chars: "\x1b[5~"                     }
+  - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~"                   }
+  - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                   }
   - { key: PageDown,                chars: "\x1b[6~"                     }
   - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                   }
   - { key: Left,     mods: Control, chars: "\x1b[1;5D"                   }
@@ -205,8 +250,7 @@ key_bindings:
   - { key: Back,                    chars: "\x7f"                        }
   - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
   - { key: Insert,                  chars: "\x1b[2~"                     }
-  - { key: Delete,                  chars: "\x1b[3~",  mode: AppKeypad   }
-  - { key: Delete,                  chars: "\x1b[P",   mode: ~AppKeypad  }
+  - { key: Delete,                  chars: "\x1b[3~"                     }
 
 # Mouse bindings
 #
@@ -233,7 +277,10 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
-hide_cursor_when_typing: false
+hide_cursor_when_typing: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
 
 # Shell
 #

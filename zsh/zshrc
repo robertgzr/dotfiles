@@ -86,17 +86,13 @@ fi
 # --hidden : search hidden files/dirs
 # --follow : follow symlinks
 # --glob : additional conditions (here: ignorr everything in .git/)
-if [[ -f $(which rg) ]]; then
-    export FZF_DEFALT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-fi
-
+$(which rg &>/dev/null) && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # have to source bindkeys after modules
 # otherwise new zle widgets are not available
 source $ZDOTDIR/bindkeys.zsh
 
 # ==== zsh modules configuration envs
-
 # configure autosuggestion
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=10 #fg=$FG[241]
 

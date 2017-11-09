@@ -12,7 +12,7 @@ let g:grammarous#languagetool_cmd = 'languagetool'
 " writing autocommands
 function! s:writing_mode_enter()
     set textwidth=120
-    ALEToggle
+    " ALEToggle
     " Grammarous keymaps
     nmap <Leader>c :GrammarousCheck --lang=de
     nmap <Leader>gi <Plug>(grammarous-move-to-info-window)

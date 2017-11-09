@@ -15,6 +15,9 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
     \ 'vue'   : 1
 \}
+" emmet
+let g:user_emmet_leader_key = '<C-X>' " followed by ,
+let g:user_emmet_mode = 'a'
 
 call lexima#add_rule({'char': '<Space>', 'at': '* \[\%#]', 'insert_after': '', 'filetype': 'markdown'})
 call lexima#add_rule({'char': '<Space>', 'at': '\[ \%#]', 'insert_after': '<Space>', 'filetype': 'markdown'})
@@ -72,12 +75,6 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
         \ }
 
-" Language Server Protocol
-let g:LanguageClient_serverCommands = {
-    \ 'go': ['go-langserver'],
-\ }
-" \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/opt/rls/Cargo.toml'],
-
 " FZF
 " let g:fzf_command_prefix = 'Fzf'
 let g:fzf_buffers_jump = 1
@@ -90,22 +87,36 @@ let g:fzf_action = {
 
 " fzf + ripgrep => :Rg
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
-command! -bang -nargs=* Rg 
-    \ call fzf#vim#grep('rg'
-    \ . ' --column'
-    \ . ' --line-number'
-    \ . ' --no-heading'
-    \ . ' --fixed-strings'
-    \ . ' --ignore-case'
-    \ . ' --no-ignore'
-    \ . ' --hidden'
-    \ . ' --follow'
-    \ . ' --glob "!.git/*"'
-    \ . ' --color "always"'
-    \ . ' '.shellescape(<q-args>), 1, 
-    \ <bang>0 ? fzf#vim#with_preview('up:60%')
+function! s:rg_find(args, bang)
+    let l:tokens = split(a:args)
+    let l:pattern = l:tokens[0]
+    let l:exe = 'rg'
+    \.	' --column'
+    \.	' --line-number'
+    \.	' --no-heading'
+    \.	' --fixed-strings'
+    \.	' --ignore-case'
+    \.	' --no-ignore'
+    \.	' --hidden'
+    \.	' --follow'
+    \.	' --glob "!.git/*"'
+    \.	' --color "always"'
+    \.	' '.shellescape(l:pattern)
+
+    if len(l:tokens) > 1
+	let l:path = l:tokens[1]
+	let l:exe = l:exe . ' ' . l:path
+    endif
+
+    call fzf#vim#grep(l:exe, 1,
+    \ a:bang ? fzf#vim#with_preview('up:60%')
     \	      : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \ <bang>0)
+    \ a:bang)
+endfunction
+augroup CustomCommands
+    autocmd!
+    autocmd VimEnter * command! -nargs=* -bang Rg call s:rg_find(<q-args>, <bang>0)
+augroup END
 
 " let g:tmux_navigator_save_on_switch = 1
 " let g:tmux_navigator_no_mappings = 1

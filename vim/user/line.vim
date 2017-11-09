@@ -1,21 +1,21 @@
 " lightline
 let g:lightline = {
-    \ 'mode_map': { 'c': 'NORMAL' },
+    \ 'enable': {'statusline': 1, 'tabline': 0},
+    \ 'mode_map': { 'c': 'CMD' },
     \ 'active': {
     \   'left': [
     \       ['mode', 'paste'],
-    \       ['filename'],
-    \       ['fugitive', 'ale', 'gutentags', 'obsession'],
+    \       ['fugitive'],
+    \       ['filename', 'ale', 'neomake', 'gutentags', 'obsession'],
     \   ],
     \   'right': [
-    \       ['lineinfo', 'tabstatus'],
-    \       ['percent'],
+    \       ['lineinfo', 'percent'], 
+    \       ['in_progress', 'tabstatus'],
     \       ['fileformat', 'fileencoding', 'filetype'],
-    \       ['in_progress']
     \   ]
     \ },
     \ 'component': {
-    \   'lineinfo': '%3l:%-2v',
+    \   'lineinfo': ''.'%3l:%-2v',
     \ },
     \ 'component_function': {
     \   'modified': 'LightLineModified',
@@ -26,10 +26,16 @@ let g:lightline = {
     \   'filetype': 'LightLineFiletype',
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
-    \   'ale': 'ALEGetStatusLine',
-    \   'tabstatus': 'LightLineTabStatus',
     \   'gutentags': 'gutentags#statusline',
-    \   'obsession': 'LightLineObession'
+    \   'neomake': 'LightLineNeomake',
+    \   'obsession': 'LightLineSession',
+    \ },
+    \ 'component_expand': {
+    \   'tabstatus': 'LightLineTabStatus',
+    \   'ale': 'ALEGetStatusLine',
+    \ },
+    \ 'component_type': {
+    \   'ale': 'error',
     \ },
     \ 'subseparator': { 'left': '', 'right': '' },
     \ 'separator': { 'left': '', 'right': '' },
@@ -43,38 +49,32 @@ function! LightLineUseSeperators(line, sepL, sepR, subsepL, subsepR)
   let a:line.subseparator.left = a:subsepL
   let a:line.subseparator.right = a:subsepR
 endfunction
-
 function! LightLineUsePowerline()
   call LightLineUseSeperators(g:lightline, '', '', '', '')
 endfunction
-
 call LightLineUseSeperators(g:lightline, '', '', '|', '|')
 
-" ========================================== "
 function! LightLineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  return &filetype =~? 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 function! LightLineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+  return &filetype !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
 endfunction
-
 function! LightLineFilename()
-  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+  return ('' !=? LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+        \  &filetype ==# 'unite' ? unite#get_status_string() :
+        \  &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+        \ '' !=? expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' !=? LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
-
 function! LightLineFugitive()
-  if &filetype !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? ' '._ : ''
+  if &filetype !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+    let l:_ = fugitive#head()
+    return strlen(l:_) ? ' '.l:_ : ''
   endif
   return ''
 endfunction
-
 function! LightLineFileformat()
   return winwidth(0) > 70 ? &fileformat : ''
 endfunction
@@ -82,17 +82,32 @@ function! LightLineFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fenc : &enc) : ''
+  return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
 endfunction
 function! LightLineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
+  return winwidth(0) > 60 ? (
+          \ expand('%:t') ==# '__Tagbar__' ? 'Tagbar':
+          \ &filetype ==# 'vimfiler' ? 'VimFiler' :
+          \ &filetype ==# 'vimshell' ? 'VimShell' :
+          \ &filetype ==# 'dirvish' ? 'DIRVISH' :
+          \ lightline#mode() )
+          \ : ''
 endfunction
-
 function! LightLineTabStatus()
-  return  &tabstop
+  return '%*' . &tabstop
     \   . (&expandtab == 1 ? '->' : '<>')
     \   . &shiftwidth
 endfunction
-function! LightLineObsession()
-  return '%{ObessesionStatus()}'
+function! LightLineSession()
+  return ObsessionStatus('active', 'paused')
+endfunction
+function! LightLineNeomake()
+  let l:_ = neomake#statusline#get(bufnr('%'), {
+          \ 'format_running': '… ({{running_job_names}})',
+          \ 'format_ok': '✓',
+          \ 'format_quickfix_ok': '',
+          \ 'format_quickfix_issues': '%s',
+          \ 'format_status': '%s',
+          \ })
+  return substitute(l:_, '%#\(.*\)# ', '', 'g')
 endfunction

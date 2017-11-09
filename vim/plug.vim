@@ -8,31 +8,29 @@ call plug#begin('~/.vim/plugged')
     Plug 'cohama/lexima.vim' " auto-close parens, brackets, etc.
     Plug 'tpope/vim-surround' " edit surroundings in pairs
     Plug 'itchyny/lightline.vim' " lightweight status bar
-    " Plug 'neomake/neomake'
+    Plug 'neomake/neomake'
     Plug 'sbdchd/neoformat' " async code formatter
-    Plug 'w0rp/ale' " linter framework
+    " Plug 'w0rp/ale' " linter framework
     Plug 'tpope/vim-obsession'
-    " Language Server Client
-    " Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
     " completion
-    Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
-        Plug 'Shougo/deoplete-rct',           { 'for': 'ruby' }
-        Plug 'zchee/deoplete-go',             { 'for': 'go', 'do': 'make' }
-        " Plug 'zchee/deoplete-clang',          { 'for': ['cpp', 'c', 'objc'] }
-        Plug 'tweekmonster/deoplete-clang2',  { 'for': ['cpp', 'c', 'objc'] }
-        Plug 'zchee/deoplete-jedi',           { 'for': 'python' }
-        Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
-    Plug 'Shougo/echodoc.vim' " print completed documentation into command line
+    Plug 'roxma/nvim-completion-manager'
+        Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
+        Plug 'Shougo/neco-vim', {'for': 'vim'}
+        Plug 'roxma/ncm-rct-complete', {'for': 'ruby'}
     " snippets
     Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
+    Plug 'Shougo/echodoc.vim' " print completed documentation into command line
+    " Language Server Client
+    Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
     " git
     " search
-    Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+    Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install --all'}
         Plug 'junegunn/fzf.vim'
 
     Plug 'justinmk/vim-dirvish' " folder browser
     Plug 'easymotion/vim-easymotion' " sophisiticated vim motions
+    Plug 'ap/vim-buftabline' " replace tabline with buffers
 
 " Misc
     Plug 'junegunn/vim-easy-align' " auto-align code
@@ -40,27 +38,30 @@ call plug#begin('~/.vim/plugged')
     Plug 'nathanaelkane/vim-indent-guides' " show indentation levels
     " Plug 'yggdroot/indentLine' " show indentation levels
     " visually match HTML tags enclosing cursor location
-    Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] } 
-    " Plug 'tpope/vim-repeat' " extend .-repeat to plugins
+    Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] }
+    Plug 'tpope/vim-repeat' " extend '.' to plugins
     " Plug 'ludovicchabant/vim-gutentags' " manage tags files
     Plug 'majutsushi/tagbar' " code minimap via ctags
     " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
-    Plug 'mattn/emmet-vim', { 'for': 'html' } " super-fast HTML editing
-    Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml', 'markdown'] } " auto-close HTML/XML tags
+    Plug 'mattn/emmet-vim', { 'for': ['html', 'markdown'] } " super-fast HTML editing
+    " Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml', 'markdown'] } " auto-close HTML/XML tags
     Plug 'editorconfig/editorconfig-vim'
 
 " WhoaDude
     Plug 'lilydjwg/colorizer' " set background of colour to that colour
     " Plug 'DrawIt', {'on': 'DIstart'} " draw ascii arrows/boxes
-    " Plug 'hkupty/nvimux'
+    " Plug 'hkupty/nvimux', { 'branch': 'lua' }
     " Plug 'christoomey/vim-tmux-navigator'
     " Plug 'edkolev/tmuxline.vim'
+    Plug 'jceb/vim-orgmode'
+        Plug 'tpope/vim-speeddating'
+        Plug 'vim-scripts/utl.vim'
 
 " Languages
     " multi-language support with lazy loading
     Plug 'sheerun/vim-polyglot'
-    Plug 'fatih/vim-go',         { 'for': 'go'}
+    Plug 'fatih/vim-go',         { 'for': 'go', 'do': ':GoInstallBinaries' }
     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
     " Plug 'timonv/vim-cargo',     { 'for': 'rust' }
     Plug 'posva/vim-vue',        { 'for': 'vue' }
@@ -86,5 +87,5 @@ call plug#begin('~/.vim/plugged')
 " Local
     Plug '~/.vim/dev/nihon.vim'
 
-    " Plug 'equalsraf/neovim-gui-shim'
+    Plug 'equalsraf/neovim-gui-shim'
 call plug#end()

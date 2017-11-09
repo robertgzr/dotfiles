@@ -1,5 +1,6 @@
 " <Leader> key to <space>
 let g:mapleader = ' '
+let g:maplocalleader = '\'
 
 " speed
 noremap j gj
@@ -9,6 +10,9 @@ noremap k gk
 command! W write
 map q: :q
 
+" keep <C-CR> unmapped
+" unmap <C-<CR>>
+
 " Buffer commands
 command! Wb write|bdelete
 command! Qb bdelete
@@ -16,37 +20,41 @@ nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
 
 " FZF
-nmap <Leader>ff :FzfFiles<CR>
-nmap <Leader>fb :FzfBuffers<CR>
+nmap <Leader>ff :Files<CR>
+nmap <Leader>fb :Buffers<CR>
+nmap <Leader>fr :Rg<CR>
 
 nmap <Leader>tb :TagbarToggle<CR>
 nmap ga <Plug>(EasyAlign)
 vmap <Enter> <Plug>(EasyAlign)
 
-" spotlight jumping
-map <Leader>en :cnext<CR>
-map <Leader>ep :cprevious<CR>
-nnoremap <Leader>ea :cclose<CR>
+" default runners
+nmap <Leader>f :Neoformat<CR>
+nmap <Leader>F :Neoformat! &filetype<CR>
+
+nmap <Leader>l :Neomake<CR>
+nmap <Leader>L :Neomake!<CR>
+
+" quickfix jumping
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprevious<CR>
+nnoremap <Leader>cl :clist<CR>
+" loclist jumping
+nnoremap <Leader>ln :lnext<CR>
+nnoremap <Leader>lp :lprevious<CR>
+nnoremap <Leader>ll :llist<CR>
 
 " escape terminal mode with <esc>
 tnoremap <Esc> <C-\><C-n>
+" nvimux
+let g:nvimux_prefix='<C-a>'
+let g:nvimux_custom_bindings = [
+  \['-', ':NvimuxHorizontalSplit<CR>', ['n', 'v', 'i', 't']],
+  \['\|', ':NvimuxVerticalSplit<CR>', ['n', 'v', 'i', 't']]
+\]
 
 nmap <F1> :GitGutterToggle<CR>
 nmap <F2> :GitGutterLineHighlightsToggle<CR>
-
-nmap <Leader>f :Neoformat<CR>
-
-" easy window splitting
-command! -nargs=0 SplitVertical vspl|wincmd l|enew
-command! -nargs=0 SplitHorizontal spl|wincmd j|enew
-nmap <C-w>\| :SplitVertical<CR>
-nmap <C-w>- :SplitHorizontal<CR>
-
-nmap <Leader>ct :call deoplete#toggle()<CR>
-" neosnippet mappings
-" imap <C-s> <Plug>(neosnippet_expand_or_jump)
-" smap <C-s> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-s> <Plug>(neosnippet_expand_or_jump)
 
 " Hardmode = not using arrow keys
 let g:hardmode_error = "Don't use the arrow keys!"

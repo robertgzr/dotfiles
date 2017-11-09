@@ -1,5 +1,17 @@
 "" Language options
 
+" Language Server Protocol
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+\ }
+
+    " \ 'go': ['go-langserver'],
+
+let g:LanguageClient_autoStart = 1
+nmap <Leader>i :call LanguageClient_textDocument_hover()<CR>
+nmap <Leader>j :call LanguageClient_textDocument_definition()<CR>
+nmap <Leader>r :call LanguageClient_textDocument_rename()<CR>
+
 " Neomake 
 " let g:neomake_serialize = 1
 " augroup neomake_activate
@@ -23,29 +35,8 @@ augroup filetype_rust
 augroup END
 
 " Make
-let g:neomake_makeclean_maker = { 'exe': 'make', 'args': ['clean'] }
 augroup filetype_make
     autocmd!
     " Disable tabs->spaces for Makefiles
     au FileType make setlocal noexpandtab
 augroup END
-
-" Protobuf
-let g:neomake_proto_lint_maker = {
-    \ 'exe': 'protoc',
-    \ 'args': ['--lint_out=.'],
-    \ 'errorformat': '%f:%l:%c: %m',
-    \ }
-let g:neomake_proto_enabled_makers = ['lint']
-
-" JS
-let g:neomake_javascript_jshint_maker = {
-            \ 'args': ['--esversion=6'],
-            \ }
-
-" CSS
-let g:neomake_css_cssbeautify_maker = {
-    \ 'exe': 'css-beautify',
-    \ 'args': ['-r', '%:p', '--indent-size', '4']
-    \ }
-let g:neomake_css_enabled_makers = ['csslint', 'cssbeautify']

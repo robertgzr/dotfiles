@@ -7,8 +7,8 @@
 "     exe 'source' s:plugin
 " endfor
 " unrolled user config for debugging
- source ~/.vim/user/ale.vim
- source ~/.vim/user/deoplete.vim
+ source ~/.vim/user/lint.vim
+ " source ~/.vim/user/deoplete.vim
  source ~/.vim/user/completion.vim
  source ~/.vim/user/go.vim
  source ~/.vim/user/keys.vim
@@ -30,8 +30,8 @@ set signcolumn=yes
 " set cursorcolumn
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>cl :set cursorline!<CR>
-nnoremap <Leader>cc :set cursorcolumn!<CR>
+" nnoremap <Leader>cl :set cursorline!<CR>
+" nnoremap <Leader>cc :set cursorcolumn!<CR>
 
 " For conceal markers.
 if has('conceal')
@@ -50,7 +50,9 @@ endif
 set fillchars=fold:-,vert:\│
 
 "" colorscheme options
-set termguicolors
+if has("termguicolors")
+  set termguicolors
+endif
 " set t_Co=256
 " let g:base16colorspace=256
 if has('syntax') && !exists('g:syntax_on')
@@ -72,7 +74,7 @@ if has('gui_vimr')
   " VimR GUI options
   source ~/.vim/ginit.vim
 elseif has('g:gonvim_running')
-  GuiFont Iosevka:12
+  exe ':GuiFont Iosevka:12'
 else
   " Terminal vim options
   " hi Normal ctermbg=NONE guibg=NONE

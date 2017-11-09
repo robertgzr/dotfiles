@@ -4,13 +4,15 @@
 # environment variables. Some entries may override variables
 # set by alacritty it self.
 env:
-  # TERM env customization. Default is xterm-256color
-  # Note: the default TERM value `xterm-256color` does not
-  # specify all features alacritty supports. This does pose
-  # a few issues with programs relying on terminfo and the
-  # `tput` command
-  ALACRITTY: 1
+  # TERM env customization.
+  #
+  # If this property is not set, alacritty will set it to xterm-256color.
+  #
+  # Note that some xterm terminfo databases don't declare support for italics.
+  # You can verify this by checking for the presence of `smso` and `sitm` in
+  # `infocmp xterm-256color`.
   TERM: xterm-256color
+  ALACRITTY: 1
 
 # Window dimensions in character columns and lines
 # (changes require restart)
@@ -25,45 +27,31 @@ padding:
   x: 5
   y: 5
 
-# The FreeType rasterizer needs to know the device DPI for best results
-# (changes require restart)
-dpi:
-  x: 226.0
-  y: 226.0
-  # x: 149.0
-  # y: 149.0
-
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
 
 # When true, bold text is drawn using the bright variant of colors.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
   normal:
     family: Iosevka
-    # - family: Inziu Iosevka J
-    # Style can be specified to pick a specific face.
     style: Light
 
   # The bold font face
   bold:
     family: Iosevka
-    # - family: Inziu Iosevka J
-    # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
     family: Iosevka
-    # - family: Inziu Iosevka J
-    # Style can be specified to pick a specific face.
     style: Italic
 
   # Point size of the font
-  size: 12.0
+  size: 10.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -90,12 +78,12 @@ render_timer: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: true
 
-# Colors (Japanesque)
+# Colors (Nihon)
 colors:
   # Default colors
   primary:
     background: '#1C1C1C' # sumi
-    foreground: '#FEDFE1' # sakura
+    foreground: '#FCFAF2' # shironeri
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
@@ -112,7 +100,7 @@ colors:
     blue:    '#2EA9DF' # tsuyukusa 
     magenta: '#66327C' # fuji
     cyan:    '#1E88A8' # hanaasagi
-    white:   '#FEDFE1' # sakura
+    white:   '#FCFAF2' # shironeri
 
   # Bright colors
   bright:
@@ -127,14 +115,15 @@ colors:
 
   # Dim colors (Optional)
   dim:
-#   black:   '0x333333'
-#   red:     '0xf2777a'
-#   green:   '0x99cc99'
-#   yellow:  '0xffcc66'
-#   blue:    '0x6699cc'
-#   magenta: '0xcc99cc'
-#   cyan:    '0x66cccc'
-#   white:   '0xdddddd'
+    black:   '#1C1C1C' # sumi
+    red:     '#D05A6E' # imayoh
+    green:   '#2D6D4B' # tokusa
+    yellow:  '#C18A26' # kigaracha
+    blue:    '#0B346E' # rurikon
+    magenta: '#533D5B' # messhi
+    cyan:    '#0C4842' # onando
+    white:   '#BDC0BA' # shironezumi
+
 
 # Visual Bell
 #
@@ -163,8 +152,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-# background_opacity: 0.97
-background_opacity: 1.0
+background_opacity: 0.995
 
 # Key bindings
 #
@@ -190,20 +178,22 @@ background_opacity: 1.0
 # capitalization must match exactly, and piped items must not have whitespace
 # around them.
 #
-# Either an `action` or `chars` field must be present. `chars` writes the
-# specified string every time that binding is activated. These should generally
-# be escape sequences, but they can be configured to send arbitrary strings of
-# bytes. Possible values of `action` include `Paste` and `PasteSelection`.
+# Either an `action`, `chars`, or `command` field must be present.
+#   `action` must be one of `Paste`, `PasteSelection`, `Copy`, or `Quit`.
+#   `chars` writes the specified string every time that binding is activated.
+#     These should generally be escape sequences, but they can be configured to
+#     send arbitrary strings of bytes.
+#   `command` must be a map containing a `program` string, and `args` array of
+#     strings. For example:
+#     - { ... , command: { program: "alacritty", args: ["-e", "vttest"] } }
 key_bindings:
-  # - { key: N,        mods: Command,         action: OpenNewWindow        }
-  - { key: V,        mods: Command,         action: Paste                }
-  - { key: C,        mods: Command,         action: Copy                 }
-  - { key: Q,        mods: Command,         action: Quit                 }
-  - { key: W,        mods: Command,         action: Quit                 }
-  # - { key: Up,       mods: Command|Shift,   action: ScrollUp             }
-  # - { key: Down,     mods: Command|Shift,   action: ScrollDown           }
-  # - { key: PageUp,   mods: Shift,           action: PageUp               }
-  # - { key: PageDown, mods: Shift,           action: PageDown             }
+  - { key: V,        mods: Command, action: Paste                        }
+  - { key: C,        mods: Command, action: Copy                         }
+  - { key: Q,        mods: Command, action: Quit                         }
+  - { key: W,        mods: Command, action: Quit                         }
+  - { key: Key0,     mods: Command, action: ResetFontSize                }
+  - { key: Equals,   mods: Command, action: IncreaseFontSize             }
+  - { key: Minus, mods: Command, action: DecreaseFontSize             }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }

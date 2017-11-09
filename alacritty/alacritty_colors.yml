@@ -1,0 +1,45 @@
+# Colors (Nihon)
+colors:
+  # Default colors
+  primary:
+    background: '#1C1C1C' # sumi
+    foreground: '#FEDFE1' # sakura
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '#080808' # kuro
+    cursor: '#CB1B45' # kurenai
+
+  # Normal colors
+  # theme: nihoncolors
+  normal:
+    black:   '#0C0C0C' # ro
+    red:     '#DB4D6D' # nakabeni
+    green:   '#227D51' # midori
+    yellow:  '#F7C242' # hanaba
+    blue:    '#2EA9DF' # tsuyukusa 
+    magenta: '#66327C' # fuji
+    cyan:    '#1E88A8' # hanaasagi
+    white:   '#FEDFE1' # sakura
+
+  # Bright colors
+  bright:
+    black:   '#434343' # keshizumi
+    red:     '#F596AA' # momo
+    green:   '#6A8372' # oitake
+    yellow:  '#FAD689' # usuki
+    blue:    '#005CAF' # ruri
+    magenta: '#B28FCE' # usu
+    cyan:    '#7DB9DE' # wasurenagusa
+    white:   '#FFFFFB' # gofun
+
+  # Dim colors (Optional)
+  dim:
+    black:   '0x333333'
+    red:     '0xf2777a'
+    green:   '0x99cc99'
+    yellow:  '0xffcc66'
+    blue:    '0x6699cc'
+    magenta: '0xcc99cc'
+    cyan:    '0x66cccc'
+    white:   '0xdddddd'

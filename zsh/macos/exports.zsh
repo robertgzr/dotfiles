@@ -10,7 +10,7 @@ export TEXPATH=/usr/local/texlive/2016basic
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/devel/go
 # Rust
-export RUST_SRC_PATH=$HOME/devel/rust/multirust/rustc-1.13.0/src
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 # Python
 # export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 # export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.12/lib/python2.7/site-packages

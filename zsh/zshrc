@@ -18,11 +18,13 @@ fpath=(
     $fpath
 )
 
+source $ZDOTDIR/exports.zsh
 # platform-specific stuff
 case "$(uname)" in
     Darwin)
         source $ZDOTDIR/macos/aliases.zsh
         source $ZDOTDIR/macos/functions.zsh
+        source $ZDOTDIR/macos/exports.zsh
         # Syntax Highlighting
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         # History Substring Search
@@ -31,6 +33,7 @@ case "$(uname)" in
         source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
     Linux)
+        source $ZDOTDIR/linux/exports.zsh
         # Syntax Highlighting
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         # History Substring Search
@@ -40,7 +43,6 @@ case "$(uname)" in
         ;;
 esac
 
-source $ZDOTDIR/exports.zsh
 source $ZDOTDIR/setopt.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/spectrum.zsh
@@ -86,7 +88,7 @@ fi
 # --hidden : search hidden files/dirs
 # --follow : follow symlinks
 # --glob : additional conditions (here: ignorr everything in .git/)
-$(which rg &>/dev/null) && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+$(which rg &>/dev/null) && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" .'
 
 # have to source bindkeys after modules
 # otherwise new zle widgets are not available

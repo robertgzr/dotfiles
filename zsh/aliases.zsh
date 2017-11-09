@@ -28,7 +28,7 @@ alias shasum2.56="shasum --algorithm 256"
 
 # alias py2='python2.7'
 # alias py3='python3.5'
-alias py='python'
+alias py='python3'
 
 # ==== Disable correction and globbing
 alias ack='noglob ack'

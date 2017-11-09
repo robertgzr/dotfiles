@@ -11,7 +11,7 @@
         <name>Remap Caps Lock (⇪) to Hyper with Escape on Tap</name>
         <appendix>OS X doesn't have Hyper. This maps caps lock (actually F19) to Control + Shift + Option + Command, unless you tap it. Then it sends Escape.</appendix>
         <!-- <not>ITERM2</not> -->
-        <identifier>private.caps_lock_to_hyper_or_escape</identifier>
+        <identifier>private.hyper</identifier>
 
         <autogen>
             --KeyOverlaidModifier--
@@ -22,6 +22,108 @@
             KeyCode::ESCAPE,
         </autogen>
     </item>
+
+    <item>
+        <name>Tmux Hyper</name>
+        <appendix></appendix>
+        <identifier>private.tmux.hyper</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::A,
+            ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+
+            KeyCode::A, ModifierFlag::CONTROL_L
+        </autogen>
+    </item>
+
+    <item>
+        <name>Vim-Addict</name>
+        <!-- Move around text fields with Hyper+hjkl -->
+        <item>
+            <name>arrowkeys with hyper+hjkl</name>
+            <identifier>private.vim.arrows</identifier>
+            <autogen>
+                __KeyToKey__
+                KeyCode::H,
+                ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+
+                KeyCode::CURSOR_LEFT
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::J,
+                ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+
+                KeyCode::CURSOR_DOWN
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::K,
+                ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+
+                KeyCode::CURSOR_UP
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::L,
+                ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+
+                KeyCode::CURSOR_RIGHT
+            </autogen>
+        </item>
+        <!-- Change Applications -->
+        <item>
+            <name>change applications with Cmd+jk</name>
+            <identifier>private.vim.appl</identifier>
+            <autogen>
+                __KeyToKey__
+                KeyCode::J, ModifierFlag::COMMAND_L,
+
+                KeyCode::TAB, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::K, ModifierFlag::COMMAND_L,
+
+                KeyCode::TAB, ModifierFlag::COMMAND_L
+            </autogen>
+        </item>
+        <!-- Change windows -->
+        <item>
+            <name>change windows with Option+jk</name>
+            <identifier>private.vim.win</identifier>
+            <autogen>
+                __KeyToKey__
+                KeyCode::K, ModifierFlag::OPTION_L,
+
+                KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::J, ModifierFlag::OPTION_L,
+
+                KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L
+            </autogen>
+        </item>
+        <!-- Change tabs (at least in Chrome) -->
+        <item>
+            <name>change tabs with Shift+jk</name>
+            <identifier>private.vim.tabs</identifier>
+            <autogen>
+                __KeyToKey__
+                KeyCode::J, ModifierFlag::SHIFT_L,
+
+                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::K, ModifierFlag::SHIFT_L,
+
+                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L
+            </autogen>
+        </item>
+    </item>
+
     <item>
         <name>Tap shift to move over words</name>
         <appendix>Shift keys move the cursor one word forward or backward when pressed alone. When pressed with other keys they act as normal shifts.</appendix>
@@ -42,177 +144,82 @@
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
         </autogen>
     </item>
+
+    <!-- src: http://stevelosh.com/blog/2012/10/a-modern-space-cadet/ -->
+    <item>
+        <name>Tap shift to parentheses</name>
+        <appendix>Shift keys act as parentheses when pressed alone. When pressed with other keys they act as normal shifts.</appendix>
+        <identifier>private.shifts_to_parentheses</identifier>
+
+        <autogen>
+            --KeyOverlaidModifier--
+            KeyCode::SHIFT_R,
+            ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+            KeyCode::SHIFT_R,
+            KeyCode::KEY_0, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+            --KeyOverlaidModifier--
+            KeyCode::SHIFT_L,
+            ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+            KeyCode::SHIFT_L,
+            KeyCode::KEY_9, ModifierFlag::SHIFT_R,
+        </autogen>
+    </item>
+
     <!-- Make umlaut keys useful for coding, by assigning brackets and symbols to right modifier key combinations -->
     <item>
-        <name>Option-Right(⌥)+Ü to Backslash \</name>
-        <identifier>private.option_ue_to_backslash</identifier>
-        <inputsource_only>GERMAN</inputsource_only>
-        <autogen>
-            --KeyOverlaidModifier--
-            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::OPTION_R,
-            KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
-        </autogen>
-    </item>
-    <item>
-        <name>Shift-Right(⇧)+Ü to Forward Slash /</name>
-        <identifier>private.shift_right_ue_to_forward_slash</identifier>
-        <inputsource_only>GERMAN</inputsource_only>
-        <autogen>
-            --KeyOverlaidModifier--
-            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::SHIFT_R,
-            KeyCode::KEY_7, ModifierFlag::SHIFT_L,
-        </autogen>
-    </item>
-    <item>
-        <name>Command-Right(⌘)+Ü to Pipe |</name>
-        <identifier>private.command_ue_to_pipe</identifier>
-        <inputsource_only>GERMAN</inputsource_only>
-        <autogen>
-            --KeyOverlaidModifier--
-            KeyCode::GERMAN_U_UMLAUT, ModifierFlag::COMMAND_R,
-            KeyCode::KEY_7, ModifierFlag::OPTION_L,
-        </autogen>
-    </item>
-    <item>
-        <name>Shift-Right(⇧)+Ö/Ä to Curly Brackets {}</name>
-        <identifier>private.shift_right_ae_oe_to_curly_brackety</identifier>
-        <inputsource_only>GERMAN</inputsource_only>
-        <autogen>
-            --KeyOverlaidModifier--
-            KeyCode::GERMAN_O_UMLAUT, ModifierFlag::SHIFT_R,
-            KeyCode::KEY_8, ModifierFlag::OPTION_L,
-        </autogen>
-        <autogen>
-            --KeyOverlaidModifier--
-            KeyCode::GERMAN_A_UMLAUT, ModifierFlag::SHIFT_R,
-            KeyCode::KEY_9, ModifierFlag::OPTION_L,
-        </autogen>
-    </item>
-    <!-- Special Triggers -->
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_Sublime</name>
-        <url type="file">/Applications/Sublime Text.app</url>
-    </vkopenurldef>
-    <item>
-        <name>Open Sublime Text with Fn+S</name>
-        <identifier>private.subl_on_fn_s</identifier>
-        <autogen>
-            __KeyToKey__
-            KeyCode::S, ModifierFlag::FN,
-            KeyCode::VK_OPEN_URL_APP_Sublime,
-        </autogen>
+        <name>Umlaut Mods</name>
+        <item>
+            <name>Option-Right(⌥)+Ü to Backslash \</name>
+            <identifier>private.option_ue_to_backslash</identifier>
+            <inputsource_only>GERMAN</inputsource_only>
+            <autogen>
+                --KeyOverlaidModifier--
+                KeyCode::GERMAN_U_UMLAUT, ModifierFlag::OPTION_R,
+
+                KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
+            </autogen>
+        </item>
+        <item>
+            <name>Shift-Right(⇧)+Ü to Forward Slash /</name>
+            <identifier>private.shift_right_ue_to_forward_slash</identifier>
+            <inputsource_only>GERMAN</inputsource_only>
+            <autogen>
+                --KeyOverlaidModifier--
+                KeyCode::GERMAN_U_UMLAUT, ModifierFlag::SHIFT_R,
+
+                KeyCode::KEY_7, ModifierFlag::SHIFT_L,
+            </autogen>
+        </item>
+        <item>
+            <name>Command-Right(⌘)+Ü to Pipe |</name>
+            <identifier>private.command_ue_to_pipe</identifier>
+            <inputsource_only>GERMAN</inputsource_only>
+            <autogen>
+                --KeyOverlaidModifier--
+                KeyCode::GERMAN_U_UMLAUT, ModifierFlag::COMMAND_R,
+
+                KeyCode::KEY_7, ModifierFlag::OPTION_L,
+            </autogen>
+        </item>
+        <item>
+            <name>Shift-Right(⇧)+Ö/Ä to Curly Brackets {}</name>
+            <identifier>private.shift_right_ae_oe_to_curly_brackety</identifier>
+            <inputsource_only>GERMAN</inputsource_only>
+            <autogen>
+                --KeyOverlaidModifier--
+                KeyCode::GERMAN_O_UMLAUT, ModifierFlag::SHIFT_R,
+
+                KeyCode::KEY_8, ModifierFlag::OPTION_L,
+            </autogen>
+            <autogen>
+                --KeyOverlaidModifier--
+                KeyCode::GERMAN_A_UMLAUT, ModifierFlag::SHIFT_R,
+
+                KeyCode::KEY_9, ModifierFlag::OPTION_L,
+            </autogen>
+        </item>
     </item>
 
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_SHELL_mpv</name>
-        <url type="shell">
-            <![CDATA[   mpvp    ]]>
-        </url>
-    </vkopenurldef>
-    <item>
-        <name>Run 'mpvp' on Fn+M</name>
-        <identifier>private.mpvp_on_fn_m</identifier>
-        <autogen>
-            __KeyToKey__
-            KeyCode::M, ModifierFlag::FN,
-            KeyCode::VK_OPEN_URL_SHELL_mpv,
-        </autogen>
-    </item>
-    <appdef>
-        <appname>ITERM2</appname>
-        <equal>com.googlecode.iterm2</equal>
-    </appdef>
-    
-    <item>
-        <name>OSX VIM MODE</name>
-        <appendix>
-            includes:
-            * change tabs with Shift+j/k
-            * change application with CMD+J/K
-            * change windows with ALT+J/K
-        </appendix>
-        <identifier>private.osx_vim_mode</identifier>
-        <!-- Change tabs (at least in Chrome) -->
-        <!-- <autogen> -->
-        <!--     __KeyToKey__ -->
-        <!--     KeyCode::J, ModifierFlag::SHIFT_L, -->
-
-        <!--     KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L -->
-        <!-- </autogen> -->
-        <!-- <autogen> -->
-        <!--     __KeyToKey__ -->
-        <!--     KeyCode::K, ModifierFlag::SHIFT_L, -->
-
-        <!--     KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L -->
-        <!-- </autogen> -->
-        <!-- Change Applications -->
-        <autogen>
-            __KeyToKey__
-            KeyCode::J, ModifierFlag::COMMAND_L,
-
-            KeyCode::TAB, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L
-        </autogen>
-        <autogen>
-            __KeyToKey__
-            KeyCode::K, ModifierFlag::COMMAND_L,
-
-            KeyCode::TAB, ModifierFlag::COMMAND_L
-        </autogen>
-        <!-- Change windows -->
-        <autogen>
-            __KeyToKey__
-            KeyCode::K, ModifierFlag::OPTION_L,
-
-            KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L
-        </autogen>
-        <autogen>
-            __KeyToKey__
-            KeyCode::J, ModifierFlag::OPTION_L,
-
-            KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L
-        </autogen>
-    </item>
-    <item>
-        <name>TMUX Hyperkey</name>
-        <appendix></appendix>
-        <identifier>private.tmux_tabkey</identifier>
-        <autogen>
-            __KeyToKey__
-            KeyCode::A,
-            ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-
-            KeyCode::B, ModifierFlag::CONTROL_L
-        </autogen>
-    </item>
-
-    <item>
-        <name>Osu! All on board</name>
-        <identifier>private.osu_all_board</identifier>
-        <only>XQUARTZ</only>
-        <autogen>
-            __KeyToKey__
-            KeyCode::F11,
-
-            KeyCode::Z
-        </autogen>
-    </item> 
-    <!-- <item> -->
-    <!--     <name>Swap Hyper (Caps Lock) and Left Ctrl</name> -->
-    <!--     <identifier>private.swap_hyper_left_ctrl</identifier> -->
-    <!--     <only>ITERM2</only> -->
-    <!--     <autogen> -->
-    <!--         __KeyToKey__ -->
-    <!--         KeyCode::CONTROL_L, --> 
-            
-    <!--         KeyCode::COMMAND_L, -->
-    <!--         ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, -->
-    <!--     </autogen> -->
-    <!--     <autogen> -->
-    <!--         --KeyOverlaidModifier-- -->
-    <!--         KeyCode::F19, --> 
-            
-    <!--         KeyCode::CONTROL_L, -->
-    <!--         KeyCode::ESCAPE -->
-    <!--     </autogen> -->
-    <!-- </item> -->
 </root>

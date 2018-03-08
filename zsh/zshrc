@@ -11,8 +11,9 @@ fi
 # ==== Basic ZSH
 
 fpath=(
-    $ZDOTDIR/modules
-    $ZDOTDIR/modules/custom-completions
+    $ZDOTDIR/modules/bin
+    # $ZDOTDIR/modules
+    # $ZDOTDIR/modules/custom-completions
     /usr/local/share/zsh-completions
     /usr/local/share/zsh/site-functions
     $fpath

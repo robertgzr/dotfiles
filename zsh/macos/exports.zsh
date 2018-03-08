@@ -27,6 +27,7 @@ export EAGLE_DIR=$HOME/Documents/eagle
 # GitHub token with no scope, used to get around API limits
 export HOMEBREW_GITHUB_API_TOKEN=$(cat $DOT_DIR/brew_api_token)
 export GORELEASER_GITHUB_API_TOKEN=$(cat $DOT_DIR/goreleaser_api_token)
+export VGO_GITHUB_API_TOKEN=$(cat $DOT_DIR/vgo_api_token)
 
 # Java
 # export JAVA_HOME=$(/usr/libexec/java_home)

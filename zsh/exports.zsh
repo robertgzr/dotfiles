@@ -2,9 +2,14 @@
 
 # Path
 # go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:
+if [[ -f $(which go) ]]; then
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:
+fi
+
 # rust
 export PATH=$PATH:$HOME/.cargo/bin
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+
 # the rest
 export PATH=$PATH:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE:$OPAMROOT/system/bin
 

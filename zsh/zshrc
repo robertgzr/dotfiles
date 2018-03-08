@@ -91,6 +91,10 @@ fi
 # --glob : additional conditions (here: ignorr everything in .git/)
 $(which rg &>/dev/null) && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" .'
 
+if [[ -f $(which direnv) ]]; then
+    eval "$(direnv hook zsh)"
+fi
+
 # have to source bindkeys after modules
 # otherwise new zle widgets are not available
 source $ZDOTDIR/bindkeys.zsh

@@ -8,6 +8,7 @@ autoload -Uz wego
 autoload -Uz gocd
 autoload -Uz gofat
 autoload -Uz lockmac
+autoload -Uz na
 
 # refresh ZSH configuration
 function source-zsh {

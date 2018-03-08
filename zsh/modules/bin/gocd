@@ -1,0 +1,20 @@
+# vim: ft=zsh
+# use fzf to search for a dir in gopath
+
+gocd() {
+    cd "$(fd --follow \
+        --print0 \
+        --type d \
+        --threads 4 \
+        --color never \
+        '' ${GOPATH}/src \
+        2>/dev/null \
+        | \
+        fzf \
+        --read0 \
+        --height=50% \
+        --exit-0 \
+        -1 \
+        -q "$1")"
+    # zle reset-prompt
+}

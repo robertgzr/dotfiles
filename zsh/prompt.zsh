@@ -1,26 +1,25 @@
 #!/bin/env zsh
 
 # prints the current directory (short/long format)
-function prompt_dir() {
+function prompt_pwd {
     if [[ $1 = long ]]; then
         # long path
-        prompt_pwd=" %~%<< "
+        echo " %~%<< "
     else
         # shortend path behaviour
         local pwd="${PWD/#$HOME/~}"
 
         if [[ "$pwd" == (#m)[/~] ]]; then
-            prompt_pwd="$MATCH"
+            echo "$MATCH"
             unset MATCH
         else
-            prompt_pwd="$FX[no-bold]$FX[italic]${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+            echo "$FX[no-bold]$FX[italic]${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
         fi
     fi
 }
 
 # TODO: needs attention!
-function prompt_context {
-    prompt_ctx=""
+function prompt_venv {
     # goenv
     if [ -n "$GOENV" ]; then
         prompt_ctx+=" → "
@@ -31,8 +30,7 @@ function prompt_context {
     if [[ ! -z "$(which pyenv)" ]]; then
         pyv="$(pyenv version-name)"
         if [[ $pyv != "system" ]]; then
-            prompt_ctx+=" → "
-            prompt_ctx+="$FG[003]$pyv$FX[reset]"
+            prompt_ctx+=" $FG[003]pyv($pyv)$FX[reset]"
         fi
     fi
 
@@ -40,8 +38,7 @@ function prompt_context {
     if [[ ! -z "$(which rbenv)" ]]; then
         rbv="$(rbenv version-name)"
         if [[ $rbv != "system" ]]; then
-            prompt_ctx+=" → "
-            prompt_ctx+="$FG[001]$rbv$FX[reset]"
+            prompt_ctx+=" $FG[001]rbv($rbv)$FX[reset] "
         fi
     fi
 
@@ -58,6 +55,8 @@ function prompt_context {
     #     local ctx_virtualenv="$FG[003]ː$name$FX[reset]"
     #     prompt_ctx+="$ctx_virtualenv"
     # fi
+
+    echo "$prompt_ctx"
 }
 
 # time since login to shell instance
@@ -88,16 +87,13 @@ function prompt_calc_session_duration {
 
 # executes prior to any command
 function prompt_precmd {
-    prompt_dir
-    prompt_context
-    # prompt_calc_session_duration
+    prompt_glyph="❱"
 
-    prompt_glyph="❱ "
-    PROMPT='$FG[002]$prompt_pwd$FX[reset]$prompt_ctx$FX[reset] $prompt_glyph'
+    PROMPT='$FG[002]$(prompt_pwd)$FX[reset] $prompt_glyph '
 
     # git status on the right
     if [[ -f "$(which porcelain)" ]]; then
-        RPROMPT='$(porcelain -fmt)'
+        RPROMPT='$(prompt_venv)$FX[reset] $(porcelain -fmt)'
     fi
 
     # if [ -n "$prompt_session_duration" ]; then

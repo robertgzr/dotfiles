@@ -34,6 +34,8 @@ nmap <Leader>F :Neoformat! &filetype<CR>
 
 nmap <Leader>l :Neomake<CR>
 nmap <Leader>L :Neomake!<CR>
+nmap <Leader>lt :NeomakeToggleBuffer<CR>
+nmap <Leader>ltt :NeomakeToggle<CR>
 
 " quickfix jumping
 nnoremap <Leader>cn :cnext<CR>
@@ -55,6 +57,8 @@ let g:nvimux_custom_bindings = [
 
 nmap <F1> :GitGutterToggle<CR>
 nmap <F2> :GitGutterLineHighlightsToggle<CR>
+
+nmap <Leader>ws :ToggleWorkspace<CR>
 
 " Hardmode = not using arrow keys
 let g:hardmode_error = "Don't use the arrow keys!"

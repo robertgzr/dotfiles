@@ -77,5 +77,5 @@ elseif has('g:gonvim_running')
   exe ':GuiFont Iosevka:12'
 else
   " Terminal vim options
-  " hi Normal ctermbg=NONE guibg=NONE
+  hi Normal ctermbg=NONE guibg=NONE
 endif

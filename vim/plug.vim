@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
     " snippets
     Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
-    Plug 'Shougo/echodoc.vim' " print completed documentation into command line
+    " Plug 'Shougo/echodoc.vim' " print completed documentation into command line
     " Language Server Client
     Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
     " git
@@ -64,7 +64,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'fatih/vim-go',         { 'for': 'go', 'do': ':GoInstallBinaries' }
     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
     " Plug 'timonv/vim-cargo',     { 'for': 'rust' }
-    Plug 'posva/vim-vue',        { 'for': 'vue' }
+    " Plug 'posva/vim-vue',        { 'for': 'vue' }
     " Plug 'suoto/vim-hdl',        { 'for': 'vhdl'}
     " Plug 'elzr/vim-json',        { 'for': 'json' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }

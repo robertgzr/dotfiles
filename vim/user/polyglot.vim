@@ -2,10 +2,11 @@
 
 " Language Server Protocol
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+\   'rust': ['rustup', 'run', 'nightly', 'rls'],
+\   'go': ['go-langserver'],
+\   'c': ['/usr/local/opt/llvm/bin/clangd'],
+\   'cpp': ['/usr/local/opt/llvm/bin/clangd'],
 \ }
-
-    " \ 'go': ['go-langserver'],
 
 let g:LanguageClient_autoStart = 1
 nmap <Leader>i :call LanguageClient_textDocument_hover()<CR>
@@ -31,7 +32,7 @@ augroup filetype_rust
     autocmd!
     au FileType rust call lexima#add_rule({'filetype': ['rust'], 'char': "'", 'at': '<\%# | &\%#'})
     au FileType rust nmap <Leader>d <Plug>(rust-doc)
-    au FileType rust nmap <Leader>j <Plug>(rust-def-split)
+    au FileType rust nmap <Leader>j <Plug>(rust-def)
 augroup END
 
 " Make

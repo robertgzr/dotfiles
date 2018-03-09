@@ -16,7 +16,7 @@ let g:mta_filetypes = {
     \ 'vue'   : 1
 \}
 " emmet
-let g:user_emmet_leader_key = '<C-X>' " followed by ,
+let g:user_emmet_leader_key = '<C-x>' " followed by ,
 let g:user_emmet_mode = 'a'
 
 call lexima#add_rule({'char': '<Space>', 'at': '* \[\%#]', 'insert_after': '', 'filetype': 'markdown'})
@@ -29,6 +29,7 @@ call lexima#add_rule({'char': '<Space>', 'at': '\[ \%#]', 'insert_after': '<Spac
 " let g:autoformat_remove_trailing_spaces = 0
 
 " Neoformat
+let g:neoformat_try_formatprg = 1
 let g:neoformat_only_msg_on_error = 1
 let g:neoformat_basic_format_align = 0
 let g:neoformat_basic_format_retab = 1
@@ -88,8 +89,6 @@ let g:fzf_action = {
 " fzf + ripgrep => :Rg
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 function! s:rg_find(args, bang)
-    let l:tokens = split(a:args)
-    let l:pattern = l:tokens[0]
     let l:exe = 'rg'
     \.	' --column'
     \.	' --line-number'
@@ -101,21 +100,21 @@ function! s:rg_find(args, bang)
     \.	' --follow'
     \.	' --glob "!.git/*"'
     \.	' --color "always"'
-    \.	' '.shellescape(l:pattern)
-
-    if len(l:tokens) > 1
-	let l:path = l:tokens[1]
-	let l:exe = l:exe . ' ' . l:path
-    endif
+    \.	' '.shellescape(a:args)
 
     call fzf#vim#grep(l:exe, 1,
     \ a:bang ? fzf#vim#with_preview('up:60%')
     \	      : fzf#vim#with_preview('right:50%:hidden', '?'),
     \ a:bang)
 endfunction
+function! s:day_mode()
+    colorscheme morning
+endfunction
+
 augroup CustomCommands
     autocmd!
     autocmd VimEnter * command! -nargs=* -bang Rg call s:rg_find(<q-args>, <bang>0)
+    autocmd VimEnter * command! DayMode call s:day_mode()
 augroup END
 
 " let g:tmux_navigator_save_on_switch = 1

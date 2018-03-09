@@ -2,6 +2,7 @@
 let g:polyglot_disabled = ['go']
 let g:neoformat_enabled_go = []
 
+let g:go_echo_go_info = 0
 let g:go_fmt_autosave = 1
 let g:go_metalinter_autosave = 0
 let g:go_auto_type_info = 0
@@ -53,6 +54,7 @@ augroup filetype_go
     au FileType go nmap <Leader>im <Plug>(go-implements)
     au FileType go nmap <Leader>rn <Plug>(go-rename)
     au FileType go nmap <Leader>f <Plug>(go-imports)
+
     " au FileType go nmap <Leader>l <Plug>(go-metalinter)
     au FileType go let makeprg = 'full'
 augroup END

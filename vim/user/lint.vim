@@ -1,10 +1,12 @@
 " using Neomake
-call neomake#configure#automake({
-\   'TextChanged': {},
-\   'InsertLeave': {},
-\   'BufWritePost': {'delay': 0},
-\   'BufWinEnter': {},
-\ }, 500)
+cnoreabbrev Nm Neomake
+cnoreabbrev Neomk Neomake
+" call neomake#configure#automake({
+" \   'TextChanged': {},
+" \   'InsertLeave': {},
+" \   'BufWritePost': {'delay': 0},
+" \   'BufWinEnter': {},
+" \ }, 500)
 let g:neomake_error_sign = {'text': '✘', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '‼', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
@@ -15,11 +17,10 @@ let g:neomake_highlight_lines = 1
 let g:neomake_open_list = 0
 
 function! OnNeomakeJobFinished()
-    let l:ctx = g:neomake_hook_context
-    if l:ctx.jobinfo.exit_code != 0
-        clist
-        llist
-    endif
+    " let l:ctx = g:neomake_hook_context
+    " if l:ctx.jobinfo.exit_code != 0
+    "     llist
+    " endif
 endfunction
 
 augroup neomake_hooks
@@ -32,7 +33,7 @@ augroup END
 let g:neomake_go_fast_maker = {
 \   'exe': 'gometalinter',
 \   'args': ['--vendor', '--fast'],
-\   'append_file': 1,
+\   'append_file': 0,
 \   'cwd': '%:h',
 \   'errorformat': '%f:%l:%c:%t%*[^:]: %m',
 \ }
@@ -40,6 +41,15 @@ let g:neomake_go_full_maker = g:neomake#makers#ft#go#gometalinter()
 let g:neomake_go_full_exe = 'gometalinter'
 let g:neomake_go_full_append_file = 0
 let g:neomake_go_enabled_makers = ['go', 'fast']
+
+let g:neomake_rust_rustfmt_maker = {
+\   'exe': 'rustfmt',
+\   'args': ['--write-mode=overwrite'],
+\   'append_file': 1,
+\   'cwd': '%:h',
+\ }
+" '--skip-children'],
+let g:neomake_rust_enabled_makers = ['cargo']
 
 let g:neomake_makeclean_maker = { 'exe': 'make', 'args': ['clean'] }
 

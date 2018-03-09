@@ -12,9 +12,9 @@
 function! s:c_alternate()
     let file = expand("%")
     if match(file, '\.c') > 0
-        exe ":e %<.h"
+        exe ':e %<.h'
     elseif match(file, '\.h') > 0
-        exe ":e %<.c"
+        exe ':e %<.c'
     endif
 endfunction
 
@@ -24,3 +24,8 @@ augroup ctype_toggle
     au FileType c nmap <Leader>a :CAlternate<CR>
     au FileType cpp nmap <Leader>a :CAlternate<CR>
 augroup EN
+
+augroup shada
+    autocmd!
+    autocmd BufEnter,CursorHold * rshada|wshada
+augroup END

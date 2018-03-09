@@ -25,3 +25,9 @@
 [submodule "mpv/shaders/crossbilateral"]
 	path = mpv/shaders/crossbilateral
 	url = https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637
+[submodule "mpv/scripts/mpv-webm"]
+	path = mpv/scripts/mpv-webm
+	url = git@github.com:ElegantMonkey/mpv-webm
+[submodule "mpv/scripts/mpv_slicing"]
+	path = mpv/scripts/mpv_slicing
+	url = git@github.com:Kagami/mpv_slicing

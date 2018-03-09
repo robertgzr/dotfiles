@@ -1,4 +1,8 @@
 # MPV Configuration
+
+keep-open=yes
+autoload-files=no
+
 #
 # Video
 #
@@ -30,27 +34,29 @@ af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
 # Subtitles
 #
 # slang=eng,en,ger,de
-# sub-font='Cronos Pro Bold Display'
-sub-font='Rosario Bold'
+sub-font='Cronos Pro Semibold Display'
+# sub-font='Rosario Bold'
 sub-border-size=2
 # sub-font-size=45
 sub-margin-y=50
 sub-auto=fuzzy
 sub-spacing=1
 sub-ass-force-style=Kerning=yes
+sub-auto=all
 
 #
 # OSD
 #
-# osc=no
+#osc=no
 no-border
 stop-screensaver
 cursor-autohide-fs-only
 osd-font='Iosevka'
-# osd-font-size=25
+osd-font-size=20
 # osd-scale=1
 # osd-scale-by-window=yes
 osd-fractions=yes
+# load-stats-overlay=no
 
 #
 # Misc.
@@ -79,8 +85,8 @@ vf-add=stereo3d=sbs2l:mono
 
 [insane]
 profile-desc="OpenGL-HQ (scale-antiring/fbo:rgba16) + VS [insane] interpolation"
-vo=opengl-hq
+profile=opengl-hq
 scale-antiring=0.7
 scale=ewa_lanczos
 icc-profile-auto
-vf-add=vapoursynth=~/.config/mpv/vapoursynth/interpolation_insane.py
+# vf-add=vapoursynth=~/.config/mpv/vapoursynth/interpolation_insane.py

@@ -3,7 +3,8 @@
 set -e
 
 for d in ./*; do
-    if [[ -d ${d} ]]; then
+    if [ -d ${d} ]; then
+	[ "${d}" = "./_disabled" ] && continue
         echo ${d}
 	cd ${d}
 	git fetch

@@ -3,9 +3,17 @@ config/nvim
 
 brew_api_token
 goreleaser_api_token
+vgo_api_token
+
+bitbar/_disabled
 
 mpv/watch_later/
 mpv/icc-cache/
+mpv/scripts/_disabled
+
+tmux/resurrect
+tmux/plugins/*
+!tmux/plugins/tpm
 
 vim/ginit.vim
 vim/.netrwhist
@@ -21,5 +29,4 @@ vim/autoload/
 
 zsh/.*
 zsh/tmp/
-zsh/modules/info-functions/bin/
 zsh/modules/custom-completions

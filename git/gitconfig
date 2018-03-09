@@ -1,6 +1,6 @@
 [user]
     name = Robert Günzler
-    email = robertguenzler@gmail.com
+    email = r@gnzler.io
 
 ; [github]
 ;     user = robertgzr
@@ -35,6 +35,7 @@
     ci = commit
     br = branch
     co = checkout
+    cp = cherry-pick
     cr = clone --recursive
     df = diff --word-diff
     unstage = reset --hard HEAD
@@ -140,11 +141,6 @@
 
 [url "git://github.com/"]
     insteadOf = "github:"
-
-[url "gogs@rbg.re:robertgzr"]
-    insteadOf = "rbg.re:"
-    insteadOf = "https://rbg.re/robertgzr"
-    insteadOf = "https://git.rbg.re/robertgzr"
 
 [url "git@gist.github.com:"]
     insteadOf = "gst:"

@@ -31,3 +31,6 @@
 [submodule "mpv/scripts/mpv_slicing"]
 	path = mpv/scripts/mpv_slicing
 	url = git@github.com:Kagami/mpv_slicing
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm

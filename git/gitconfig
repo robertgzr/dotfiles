@@ -143,6 +143,12 @@
     pushInsteadOf = "bitbucket:"
     pushInsteadOf = "git://bitbucket.org/"
 
+[url "git@gitlab.com:"]
+    insteadOf = "gl:"
+    insteadOf = "https://gitlab.com/"
+    pushInsteadOf = "gitlab:"
+    pushInsteadOf = "git://gitlab.com/"
+
 [url "git://github.com/"]
     insteadOf = "github:"
 

@@ -47,7 +47,11 @@
     amend = commit --amend --reuse-message=HEAD
     contrib = shortlog --summary --numbered
     show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+    # usage: ld <n>
+    # prints out the `git log` for the n last days
     ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+    # usage: pr <num> [<remote>]
+    # creates local branch pr/<num> from origin or <remote> and checks it out
     pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
     total-lines = "! git ls-tree -r master --name-only | xargs -I {} git blame --line-porcelain {} | sed -n 's/^author //p' | sort | uniq -c | sort -rn"
     fixup = "!f() { git commit --fixup=${1}; }; f"

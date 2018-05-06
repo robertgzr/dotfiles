@@ -14,10 +14,11 @@ map q: :q
 " unmap <C-<CR>>
 
 " Buffer commands
-command! Wb write|bdelete
-command! Qb bdelete
 nmap gb :bnext<CR>
+nmap = gb
+"
 nmap gB :bprevious<CR>
+nmap + gB
 
 " FZF
 nmap <Leader>ff :Files<CR>
@@ -48,6 +49,7 @@ nnoremap <Leader>ll :llist<CR>
 
 " escape terminal mode with <esc>
 tnoremap <Esc> <C-\><C-n>
+tnoremap <Leader>qq <C-\><C-n>:bdelete!<CR>
 " nvimux
 let g:nvimux_prefix='<C-a>'
 let g:nvimux_custom_bindings = [
@@ -57,6 +59,8 @@ let g:nvimux_custom_bindings = [
 
 nmap <F1> :GitGutterToggle<CR>
 nmap <F2> :GitGutterLineHighlightsToggle<CR>
+nmap <Leader>ph :GitGutterPrevHunk<CR>
+nmap <Leader>nh :GitGutterNextHunk<CR>
 
 nmap <Leader>ws :ToggleWorkspace<CR>
 

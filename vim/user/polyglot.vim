@@ -1,12 +1,29 @@
-"" Language options
+" Disable ctags generation by default
+let g:gutentags_enabled = 0
+let g:gutentags_dont_load = 1
+
+" let g:polyglot_disabled = ['go']
 
 " Language Server Protocol
 let g:LanguageClient_serverCommands = {
 \   'rust': ['rustup', 'run', 'nightly', 'rls'],
 \   'go': ['go-langserver'],
-\   'c': ['/usr/local/opt/llvm/bin/clangd'],
-\   'cpp': ['/usr/local/opt/llvm/bin/clangd'],
 \ }
+
+" \   'c': ['/usr/local/opt/llvm/bin/clangd'],
+" \   'cpp': ['/usr/local/opt/llvm/bin/clangd'],
+
+let g:LanguageClient_diagnosticsDisplay = {
+    \1: { 'name': 'Error','texthl': 'ALEError','signText': '✘','signTexthl': 'ALEErrorSign' },
+    \2: { 'name': 'Warning','texthl': 'ALEWarning','signText': '‼','signTexthl': 'ALEWarningSign' },
+    \3: { 'name': 'Information','texthl': 'ALEInfo','signText': 'i','signTexthl': 'ALEInfoSign' },
+    \4: { 'name': 'Hint','texthl': 'ALEInfo','signText': '☛','signTexthl': 'ALEInfoSign' },
+    \}
+
+let g:neomake_error_sign = {'text': '✘', 'texthl': 'ALEErrorSign'}
+let g:neomake_warning_sign = {'text': '‼', 'texthl': 'ALEWarningSign'}
+let g:neomake_message_sign = {'text': '☛', 'texthl': 'ALEInfoSign'}
+let g:neomake_info_sign = {'text': 'i', 'texthl': 'ALEInfoSign'}
 
 let g:LanguageClient_autoStart = 1
 nmap <Leader>i :call LanguageClient_textDocument_hover()<CR>
@@ -21,23 +38,3 @@ nmap <Leader>r :call LanguageClient_textDocument_rename()<CR>
 
 " JSON
 let g:vim_json_syntax_conceal = 1
-
-" Markdown
-let g:markdown_syntax_conceal = 1
-
-" Rust
-let g:racer_cmd = $HOME.'/.cargo/bin/racer'
-
-augroup filetype_rust
-    autocmd!
-    au FileType rust call lexima#add_rule({'filetype': ['rust'], 'char': "'", 'at': '<\%# | &\%#'})
-    au FileType rust nmap <Leader>d <Plug>(rust-doc)
-    au FileType rust nmap <Leader>j <Plug>(rust-def)
-augroup END
-
-" Make
-augroup filetype_make
-    autocmd!
-    " Disable tabs->spaces for Makefiles
-    au FileType make setlocal noexpandtab
-augroup END

@@ -9,14 +9,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround' " edit surroundings in pairs
     Plug 'itchyny/lightline.vim' " lightweight status bar
     Plug 'neomake/neomake'
-    Plug 'sbdchd/neoformat' " async code formatter
-    " Plug 'w0rp/ale' " linter framework
+    Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " async code formatter
     Plug 'tpope/vim-obsession'
+
     " completion
-    Plug 'roxma/nvim-completion-manager'
-        Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
-        Plug 'Shougo/neco-vim', {'for': 'vim'}
-        Plug 'roxma/ncm-rct-complete', {'for': 'ruby'}
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Plug 'roxma/nvim-completion-manager'
+    "     Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
+    "     Plug 'Shougo/neco-vim', {'for': 'vim'}
+    "     Plug 'roxma/ncm-rct-complete', {'for': 'ruby'}
+    "     Plug 'roxma/ncm-flow', {'for': ['javascript', 'html', 'vue']}
+
     " snippets
     Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
@@ -33,20 +36,21 @@ call plug#begin('~/.vim/plugged')
     Plug 'ap/vim-buftabline' " replace tabline with buffers
 
 " Misc
-    Plug 'junegunn/vim-easy-align' " auto-align code
+    Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' } " auto-align code
     Plug 'tpope/vim-sleuth' " auto-set shiftwidth and expandtab options
     Plug 'nathanaelkane/vim-indent-guides' " show indentation levels
     " Plug 'yggdroot/indentLine' " show indentation levels
     " visually match HTML tags enclosing cursor location
     Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] }
     Plug 'tpope/vim-repeat' " extend '.' to plugins
-    " Plug 'ludovicchabant/vim-gutentags' " manage tags files
-    Plug 'majutsushi/tagbar' " code minimap via ctags
+    Plug 'ludovicchabant/vim-gutentags' " manage tags files
+    Plug 'majutsushi/tagbar', { 'on': 'Tagbar' } " code minimap via ctags
     " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
     Plug 'mattn/emmet-vim', { 'for': ['html', 'markdown'] } " super-fast HTML editing
     " Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml', 'markdown'] } " auto-close HTML/XML tags
     Plug 'editorconfig/editorconfig-vim'
+    " Plug 'tweekmonster/nvimdev.nvim'
 
 " WhoaDude
     Plug 'lilydjwg/colorizer' " set background of colour to that colour
@@ -54,17 +58,23 @@ call plug#begin('~/.vim/plugged')
     " Plug 'hkupty/nvimux', { 'branch': 'lua' }
     " Plug 'christoomey/vim-tmux-navigator'
     " Plug 'edkolev/tmuxline.vim'
-    Plug 'jceb/vim-orgmode'
+    Plug 'jceb/vim-orgmode', { 'for': 'org' }
         Plug 'tpope/vim-speeddating'
         Plug 'vim-scripts/utl.vim'
 
 " Languages
     " multi-language support with lazy loading
     Plug 'sheerun/vim-polyglot'
+
     Plug 'fatih/vim-go',         { 'for': 'go', 'do': ':GoInstallBinaries' }
+    Plug 'zchee/deoplete-go',    { 'for': 'go', 'do': 'make' }
+
     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
     " Plug 'timonv/vim-cargo',     { 'for': 'rust' }
-    " Plug 'posva/vim-vue',        { 'for': 'vue' }
+    Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
+
+    Plug 'tweekmonster/deoplete-clang2', { 'for': ['c', 'cpp'] }
+    Plug 'posva/vim-vue',        { 'for': 'vue' }
     " Plug 'suoto/vim-hdl',        { 'for': 'vhdl'}
     " Plug 'elzr/vim-json',        { 'for': 'json' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
@@ -72,6 +82,8 @@ call plug#begin('~/.vim/plugged')
 " Minimal UX
     Plug 'junegunn/goyo.vim',         { 'on': 'Goyo' }
     Plug 'junegunn/limelight.vim',    { 'on': 'Limelight' }
+
+    Plug 'equalsraf/neovim-gui-shim'
 
 " Colorschemes
     " Plug 'sonph/onehalf', { 'rtp': 'vim/' }
@@ -85,7 +97,6 @@ call plug#begin('~/.vim/plugged')
     " Plug 'arcticicestudio/nord-vim'
 
 " Local
-    Plug '~/.vim/dev/nihon.vim'
+    Plug '~/devel/projects/nihon-theme/vim'
 
-    Plug 'equalsraf/neovim-gui-shim'
 call plug#end()

@@ -1,11 +1,17 @@
-let g:cm_sources_override = {
-    \ 'cm-gocode': {'enable':1}
-\ } 
-
 " popup behavior
 set completeopt=longest,menuone
 set shortmess+=c
 " set showmatch
+
+let g:neosnippet#enable_completed_snippet = 1
+" let g:cm_sources_override = {
+"     \ 'cm-gocode': {'enable':1}
+" \ } 
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#omni#input_patterns = {}
 
 " change the behavior of the <Tab> key in relation to the completion menu and
 " neosnippet objects. When popup is open & it is a neosnippet object we

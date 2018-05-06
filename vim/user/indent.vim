@@ -2,6 +2,12 @@
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+function! Tabthis()
+    setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+    retab!
+endfunction
+nmap <Leader>tt :call Tabthis()<CR>
+
 " set autoindent
 filetype plugin indent on
 

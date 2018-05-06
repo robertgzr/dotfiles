@@ -19,9 +19,6 @@ let g:mta_filetypes = {
 let g:user_emmet_leader_key = '<C-x>' " followed by ,
 let g:user_emmet_mode = 'a'
 
-call lexima#add_rule({'char': '<Space>', 'at': '* \[\%#]', 'insert_after': '', 'filetype': 'markdown'})
-call lexima#add_rule({'char': '<Space>', 'at': '\[ \%#]', 'insert_after': '<Space>', 'filetype': 'markdown'})
-
 " Autoformat
 " let g:formatterpath = [ '/usr/bin', '/usr/local/bin' ]
 " let g:autoformat_autoindent = 0
@@ -46,35 +43,6 @@ let g:gitgutter_sign_modified = '▎'
 let g:gitgutter_sign_removed = '▎'
 let g:gitgutter_sign_removed_first_line = '▀'
 let g:gitgutter_sign_modified_removed = '▎'
-
-" tagbar - gotags
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-        \ }
 
 " FZF
 " let g:fzf_command_prefix = 'Fzf'

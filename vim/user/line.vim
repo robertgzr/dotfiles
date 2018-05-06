@@ -9,7 +9,7 @@ let g:lightline = {
     \       ['filename', 'ale', 'neomake', 'gutentags', 'obsession'],
     \   ],
     \   'right': [
-    \       ['lineinfo', 'percent'], 
+    \       ['lineinfo', 'percent'],
     \       ['in_progress', 'tabstatus'],
     \       ['fileformat', 'fileencoding', 'filetype'],
     \   ]
@@ -26,7 +26,7 @@ let g:lightline = {
     \   'filetype': 'LightLineFiletype',
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
-    \   'gutentags': 'gutentags#statusline',
+    \   'gutentags': 'LightLineGutentags',
     \   'neomake': 'LightLineNeomake',
     \   'obsession': 'LightLineSession',
     \ },
@@ -69,6 +69,9 @@ function! LightLineFilename()
         \ ('' !=? LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 function! LightLineFugitive()
+if !exists('g:loaded_fugitive')
+    return ''
+endif
   if &filetype !~? 'vimfiler\|gundo' && exists('*fugitive#head')
     let l:_ = fugitive#head()
     return strlen(l:_) ? ' '.l:_ : ''
@@ -102,12 +105,35 @@ function! LightLineSession()
   return ObsessionStatus('active', 'paused')
 endfunction
 function! LightLineNeomake()
-  let l:_ = neomake#statusline#get(bufnr('%'), {
-          \ 'format_running': '… ({{running_job_names}})',
-          \ 'format_ok': '✓',
-          \ 'format_quickfix_ok': '',
-          \ 'format_quickfix_issues': '%s',
-          \ 'format_status': '%s',
-          \ })
-  return substitute(l:_, '%#\(.*\)# ', '', 'g')
+  if !exists('g:loaded_neomake')
+    return ''
+  endif
+  let l:msg = ''
+  let l:msg .= neomake#statusline#get(bufnr('%'), {
+    \ 'format_running': '… ({{running_job_names}})',
+    \ 'format_loclist_issues': '%s',
+    \ 'format_loclist_type_E': '✘ {{count}}',
+    \ 'format_loclist_type_W': '‼ {{count}}',
+    \ 'format_loclist_type_I': 'i {{count}}',
+    \ 'format_status_enabled': 'neomake: %s'
+  \ })
+  " return substitute(l:_, '%#\(.*\)# ', '', 'g')
+  return l:msg
+endfunction
+
+function! s:get_gutentags_status(mods) abort
+  let l:msg = ''
+  if index(a:mods, 'ctags') > 0
+     let l:msg .= '♨'
+   endif
+   if index(a:mods, 'cscope') > 0
+     let l:msg .= '♺'
+   endif
+   return l:msg
+endfunction
+function! LightLineGutentags()
+  if !exists('g:loaded_gutentags')
+    return ''
+  endif
+  return gutentags#statusline_cb(function('<SID>get_gutentags_status'))
 endfunction

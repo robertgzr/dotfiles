@@ -9,6 +9,8 @@ fi
 # rust
 export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+# python
+export PATH=$PATH:$HOME/.local/bin
 
 # the rest
 export PATH=$PATH:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE:$OPAMROOT/system/bin

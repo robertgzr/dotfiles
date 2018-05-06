@@ -96,8 +96,8 @@ function findershowall() {
 }
 
 function encfs-mount() {
-    echo "$(abspath $1)" $2
-    encfs "$(abspath $1)" $2
+    echo "$(abspath $1)" "->" $2
+    encfs --idle=30 "$(abspath $1)" $2 && echo "** success! **"
 }
 
 # locate & open
@@ -118,5 +118,5 @@ function b64() {
 
 # return the number of files in a directory
 function tree-count() {
-    tree -C $1 | grep -e files$ | awk '{print $3}';
+    fd --type file --hidden --no-ignore | wc -l | awk '{print $1}'
 }

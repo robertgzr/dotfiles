@@ -4,7 +4,7 @@ export XDG_DATA_HOME="$HOME/Library"
 
 # === Paths ===
 export X11PATH=/opt/X11
-export PHPPATH=$(brew --prefix homebrew/php/php54)
+# export PHPPATH=$(brew --prefix homebrew/php/php@5.4)
 export TEXPATH=/usr/local/texlive/2016basic
 # Go
 export GOROOT=/usr/local/opt/go/libexec

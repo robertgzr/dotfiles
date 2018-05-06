@@ -2,19 +2,25 @@
 
 # prints the current directory (short/long format)
 function prompt_pwd {
-    if [[ $1 = long ]]; then
-        # long path
-        echo " %~%<< "
-    else
-        # shortend path behaviour
-        local pwd="${PWD/#$HOME/~}"
+    # local p="%~%<<"
+    local p="${PWD/#$HOME/~}"
+    # if [[ $1 = long ]]; then
+    #     # long path
+    #     p=" %~%<< "
+    # else
+    #     # shortend path behaviour
+    #     local pwd="${PWD/#$HOME/~}"
 
-        if [[ "$pwd" == (#m)[/~] ]]; then
-            echo "$MATCH"
-            unset MATCH
-        else
-            echo "$FX[no-bold]$FX[italic]${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
-        fi
+    #     if [[ "$pwd" == (#m)[/~] ]]; then
+    #         p=$MATCH
+    #         unset MATCH
+    #     else
+    #         p="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}$"
+    #     fi
+    # fi
+    echo "$FX[no-bold]${p}$FX[reset]" # $FX[italic]
+    if (( ${#p} > 20 )); then
+        echo "\0"
     fi
 }
 
@@ -29,8 +35,8 @@ function prompt_venv {
     # pyenv
     if [[ ! -z "$(which pyenv)" ]]; then
         pyv="$(pyenv version-name)"
-        if [[ $pyv != "system" ]]; then
-            prompt_ctx+=" $FG[003]pyv($pyv)$FX[reset]"
+        if [[ $pyv != "system" && $pyv != "2.7.14:3.6.5" ]]; then
+            prompt_ctx+=" $FG[003]py($pyv)$FX[reset]"
         fi
     fi
 
@@ -38,7 +44,7 @@ function prompt_venv {
     if [[ ! -z "$(which rbenv)" ]]; then
         rbv="$(rbenv version-name)"
         if [[ $rbv != "system" ]]; then
-            prompt_ctx+=" $FG[001]rbv($rbv)$FX[reset] "
+            prompt_ctx+=" $FG[001]rb($rbv)$FX[reset]"
         fi
     fi
 
@@ -89,12 +95,13 @@ function prompt_calc_session_duration {
 function prompt_precmd {
     prompt_glyph="❱"
 
-    PROMPT='$FG[002]$(prompt_pwd)$FX[reset] $prompt_glyph '
+    PROMPT='$FG[002]$(prompt_pwd)$(prompt_venv) $prompt_glyph '
+    RPROMPT=''
 
     # git status on the right
-    if [[ -f "$(which porcelain)" ]]; then
-        RPROMPT='$(prompt_venv)$FX[reset] $(porcelain -fmt)'
-    fi
+    # if [[ -f "$(which porcelain)" ]]; then
+    #     RPROMPT='$(porcelain -fmt -zsh)'
+    # fi
 
     # if [ -n "$prompt_session_duration" ]; then
     #     print -P "$prompt_session_duration"

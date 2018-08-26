@@ -91,8 +91,8 @@ end
 
 InitModule.new('tmux') do |tmux|
   tmux.links = [
+    InitLink.new(init, 'tmux', Dir.home + '/.tmux'),
     InitLink.new(init, 'tmux/tmux.conf', Dir.home + '/.tmux.conf'),
-    InitLink.new(init, 'tmux/colors.conf', Dir.home + '/.tmux.colors.conf')
   ]
 
   init.register(tmux)

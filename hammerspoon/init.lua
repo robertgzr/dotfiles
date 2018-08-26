@@ -7,7 +7,12 @@ conf = {
     windowAnimationDuration = 0.01,
 }
 
+scr = hs.screen.primaryScreen()
+hs.grid.setGrid('2x2', scr, scr:fullFrame()).setMargins(hs.geometry(nil,nil,0,0))
+hs.grid.ui.fontName = 'Iosevka Term-Lig'
+
 hs.window.animationDuration = conf.windowAnimationDuration
+-- hs.window.setFrameCorrectness = true
 hs.hotkey.alertDuration = conf.hotkeyAlterDuration
 local hyper = conf.hyper
 
@@ -27,58 +32,6 @@ hs.hotkey.bind(hyper, "Return", function()
     hs.application.launchOrFocusByBundleID("io.alacritty")
 end)
 
-function resizeLeftHalf ()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
-
-    f.x = max.x
-    f.y = max.y
-    f.w = max.w /2
-    f.h = max.h
-    win:setFrameInScreenBounds(f)
-end
-function resizeRightHalf ()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
-
-    f.x = max.x + (max.w /2)
-    f.y = max.y
-    f.w = max.w /2
-    f.h = max.h
-    win:setFrameInScreenBounds(f)
-end
-function resizeTopHalf ()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
-
-    f.x = max.x
-    f.y = max.y
-    f.w = max.w
-    f.h = max.h /2
-    win:setFrameInScreenBounds(f)
-end
-function resizeBottomHalf ()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
-
-    f.x = max.x
-    f.y = max.y + (max.h /2)
-    f.w = max.w
-    f.h = max.h /2
-    win:setFrameInScreenBounds(f)
-end
-function resizeFullscreen ()
-    local win = hs.window.focusedWindow()
-    win:maximize()
-end
 function resizeCenter ()
     local win = hs.window.focusedWindow()
     local f = win:frame()
@@ -120,28 +73,36 @@ end
 local hot_win = hs.hotkey.modal.new(hyper, "Q", "Window Mode")
 -- function hot_win:entered() hs.alert.show("Window Mode") end
 -- function hot_win:exited() hs.alert.show("Normal Mode") end
+hot_win:bind('', 'Q', function()
+    hs.grid.show()
+    hot_win:exit() 
+end)
 hot_win:bind('', 'escape', function()
     hot_win:exit() 
     hs.alert.show("Normal Mode")
 end)
 hot_win:bind('', 'H', function()
-    resizeLeftHalf()
+    hs.grid.pushWindowLeft()
     hot_win:exit()
 end)
 hot_win:bind('', 'K', function()
-    resizeTopHalf()
+    hs.grid.pushWindowUp()
     hot_win:exit()
 end)
 hot_win:bind('', 'J', function()
-    resizeBottomHalf()
+    hs.grid.pushWindowDown()
     hot_win:exit()
 end)
 hot_win:bind('', 'L', function()
-    resizeRightHalf()
+    hs.grid.pushWindowRight()
     hot_win:exit()
 end)
 hot_win:bind('', 'F', function()
-    resizeFullscreen()
+    local win = hs.window.focusedWindow()
+    hs.grid.maximizeWindow(win)
+    r = win:size()
+    r.w = r.w+4
+    win:setSize(r)
     hot_win:exit()
 end)
 hot_win:bind('', 'C', function()
@@ -156,19 +117,19 @@ end)
 
 -- move windows between screens
 hot_win:bind('shift', 'H', function()
-    hs.window.focusedWindow():moveOneScreenWest(true, true)
+    hs.grid.resizeWindowThinner()
     hot_win:exit()
 end)
 
 hot_win:bind('shift', 'J', function()
-    hs.window.focusedWindow():moveOneScreenSouth(true, true)
+    hs.grid.resizeWindowShorter()
     hot_win:exit()
 end)
 hot_win:bind('shift', 'K', function()
-    hs.window.focusedWindow():moveOneScreenNorth(true, true)
+    hs.grid.resizeWindowTaller()
     hot_win:exit()
 end)
 hot_win:bind('shift', 'L', function()
-    hs.window.focusedWindow():moveOneScreenEast(true, true)
+    hs.grid.resizeWindowWider()
     hot_win:exit()
 end)

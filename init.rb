@@ -1,5 +1,7 @@
 #!/bin/env ruby
 
+require 'os'
+
 unless File.exist?('./occupy.rb')
   puts 'need the occupy.rb library'
   exit(1)
@@ -27,6 +29,11 @@ InitModule.new('dotfiles') do |dot|
 end
 
 InitModule.new('homebrew') do |brew|
+  unless OS.mac?
+    kara.report_warning "Not a mac! Skipping..."
+    return
+  end
+
   brew.shell("eval #{init.dotdir}/install/brew/install")
   brew.shell('brew update')
   brew.shell('brew upgrade')
@@ -103,6 +110,11 @@ InitModule.new('config') do |config|
 end
 
 InitModule.new('osx') do |osx|
+  unless OS.mac?
+    kara.report_warning "Not a mac! Skipping..."
+    return
+  end
+
   osx.shell("eval #{init.dotdir}/osx/defaults.sh")
   osx.shell("eval #{init.dotdir}/osx/dock.sh")
 
@@ -118,15 +130,25 @@ InitModule.new('hammerspoon') do |hs|
 end
 
 InitModule.new('porcelain') do |porc|
-  porc.shell('curl -L https://github.com/robertgzr/porcelain/releases/download/v0.1.1/porcelain_linux_amd64.tar.gz | tar xz && mv -fv ./porcelain /usr/local/bin/porcelain')
+  ver = "0.3.1"
+  platform = "linux_amd64"
+  if OS.mac?
+    platform = "darwin_amd64"
+  end
+  porc.shell("curl -L https://github.com/robertgzr/porcelain/releases/download/v#{ver}/porcelain_#{platform}.tar.gz | tar xz && mv -fv ./porcelain /usr/local/bin/porcelain")
   unless porc.shell('which porcelain')
-    porc.report_warning "Couldn't find 'porcelain'!\nIs GOPATH/bin in your PATH?"
+    porc.report_warning "Couldn't find 'porcelain'!\nInstall went wrong..."
   end
 
   init.register(porc)
 end
 
 InitModule.new('karabiner') do |kara|
+  unless OS.mac?
+    kara.report_warning "Not a mac! Skipping..."
+    return
+  end
+
   karadir = Dir.home + '/Library/Application Support/Karabiner'
   if Dir.exist?(karadir)
     if File.exist?(karadir + 'private.xml')
@@ -139,13 +161,6 @@ InitModule.new('karabiner') do |kara|
   end
 
   init.register(kara)
-end
-
-InitModule.new('sublimetext') do |subl|
-  subl.shell("for v in #{Dir.home}/sublimetext/User/Projects/*; do b64 \"$v\" -D; done")
-  subl.shell("cp \"#{init.dotdir}/sublimetext/User\" \"#{Dir.home}/Library/Application Support/Sublime Text 3/Packages/User\"")
-
-  init.register(subl)
 end
 
 # END of COMPONENTS

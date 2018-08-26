@@ -5,6 +5,7 @@ let g:session_autosave_periodic = 5
 let g:session_command_aliases = 1
 
 let g:echodoc_enable_at_startup = 1
+" let g:tagbar_autoclose = 1
 
 " matchtagalways
 let g:mta_use_matchparen_group = 1
@@ -26,11 +27,11 @@ let g:user_emmet_mode = 'a'
 " let g:autoformat_remove_trailing_spaces = 0
 
 " Neoformat
-let g:neoformat_try_formatprg = 1
-let g:neoformat_only_msg_on_error = 1
-let g:neoformat_basic_format_align = 0
-let g:neoformat_basic_format_retab = 1
-let g:neoformat_basic_format_trim = 1
+" let g:neoformat_try_formatprg = 1
+" let g:neoformat_only_msg_on_error = 1
+" let g:neoformat_basic_format_align = 0
+" let g:neoformat_basic_format_retab = 1
+" let g:neoformat_basic_format_trim = 1
 
 " gitgutter
 let g:gitgutter_enabled = 1
@@ -58,31 +59,35 @@ let g:fzf_action = {
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 function! s:rg_find(args, bang)
     let l:exe = 'rg'
-    \.	' --column'
-    \.	' --line-number'
-    \.	' --no-heading'
-    \.	' --fixed-strings'
-    \.	' --ignore-case'
-    \.	' --no-ignore'
-    \.	' --hidden'
-    \.	' --follow'
-    \.	' --glob "!.git/*"'
-    \.	' --color "always"'
-    \.	' '.shellescape(a:args)
+    \.  ' --column'
+    \.  ' --line-number'
+    \.  ' --no-heading'
+    \.  ' --fixed-strings'
+    \.  ' --ignore-case'
+    \.  ' --no-ignore'
+    \.  ' --hidden'
+    \.  ' --follow'
+    \.  ' --glob "!.git/*"'
+    \.  ' --color "always"'
+    \.  ' '.shellescape(a:args)
 
     call fzf#vim#grep(l:exe, 1,
     \ a:bang ? fzf#vim#with_preview('up:60%')
-    \	      : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \         : fzf#vim#with_preview('right:50%:hidden', '?'),
     \ a:bang)
 endfunction
-function! s:day_mode()
-    colorscheme morning
+function! s:day_mode(bang)
+    if a:bang
+        colorscheme nihon
+    else
+        colorscheme morning
+    endif
 endfunction
 
 augroup CustomCommands
     autocmd!
     autocmd VimEnter * command! -nargs=* -bang Rg call s:rg_find(<q-args>, <bang>0)
-    autocmd VimEnter * command! DayMode call s:day_mode()
+    autocmd VimEnter * command! -bang DayMode call s:day_mode(<bang>0)
 augroup END
 
 " let g:tmux_navigator_save_on_switch = 1

@@ -1,12 +1,12 @@
 " using Neomake
 cnoreabbrev Nm Neomake
 cnoreabbrev Neomk Neomake
-" call neomake#configure#automake({
-" \   'TextChanged': {},
-" \   'InsertLeave': {},
-" \   'BufWritePost': {'delay': 0},
-" \   'BufWinEnter': {},
-" \ }, 500)
+call neomake#configure#automake({
+\ 'TextChanged': {},
+\ 'InsertLeave': {},
+\ 'BufWinEnter': {},
+\ }, 500)
+" \ 'BufWritePost': {'delay': 0},
 let g:neomake_error_sign = {'text': '✘', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '‼', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
@@ -29,8 +29,8 @@ augroup neomake_hooks
 augroup END
 
 " (Neo)makers
-
-let g:neomake_makeclean_maker = { 'exe': 'make', 'args': ['clean'] }
+let g:neomake_makeclean_maker = { 'exe': 'make', 'args': ['clean'], 'errorformat': '%f:%l:%c: %m' }
+let g:neomake_make_maker = { 'exe': 'make', 'errorformat': '%f:%l:%c: %m' }
 
 let g:neomake_proto_lint_maker = {
     \ 'exe': 'protoc',

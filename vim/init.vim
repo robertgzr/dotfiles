@@ -8,8 +8,11 @@ source ~/.vim/plug.vim
 " endfor
 " unrolled user config for debugging
 source ~/.vim/user/lint.vim
-source ~/.vim/user/completion.vim
-source ~/.vim/user/keys.vim
+" source ~/.vim/user/completion.vim
+source ~/.vim/user/deoplete.vim
+source ~/.vim/user/lc.vim
+
+source ~/.vim/user/binds.vim
 source ~/.vim/user/indent.vim
 source ~/.vim/user/polyglot.vim
 source ~/.vim/user/line.vim
@@ -27,7 +30,7 @@ set cursorline
 " set cursorcolumn
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>cl :set cursorline!<CR>
+" nnoremap <Leader>cl :set cursorline!<CR>
 " nnoremap <Leader>cc :set cursorcolumn!<CR>
 
 " For conceal markers.

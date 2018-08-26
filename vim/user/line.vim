@@ -1,44 +1,44 @@
 " lightline
 let g:lightline = {
-    \ 'enable': {'statusline': 1, 'tabline': 0},
-    \ 'mode_map': { 'c': 'CMD' },
-    \ 'active': {
-    \   'left': [
-    \       ['mode', 'paste'],
-    \       ['fugitive'],
-    \       ['filename', 'ale', 'neomake', 'gutentags', 'obsession'],
-    \   ],
-    \   'right': [
-    \       ['lineinfo', 'percent'],
-    \       ['in_progress', 'tabstatus'],
-    \       ['fileformat', 'fileencoding', 'filetype'],
-    \   ]
-    \ },
-    \ 'component': {
-    \   'lineinfo': ''.'%3l:%-2v',
-    \ },
-    \ 'component_function': {
-    \   'modified': 'LightLineModified',
-    \   'readonly': 'LightLineReadonly',
-    \   'fugitive': 'LightLineFugitive',
-    \   'filename': 'LightLineFilename',
-    \   'fileformat': 'LightLineFileformat',
-    \   'filetype': 'LightLineFiletype',
-    \   'fileencoding': 'LightLineFileencoding',
-    \   'mode': 'LightLineMode',
-    \   'gutentags': 'LightLineGutentags',
-    \   'neomake': 'LightLineNeomake',
-    \   'obsession': 'LightLineSession',
-    \ },
-    \ 'component_expand': {
-    \   'tabstatus': 'LightLineTabStatus',
-    \   'ale': 'ALEGetStatusLine',
-    \ },
-    \ 'component_type': {
-    \   'ale': 'error',
-    \ },
-    \ 'subseparator': { 'left': '', 'right': '' },
-    \ 'separator': { 'left': '', 'right': '' },
+\ 'enable': {'statusline': 1, 'tabline': 1},
+\ 'mode_map': { 'c': 'CMD' },
+\ 'active': {
+\   'left': [
+\       ['mode', 'paste'],
+\       ['fugitive'],
+\       ['filename', 'ale', 'neomake', 'gutentags', 'obsession'],
+\   ],
+\   'right': [
+\       ['lineinfo', 'percent'],
+\       ['in_progress', 'tabstatus'],
+\       ['fileformat', 'fileencoding', 'filetype'],
+\   ]
+\ },
+\ 'component': {
+\   'lineinfo': ' '.'%l:%v',
+\ },
+\ 'component_function': {
+\   'modified': 'LightLineModified',
+\   'readonly': 'LightLineReadonly',
+\   'fugitive': 'LightLineFugitive',
+\   'filename': 'LightLineFilename',
+\   'fileformat': 'LightLineFileformat',
+\   'filetype': 'LightLineFiletype',
+\   'fileencoding': 'LightLineFileencoding',
+\   'mode': 'LightLineMode',
+\   'gutentags': 'LightLineGutentags',
+\   'neomake': 'LightLineNeomake',
+\   'obsession': 'LightLineSession',
+\ },
+\ 'component_expand': {
+\   'tabstatus': 'LightLineTabStatus',
+\   'ale': 'ALEGetStatusLine',
+\ },
+\ 'component_type': {
+\   'ale': 'error',
+\ },
+\ 'subseparator': { 'left': '', 'right': '' },
+\ 'separator': { 'left': '', 'right': '' },
 \ }
 
 " ========================================== "
@@ -97,12 +97,13 @@ function! LightLineMode()
           \ : ''
 endfunction
 function! LightLineTabStatus()
-  return '%*' . &tabstop
+  return &tabstop
     \   . (&expandtab == 1 ? '->' : '<>')
     \   . &shiftwidth
 endfunction
 function! LightLineSession()
-  return ObsessionStatus('active', 'paused')
+  let l:indicator = ObsessionStatus('active', 'paused')
+  return l:indicator ? '[obsession:'.l:indicator.']' : ''
 endfunction
 function! LightLineNeomake()
   if !exists('g:loaded_neomake')
@@ -110,14 +111,16 @@ function! LightLineNeomake()
   endif
   let l:msg = ''
   let l:msg .= neomake#statusline#get(bufnr('%'), {
+    \ 'format_status_enabled': '[neomake:%s]',
     \ 'format_running': '… ({{running_job_names}})',
+    \ 'format_loclist_ok': '✔',
     \ 'format_loclist_issues': '%s',
     \ 'format_loclist_type_E': '✘ {{count}}',
     \ 'format_loclist_type_W': '‼ {{count}}',
     \ 'format_loclist_type_I': 'i {{count}}',
-    \ 'format_status_enabled': 'neomake: %s'
+    \ 'format_quickfix_ok': '',
+    \ 'format_quickfix_issues': '%s',
   \ })
-  " return substitute(l:_, '%#\(.*\)# ', '', 'g')
   return l:msg
 endfunction
 

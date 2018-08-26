@@ -1,7 +1,8 @@
 " deactivate vim-polyglot go support
 let g:neoformat_enabled_go = []
+let b:deoplete_disable_auto_complete = 0
 
-let g:go_echo_go_info = 0
+let g:go_echo_go_info = 1
 let g:go_auto_type_info = 0
 let g:go_info_mode = 'guru'
 let g:go_auto_sameids = 1
@@ -27,7 +28,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_build_constraints = 1
-let g:go_highlight_types = 0
+let g:go_highlight_types = 1
 let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_space_tab_error = 1
@@ -95,20 +96,20 @@ function! s:create_go_doc_comment()
   execute ":norm I// \<Esc>$"
 endfunction
 
-au filetype go nmap <Leader>r <Plug>(go-run)
-au filetype go nmap <Leader>rt <Plug>(go-run-tab)
-au filetype go nmap <Leader>b <Plug>(go-build)
-au filetype go nmap <Leader>t <Plug>(go-test)
-au filetype go nmap <Leader>c <Plug>(go-coverage)
-au filetype go nmap <Leader>cb <Plug>(go-coverage-browser)
-au filetype go nmap <Leader>a <Plug>(go-alternate-edit)
-au filetype go nmap <Leader>av <Plug>(go-alternate-vertical)
-au filetype go nmap <Leader>i <Plug>(go-info)
-au filetype go nmap <Leader>db <Plug>(go-doc-browser)
-au filetype go nmap <Leader>d <Plug>(go-doc)
-au filetype go nmap <Leader>j <Plug>(go-def)
-au filetype go nmap <Leader>im <Plug>(go-implements)
-au filetype go nmap <Leader>rn <Plug>(go-rename)
-au filetype go nmap <Leader>f <Plug>(go-imports)
-" au filetype go nmap <Leader>l <Plug>(go-metalinter)
-au filetype go nnoremap <leader>ui :<C-u>call <SID>create_go_doc_comment()<CR>
+nmap <Leader>r <Plug>(go-run)
+nmap <Leader>rt <Plug>(go-run-tab)
+nmap <Leader>b <Plug>(go-build)
+nmap <Leader>t <Plug>(go-test)
+nmap <Leader>c <Plug>(go-coverage)
+nmap <Leader>cb <Plug>(go-coverage-browser)
+nmap <Leader>a <Plug>(go-alternate-edit)
+nmap <Leader>av <Plug>(go-alternate-vertical)
+nmap <Leader>i <Plug>(go-info)
+nmap <Leader>db <Plug>(go-doc-browser)
+nmap <Leader>d <Plug>(go-doc)
+nmap <Leader>j <Plug>(go-def)
+nmap <Leader>im <Plug>(go-implements)
+nmap <Leader>rn <Plug>(go-rename)
+nmap <Leader>f <Plug>(go-imports)
+" nmap <Leader>l <Plug>(go-metalinter)
+nnoremap <leader>ui :<C-u>call <SID>create_go_doc_comment()<CR>

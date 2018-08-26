@@ -1,4 +1,5 @@
 let g:gutentags_enabled = 1
+
 " toggle between header and implementation in c/cpp
 function! s:c_alternate()
     let file = expand("%")

@@ -1,8 +1,4 @@
 " popup behavior
-set completeopt=longest,menuone
-set shortmess+=c
-" set showmatch
-
 let g:neosnippet#enable_completed_snippet = 1
 " let g:cm_sources_override = {
 "     \ 'cm-gocode': {'enable':1}
@@ -40,6 +36,8 @@ inoremap <expr><C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
 " inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 " inoremap <expr><C-g> deoplete#undo_completion()
 " inoremap <expr><C-l> deoplete#refresh()
+" neosnippet
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 " completion window
 augroup completion_window

@@ -58,12 +58,6 @@ InitModule.new('vim') do |vim|
     InitLink.new(init, 'vim', init.configdir + '/nvim')
   ]
 
-  # install vim-plug
-  vimplug_link = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  unless File.exist?("#{init.dotdir}/vim/autoload/plug.vim")
-    vim.shell("curl -fLo \"#{init.dotdir}/vim/autoload/plug.vim\" --create-dirs \"#{vimplug_link}\"")
-  end
-
   # update vim-plug
   vim.shell('$(which nvim) +PlugUpdate +:qall')
 

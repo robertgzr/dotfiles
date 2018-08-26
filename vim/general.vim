@@ -25,3 +25,5 @@ set incsearch
 
 set pumheight=10
 set lazyredraw
+
+set mouse=a

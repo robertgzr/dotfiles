@@ -1,4 +1,10 @@
-" Plugin Manager
+" get plug.vim if it's not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Core
@@ -9,7 +15,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround' " edit surroundings in pairs
     Plug 'itchyny/lightline.vim' " lightweight status bar
     Plug 'neomake/neomake'
-    Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " async code formatter
+    " Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " async code formatter
     Plug 'tpope/vim-obsession'
 
     " completion
@@ -25,7 +31,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/neosnippet-snippets'
     " Plug 'Shougo/echodoc.vim' " print completed documentation into command line
     " Language Server Client
-    Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
+    Plug 'autozimu/LanguageClient-neovim',    { 'branch': 'next', 'do': 'bash ./install.sh' }
     " git
     " search
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install --all'}
@@ -44,10 +50,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] }
     Plug 'tpope/vim-repeat' " extend '.' to plugins
     Plug 'ludovicchabant/vim-gutentags' " manage tags files
-    Plug 'majutsushi/tagbar', { 'on': 'Tagbar' } " code minimap via ctags
+    Plug 'majutsushi/tagbar', { 'on': ['Tagbar', 'TagbarToggle'] } " code minimap via ctags
     " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
-    Plug 'mattn/emmet-vim', { 'for': ['html', 'markdown'] } " super-fast HTML editing
+    Plug 'mattn/emmet-vim', { 'for': ['html', 'markdown', 'vue'] } " super-fast HTML editing
     " Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml', 'markdown'] } " auto-close HTML/XML tags
     Plug 'editorconfig/editorconfig-vim'
     " Plug 'tweekmonster/nvimdev.nvim'
@@ -61,6 +67,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'jceb/vim-orgmode', { 'for': 'org' }
         Plug 'tpope/vim-speeddating'
         Plug 'vim-scripts/utl.vim'
+    Plug 'spolu/dwm.vim'
 
 " Languages
     " multi-language support with lazy loading
@@ -68,8 +75,9 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'fatih/vim-go',         { 'for': 'go', 'do': ':GoInstallBinaries' }
     Plug 'zchee/deoplete-go',    { 'for': 'go', 'do': 'make' }
+    Plug 'zchee/vim-vgo', {'for': 'go'}
 
-    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+    " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
     " Plug 'timonv/vim-cargo',     { 'for': 'rust' }
     Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
 
@@ -78,6 +86,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'suoto/vim-hdl',        { 'for': 'vhdl'}
     " Plug 'elzr/vim-json',        { 'for': 'json' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
+    Plug 'lervag/vimtex', {'for': ['latex', 'tex']}
 
 " Minimal UX
     Plug 'junegunn/goyo.vim',         { 'on': 'Goyo' }

@@ -1,32 +1,7 @@
-robertgzr's dotfiles
-====================
+the . stuff
+===========
 
 just all the stuff it takes for a fresh start
-
-Status
-------
-### todo
-* proper weechat setup (using [w3](https://github.com/qguv/w3) & relay server on pi)
-* python - pip ?
-* ruby - gems ?
-* ableton-demo-converter folder automation
-* linuxbrew?
-* split Brewfile into groups of software and handle install via script
-* check gitparser behavior when branch name "foo_bar"
-* add latex stuff
-
-### done
-* zsh
-* (n)vim
-* git
-* tmux
-* brew
-* terminal colorschemes
-* custom karabiner mappings
-* osx defaults
-* sublime config
-* minimal brewfile  
-* don't link all of .config/
 
 Cheatsheets
 -----------

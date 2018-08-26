@@ -37,6 +37,16 @@
     </item>
 
     <item>
+        <name>This Mac needs an insert key</name>
+        <identifier>private.mac_insert</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::CONTROL_L, ModifierFlag::FN,
+            KeyCode::PC_INSERT
+        </autogen>
+    </item>
+
+    <item>
         <name>Vim-Addict</name>
         <!-- Move around text fields with Hyper+hjkl -->
         <item>

@@ -160,3 +160,4 @@
 
 [http]
     sslverify = true
+    cookiefile = /Users/robert/.gitcookies

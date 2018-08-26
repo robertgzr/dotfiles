@@ -1,7 +1,0 @@
---output "~/Downloads/youtube-dl/%(uploader)s-%(title)s_%(upload_date)s.%(ext)s"
---user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
---all-subs
-# --embed-subs
-# --embed-thumbnail
-# --add-metadata
-# --prefer-ffmpeg

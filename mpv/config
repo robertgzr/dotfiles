@@ -70,12 +70,11 @@ user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101
 #
 [cacheplus]
 profile-desc="Optimized for streaming web video"
-ytdl-format="mp4"
-# ytdl-format=bestvideo[ext=mp4]+bestaudio/
+ytdl-format=bestvideo[ext=mp4]+bestaudio
 hwdec=auto
 cache=8192
 cache-initial=8192
-cache-secs=10
+cache-secs=30
 cache-pause
 
 [3d]

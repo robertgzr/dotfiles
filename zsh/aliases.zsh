@@ -116,3 +116,8 @@ if [[ -f $(which tmux) ]]; then
     alias tat='tmux attach -t'
     alias tns='tmux new-session -s'
 fi
+
+alias abeet='beet -l ~/.config/beets/animu.db'
+alias nlay='$HOME/.dotfiles/nlay'
+alias nnn='nnn -l'
+alias n='nnn'

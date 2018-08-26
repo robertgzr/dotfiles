@@ -4,6 +4,7 @@
 # go
 if [[ -f $(which go) ]]; then
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:
+    export RGOPATH=$GOPATH/src/github.com/robertgzr:$GOPATH/src/bitbucket.org/robertgzr:$GOPATH/src/rbg.re:$GOPATH/src/moji.moe:$GOPATH/src/local
 fi
 
 # rust

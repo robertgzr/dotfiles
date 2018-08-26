@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [[ "$(uname)" != "Darwin" ]]; then
-    echo "Sorry only works on macOS. This uses hammerspoon automation."
-    exit 1
-fi
-
-cat ~/.dotfiles/hammerspoon/reload-browser.lua | hs -r >/dev/null

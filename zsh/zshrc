@@ -1,130 +1,44 @@
 #!/bin/env zsh
 
-PROFILE_STARTUP=false
-if [[ "$PROFILE_STARTUP" == true ]]; then
-    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-    PS4=$'%D{%M%S%.} %N:%i> '
-    exec 3>&2 2>/tmp/startlog.$$
-    set -o xtrace prompt_subst
-fi
-
-# ==== Basic ZSH
-
 fpath=(
-    $ZDOTDIR/modules/bin
-    # $ZDOTDIR/modules
-    # $ZDOTDIR/modules/custom-completions
     /usr/local/share/zsh-completions
     /usr/local/share/zsh/site-functions
     $fpath
 )
 
+source $ZDOTDIR/plug.zsh
 source $ZDOTDIR/exports.zsh
+
 # platform-specific stuff
 case "$(uname)" in
     Darwin)
         source $ZDOTDIR/macos/aliases.zsh
         source $ZDOTDIR/macos/functions.zsh
         source $ZDOTDIR/macos/exports.zsh
-        # Syntax Highlighting
-        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        # History Substring Search
-        source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
-        # fish like autosuggestions
-        source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
     Linux)
         source $ZDOTDIR/linux/exports.zsh
-        # Syntax Highlighting
-        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        # History Substring Search
-        source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-        # fish like autosuggestions
-        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
 esac
 
 source $ZDOTDIR/setopt.zsh
-source $ZDOTDIR/completion.zsh
-source $ZDOTDIR/spectrum.zsh
-source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/history.zsh
-source $ZDOTDIR/zsh_hooks.zsh
-
-# ==== TODO
-
-# setup: pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-fi
-# setup: rbenv
-if which rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-fi
-
-# if which pyenv-virtualenv-init > /dev/null; then
-#     eval "$(pyenv virtualenv-init -)"
-# fi
-
-# setup: THEFUCK
-# if which thefuck-alias > /dev/null; then
-#     eval "$(thefuck-alias fuck)"
-# fi
-
-# ==== Custom Modules
-
-# j
-# eval "$(fasd --init posix-alias zsh-hook)"
-source $ZDOTDIR/modules/fasd.zsh
+source $ZDOTDIR/bindkeys.zsh
 
 # fuzzy search with fzf
-if [[ -f ~/.fzf.zsh ]]; then
-    source ~/.fzf.zsh
-fi
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 # use ripgrep for fzf file search
 # --files : list files that would be searched
 # --no-ignore : don't respect .gitignore, etc.
 # --hidden : search hidden files/dirs
 # --follow : follow symlinks
 # --glob : additional conditions (here: ignorr everything in .git/)
-$(which rg &>/dev/null) && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" .'
+[[ -f $(which rg &>/dev/null) ]] && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" .'
+#
+# source .env when entering a directory
+[[ -f $(which direnv) ]] && eval "$(direnv hook zsh)"
 
-if [[ -f $(which direnv) ]]; then
-    eval "$(direnv hook zsh)"
-fi
-
-# have to source bindkeys after modules
-# otherwise new zle widgets are not available
-source $ZDOTDIR/bindkeys.zsh
-
-# ==== zsh modules configuration envs
-# configure autosuggestion
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=10 #fg=$FG[241]
-
-# histroy substring highlight colors
-export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
-export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
-export HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
-
-# activate highlighters
-# to tweak > zsh/modules/zsh-syntax-highlighting/highlighters
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
-
-# command not found
-# if brew command command-not-found-init > /dev/null; then
-#   eval "$(brew command-not-found-init)"
-# fi
-
-if [[ "$PROFILE_STARTUP" == true ]]; then
-    set +o xtrace
-    exec 2>&3 3>&-
-fi
-
-# start tmux session 'al' if alacritty terminal
-# if [[ -f $(which tmux) ]]; then
-#     if [[ "$ALACRITTY" == "1" ]]; then
-#         tmux -2 new-session -A -s al
-#     fi
-# fi
+# setup: pyenv
+[[ -f $(which pyenv) ]] && eval "$(pyenv init -)"

@@ -1,24 +1,22 @@
 [submodule "install/brew"]
 	path = install/brew
 	url = https://github.com/Homebrew/install
-[submodule "zsh/modules/fasd"]
-	path = zsh/modules/fasd
-	url = https://github.com/clvv/fasd
-[submodule "osx/iTerm2-Color-Schemes"]
-	path = osx/iTerm2-Color-Schemes
-	url = https://github.com/mbadolato/iTerm2-Color-Schemes
+	branch = master
 [submodule "mpv/scripts/mpv-stats"]
 	path = mpv/scripts/mpv-stats
 	url = https://github.com/Argon-/mpv-stats
+	branch = master
 [submodule "mpv/scripts/livestreamer_hook"]
 	path = mpv/scripts/livestreamer_hook
 	url = https://gist.github.com/selsta/cdb1e3172a87f6f028c6
 [submodule "mpv/scripts/mpv-plugin-streamcache"]
 	path = mpv/scripts/mpv-plugin-streamcache
 	url = https://github.com/lvml/mpv-plugin-streamcache
+	branch = master
 [submodule "mpv/scripts/mpv-progressbar"]
 	path = mpv/scripts/mpv-progressbar
 	url = https://github.com/torque/mpv-progressbar
+	branch = master
 [submodule "mpv/shaders/finesharp"]
 	path = mpv/shaders/finesharp
 	url = https://gist.github.com/igv/a9a21ad1f6dd7d0b4452
@@ -27,10 +25,17 @@
 	url = https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637
 [submodule "mpv/scripts/mpv-webm"]
 	path = mpv/scripts/mpv-webm
-	url = git@github.com:ElegantMonkey/mpv-webm
+	url = https://github.com/ElegantMonkey/mpv-webm
+	branch = master
 [submodule "mpv/scripts/mpv_slicing"]
 	path = mpv/scripts/mpv_slicing
-	url = git@github.com:Kagami/mpv_slicing
+	url = https://github.com/Kagami/mpv_slicing
+	branch = master
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
-	url = git@github.com:tmux-plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+	branch = master
+[submodule "zsh/.zplug"]
+	path = zsh/.zplug
+	url = https://github.com/zplug/zplug
+	branch = master

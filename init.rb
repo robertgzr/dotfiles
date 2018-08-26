@@ -81,7 +81,7 @@ end
 InitModule.new('zsh') do |zsh|
   zsh.links = [
     InitLink.new(init, 'zsh/zshrc', init.dotdir + '/zsh/.zshrc'),
-    InitLink.new(init, 'zsh/modules/fasd.rc', Dir.home + '/.fasdrc'),
+    InitLink.new(init, 'zsh/zshenv', init.dotdir + '/.zshenv'),
     InitLink.new(init, 'zsh/zshenv', Dir.home + '/.zshenv')
   ]
 

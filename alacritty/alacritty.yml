@@ -25,10 +25,10 @@ window:
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 1
-    y: 1
+    x: 0
+    y: 0
 
-  decorations: buttonless
+  decorations: false
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
@@ -88,6 +88,7 @@ colors:
   primary:
     background: '#0C0C0C' # ro
     foreground: '#FCFAF2' # shironeri
+    bright_foreground: '#1C1C1C' # sumi
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
@@ -157,6 +158,46 @@ visual_bell:
 
 # Background opacity
 background_opacity: 0.995
+
+# Mouse bindings
+#
+# Currently doesn't support modifiers. Both the `mouse` and `action` fields must
+# be specified.
+#
+# Values for `mouse`:
+# - Middle
+# - Left
+# - Right
+# - Numeric identifier such as `5`
+#
+# Values for `action`:
+# - Paste
+# - PasteSelection
+# - Copy (TODO)
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+hide_cursor_when_typing: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+# Shell
+#
+# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
+# Entries in shell.args are passed unmodified as arguments to the shell.
+#
+# shell:
+#  program: /Users/robert/.cargo/bin/ion
+#    args:
+#    - --login
 
 # Key bindings
 #
@@ -245,43 +286,9 @@ key_bindings:
   - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
   - { key: Insert,                  chars: "\x1b[2~"                     }
   - { key: Delete,                  chars: "\x1b[3~"                     }
+  - {
+    key: E,
+    mods: Alt|Shift,
+    command: { program: "tvim" }
+  }
 
-# Mouse bindings
-#
-# Currently doesn't support modifiers. Both the `mouse` and `action` fields must
-# be specified.
-#
-# Values for `mouse`:
-# - Middle
-# - Left
-# - Right
-# - Numeric identifier such as `5`
-#
-# Values for `action`:
-# - Paste
-# - PasteSelection
-# - Copy (TODO)
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
-
-mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-
-selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-hide_cursor_when_typing: true
-
-# Live config reload (changes require restart)
-live_config_reload: true
-
-# Shell
-#
-# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
-# Entries in shell.args are passed unmodified as arguments to the shell.
-#
-# shell:
-#  program: /Users/robert/.cargo/bin/ion
-#    args:
-#    - --login

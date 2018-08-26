@@ -23,7 +23,7 @@ init = InitFramework.new
 # START of COMPONENTS
 
 InitModule.new('dotfiles') do |dot|
-  dot.shell('git submodule update --init --recursive')
+  dot.shell('git submodule update --init')
 
   init.register(dot)
 end

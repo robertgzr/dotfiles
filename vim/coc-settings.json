@@ -1,0 +1,43 @@
+{
+  "coc.preferences.autoTrigger": "always",
+  "coc.preferences.triggerAfterInsertEnter": true,
+  "coc.preferences.timeout": 300,
+  "coc.preferences.noselect": true,
+  "coc.preferences.diagnostic.enable": true,
+  "coc.preferences.diagnostic.enableMessage": false,
+  "coc.preferences.diagnostic.signOffset": 10,
+  "coc.preferences.diagnostic.errorSign": "✘",
+  "coc.preferences.diagnostic.warningSign": "‼",
+  "coc.preferences.diagnostic.infoSign": "i",
+  "coc.preferences.diagnostic.hintSign": "☛",
+
+  "languageserver": {
+    "gols": {
+      "command": "go-langserver",
+      "args": ["-gocodecompletion", "-func-snippet-enabled"],
+      "filetypes": ["go"],
+      "enable": true
+    },
+    "rls": {
+      "command": "rustup",
+      "args": ["run", "stable", "rls"],
+      "filetypes": ["rust"],
+      "settings": {
+        "wait_to_build": 2000,
+        "racer_completion": true,
+        "show_hover_context": false,
+        "full_docs": false
+      },
+      "enable": true
+    },
+    "jsls": {
+      "command": "javascript-typescript-stdio",
+      "args": [],
+      "filetypes": ["javascript", "javascript.jsx", "typescript"],
+      "enable": false
+    }
+  },
+  "tsserver.enable": false,
+  "eslint.enable": true,
+  "coc.preferences.checkEmpty": false
+}

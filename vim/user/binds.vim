@@ -27,13 +27,29 @@ nmap <Leader>tb :TagbarToggle<CR>
 nmap ga <Plug>(EasyAlign)
 vmap <Enter> <Plug>(EasyAlign)
 
-" langserv
-nmap <Leader>lc :call LanguageClient_contextMenu()<CR>
-nmap <Leader>i :call LanguageClient_textDocument_hover()<CR>
-nmap <Leader>j :call LanguageClient_textDocument_definition()<CR>
-nmap <Leader>r :call LanguageClient_textDocument_references()<CR>
-nmap <Leader>rn :call LanguageClient_textDocument_rename()<CR>
-nmap <Leader>f :call LanguageClient_textDocument_formatting()<CR>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<Tab>" :
+    \ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nmap <silent> [c <Plug>(coc-diagnostics-prev)
+nmap <silent> ]c <Plug>(coc-diagnostics-next)
+
+imap <silent> <C-p> <Plug>(coc-complete-custom)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <Leader>rn <Plug>(coc-rename)
+nmap <Leader>f <Plug>(coc-format-selected)
+vmap <Leader>f <Plug>(coc-format-selected)
 
 " default runners
 " nmap <Leader>F :Neoformat! &filetype<CR>

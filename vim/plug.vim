@@ -19,19 +19,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-obsession'
 
     " completion
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Plug 'roxma/nvim-completion-manager'
-    "     Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
-    "     Plug 'Shougo/neco-vim', {'for': 'vim'}
-    "     Plug 'roxma/ncm-rct-complete', {'for': 'ruby'}
-    "     Plug 'roxma/ncm-flow', {'for': ['javascript', 'html', 'vue']}
+    Plug 'neoclide/coc.nvim', { 'do': {-> coc#util#install()} }
 
     " snippets
     Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
     " Plug 'Shougo/echodoc.vim' " print completed documentation into command line
-    " Language Server Client
-    Plug 'autozimu/LanguageClient-neovim',    { 'branch': 'next', 'do': 'bash ./install.sh' }
     " git
     " search
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install --all'}
@@ -73,18 +66,8 @@ call plug#begin('~/.vim/plugged')
     " multi-language support with lazy loading
     Plug 'sheerun/vim-polyglot'
 
-    Plug 'fatih/vim-go',         { 'for': 'go', 'do': ':GoInstallBinaries' }
-    Plug 'zchee/deoplete-go',    { 'for': 'go', 'do': 'make' }
+    Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
     Plug 'zchee/vim-vgo', {'for': 'go'}
-
-    " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-    " Plug 'timonv/vim-cargo',     { 'for': 'rust' }
-    Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
-
-    Plug 'tweekmonster/deoplete-clang2', { 'for': ['c', 'cpp'] }
-    Plug 'posva/vim-vue',        { 'for': 'vue' }
-    " Plug 'suoto/vim-hdl',        { 'for': 'vhdl'}
-    " Plug 'elzr/vim-json',        { 'for': 'json' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
     Plug 'lervag/vimtex', {'for': ['latex', 'tex']}
 

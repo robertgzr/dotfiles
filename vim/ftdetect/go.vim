@@ -35,17 +35,6 @@ let g:go_highlight_space_tab_error = 1
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_trailing_whitespace_error = 1
 
-" deoplete-go
-" let g:deoplete#sources#go#gocode_binary = '' " $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#package_dot = 0
-let g:deoplete#sources#go#pointer = 1
-" let g:deoplete#sources#go#sort_class = [] " ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#use_cache = 0
-" let g:deoplete#sources#go#json_directory = '' "$HOME.'/.cache/deoplete/go/'.$GOOS.'_'.$GOARCH
-let g:deoplete#sources#go#align_class = 1
-let g:deoplete#sources#go#cgo = 0
-" let g:deoplete#sources#go#goos = ''
-
 " tagbar - gotags
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',

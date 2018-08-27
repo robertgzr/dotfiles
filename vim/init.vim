@@ -9,8 +9,6 @@ source ~/.vim/plug.vim
 " unrolled user config for debugging
 source ~/.vim/user/lint.vim
 source ~/.vim/user/completion.vim
-" source ~/.vim/user/deoplete.vim
-source ~/.vim/user/lsp.vim
 
 source ~/.vim/user/binds.vim
 source ~/.vim/user/indent.vim

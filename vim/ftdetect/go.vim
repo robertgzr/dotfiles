@@ -85,7 +85,7 @@ let g:neomake_go_fast_maker = {
 let g:neomake_go_full_maker = g:neomake#makers#ft#go#gometalinter()
 let g:neomake_go_full_exe = 'gometalinter'
 let g:neomake_go_full_append_file = 0
-let g:neomake_go_enabled_makers = ['go', 'fast']
+let g:neomake_go_enabled_makers = ['fast']
 let makeprg = 'full'
 
 " https://github.com/fatih/dotfiles/blob/master/vimrc#L380
@@ -96,20 +96,20 @@ function! s:create_go_doc_comment()
   execute ":norm I// \<Esc>$"
 endfunction
 
-nmap <Leader>r <Plug>(go-run)
-nmap <Leader>rt <Plug>(go-run-tab)
-nmap <Leader>b <Plug>(go-build)
-nmap <Leader>t <Plug>(go-test)
-nmap <Leader>c <Plug>(go-coverage)
-nmap <Leader>cb <Plug>(go-coverage-browser)
-nmap <Leader>a <Plug>(go-alternate-edit)
-nmap <Leader>av <Plug>(go-alternate-vertical)
-nmap <Leader>i <Plug>(go-info)
-nmap <Leader>db <Plug>(go-doc-browser)
-nmap <Leader>d <Plug>(go-doc)
-nmap <Leader>j <Plug>(go-def)
-nmap <Leader>im <Plug>(go-implements)
-nmap <Leader>rn <Plug>(go-rename)
-nmap <Leader>f <Plug>(go-imports)
+nnoremap <Leader>r <Plug>(go-run)
+nnoremap <Leader>rt <Plug>(go-run-tab)
+nnoremap <Leader>b <Plug>(go-build)
+nnoremap <Leader>t <Plug>(go-test)
+nnoremap <Leader>c <Plug>(go-coverage)
+nnoremap <Leader>cb <Plug>(go-coverage-browser)
+nnoremap <Leader>a <Plug>(go-alternate-edit)
+nnoremap <Leader>av <Plug>(go-alternate-vertical)
+nnoremap <Leader>i <Plug>(go-info)
+nnoremap <Leader>db <Plug>(go-doc-browser)
+nnoremap <Leader>d <Plug>(go-doc)
+nnoremap <Leader>j <Plug>(go-def)
+nnoremap <Leader>im <Plug>(go-implements)
+nnoremap <Leader>rn <Plug>(go-rename)
+nnoremap <Leader>f <Plug>(go-imports)
 " nmap <Leader>l <Plug>(go-metalinter)
 nnoremap <leader>ui :<C-u>call <SID>create_go_doc_comment()<CR>

@@ -1,11 +1,8 @@
 " using Neomake
 cnoreabbrev Nm Neomake
 cnoreabbrev Neomk Neomake
-call neomake#configure#automake({
-\ 'TextChanged': {},
-\ 'InsertLeave': {},
-\ 'BufWinEnter': {},
-\ }, 500)
+call neomake#configure#automake('w')
+
 " \ 'BufWritePost': {'delay': 0},
 let g:neomake_error_sign = {'text': '✘', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '‼', 'texthl': 'NeomakeWarningSign'}

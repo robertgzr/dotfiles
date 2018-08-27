@@ -65,34 +65,6 @@ nmap <Leader>ws :ToggleWorkspace<CR>
 " defined in indent.vim
 nmap <Leader>tt :call Tabthis()<CR>
 
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><tab>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-smap <expr><tab> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-
-" reverse nav
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-" navigate popupu with Ctl-[J,K]
-inoremap <expr><c-k> ((pumvisible())?("\<C-p>"):("\<c-k>"))
-inoremap <expr><c-j> ((pumvisible())?("\<C-n>"):("\<c-j>"))
-
-" Expands or completes the selected snippet/item in the popup menu
-imap <expr><silent><CR> pumvisible() ? deoplete#mappings#close_popup() .
-      \ "\<Plug>(neosnippet_jump_or_expand)" : "\<CR>"
-smap <silent><cr> <Plug>(neosnippet_jump_or_expand)
-
 " Hardmode = not using arrow keys
 let g:hardmode_error = "Don't use arrow keys!"
 nnoremap <Left> :echoerr g:hardmode_error<CR>

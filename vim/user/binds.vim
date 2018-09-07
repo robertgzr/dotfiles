@@ -44,13 +44,17 @@ nmap <silent> ]c <Plug>(coc-diagnostics-next)
 
 imap <silent> <C-p> <Plug>(coc-complete-custom)
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <Leader>rn <Plug>(coc-rename)
 nmap <Leader>f <Plug>(coc-format-selected)
 vmap <Leader>f <Plug>(coc-format-selected)
+command -nargs=0 Format :call CocAction('format')
 
+nnoremap <C-Space> :call DWM_Focus()<CR>
+nnoremap <C-,> <Plug>DWMRotateCounterclockwise
+nnoremap <C-.> <Plug>DWMRotateClockwise
 " default runners
 " nmap <Leader>F :Neoformat! &filetype<CR>
 

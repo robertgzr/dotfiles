@@ -76,26 +76,11 @@ function! s:rg_find(args, bang)
     \         : fzf#vim#with_preview('right:50%:hidden', '?'),
     \ a:bang)
 endfunction
-function! s:day_mode(bang)
-    if a:bang
-        colorscheme nihon
-    else
-        colorscheme morning
-    endif
-endfunction
 
-augroup CustomCommands
-    autocmd!
-    autocmd VimEnter * command! -nargs=* -bang Rg call s:rg_find(<q-args>, <bang>0)
-    autocmd VimEnter * command! -bang DayMode call s:day_mode(<bang>0)
+augroup Rg
+    au!
+    au VimEnter * command! -nargs=* -bang Rg call s:rg_find(<q-args>, <bang>0)
 augroup END
-
-" let g:tmux_navigator_save_on_switch = 1
-" let g:tmux_navigator_no_mappings = 1
-" nnoremap <silent> <C-a>h :TmuxNavigateLeft<CR>
-" nnoremap <silent> <C-a>j :TmuxNavigateDown<CR>
-" nnoremap <silent> <C-a>k :TmuxNavigateUp<CR>
-" nnoremap <silent> <C-a>l :TmuxNavigateRight<CR>
 
 " Quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

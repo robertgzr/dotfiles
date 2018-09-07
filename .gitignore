@@ -25,7 +25,7 @@ vim/colors
 vim/spell/
 vim/session/
 vim/sessions/
-vim/autoload/
+vim/autoload/plug.vim
 
 zsh/.*
 !zsh/.zplug

@@ -3,7 +3,7 @@ set completeopt-=preview
 set shortmess+=c
 " set showmatch
 
-let g:coc_auto_copen = 0
+let g:coc_auto_copen = 1
 let g:neosnippet#enable_completed_snippet = 1
 
 " " completion window

@@ -32,7 +32,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'justinmk/vim-dirvish' " folder browser
     Plug 'easymotion/vim-easymotion' " sophisiticated vim motions
-    Plug 'ap/vim-buftabline' " replace tabline with buffers
+    Plug 'bling/vim-bufferline' " needed to put buffers into tabline
 
 " Misc
     Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' } " auto-align code
@@ -58,8 +58,8 @@ call plug#begin('~/.vim/plugged')
     " Plug 'christoomey/vim-tmux-navigator'
     " Plug 'edkolev/tmuxline.vim'
     Plug 'jceb/vim-orgmode', { 'for': 'org' }
-        Plug 'tpope/vim-speeddating'
-        Plug 'vim-scripts/utl.vim'
+      \ | Plug 'tpope/vim-speeddating'
+      \ | Plug 'vim-scripts/utl.vim'
     Plug 'spolu/dwm.vim'
 
 " Languages
@@ -67,7 +67,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'sheerun/vim-polyglot'
 
     Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
-    Plug 'zchee/vim-vgo', {'for': 'go'}
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
     Plug 'lervag/vimtex', {'for': ['latex', 'tex']}
 
@@ -78,17 +77,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'equalsraf/neovim-gui-shim'
 
 " Colorschemes
-    " Plug 'sonph/onehalf', { 'rtp': 'vim/' }
-    " Plug 'aereal/vim-colors-japanesque', { 'branch': 'robertgzr' }
-    " Plug 'KeitaNakamura/neodark.vim'
-    " Plug 'iCyMind/NeoSolarized'
+    Plug 'KeitaNakamura/neodark.vim'
+    Plug 'NLKNguyen/papercolor-theme'
     " Plug 'crusoexia/vim-dracula'
-    " Plug 'trusktr/seti.vim'
-    " Plug 'morhetz/gruvbox'
-    " Plug 'shinchu/lightline-gruvbox.vim'
-    " Plug 'arcticicestudio/nord-vim'
 
 " Local
-    Plug '~/devel/projects/nihon-theme/vim'
+    " Plug '~/devel/projects/nihon-theme/vim'
 
 call plug#end()

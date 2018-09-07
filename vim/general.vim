@@ -27,3 +27,39 @@ set pumheight=10
 set lazyredraw
 
 set mouse=a
+
+" share OSX clipboard
+set clipboard=unnamed
+" allow backspace in INSERT mode
+set backspace=indent,eol,start
+
+set signcolumn=yes
+" cursorlines
+set cursorline
+" set cursorcolumn
+
+" For conceal markers.
+if has('conceal')
+  " set conceallevel=2 concealcursor=nv
+  set conceallevel=2 concealcursor=
+endif
+
+" centralize vimfiles
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists('&undodir')
+    set undodir=~/.vim/undo
+endif
+
+" pane divider chars
+set fillchars=fold:-,vert:\│
+
+"" colorscheme options
+if has("termguicolors")
+  set termguicolors
+endif
+
+if has('syntax') && !exists('g:syntax_on')
+    syntax enable
+endif
+

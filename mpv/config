@@ -1,13 +1,11 @@
 # MPV Configuration
-
 keep-open=yes
 autoload-files=no
 
 #
 # Video
 #
-profile=opengl-hq
-opengl-pbo=yes
+# opengl-pbo=yes
 # opengl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
 # deband
 # icc-profile-auto
@@ -23,12 +21,12 @@ hidpi-window-scale
 #
 # Audio
 #
-ao=coreaudio
+# ao=coreaudio
 alang=jpn,ja,eng,en,ger,de
 volume-max=200
-audio-channels=2.0
+# audio-channels=2.0
 # bs2b filter
-af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
+# af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
 
 #
 # Subtitles
@@ -74,7 +72,7 @@ ytdl-format=bestvideo[ext=mp4]+bestaudio
 hwdec=auto
 cache=8192
 cache-initial=8192
-cache-secs=30
+cache-secs=20
 cache-pause
 
 [3d]
@@ -84,7 +82,6 @@ vf-add=stereo3d=sbs2l:mono
 
 [insane]
 profile-desc="OpenGL-HQ (scale-antiring/fbo:rgba16) + VS [insane] interpolation"
-profile=opengl-hq
 scale-antiring=0.7
 scale=ewa_lanczos
 icc-profile-auto

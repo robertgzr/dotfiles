@@ -10,6 +10,7 @@ source ~/.vim/user/indent.vim
 source ~/.vim/user/polyglot.vim
 source ~/.vim/user/line.vim
 source ~/.vim/user/user.vim
+source ~/.vim/user/hard.vim
 
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white

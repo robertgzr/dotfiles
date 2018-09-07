@@ -19,13 +19,20 @@ nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
 
 " FZF
-nmap <Leader>ff :Files<CR>
-nmap <Leader>fb :Buffers<CR>
-nmap <Leader>fr :Rg<CR>
+if exists('g:loaded_fzf')
+  nmap <Leader>ff :Files<CR>
+  nmap <Leader>fb :Buffers<CR>
+  nmap <Leader>fr :Rg<CR>
+endif
 
-nmap <Leader>tb :TagbarToggle<CR>
-nmap ga <Plug>(EasyAlign)
-vmap <Enter> <Plug>(EasyAlign)
+if exists('g:loaded_tagbar')
+  nmap <Leader>tb :TagbarToggle<CR>
+endif
+
+if exists('g:loaded_easyalign')
+  nmap ga <Plug>(EasyAlign)
+  vmap <Enter> <Plug>(EasyAlign)
+endif
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -50,6 +57,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <Leader>rn <Plug>(coc-rename)
 nmap <Leader>f <Plug>(coc-format-selected)
 vmap <Leader>f <Plug>(coc-format-selected)
+
 command -nargs=0 Format :call CocAction('format')
 
 nnoremap <C-Space> :call DWM_Focus()<CR>
@@ -58,10 +66,12 @@ nnoremap <C-.> <Plug>DWMRotateClockwise
 " default runners
 " nmap <Leader>F :Neoformat! &filetype<CR>
 
-nmap <Leader>l :Neomake<CR>
-nmap <Leader>L :Neomake! makeprg<CR>
-nmap <Leader>lt :NeomakeToggleBuffer<CR>
-nmap <Leader>ltt :NeomakeToggle<CR>
+if exists('g:loaded_neomake')
+  nmap <Leader>l :Neomake<CR>
+  nmap <Leader>L :Neomake! makeprg<CR>
+  nmap <Leader>lt :NeomakeToggleBuffer<CR>
+  nmap <Leader>ltt :NeomakeToggle<CR>
+endif
 
 " quickfix jumping
 nnoremap <Leader>cn :cnext<CR>
@@ -76,28 +86,9 @@ nnoremap <Leader>ll :llist<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <Leader>qq <C-\><C-n>:bdelete!<CR>
 
-nmap <F1> :GitGutterToggle<CR>
-nmap <F2> :GitGutterLineHighlightsToggle<CR>
-nmap <Leader>ph :GitGutterPrevHunk<CR>
-nmap <Leader>nh :GitGutterNextHunk<CR>
-
-nmap <Leader>ws :ToggleWorkspace<CR>
-" defined in indent.vim
-nmap <Leader>tt :call Tabthis()<CR>
-
-" Hardmode = not using arrow keys
-let g:hardmode_error = "Don't use arrow keys!"
-nnoremap <Left> :echoerr g:hardmode_error<CR>
-nnoremap <Right> :echoerr g:hardmode_error<CR>
-nnoremap <Up> :echoerr g:hardmode_error<CR>
-nnoremap <Down> :echoerr g:hardmode_error<CR>
-
-vnoremap <Left> :echoerr g:hardmode_error<CR>
-vnoremap <Right> :echoerr g:hardmode_error<CR>
-vnoremap <Up> :echoerr g:hardmode_error<CR>
-vnoremap <Down> :echoerr g:hardmode_error<CR>
-
-inoremap <Left> <Esc>:echoerr g:hardmode_error<CR>
-inoremap <Right> <Esc>:echoerr g:hardmode_error<CR>
-inoremap <Up> <Esc>:echoerr g:hardmode_error<CR>
-inoremap <Down> <Esc>:echoerr g:hardmode_error<CR>
+if exists('g:loaded_gitgutter')
+  nmap <F1> :GitGutterToggle<CR>
+  nmap <F2> :GitGutterLineHighlightsToggle<CR>
+  nmap <Leader>ph :GitGutterPrevHunk<CR>
+  nmap <Leader>nh :GitGutterNextHunk<CR>
+endif

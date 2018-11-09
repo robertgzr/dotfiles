@@ -9,10 +9,6 @@
 [submodule "mpv/scripts/livestreamer_hook"]
 	path = mpv/scripts/livestreamer_hook
 	url = https://gist.github.com/selsta/cdb1e3172a87f6f028c6
-[submodule "mpv/scripts/mpv-plugin-streamcache"]
-	path = mpv/scripts/mpv-plugin-streamcache
-	url = https://github.com/lvml/mpv-plugin-streamcache
-	branch = master
 [submodule "mpv/scripts/mpv-progressbar"]
 	path = mpv/scripts/mpv-progressbar
 	url = https://github.com/torque/mpv-progressbar
@@ -39,3 +35,6 @@
 	path = zsh/.zplug
 	url = https://github.com/zplug/zplug
 	branch = master
+[submodule "mpv/scripts/mpv-plugin-streamcache"]
+	path = mpv/scripts/mpv-plugin-streamcache
+	url = https://gitlab.com/lvml/mpv-plugin-streamcache

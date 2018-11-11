@@ -19,17 +19,17 @@ nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
 
 " FZF
-if exists('g:loaded_fzf')
-  nmap <Leader>ff :Files<CR>
-  nmap <Leader>fb :Buffers<CR>
+if exists(':FZF')
+  nmap <silent> <Leader>ff :Files<CR>
+  nmap <silent> <Leader>fb :Buffers<CR>
   nmap <Leader>fr :Rg<CR>
 endif
 
-if exists('g:loaded_tagbar')
+if exists('g:TagbarToggle')
   nmap <Leader>tb :TagbarToggle<CR>
 endif
 
-if exists('g:loaded_easyalign')
+if exists(':EasyAlign')
   nmap ga <Plug>(EasyAlign)
   vmap <Enter> <Plug>(EasyAlign)
 endif
@@ -46,27 +46,31 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nmap <silent> [c <Plug>(coc-diagnostics-prev)
-nmap <silent> ]c <Plug>(coc-diagnostics-next)
+if exists(':CocConfig')
+  nmap <silent> [c <Plug>(coc-diagnostics-prev)
+  nmap <silent> ]c <Plug>(coc-diagnostics-next)
 
-imap <silent> <C-p> <Plug>(coc-complete-custom)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <Leader>rn <Plug>(coc-rename)
-nmap <Leader>f <Plug>(coc-format-selected)
-vmap <Leader>f <Plug>(coc-format-selected)
+  imap <silent> <C-p> <Plug>(coc-complete-custom)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gt <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+  nmap <Leader>rn <Plug>(coc-rename)
+  nmap <Leader>f <Plug>(coc-format-selected)
+  vmap <Leader>f <Plug>(coc-format-selected)
 
-command -nargs=0 Format :call CocAction('format')
+  command -nargs=0 Format :call CocAction('format')
+endif
 
-nnoremap <C-Space> :call DWM_Focus()<CR>
-nnoremap <C-,> <Plug>DWMRotateCounterclockwise
-nnoremap <C-.> <Plug>DWMRotateClockwise
+" if exists(':DWM_Focus')
+"   nnoremap <C-Space> :call DWM_Focus()<CR>
+"   nnoremap <C-,> <Plug>DWMRotateCounterclockwise
+"   nnoremap <C-.> <Plug>DWMRotateClockwise
+" endif
 " default runners
 " nmap <Leader>F :Neoformat! &filetype<CR>
 
-if exists('g:loaded_neomake')
+if exists(':Neomake')
   nmap <Leader>l :Neomake<CR>
   nmap <Leader>L :Neomake! makeprg<CR>
   nmap <Leader>lt :NeomakeToggleBuffer<CR>
@@ -86,7 +90,7 @@ nnoremap <Leader>ll :llist<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <Leader>qq <C-\><C-n>:bdelete!<CR>
 
-if exists('g:loaded_gitgutter')
+if exists(':GitGutterToggle')
   nmap <F1> :GitGutterToggle<CR>
   nmap <F2> :GitGutterLineHighlightsToggle<CR>
   nmap <Leader>ph :GitGutterPrevHunk<CR>

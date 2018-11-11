@@ -60,15 +60,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'jceb/vim-orgmode', { 'for': 'org' }
       \ | Plug 'tpope/vim-speeddating'
       \ | Plug 'vim-scripts/utl.vim'
-    Plug 'spolu/dwm.vim'
+    " Plug 'spolu/dwm.vim'
 
 " Languages
-    " multi-language support with lazy loading
-    Plug 'sheerun/vim-polyglot'
-
     Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
     Plug 'lervag/vimtex', {'for': ['latex', 'tex']}
+
+    " multi-language support with lazy loading
+    " NOTE: put language specific plugs before this to avoid conflicsts
+    Plug 'sheerun/vim-polyglot'
+
 
 " Minimal UX
     Plug 'junegunn/goyo.vim',         { 'on': 'Goyo' }

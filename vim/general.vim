@@ -29,7 +29,7 @@ set lazyredraw
 set mouse=a
 
 " share OSX clipboard
-set clipboard=unnamed
+set clipboard+=unnamedplus
 " allow backspace in INSERT mode
 set backspace=indent,eol,start
 
@@ -45,8 +45,8 @@ if has('conceal')
 endif
 
 " centralize vimfiles
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
+set backupdir=/tmp
+set directory=/tmp
 if exists('&undodir')
     set undodir=~/.vim/undo
 endif
@@ -62,4 +62,3 @@ endif
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
-

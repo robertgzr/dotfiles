@@ -12,12 +12,10 @@ source $ZDOTDIR/exports.zsh
 # platform-specific stuff
 case "$(uname)" in
     Darwin)
-        source $ZDOTDIR/macos/aliases.zsh
-        source $ZDOTDIR/macos/functions.zsh
-        source $ZDOTDIR/macos/exports.zsh
+        source $ZDOTDIR/macos/rc.zsh
         ;;
     Linux)
-        source $ZDOTDIR/linux/exports.zsh
+        source $ZDOTDIR/linux/rc.zsh
         ;;
 esac
 

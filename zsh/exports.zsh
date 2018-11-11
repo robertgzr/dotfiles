@@ -2,9 +2,8 @@
 
 # Path
 # go
-if [[ -f $(which go) ]]; then
+if [[ -f $(command -v go) ]]; then
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:
-    export RGOPATH=$GOPATH/src/github.com/robertgzr:$GOPATH/src/bitbucket.org/robertgzr:$GOPATH/src/rbg.re:$GOPATH/src/moji.moe:$GOPATH/src/local
 fi
 
 # rust
@@ -19,7 +18,7 @@ export PATH=$PATH:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-dar
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 
 # Setup terminal, and turn on colors
-export TERM=xterm-256color-italic
+# export TERM=xterm-256color-italic
 export CLICOLOR=1
 # export LSCOLORS=Gxfxcxdxbxegedabagacad
 
@@ -32,20 +31,16 @@ export ARCHFLAGS='-arch x86_64'
 export LESS='-F -g -i -M -R -S -w -X -z-4 --ignore-case --raw-control-chars'
 export PAGER='less'
 # configure less colors
-    export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
-    export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
-    export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
-    export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
-    export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
-    export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
-    export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
-if which nvim > /dev/null; then
-    export EDITOR="$(which nvim)"
-    export VISUAL=$EDITOR
-else
-    export EDITOR="$(which vim)"
-    export VISUAL=$EDITOR
-fi
+export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
+export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
+export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
+export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
+export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
+export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
+
+export EDITOR=vim
+export VISUAL=$EDITOR
 
 # Python
 export PYENV_ROOT=/usr/local/var/pyenv

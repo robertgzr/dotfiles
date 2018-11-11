@@ -1,19 +1,20 @@
 # ==== LINUX ENVs
 
 # Path
-export PATH=$PATH:/usr/lib/jvm/java-7-openjdk/bin
+export PATH=/opt/bin:$PATH
 
-# linuxbrew stuff
-if [[ -d "$HOME/.linuxbrew" ]]; then
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-    export MANPATH="$HOME/linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_HOME=${HOME}/.local/share
+
+# linuxbrew
+if [[ -f $(command -v brew) ]]; then
+    export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 fi
 
-# Go
-export GOPATH=$HOME/devel/go
-
 # Java
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-
-# Ruby!
+if [[ -f $(command -v java) ]]; then
+    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+    export PATH=$PATH:$JAVA_HOME/bin
+fi

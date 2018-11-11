@@ -11,50 +11,30 @@
 # 'Back'        "^?"
 # 'Del'         "^[[3~"
 
-# bindkey -e # emacs mode
 bindkey -v # vi mode
-
-# bindkey '^K'      kill-whole-line
-# bindkey '^R'      history-incremental-search-backward
-
-# arrow navigation
-# bindkey '^[[C'      forward-word
-# bindkey '^[[D'      backward-word
-# bindkey '^[[H'    beginning-of-line
-# bindkey '^[[F'    end-of-line
-
-bindkey ' ' magic-space
-# bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
-
-# history substring search
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-bindkey -M vicmd 'u' undo
-bindkey -a '^R' redo
-
 # remove delay when switching modes
 export KEYTIMEOUT=1
-
+bindkey -M vicmd 'u' undo
+bindkey -a '^R' redo
+bindkey '^K'      kill-whole-line
+bindkey ' ' magic-space
 bindkey '^F' fzf-cd-widget
 
-function zle-keymap-select zle-line-init
-{
-    # change cursor shape in iTerm2
-    case $KEYMAP in
-        vicmd)      print -n -- "\033[4 q";;  # block cursor
-        viins|main) print -n -- "\033[6 q";;  # line cursor
-    esac
+# function zle-keymap-select zle-line-init
+# {
+#     # change cursor shape
+#     case $KEYMAP in
+#         vicmd)      print -n -- "\033[4 q";;  # block cursor
+#         viins) print -n -- "\033[6 q";;  # line cursor
+#     esac
 
-    zle reset-prompt
-    zle -R
-}
-
-function zle-line-finish
-{
-    print -n -- "\033[2 q"  # block cursor
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
+#     zle reset-prompt
+#     zle -R
+# }
+# function zle-line-finish
+# {
+#     print -n -- "\033[2 q"  # block cursor
+# }
+# zle -N zle-line-init
+# zle -N zle-line-finish
+# zle -N zle-keymap-select

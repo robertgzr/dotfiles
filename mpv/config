@@ -66,14 +66,16 @@ user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101
 #
 # PROFILES
 #
-[cacheplus]
+
+[cache]
 profile-desc="Optimized for streaming web video"
 ytdl-format=bestvideo[ext=mp4]+bestaudio
 hwdec=auto
-cache=8192
-cache-initial=8192
-cache-secs=20
-cache-pause
+cache=yes
+cache-secs=36000
+cache-backbuffer=10000000
+cache-default=10000000
+demuxer-max-bytes=2147483647
 
 [3d]
 profile-desc="3d"

@@ -3,6 +3,7 @@
 in=$1
 
 mime=$(file --mime-type $in | cut -d' ' -f 2)
+opener=xdg-open
 
 case $mime in
     inode/directory)    exec nautilus -w $in &>/dev/null &! ;;
@@ -14,5 +15,5 @@ case $mime in
     audio/*)            exec mpv -vo opengl $in &>/dev/null &! ;;
 
     application/vnd.ms-opentype|application/font-sfnt) exec gnome-font-viewer $in &>/dev/null ;;
-    *)                  echo "unknown: $mime"; exit 0  ;;
+    *)                  exec $opener $in &>/dev/null &! ;;
 esac

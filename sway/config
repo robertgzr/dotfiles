@@ -4,8 +4,10 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-### Variables
 #
+# Variables
+#
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -16,73 +18,91 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-set $menu rofi -modi 'drun,run,ssh' -show drun -drun-icon-theme Papirus -show-icons -theme paper
-
-set $kb0 "1:1:AT_Translated_Set_2_keyboard"
-set $pad0 "2:7:SynPS/2_Synaptics_TouchPad"
-set $pad1 "2:10:TPPS/2_Elan_TrackPoint"
+set $_menu rofi -drun-icon-theme Papirus -show-icons -theme paper
+set $menu $_menu -modi 'drun,run,ssh' -show drun
+set $wmenu $_menu -modi window -show window
 
 # font pango:Fira Code 12
 font pango:Fira Code 12
 
-### Output configuration
+show_marks yes
+
+#
+# Output configuration
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-#
+
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg /home/robert/.background fill
 
-output HDMI-A-1 resolution 2560x1440 position 0,0 scale 1
-output eDP-1 resolution 2560x1440 position 2560,0 scale 1
+# internal
+output 'Unknown 0x2036 0x00000000' mode 2560x1440@60.012001Hz position 2560,0
+# desk
+output 'Dell Inc. DELL U2518D 3C4YP87AAK3L' mode 2560x1440@59.951000Hz position 0,0 scale 1
+# tv
+output 'Goldstar Company Ltd LG TV 0x00009169' mode 1920x1080@60Hz position 5120,0
 
-### Input configuration
+#
+# Input configuration
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
 # keyboard (built-in)
-input $kb {
+input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us
-    xkb_variant ,macintosh
+    xkb_variant mac
+    xkb_options 'caps:hyper,shift:both_capslock_cancel,grp:alt_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
+    # repeat_delay 500
+    # repeat_rate 1
+}
+
+# keyboard (desk)
+input "65261:25700:Input_Club_Infinity_keyboard/QMK" {
+    xkb_layout us
+    xkb_variant mac
     xkb_options 'caps:hyper,shift:both_capslock_cancel,grp:alt_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
     # repeat_delay 500
     # repeat_rate 1
 }
 
 # trackpad
-input $pad0 {
+input "2:7:SynPS/2_Synaptics_TouchPad" {
       dwt enabled
       tap enabled
       scroll_method two_finger
       natural_scroll enabled
       accel_profile adaptive
-      pointer_accel 1
+      # pointer_accel 1
 }
 
 # trackpoint
-input $pad1 {
+input "2:10:TPPS/2_Elan_TrackPoint" {
       natural_scroll enabled
       accel_profile adaptive
-      pointer_accel 1
+      # pointer_accel 1
 }
 
-include binds.conf
-
 #
-# Status Bar:
+# Theme
 #
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    id bar-0
-    status_command exec /opt/bin/i3status-rs $HOME/.config/sway/i3status.toml
-    position top
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+set $text #FCFAF2
+set $text2 #BDC0BA
+set $bg #1C1C1C
+set $bg2 #434343
+set $main #0B346E
+set $main2 #005CAF
+set $urgent #DB4D6D
+set $urgent2 #CB1B45
+set $indicator #FAD689
+set $indicator2 #C18A26
 
-include /etc/sway/config.d/*
+client.focused $main2 $main $text $indicator $main
+client.focused_inactive $bg2 $bg $text2 $indicator2 $bg
+client.unfocused $bg2 $bg $text2 $indicator2 $bg
+client.urgent $urgent2 $urgent $text $indicator $urgent
+
+include config.d/*
+# include /etc/sway/config.d/*

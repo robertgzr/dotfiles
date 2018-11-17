@@ -12,7 +12,7 @@
     user = "s0548432"
 
 [core]
-    excludesfile = "~/.gitignore_global"
+    excludesfile = ~/.gitignore_global
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -28,7 +28,7 @@
     filemode = false
 
 [commit]
-    template = "~/.gitmessage"
+    template = ~/.gitmessage
 
 [alias]
     stp = status --porcelain --branch
@@ -151,6 +151,12 @@
     insteadOf = "https://gitlab.com/"
     pushInsteadOf = "gitlab:"
     pushInsteadOf = "git://gitlab.com/"
+
+[url "git@sr.ht:~robertgzr/"]
+    insteadOf = "srht:"
+    insteadOf = "https://git.sr.ht/~robertgzr/"
+    pushInsteadOf = "srht:"
+    pushInsteadOf = "git://git.sr.ht/~robertgzr/"
 
 [url "git://github.com/"]
     insteadOf = "github:"

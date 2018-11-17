@@ -1,14 +1,17 @@
 #!/bin/env zsh
 
-# prints the current directory (short/long format)
+local cdir=""
+local git_info=""
+
 __prompt::dir() 
 {
-    local p="${PWD/#$HOME/~}"
-    echo "${p} "
-    if (( ${#p} > 20 ))
-    then
-        echo "\0"
-    fi
+    unset cdir
+    cdir="${PWD/#$HOME/~}"
+    # if (( ${#cdir} > 20 ))
+    # then
+    #     cdir+="
+# "
+    # fi
 }
 
 # __prompt::venv()
@@ -39,13 +42,33 @@ __prompt::dir()
 #     fi
 # }
 
-autoload -Uz spectrum
+__prompt::git()
+{
+    unset git_info
+    if [[ ! -z "$(command -v porcelain)" ]]; then
+        git_info+=$(porcelain -zsh)
+        [[ ! -z $git_info ]] && git_info=" → $git_info"
+    fi
+}
 
-PROMPT='%{$bold$FG[014]%}$(__prompt::dir)%{$reset_color%}❱ '
-# RPROMPT='$(__prompt::venv)'
-RPROMPT=''
-#
-# git status on the right
-if [[ -f "$(command -v porcelain)" ]]; then
-    RPROMPT+='$(porcelain -fmt -zsh)'
-fi
+__prompt::mk()
+{
+    unset PROMPT
+    unset RPROMPT
+    unset line_break
+
+    __prompt::dir
+    __prompt::git
+
+    if (( $(( ${#cdir} + ${#git_info} )) > 20 )); then
+        line_break=$'\n'
+    fi
+
+    PROMPT='%{$bold$FG[014]%}${cdir}%{$reset_color%}${git_info} ${line_break}❱ '
+    RPROMPT=''
+}
+
+autoload -Uz spectrum
+autoload -Uz add-zsh-hook
+
+add-zsh-hook precmd __prompt::mk

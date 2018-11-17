@@ -6,9 +6,6 @@ export XDG_DATA_HOME="$HOME/Library"
 export X11PATH=/opt/X11
 # export PHPPATH=$(brew --prefix homebrew/php/php@5.4)
 export TEXPATH=/usr/local/texlive/2016basic
-# Go
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/devel/go
 # Python
 # export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 # export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.12/lib/python2.7/site-packages

@@ -36,7 +36,13 @@ source $ZDOTDIR/bindkeys.zsh
 [[ -f $(which rg &>/dev/null) ]] && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" .'
 #
 # source .env when entering a directory
-[[ -f $(which direnv) ]] && eval "$(direnv hook zsh)"
+# TODO: move this into zplug (there is a prezto module)
+[[ -f $(command -v direnv) ]] && eval "$(direnv hook zsh)"
 
 # setup: pyenv
-[[ -f $(which pyenv) ]] && eval "$(pyenv init -)"
+[[ -f $(command -v pyenv) ]] && eval "$(pyenv init -)"
+
+# setup: keychain
+[[ -f $(command -v keychain) ]] && eval "$(keychain -q --eval --agents ssh id_rsa)"
+
+# echo -n "\033]0;>_ ${USER}@${HOST}\007"

@@ -2,10 +2,8 @@
 
 # Path
 # go
-if [[ -f $(command -v go) ]]; then
-    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:
-fi
-
+export GOPATH=$HOME/devel/go
+export PATH=$GOPATH/bin:$PATH
 # rust
 export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
@@ -39,7 +37,7 @@ export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
 export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
 export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=$EDITOR
 
 # Python

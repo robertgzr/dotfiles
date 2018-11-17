@@ -106,3 +106,12 @@ client.urgent $urgent2 $urgent $text $indicator $urgent
 
 include config.d/*
 # include /etc/sway/config.d/*
+
+# notification daemon
+exec --no-startup-id mako \
+    --font=FiraGo:11 \
+    --default-timeout=2000 \
+    --padding=10 \
+    --background-color='$bg99' \
+    --text-color=$textff \
+    --border-color=$main99

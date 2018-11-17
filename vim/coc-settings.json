@@ -1,8 +1,8 @@
 {
-  "coc.preferences.snippets.enable": false,
+  "coc.preferences.snippets.enable": true,
   "coc.preferences.autoTrigger": "always",
-  "coc.preferences.triggerAfterInsertEnter": false,
-  "coc.preferences.minTriggerInputLength": 2,
+  "coc.preferences.triggerAfterInsertEnter": true,
+  "coc.preferences.minTriggerInputLength": 1,
   "coc.preferences.timeout": 2000,
   "coc.preferences.noselect": true,
   "coc.preferences.formatOnType": false,
@@ -17,8 +17,11 @@
   "coc.preferences.diagnostic.warningSign": "‼",
   "coc.preferences.diagnostic.infoSign": "i",
   "coc.preferences.diagnostic.hintSign": "☛",
-
   "coc.preferences.checkEmpty": false,
+
+  "pyls.enable": false,
+  "go.enable": false,
+
   "languageserver": {
     "golsp": {
       "command": "golsp",
@@ -27,5 +30,4 @@
       "enable": true
     }
   }
-
 }

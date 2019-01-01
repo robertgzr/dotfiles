@@ -1,13 +1,14 @@
 local common = require "common"
 
+local COLOR = common.colors.dim.white
+
 widget = {
     plugin = 'timer',
 
     cb = function()
-        local str = os.date('%a %d %b %R')
-        return {
-            {full_text = str, color = common.colors.normal.white},
-        }
+        local res = {}
+        common.fmt(res, '', os.date('%a %d %b %R'), COLOR)
+        return res
     end,
 
     event = function(t)

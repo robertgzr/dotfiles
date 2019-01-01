@@ -1,8 +1,8 @@
 local common = require "common"
 
 local WIFI_COLOR = common.colors.normal.green
-local WIRED_COLOR = common.colors.normal.white
-local VPN_COLOR = common.colors.normal.white
+local WIRED_COLOR = common.colors.normal.green
+local VPN_COLOR = common.colors.normal.green
 
 local NM_SD ='org.freedesktop.NetworkManager'
 local NM_OP ='/org/freedesktop/NetworkManager'
@@ -21,13 +21,25 @@ local wired = {
 }
 local vpn = {
     connected = false,
-    banner = '-'
+    banner = '--',
+    issue = nil,
 }
 
-local wifi_on = true
+local function parse_vpn_banner()
+    local o = common.execute_output('nmcli -t -f type,active,name connection', true)
+    for line in o:gmatch("[^\n]+") do
+        local net = {}
+        for f in line:gmatch('([^:]+)') do
+            table.insert(net, f)
+        end
+        if (net[1] == 'vpn') and (net[2] == 'yes') then
+            return net[3]
+        end
+    end
+end
 
 local function nmcli_parse()
-    local o = common.execute_output('nmcli -t -f TYPE,STATE,CONNECTION device', true)
+    local o = common.execute_output('nmcli -t -f type,state,connection device', true)
     for line in o:gmatch("[^\n]+") do
         local net = {len = 0}
         for f in line:gmatch('([^:]+)') do
@@ -40,50 +52,42 @@ local function nmcli_parse()
             if net[3] then wifi.ssid = net[3] end
         elseif net[1] == 'ethernet' then
             if net[2] == 'connected' then wired.connected = true end
+        elseif net[1] == 'tun' then
+            if net[2] == 'connected' then
+                vpn.connected = true
+                vpn.banner = parse_vpn_banner()
+            end
         end
     end
 end
 
-local function mk_wifi()
-    local res = {}
+local function mk_wifi(res)
+    local txt = ' --'
     if wifi.ready then
-        local txt = ''
         if not wifi.connected then 
             txt = '***'
         else
             txt = string.format('%s %3d', wifi.ssid, wifi.strength)
         end
-        res = {
-            full_text = 'WiFi[' .. txt .. ']',
-            color = WIFI_COLOR,
-        }
-    else
-        res = {
-            full_text = 'WiFi[x]',
-            color = WIFI_COLOR,
-        }
     end
-    return res
+    common.fmt(res, '', txt, WIFI_COLOR)
 end
-local function mk_wired()
-    local res = {}
+local function mk_wired(res)
     if wired.connected then
-        res = {
-            full_text = string.format('LAN:[connected]'),
-            color = WIRED_COLOR,
-        }
+        common.fmt(res, '', 'connected', WIRED_COLOR)
     end
-    return res
 end
-local function mk_vpn()
-    local res = {}
-    if vpn.connected then
-        res = {
-            full_text = string.format('VPN:[%s]', vpn.banner),
-            color = VPN_COLOR,
-        }
+local function mk_vpn(res)
+    local sym = ''
+    if vpn.connected or not (vpn.issue == nil) then
+        local msg = vpn.banner
+        if not (vpn.issue == nil) then
+            msg = vpn.issue
+        else
+            sym = ''
+        end
+        common.fmt(res, sym, msg, VPN_COLOR)
     end
-    return res
 end
 
 widget = {
@@ -137,7 +141,6 @@ widget = {
             nmcli_parse()
 
         elseif t.what == 'timeout' then
-            nmcli_parse()
             table.insert(res, {
                     full_text = '!',
                     color = common.colors.normal.white,
@@ -163,6 +166,7 @@ widget = {
                             elseif v[2] == '100' then 
                                 wifi.ready = true
                                 wifi.issue = nil
+                                nmcli_parse()
                             else 
                                 wifi.issue = { state = v[2] } 
                             end
@@ -183,11 +187,32 @@ widget = {
                 common.dump(t.parameters)
 
             elseif t.interface == NM_IF .. '.VPN.Connection' then
-                common.dump(t.parameters)
+                -- common.dump(t.parameters)
                 for k, v in pairs(t.parameters) do
-                    for k, v in pairs(v) do
-                        if v[1] == 'VPNState' then common.dump(v[2])
-                        elseif v[1] == 'Banner' then vpn.banner = v[2]
+                    if type(v) == 'table' then
+                        for k, v in pairs(v) do
+                            if v[1] == 'VpnState' then
+                                if v[2] == '0' then vpn.issue = '?'
+                                elseif v[2] == '1' then vpn.issue = 'preparing'
+                                elseif v[2] == '2' then vpn.issue = 'needs auth'
+                                elseif v[2] == '3' then vpn.issue = 'connecting'
+                                elseif v[2] == '4' then vpn.issue = 'getting ip'
+                                elseif v[2] == '5' then
+                                    vpn.issue = nil
+                                    vpn.connected = true
+                                    vpn.banner = parse_vpn_banner()
+
+                                elseif v[2] == '6' then
+                                    common.notify('vpn', 'failed to connect')
+
+                                elseif v[2] == '7' then
+                                    vpn.issue = nil
+                                    vpn.connected = false
+                                    vpn.banner = '--'
+                                end
+
+                            elseif v[1] == 'Banner' then vpn.banner = v[2]
+                            end
                         end
                     end
                 end
@@ -195,21 +220,23 @@ widget = {
             end
         end
 
-        table.insert(res, mk_vpn())
-        table.insert(res, mk_wifi())
-        table.insert(res, mk_wired())
+        mk_vpn(res)
+        mk_wifi(res)
+        mk_wired(res)
         return res
     end,
 
     event = function(t)
         if t.button == 1 then -- left
             -- noop
+
         elseif t.button == 2 then -- middle
-            -- TODO do a rescan of networks, launch rofi with available networks, choose one, connect
+            assert(os.execute(
+                'zsh -c "networkmanager_dmenu &!"'))
+
         elseif t.button == 3 then -- right
-            wifi_on = not wifi_on
-            if wifi_on then state = 'on' else state = 'off' end
-            assert(os.execute(string.format('nmcli radio wifi %s', state)))
+            -- noop
+
         end
     end,
 }

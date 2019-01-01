@@ -10,13 +10,8 @@ widget = {
     cb = function(t)
         local res = {}
         for k, v in pairs(t) do
-            table.insert(res, {
-                full_text = string.format('%s:[%.0f%%]',
-                    k, (1 - v.avail / v.total) * 100),
-                -- full_text = string.format('%s:[%.1f/%.1f]', k, v.avail/1000000000, v.total/1000000000),
-                instance = k,
-                color = COLOR,
-            })
+            common.fmt(res,'', string.format('%s %.0f%%', k, (1 - v.avail / v.total) * 100), COLOR)
+            res[2].instance = k
         end
         return res
     end,

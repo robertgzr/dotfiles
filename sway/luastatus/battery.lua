@@ -1,6 +1,6 @@
 local common = require "common"
 
-local show_rem_time = false
+local rem_time = {rem_h = 0, rem_m = 0}
 local discharging_color = common.colors.normal.yellow
 local charging_color = common.colors.normal.magenta
 local full_color = charging_color
@@ -12,36 +12,35 @@ widget = luastatus.require_plugin('battery-linux').widget{
     timer_opts = {period = 2},
     cb = function(t)
         local symbol = ({
-            Charging    = '↑',
-            Discharging = '↓',
+            Charging    = '',
+            Discharging = '',
         })[t.status] or ' '
         local rem_seg
         local color = ({
             Charging    = charging_color,
             Discharging = discharging_color,
         })[t.status] or full_color
-        local rem_h = -1
-        local rem_m = -1
         if t.rem_time then
-            rem_h = math.floor(t.rem_time)
-            rem_m = math.floor(60 * (t.rem_time - rem_h))
-            if show_rem_time then
-                rem_seg = {full_text = string.format('%2dh %02dm', rem_h, rem_m), color = color}
-            end
+            local rem_h = math.floor(t.rem_time)
+            local rem_m = math.floor(60 * (t.rem_time - rem_h))
+            rem_time = {rem_h = rem_h, rem_m = rem_m}
         end
+        common.dump(rem_time)
+        -- warn on low power
         if tonumber(t.capacity) <= critical then
             color = common.colors.normal.red
-            common.notify('battery', string.format('%s%% (%2dh%02dm) of battery remaining', t.capacity, rem_h, rem_m), common.notify_level_critical, 2000)
+            if t.status == Discharging then
+                symbol = ''
+            end
         end
-        return {
-            {full_text = string.format('BAT:[%s%3s]', symbol, t.capacity), color = color},
-            rem_seg,
-        }
+        local res = {}
+        common.fmt(res, symbol, string.format('%3s', t.capacity), color)
+        return res
     end,
 
     event = function(t)
         if t.button == 1 then -- left
-            show_rem_time = not show_rem_time
+            common.notify('battery', string.format('%dh %02dm remaining', rem_time.rem_h, rem_time.rem_m))
         end
     end,
 }

@@ -23,6 +23,11 @@ common.colors = {
     }
 }
 
+function common.fmt(res, symbol, text, fg, bg)
+  table.insert(res, {full_text = symbol, color = fg, background = bg})
+  table.insert(res, {full_text = text, color = fg, background = bg, separator = true})
+end
+
 function common.execute_output(cmd, raw)
   local f = assert(io.popen(cmd, 'r'))
   local s = assert(f:read('*a'))

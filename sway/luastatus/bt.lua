@@ -1,6 +1,6 @@
 local common = require "common"
 
-local BLUETOOTH_COLOR = common.colors.normal.blue
+local BLUETOOTH_COLOR = common.colors.dim.blue
 
 local BT_OP = '/org/bluez/hci0'
 local BT_IF = 'org.bluez.Adapter1'
@@ -15,10 +15,9 @@ local bluetooth = {
 
 local bt_on = true
 
-local function mk_bluetooth()
-    local res = {}
+local function mk_bluetooth(res)
+    local txt = '--'
     if bluetooth.ready then
-        local txt = ''
         if not bluetooth.connected then 
             txt = '***'
         else
@@ -28,17 +27,8 @@ local function mk_bluetooth()
                 txt = '<+>'
             end
         end
-        res = {
-            full_text = 'BLU[' .. txt .. ']',
-            color = BLUETOOTH_COLOR,
-        }
-    else
-        res = {
-            full_text = 'BLU:[x]',
-            color = BLUETOOTH_COLOR,
-        }
+        common.fmt(res, '', txt, BLUETOOTH_COLOR)
     end
-    return res
 end
 
 widget = {
@@ -88,7 +78,7 @@ widget = {
             end
         end
 
-        table.insert(res, mk_bluetooth())
+        mk_bluetooth(res)
         return res
     end,
 

@@ -2,6 +2,7 @@
 
 # Path
 export PATH=/opt/bin:$PATH
+export PATH=$PATH:/snap/bin
 
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_DATA_HOME=${HOME}/.local/share

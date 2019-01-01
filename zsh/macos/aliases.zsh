@@ -21,10 +21,6 @@ alias imgls='$HOME/.dotfiles/osx/imgls.sh'
 
 alias dockerup='eval $(docker-machine env default)'
 
-alias j='fasd_cd -d'
-alias jj='fasd_cd -d -i'
-alias vv='fzf-fasd-vim'
-
 alias ssh='TERM=xterm-256color ssh'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-dom-distiller &>/dev/null"
 alias htop="sudo htop"

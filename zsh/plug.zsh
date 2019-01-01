@@ -11,6 +11,8 @@ zplug "modules/terminal", from:prezto
 
 zplug "modules/completion", from:prezto
 zplug "modules/fasd", from:prezto
+    alias jj='fasd_cd -0'
+
 zplug "lib/spectrum", from:oh-my-zsh
 zplug "lib/termsupport", from:oh-my-zsh
 

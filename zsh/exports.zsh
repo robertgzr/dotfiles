@@ -62,3 +62,6 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # postgreSQL
 # export PGDATA=/usr/local/pgsql/data
+if [[ -f $(command -v sk) ]]; then
+    export SKIM_DEFAULT_COMMAND="rg --files || fd --type f || git ls-tree -r --name-only HEAD || find ."
+fi

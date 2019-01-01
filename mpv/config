@@ -5,12 +5,13 @@ autoload-files=no
 #
 # Video
 #
+# vo=opengl-cb
 # opengl-pbo=yes
 # opengl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
 # deband
 # icc-profile-auto
 # icc-contrast=10000
-# video-sync=display-resample
+video-sync=display-resample
 # vo=caca
 # null, opengl, opengl-hq, vaapi
 framedrop=vo
@@ -32,15 +33,15 @@ volume-max=200
 # Subtitles
 #
 # slang=eng,en,ger,de
-sub-font='Cronos Pro Semibold Display'
+# sub-font='Cronos Pro Semibold Display'
 # sub-font='Rosario Bold'
-sub-border-size=2
+# sub-border-size=2
 # sub-font-size=45
-sub-margin-y=50
-sub-auto=fuzzy
-sub-spacing=1
-sub-ass-force-style=Kerning=yes
-sub-auto=all
+# sub-margin-y=50
+# sub-auto=fuzzy
+# sub-spacing=1
+# sub-ass-force-style=Kerning=yes
+# sub-auto=all
 
 #
 # OSD
@@ -59,8 +60,10 @@ osd-fractions=yes
 #
 # Misc.
 #
-screenshot-template=~/Pictures/Screenshots/mpv/mpv_screenshot_%tY-%tm-%td__%tH-%tM-%tS
-screenshot-format=png
+screenshot-directory=~/Pictures/screenshots/mpv
+screenshot-template='%tY%tm%td-%tH%tM%tS-%F-%p'
+screenshot-format=jpg
+screenshot-jpeg-quality=100
 user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
 
 #

@@ -31,8 +31,9 @@ call plug#begin('~/.vim/plugged')
         Plug 'junegunn/fzf.vim'
 
     Plug 'justinmk/vim-dirvish' " folder browser
-    Plug 'easymotion/vim-easymotion' " sophisiticated vim motions
+    " Plug 'easymotion/vim-easymotion' " sophisiticated vim motions
     Plug 'bling/vim-bufferline' " needed to put buffers into tabline
+    Plug 'justinmk/vim-sneak' " powerful missing vim motions
 
 " Misc
     Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' } " auto-align code
@@ -57,15 +58,17 @@ call plug#begin('~/.vim/plugged')
     " Plug 'hkupty/nvimux', { 'branch': 'lua' }
     " Plug 'christoomey/vim-tmux-navigator'
     " Plug 'edkolev/tmuxline.vim'
-    Plug 'jceb/vim-orgmode', { 'for': 'org' }
+    Plug 'jceb/vim-orgmode'
       \ | Plug 'tpope/vim-speeddating'
       \ | Plug 'vim-scripts/utl.vim'
     " Plug 'spolu/dwm.vim'
+    Plug 'robertgzr/vim-orgdown'
 
 " Languages
     Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
     Plug 'lervag/vimtex', {'for': ['latex', 'tex']}
+    Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 
     " multi-language support with lazy loading
     " NOTE: put language specific plugs before this to avoid conflicsts

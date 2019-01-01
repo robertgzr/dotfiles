@@ -90,6 +90,8 @@ nnoremap <Leader>ll :llist<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <Leader>qq <C-\><C-n>:bdelete!<CR>
 
+nmap <silent> gl <Plug>(OrgHyperlinkFollow)
+
 if exists(':GitGutterToggle')
   nmap <F1> :GitGutterToggle<CR>
   nmap <F2> :GitGutterLineHighlightsToggle<CR>

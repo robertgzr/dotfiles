@@ -84,3 +84,11 @@ augroup END
 
 " Quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" orgmode
+let g:org_todo_keywords = ['TODO', 'WIP', 'DONE', 'FEEDBACK']
+let g:org_agenda_files = [ '~/org' ]
+
+let g:utl_cfg_hdl_scm_http = 'silent !xdg-open %u'
+
+let g:sneak#label = 1

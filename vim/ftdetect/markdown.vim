@@ -1,5 +1,6 @@
 source ~/.vim/user/writing.vim
 
+let g:polyglot_disabled = ['markdown']
 let g:markdown_syntax_conceal = 1
 
 if exists('g:loaded_lexima')

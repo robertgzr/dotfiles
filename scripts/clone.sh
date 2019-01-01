@@ -1,4 +1,14 @@
 #!/bin/env zsh
+#
+# To use this create a directory that you want to use for git repos, e.g. $HOME/git and copy/symlink this script into it.
+# Then you can use it like this:
+#
+# ./clone github.com/robertgzr/dotfiles
+# ./clone https://bitbucket.org/foo/bar
+#
+# If you don't have gitconfig set up like I have (using aliases for github/bitbucket ssh access) this won't really work
+
+TEMP=`mktemp -d`
 
 main() {
     URL=$1
@@ -8,49 +18,55 @@ main() {
     fi
     URL=${URL//(http|https):\/\//}
 
-    make_dirs $URL
-    clone $URL
+    clone $URL "$TEMP/$URL" || fail
+    install -d `dirname $URL` || fail
+    mv "$TEMP/$URL" `dirname $URL` || fail
+    rm -rf "$TEMP" || fail
 }
 
 make_dirs() {
-    URL=$1
+    local url=$1
 
-    if [[ -d $URL ]]
+    if [[ -d $url ]]
     then
+        echo "exists: $url"
         return
     fi
 
-    confirm "create $URL"
-    mkdir -p "$URL"
+    confirm "create $url"
+    mkdir -p "$url"
 }
 
 clone() {
-    in=$1
-    URL=( ${(ps:/:)in} )
+    local in=$1
+    local to=$2
+    local url=( ${(ps:/:)in} )
 
-    case $URL[1] in
-        github.com ) ssh_clone gh $in;;
-        gitlab.com ) ssh_clone gl $in;;
-        bitbucket.org ) ssh_clone bb $in;;
-        * ) http_clone ${URL// /\/};;
+    case $url[1] in
+        github.com ) ssh_clone gh $in $to;;
+        gitlab.com ) ssh_clone gl $in $to;;
+        bitbucket.org ) ssh_clone bb $in $to;;
+        * ) http_clone ${url// /\/} $to;;
     esac
 }
 
 ssh_clone() {
-    prefix=$1
-    URL=( ${(ps:/:)2} )
+    local prefix=$1
+    local to=$3
+    local url=( ${(ps:/:)2} )
+    local ssh_url="$prefix:$url[2]/$url[3]"
 
-    ssh_url="$prefix:$URL[2]/$URL[3]"
-    confirm "clone $ssh_url"
-    git clone $ssh_url "./${URL// //}"
+    # confirm "clone $ssh_url"
+    git clone $ssh_url $to
 }
 
 http_clone() {
-    URL=$1
+    local url=$1
+    local to=$2
+    local http_url="https://$URL"
 
-    http_url="https://$URL"
-    confirm "clone $http_url"
-    git clone $GIT_FLAGS $http_url "./$URL"
+    # confirm "clone $http_url"
+    git clone $GIT_FLAGS $http_url $to
 }
 
 fail() {

@@ -12,7 +12,7 @@ widget = {
     cb = function(t)
         if t.mute then
             return {
-                {full_text = '', color = common.colors.dim.red},
+                {full_text = '', color = common.colors.normal.red},
             }
         end
         local percent = (t.cur / t.norm) * 100

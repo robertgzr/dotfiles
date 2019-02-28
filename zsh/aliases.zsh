@@ -84,3 +84,5 @@ if command -v tmux >/dev/null; then
     alias tat='tmux attach -t'
     alias tns='tmux new-session -s'
 fi
+
+alias srv='python -m SimpleHTTPServer'

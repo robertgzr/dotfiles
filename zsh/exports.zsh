@@ -72,3 +72,7 @@ fi
 if command -v sk &>/dev/null; then
     export SKIM_DEFAULT_COMMAND="rg --files || fd --type f || git ls-tree -r --name-only HEAD || find ."
 fi
+
+if command -v hub &>/dev/null; then
+    export GITHUB_TOKEN=$(cat $DOT_DIR/GH_TOKEN_HUB)
+fi

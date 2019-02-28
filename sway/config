@@ -4,10 +4,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-#
-# Variables
-#
-
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -19,29 +15,24 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 set $_menu /opt/bin/rofi
-set $menu $_menu -terminal $term -modi 'drun,run,ssh' -show drun
+set $menu $_menu -terminal $term -show drun
 set $wmenu $_menu -modi window -show window
 
 # font pango:Fira Code 12
 font pango:Iosevka Semibold, Fira Code, Font Awesome, Noto Sans 13
 
-show_marks yes
-
 #
 # Output configuration
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+# mostly done by kanshi
+output eDP-1 enable
+output HDMI-A-1 enable
 
+show_marks yes
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg /home/robert/.background fill
-
-# internal
-# output eDP-1 res 2560x1440 pos 0,0
-# desk
-# output 'Dell Inc. DELL U2518D 3C4YP87AAK3L' mode 2560x1440@59.951000Hz position 0,0 scale 1
-# tv
-# output 'Goldstar Company Ltd LG TV 0x00009169' mode 1920x1080@60Hz position 5120,0
 
 #
 # Input configuration
@@ -51,26 +42,27 @@ output * bg /home/robert/.background fill
 
 # keyboard (built-in)
 input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout us
-    xkb_variant mac
-    xkb_options 'caps:hyper,shift:both_capslock_cancel,grp:alt_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
-    # repeat_delay 500
-    # repeat_rate 1
+    xkb_layout us,de
+    xkb_variant mac,
+    xkb_options 'caps:hyper,grp:win_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
+    # repeat_delay 400
+    # repeat_rate 100
 }
 
 # keyboard (desk)
 input "65261:25700:Input_Club_Infinity_keyboard/QMK" {
-    xkb_layout us
-    xkb_variant mac
-    xkb_options 'caps:hyper,shift:both_capslock_cancel,grp:alt_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
-    # repeat_delay 500
-    # repeat_rate 1
+    xkb_layout us,de
+    xkb_variant mac,
+    xkb_options 'caps:hyper,grp:win_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
+    # repeat_delay 400
+    # repeat_rate 100
 }
 
 # trackpad
 input "2:7:SynPS/2_Synaptics_TouchPad" {
       dwt enabled
       tap enabled
+      click_method clickfinger
       scroll_method two_finger
       natural_scroll enabled
       accel_profile adaptive
@@ -85,50 +77,30 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
       # pointer_accel 1
 }
 
-# apple trackpad
-input "1452:782:Robert_Günzler’s_Trackpad" {
-      tap enabled
-      scroll_method two_finger
-      natural_scroll enabled
+# trackball
+input "1149:8264:Primax_Kensington_Eagle_Trackball" {
       accel_profile adaptive
-      # pointer_accel 1
 }
 
-input "10429:148:XP-PEN_STAR_G640_Mouse" {
-    # disable the device
-    events disabled
-
-    # map_to_output HDMI-A-1
-    scroll_method on_button_down
-    scroll_button 331
-    click_method clickfinger
-    middle_emulation disabled
-    accel_profile flat
-    drag enabled
-    tap enabled
-}
-set $pen "10429:148:XP-PEN_STAR_G640_Pen"
-# 331 lower pen button
-# 332 upper pen button
+set $pen "10429:148:XP-PEN_STAR_G640_Mouse"
 input $pen {
-    # events disabled
-
-    scroll_method on_button_down
-    scroll_button 331
-    click_method clickfinger
-    middle_emulation disabled
+    # middle_emulation disabled
     accel_profile flat
     drag enabled
     tap enabled
+    # 331 lower pen button
+    # 332 upper pen button
+    # scroll_method on_button_down
+    # scroll_button 274
+    # click_method clickfinger
 }
-
-bindsym $mod+Mod1+Shift+o input $pen map_from_region 0.0x0.0 1.0x1.0
-bindsym $mod+Mod1+o input $pen map_from_region 0.0x0.0 0.3x0.3; input $pen map_to_output HDMI-A-1
+input "10429:148:XP-PEN_STAR_G640" {
+    accel_profile flat
+}
 
 #
 # Theme
 #
-
 set $text #FCFAF2
 set $text2 #BDC0BA
 set $bg #1C1C1Cf9
@@ -139,7 +111,6 @@ set $urgent #DB4D6D
 set $urgent2 #CB1B45
 set $indicator #FAD689
 set $indicator2 #C18A26
-
 client.focused $main2 $main $text $indicator $main
 client.focused_inactive $bg2 $bg $text2 $indicator2 $bg
 client.unfocused $bg2 $bg $text2 $indicator2 $bg
@@ -147,16 +118,3 @@ client.urgent $urgent2 $urgent $text $indicator $urgent
 
 include config.d/*
 # include /etc/sway/config.d/*
-
-exec --no-startup-id systemctl --user start sway-session.target
-# notification daemon
-# exec --no-startup-id budgie-polkit-dialog
-# exec --no-startup-id mako \
-#    --font=FiraGo:11 \
-#    --default-timeout=2000 \
-#    --width=600 \
-#    --height=200 \
-#    --padding=10 \
-#    --background-color='$bg99' \
-#    --text-color=$textff \
-#    --border-color=$main99

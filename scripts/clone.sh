@@ -8,7 +8,7 @@
 #
 # If you don't have gitconfig set up like I have (using aliases for github/bitbucket ssh access) this won't really work
 
-TEMP=`mktemp -d`
+TEMP=`mktemp -d -p /tmp clone.XXXXXXXXXX`
 
 main() {
     URL=$1
@@ -46,7 +46,7 @@ clone() {
         github.com ) ssh_clone gh $in $to;;
         gitlab.com ) ssh_clone gl $in $to;;
         bitbucket.org ) ssh_clone bb $in $to;;
-        * ) http_clone ${url// /\/} $to;;
+        * ) http_clone "${url// /\/}" $to;;
     esac
 }
 
@@ -82,4 +82,15 @@ confirm() {
     fi
 }
 
-main $@
+case $1 in
+    -h|--help)
+        echo "usage: $0 <url>"
+        echo ""
+        echo "url\texample.com/user/repo"
+        echo "\thttp[s]://example.com/user/repo"
+        exit 0
+        ;;
+    *)
+        main $@
+        ;;
+esac

@@ -3,11 +3,8 @@ source ~/.vim/general.vim
 source ~/.vim/plug.vim
 
 " source more vim settings
-source ~/.vim/user/lint.vim
 source ~/.vim/user/completion.vim
 source ~/.vim/user/binds.vim
-source ~/.vim/user/indent.vim
-source ~/.vim/user/polyglot.vim
 source ~/.vim/user/line.vim
 source ~/.vim/user/user.vim
 source ~/.vim/user/hard.vim
@@ -49,4 +46,5 @@ augroup Init
     au VimEnter * command! NumberToggle call numbertoggle#switch()
     au VimEnter * nmap <Leader>nt :call numbertoggle#switch()<CR>
     au VimEnter * command! Alternate call alternate#alternate()
+    au VimEnter * command! Retab :call Retab()<CR>
 augroup END

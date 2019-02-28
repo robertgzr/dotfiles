@@ -62,3 +62,10 @@ endif
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
+
+set ts=8 sts=0 et sw=4 sta
+" filetype plugin indent on
+function! Retab()
+    setlocal ts=8 sts=0 et sw=4 sta
+    retab!
+endfunction

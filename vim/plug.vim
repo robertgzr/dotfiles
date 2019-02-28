@@ -8,7 +8,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Core
-    Plug 'tpope/vim-fugitive' " integration
+    " Plug 'tpope/vim-fugitive' " integration
     Plug 'airblade/vim-gitgutter' " line status next to line nums
     Plug 'tpope/vim-commentary' " auto-comment using `gcc`
     Plug 'cohama/lexima.vim' " auto-close parens, brackets, etc.
@@ -47,10 +47,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'majutsushi/tagbar', { 'on': ['Tagbar', 'TagbarToggle'] } " code minimap via ctags
     " Plug 'chiel92/vim-autoformat', { 'on': 'Autoformat' } " Format code with one button press!
     " Plug 'tweekmonster/braceless.vim' " text objects and folding for braceless languages
-    Plug 'mattn/emmet-vim', { 'for': ['html', 'markdown', 'vue'] } " super-fast HTML editing
+    Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] } " super-fast HTML editing
     " Plug 'tpope/vim-ragtag', { 'for': ['html', 'xml', 'markdown'] } " auto-close HTML/XML tags
     Plug 'editorconfig/editorconfig-vim'
     " Plug 'tweekmonster/nvimdev.nvim'
+    Plug 'rhysd/conflict-marker.vim'
 
 " WhoaDude
     Plug 'lilydjwg/colorizer' " set background of colour to that colour
@@ -65,7 +66,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'robertgzr/vim-orgdown'
 
 " Languages
-    Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'latex', 'tex' ] }
     Plug 'lervag/vimtex', {'for': ['latex', 'tex']}
     Plug 'plasticboy/vim-markdown', {'for': 'markdown'}

@@ -20,6 +20,7 @@ local function refresh()
     common.notify(nil, 'refreshing toggl timer')
     local diff = timer_duration()
     if not diff then
+        toggl = 0
         return
     end
     toggl = unix_time() + diff

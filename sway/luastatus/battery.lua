@@ -5,6 +5,7 @@ local discharging_color = common.colors.normal.yellow
 local charging_color = common.colors.normal.magenta
 local full_color = charging_color
 
+local full = 95
 local critical = 10
 
 widget = luastatus.require_plugin('battery-linux').widget{
@@ -26,12 +27,13 @@ widget = luastatus.require_plugin('battery-linux').widget{
             rem_time = {rem_h = rem_h, rem_m = rem_m}
         end
         common.dump(rem_time)
+        if tonumber(t.capacity) >= full then
+            symbol = ''
+        end
         -- warn on low power
         if tonumber(t.capacity) <= critical then
             color = common.colors.normal.red
-            if t.status == Discharging then
-                symbol = ''
-            end
+            symbol = ''
         end
         local res = {}
         common.fmt(res, symbol, string.format('%3s', t.capacity), color)

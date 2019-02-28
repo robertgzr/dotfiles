@@ -124,12 +124,12 @@ function wego {
 }
 
 function na {
-    local CAT_PROG=(less)
-    local LS_PROG=(ls)
+    local CAT_PROG=${CAT_PROG:-less}
+    local LS_PROG=${LS_PROG:-ls -la}
 
     local o=$1
-    if [[ -f $o ]]; then $CAT_PROG[@] $o; fi;
-    if [[ -d $o ]]; then $LS_PROG[@] $o; fi;
+    [[ -f $o ]] && sh -c "$CAT_PROG $o"
+    [[ -d $o ]] && sh -c "$LS_PROG $o"
 }
 
 function gofat {

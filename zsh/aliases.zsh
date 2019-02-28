@@ -9,7 +9,7 @@ alias lsd='ls -ld */'
 alias l='ll'
 
 # exa can replace ls if you have it
-if [[ -f $(command -v exa) ]]; then
+if command -v exa >/dev/null; then
     alias exa_='/usr/local/bin/exa'
     alias exa='exa -lgHh --git --group-directories-first'
     alias exaa='exa -a@'
@@ -18,7 +18,7 @@ if [[ -f $(command -v exa) ]]; then
     alias l='exa'
 fi
 
-if [[ -f $(command -v bat) ]]; then
+if command -v bat >/dev/null; then
     alias cat_=$(command -v cat)
     alias cat=$(command -v bat)
 fi
@@ -67,7 +67,7 @@ alias saldl="noglob saldl"
 alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
 alias playme="play --buffer 318 -e mu -v 0.6 -d lowpass 3000"
 
-if [[ -f $(command -v nvim) ]]; then
+if command -v nvim >/dev/null; then
     alias vim_="$(command -v vim)"
     alias vim="$(command -v nvim)"
 
@@ -78,7 +78,7 @@ if [[ -f $(command -v nvim) ]]; then
     alias vimdiff='nvim -d'
 fi
 
-if [[ -f $(command -v tmux) ]]; then
+if command -v tmux >/dev/null; then
     alias ta='tmux attach'
     alias tls='tmux ls'
     alias tat='tmux attach -t'

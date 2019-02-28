@@ -62,6 +62,11 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # postgreSQL
 # export PGDATA=/usr/local/pgsql/data
-if [[ -f $(command -v sk) ]]; then
+
+if command -v rg &>/dev/null; then
+    export RIPGREP_CONFIG_PATH=$DOT_DIR/ripgreprc
+fi
+
+if command -v sk &>/dev/null; then
     export SKIM_DEFAULT_COMMAND="rg --files || fd --type f || git ls-tree -r --name-only HEAD || find ."
 fi

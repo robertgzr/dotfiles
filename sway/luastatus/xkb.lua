@@ -1,19 +1,30 @@
 local common = require "common"
 
+local ICON = ''
+
+local function query(kb)
+    return common.execute_output(string.format('swaymsg -t get_inputs | jq -r \'[ .[] | select(.identifier=="%s" and .type=="keyboard") ] | unique_by(.identifier) | .[].xkb_active_layout_name\'', kb))
+end
+
 widget = {
-    plugin = 'xkb',
+    plugin = 'timer',
+    opts = {
+        period = 1,
+    },
+
     cb = function(t)
-        print(t.name)
-        if t.name then
-            local base_layout = t.name:match('[^(]+')
-            if base_layout == 'gb' or base_layout == 'us' then
-                return
-                -- return {full_text = '[En]', color = common.colors.dim.white}
-            else
-                return {full_text = '[' .. base_layout:sub(1, 1):upper() .. base_layout:sub(2) .. ']'}
+        local res = {}
+        local layouts = {
+            query("## KBD 1 ##"),
+            query("## KDB 2 ##"),
+        }
+        for _, layout in pairs(layouts) do
+            common.dump(layout)
+            if not (layout == '') and not (layout == 'English (Macintosh)') then
+                common.fmt(res, ICON, layout:lower(), common.colors.dim.white)
+                return res
             end
-        else
-            return {full_text = '[? ID ' .. t.id .. ']'}
         end
+        return res
     end,
 }

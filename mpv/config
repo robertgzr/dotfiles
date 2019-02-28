@@ -65,6 +65,7 @@ screenshot-template='%tY%tm%td-%tH%tM%tS-%F-%p'
 screenshot-format=jpg
 screenshot-jpeg-quality=100
 user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
+ytdl-format=bestvideo+bestaudio
 
 #
 # PROFILES

@@ -1,7 +1,12 @@
 " turn off bufferline
+set showtabline=2
 let g:bufferline_echo = 0
+let g:bufferline_show_bufnr = 0
+" let g:bufferline_separator = ' '
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
+" let g:bufferline_unamed_buffer = '[no name]'
+let g:bufferline_fname_mod = ':t:s?^$?[no name]?'
 " lightline
 let g:lightline = {}
 let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
@@ -19,11 +24,14 @@ let g:lightline.active = {
 \   ]
 \ }
 let g:lightline.tabline = {
-\   'left': [ ['bufferline'] ],
-\   'right': [ ['close'] ],
+\   'left': [['tabs', 'bufferline']],
+\   'right': [['dir']],
 \ }
+let g:lightline.tab = {
+\   'active': ['tabnum'], 'inactive': ['tabnum'] }
 let g:lightline.component = {
 \   'lineinfo': ' '.'%l:%v',
+\   'dir': expand('%p'),
 \ }
 let g:lightline.component_function = {
 \   'modified': 'LightLineModified',
@@ -185,5 +193,11 @@ endfunction
 
 function! LightLineBufferline()
   call bufferline#refresh_status()
-  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after ]
+  let l:buffers = [
+  \ g:bufferline_status_info.before,
+  \ g:bufferline_status_info.current,
+  \ g:bufferline_status_info.after
+  \ ]
+  call map(l:buffers, 'trim(v:val)')
+  return l:buffers
 endfunction

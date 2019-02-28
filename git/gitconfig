@@ -18,6 +18,9 @@
     precomposeunicode = false
     filemode = false
 
+[init]
+    templateDir = ~/.dotfiles/git/templates
+
 [commit]
     template = ~/.gitmessage
 

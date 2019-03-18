@@ -44,7 +44,7 @@ output * bg /home/robert/.background fill
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us,de
     xkb_variant mac,
-    xkb_options 'caps:hyper,grp:win_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
+    xkb_options 'caps:hyper,grp:lctrl_lwin_toggle,eurosign:5,lvl3:ralt_switch_multikey'
     # repeat_delay 400
     # repeat_rate 100
 }
@@ -53,7 +53,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 input "65261:25700:Input_Club_Infinity_keyboard/QMK" {
     xkb_layout us,de
     xkb_variant mac,
-    xkb_options 'caps:hyper,grp:win_space_toggle,eurosign:5,lvl3:ralt_switch_multikey'
+    xkb_options 'caps:hyper,grp:lctrl_lwin_toggle,eurosign:5,lvl3:ralt_switch_multikey'
     # repeat_delay 400
     # repeat_rate 100
 }
@@ -111,6 +111,15 @@ set $urgent #DB4D6D
 set $urgent2 #CB1B45
 set $indicator #FAD689
 set $indicator2 #C18A26
+
+include $HOME/.config/wpg/formats/colors-sway
+set $text $color15
+set $text $color8
+set $bg $color0
+set $bg2 $color8
+set $main $color9
+set $main2 $color8
+
 client.focused $main2 $main $text $indicator $main
 client.focused_inactive $bg2 $bg $text2 $indicator2 $bg
 client.unfocused $bg2 $bg $text2 $indicator2 $bg

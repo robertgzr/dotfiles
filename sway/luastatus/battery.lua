@@ -15,7 +15,8 @@ widget = luastatus.require_plugin('battery-linux').widget{
         local symbol = ({
             Charging    = '',
             Discharging = '',
-        })[t.status] or ' '
+            Full        = '',
+        })[t.status] or '…'
         local rem_seg
         local color = ({
             Charging    = charging_color,
@@ -26,14 +27,15 @@ widget = luastatus.require_plugin('battery-linux').widget{
             local rem_m = math.floor(60 * (t.rem_time - rem_h))
             rem_time = {rem_h = rem_h, rem_m = rem_m}
         end
-        common.dump(rem_time)
-        if tonumber(t.capacity) >= full then
-            symbol = ''
-        end
-        -- warn on low power
-        if tonumber(t.capacity) <= critical then
-            color = common.colors.normal.red
-            symbol = ''
+        if (t.status == Discharging) then
+            if tonumber(t.capacity) >= full then
+                symbol = ''
+            end
+            -- warn on low power
+            if tonumber(t.capacity) <= critical then
+                color = common.colors.normal.red
+                symbol = ''
+            end
         end
         local res = {}
         common.fmt(res, symbol, string.format('%3s', t.capacity), color)

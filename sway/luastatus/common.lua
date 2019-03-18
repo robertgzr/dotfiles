@@ -1,3 +1,6 @@
+package.path = package.path .. ";" .. os.getenv('HOME') .. '/.cache/wal/luastatus.lua'
+local wal = require "luastatus"
+
 local common = {}
 
 common.colors = {
@@ -23,9 +26,13 @@ common.colors = {
     }
 }
 
-function common.fmt(res, symbol, text, fg, bg)
-  table.insert(res, {full_text = symbol, color = fg, background = bg})
-  table.insert(res, {full_text = text, color = fg, background = bg, separator = true})
+if wal.colors then
+  common.colors = wal.colors
+end
+
+function common.fmt(res, symbol, text, fg, bg, instance)
+  table.insert(res, {full_text = symbol, color = fg, background = bg, instance = instance})
+  table.insert(res, {full_text = text, color = fg, background = bg, instance = instance, separator = true})
 end
 
 function common.execute_output(cmd, raw)
@@ -75,6 +82,18 @@ function common.dump (o)
   else
     print(tostring(o))
   end
+end
+
+function common.split(input, at)
+  local parsed = {}
+  local m = '([^\n\r]+)'
+  if at then
+    m = string.format('([^%s]+)', at)
+  end
+  for f in input:gmatch(m) do
+      table.insert(parsed, f)
+  end
+  return parsed
 end
 
 return common

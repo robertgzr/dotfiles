@@ -17,7 +17,7 @@ local function unix_time()
     return tonumber(os.date('%s'))
 end
 local function refresh()
-    common.notify(nil, 'refreshing toggl timer')
+    -- common.notify(nil, 'refreshing toggl timer')
     local diff = timer_duration()
     if not diff then
         toggl = 0

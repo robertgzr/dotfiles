@@ -1,0 +1,28 @@
+[buildPlans.iosevka-r]
+family = "Iosevka R"
+design = [
+	"termlig",
+	"ss05",
+	"v-three-flattop",
+	"v-eszet-traditional",
+	"v-tilde-low",
+	"v-dollar-opencap",
+	"v-one-serifed",
+	"v-zero-slashed",
+	"v-asterisk-hexlow",
+]
+
+[buildPlans.iosevka-slab-r]
+family = "Iosevka Slab R"
+design = [
+	"slab",
+	"termlig",
+	"ss05",
+	"v-three-flattop",
+	"v-eszet-traditional",
+	"v-tilde-low",
+	"v-dollar-opencap",
+	"v-one-serifed",
+	"v-zero-slashed",
+	"v-asterisk-hexlow",
+]

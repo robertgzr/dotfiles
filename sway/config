@@ -19,7 +19,7 @@ set $menu $_menu -terminal $term -show drun
 set $wmenu $_menu -modi window -show window
 
 # font pango:Fira Code 12
-font pango:Iosevka Semibold, Fira Code, Font Awesome, Noto Sans 13
+font pango:Iosevka R Medium, Noto Sans, Font Awesome 13
 
 #
 # Output configuration

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -x
+
+# [[ -n $WAYLAND_DISPLAY ]] && export GDK_BACKEND=wayland 
+[[ -z $WAYLAND_DISPLAY ]] && export GDK_BACKEND= 
+exec /opt/firefox-nightly/firefox ${@}

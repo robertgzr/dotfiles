@@ -1,0 +1,105 @@
+#!/bin/bash
+
+_todo_files=(".todo.md" ".org.md")
+_todo_file=""
+
+has_todo_file() {
+    cwd=`pwd`
+    for f in ${_todo_files[@]}; do
+      [[ -f "$cwd/$f" ]] && _todo_file="$cwd/$f" && return 0
+    done
+    return 1
+}
+
+print_org() {
+    awk '
+function red(s) {
+    return "\033[1;31m" s "\033[0m"
+}
+function green(s) {
+    return "\033[1;32m" s "\033[0m"
+}
+function blue(s) {
+    return "\033[1;34m" s "\033[0m"
+}
+{
+    if ($1 ~ /^#+/) 
+        block=$0
+
+    if ($1 ~ /^(-|*)/) {
+        # gsub(/^[ \t]+/,"",$0)
+        match($0, /(TODO|WIP|WAITING|DONE)/, arr)
+        if (arr[1] != "") {
+            tasks[block][arr[1]][i++]=$0
+        }
+    }
+}
+END { 
+    for (b in tasks) {
+        print b
+        for (status in tasks[b]) {
+            for (t in tasks[b][status]) {
+                txt = tasks[b][status][t]
+                txt = gensub(/(TODO)/, red("\\1"), "1", txt)
+                txt = gensub(/(WIP)/, blue("\\1"), "1", txt)
+                txt = gensub(/(DONE)/, green("\\1"), "1", txt)
+                print txt
+            }
+        }
+        printf "\n"
+    }
+}' $1
+}
+
+print_shell_hook() {
+    case $1 in
+        zsh)
+            echo "_orgdown_hook() {$0;}
+typeset -ag precmd_functions;
+if [[ -z \${precmd_functions[(r)_orgdown_hook]} ]]; then
+  precmd_functions+=_orgdown_hook;
+fi"
+            ;;
+        cd)
+            echo "cd() { `command cd` \$@ && $0; }"
+            ;;
+        -h|--help|*)
+            echo "usage: todo hook <integration>"
+            echo ""
+            echo "supported integrations:"
+            echo " - zsh: run todo as a precmd hook"
+            echo "   (this can get quite annoying when you're in a direcory that has a todo file)"
+            echo " - cd: run todo as a post-cd hook"
+            echo ""
+            exit 1
+            ;;
+    esac
+}
+
+case "$1" in
+    hook)
+        shift
+        print_shell_hook "$1"
+        ;;
+    -h|--help)
+        echo "usage: todo [-r] [hook <integration>]"
+        echo "A quite stupid todo/agenda script that reminds you of things you need to do"
+        echo ""
+        echo " -r, --recursive    walk the file tree, searching for todos"
+        echo " <integration>      shell integration, you should eval this"
+        echo ""
+        exit 0
+        ;;
+    -r|--recursive|-R)
+        while read FILE; do
+          hr "todo [$FILE]"
+          print_org $FILE;
+        done < <(rg --files ${_todo_files[@]/#/-g })
+        ;;
+    *)
+        has_todo_file && {
+          hr "todo"
+          print_org $_todo_file
+        }
+        ;;
+esac

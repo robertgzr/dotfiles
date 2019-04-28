@@ -1,0 +1,90 @@
+#!/bin/bash
+
+bail() {
+    exec rofi -e "$@"
+    exit 1
+}
+rofi() {
+    exec rofi -dmenu -p automation -i "$@"
+}
+declare -A ACTIONS
+register_action() {
+    id="${1}"
+    action="${2}"
+    ACTIONS["$id"]="$action"
+    echo "+ register \"$id\""
+}
+run_action() {
+    id="${1}"
+    [[ -z $id ]] && return
+    action="${ACTIONS[$id]}"
+    [[ -z $action ]] && return
+    bash -c "set -ex -o pipefail; ${action}"
+}
+select_action() {
+    for a in "${!ACTIONS[@]}"; do echo "$a"; done | rofi
+}
+
+# ===== ACTIONS ===== #
+
+register_action "[sway] move parent container to workspace" \
+'f() {
+    options=`swaymsg -t get_tree | jq -r ".. | select(.type? == \"workspace\") | .name"`
+    o=`for o in "${options[@]}"; do echo "$o"; done | rofi -dmenu -p automation -i`
+    [[ -z $o ]] && return
+    [[ $o =~ ^[0-9]+$ ]] && o="\$ws$o"
+    sway focus parent
+    sway move container to workspace "${o}"
+    sway workspace "${o}"
+    sway focus child
+}; f'
+
+register_action "[sway] toggle osu-mode" \
+'f() {
+    OSU_MODE_MARKER=/run/user/`id -u`/automation.osu-mode
+    if [[ ! -f $OSU_MODE_MARKER ]]; then
+        sway input \$pen map_from_region 0.0x0.0 0.3x0.3
+        sway input \$pen map_to_output HDMI-A-1
+        sway seat - pointer_constraint disable
+        touch $OSU_MODE_MARKER
+
+        notify-send -a sway "Input config" "osu-mode enabled\n- map_from_region 0.0x0.0 0.3x0x3\n- map_to_output HDMI-A-1\n- pointer_constraint disable"
+    else
+        sway input \$pen map_from_region 0.0x0.0 1.0x1.0
+        sway input \$pen map_to_output \*
+        sway seat - pointer_constraint enable
+        rm $OSU_MODE_MARKER
+
+        notify-send -a sway "Input config" "osu-mode disabled"
+    fi
+}; f'
+
+register_action "[sway] swap workspaces between 2 outputs" \
+'f() {
+    outputs=`swaymsg -t get_tree | jq ".. | select(.type? == \"output\" and .name? != \"__i3\")"`
+    number_of_outputs=`echo $outputs | jq \".name\" | wc -l`
+    if [[ $number_of_outputs -ne 2 ]]; then
+        rofi -e "need exactly 2 outputs for this to work, sorry..."
+        exit 1
+    fi
+    WORKSPACES=/run/user/`id -u`/automation.workspaces_per_output
+    touch $WORKSPACES
+    workspaces_per_output=
+    for output in `echo $outputs | jq -r ".. | select(.type? == \"output\") | .name"`; do
+        for workspace in `echo $outputs | jq -r ".. | select(.type? == \"output\" and .name? == \"${output}\") | .nodes | .. | select(.type? == \"workspace\") | .name"`; do
+            workspaces_per_output="$workspaces_per_output $workspace"
+        done
+        echo ${workspaces_per_output} >> ${WORKSPACES}
+        workspaces_per_output=
+    done
+    cat ${WORKSPACES} | while read output; do
+        echo $output | while read -d " " workspace; do
+            sway [workspace="${workspace}"] focus
+            sway move workspace to output "${output}"
+        done
+    done
+    rm ${WORKSPACES}
+}; f'
+
+# ===== main ===== #
+run_action "`select_action`"

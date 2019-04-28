@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+files="$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
+
+for f in ${files}; do
+    $HOME/devel/scripts/change_bg.sh "${f}"
+    exit 0
+done

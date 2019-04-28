@@ -1,0 +1,52 @@
+<Tags>
+    <Tag>
+        <Targets>
+            <TargetTypeValue>50</TargetTypeValue>
+        </Targets>
+        <Simple>
+            <Name>TITLE</Name>
+            <String>Hello Internet Podcast</String>
+        </Simple>
+        <Simple>
+            <Name>ARTIST</Name>
+            <String>CGP Grey/Brady Haran</String>
+        </Simple>
+        <Simple>
+            <Name>GENRE</Name>
+            <String>Two Dudes Talking</String>
+        </Simple>
+        <Simple>
+            <Name>CONTENT_TYPE</Name>
+            <String>Podcast</String>
+        </Simple>
+        <Simple>
+            <Name>ENCODED_BY</Name>
+            <String>robertgzr</String>
+        </Simple>
+    </Tag>
+    <Tag>
+        <Targets>
+            <TargetTypeValue>30</TargetTypeValue>
+        </Targets>
+        <Simple>
+            <Name>TITLE</Name>
+            <String>H.I. #68: Project Revolution</String>
+        </Simple>
+        <Simple>
+            <Name>PART_NUMBER</Name>
+            <String>68</String>
+        </Simple>
+        <Simple>
+            <Name>DESCRIPTION</Name>
+            <String>Grey and Brady discuss: an exclusive episode of Hello Internet that will be difficult to listen to, the superiority of vinyl, Grey goes to America and complains about tipping yet again, a toothbrush update, a listener photo, airship crash corner, the first self-driving cars on the road, the discovery of exoplanet Proxima Centauri B, and the frightening Fermi paradox.</String>
+        </Simple>
+        <Simple>
+            <Name>URL</Name>
+            <String>http://www.hellointernet.fm/podcast/68</String>
+        </Simple>
+        <Simple>
+            <Name>DATE_RELEASED</Name>
+            <String>2016-08-30</String>
+        </Simple>
+    </Tag>
+</Tags>

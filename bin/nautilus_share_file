@@ -1,0 +1,30 @@
+#!/bin/bash
+
+files="$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
+
+rofi() {
+    exec rofi -dmenu -p share -l 5 -i "$@"
+}
+notify() {
+    notify-send -a share -t 1500 -u low "Share $(basename $1)" "$2"
+}
+
+TARGETS=(
+    "telegram"
+    "firefox-sync"
+)
+target=`for t in ${TARGETS[@]}; do echo "$t"; done | rofi -mesg "--> $files"`
+case "${target}" in
+    telegram)
+        sway [class="TelegramDesktop"] focus
+        for f in ${files}; do
+            wl-copy < ${f}
+            notify "${f}" "with Telegram"
+        done
+        ;;
+    firefox-sync)
+        ;;
+    *)
+        exit 1
+        ;;
+esac

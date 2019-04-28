@@ -1,0 +1,17 @@
+#!/bin/sh
+
+str="$1"
+[[ -n $str ]] && str=" $str "
+getcols() {
+    if command -v tput &>/dev/null; then
+        tput cols
+    else
+        stty size | awk '{print $2}'
+    fi
+}
+COLS=$((${COLUMNS:-`getcols`} - ${#str}))
+start=$'\e(0'; end=$'\e(B'; line="qqqqqqqqqqqqqqqq"
+while ((${#line}<$COLS)); do line+=$line; done
+printf "%s%s%s" "$start" "${line:0:$((COLS/2))}" "$end"
+printf "%s" "$str"
+printf "%s%s%s\n" "$start" "${line:0:$((COLS/2))}" "$end"

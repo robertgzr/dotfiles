@@ -1,0 +1,34 @@
+#!/bin/sh
+
+export TERM=alacritty
+export _JAVA_AWT_WM_NONPARENTING=1
+export GTK_IM_MODULE=xim
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+if [ "$XDG_RUNTIME_DIR" == "" ]; then
+    export XDG_RUNTIME_DIR=/tmp
+fi
+
+SWAY_FLAGS=""
+
+case $1 in
+
+    system)
+        exec /usr/bin/sway -Ddamage=rerender 2>$HOME/sway.log
+        ;;
+
+    git)
+        exec /opt/bin/sway -Ddamage=rerender 2>$HOME/sway.log
+        ;;
+
+    locked)
+        sh -c 'sleep 1; /opt/bin/lock' 2>$HOME/swaylock.log & disown
+        exec $0
+        ;;
+
+    *)
+        exec $0 git
+        ;;
+
+esac

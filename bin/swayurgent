@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+pppid() {
+    ps -o ppid= ${PPID}
+}
+
+set -x 
+conId=`swaymsg -t get_tree | jq ".. | select(.pid?==$(pppid)) | .id"`
+sway [con_id="${conId}"] urgent enable

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+IN="${1}"
+if [[ -z ${IN} ]]; then
+    echo "need a new wallpaper!" 1>&2
+    exit 1
+fi
+
+set_wp() {
+    local wp_name=`basename "${1}" | sed -e 's/ /_/g'`
+    wpg -s `basename ${wp_name}`
+}
+
+set -x
+
+ln -sfv "${IN}" ${HOME}/.background
+stackblur -in ${HOME}/.background -out ${HOME}/.background_lock -radius 40
+pkill swaybg
+
+set_wp "${IN}"
+if [[ $? -ne 0 ]]; then
+    echo "wpg: importing ${IN}"
+    wpg -a "${IN}"
+    set_wp "${IN}"
+fi
+
+wpg --preview

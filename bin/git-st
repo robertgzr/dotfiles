@@ -1,0 +1,51 @@
+#!/bin/sh
+# supercharged `git status -sb`
+
+st() {
+    git status -sb
+}
+
+[[ -z "$1" ]] && {
+    st
+    exit 1
+}
+
+[[ $1 = "-h" ]] && {
+    echo "usage: git-st [-c|--changed]"
+    echo "              [-d|--deleted][-m|--modified]"
+    echo "              [-a|--staged][-u|--unmerged]"
+    echo "              [-?|--untracked][-no-?|--no-untracked]"
+    echo ""
+    exit 1
+}
+
+unbuffer git status -sb | head -1
+while [[ -n "$1" ]]; do
+    case $1 in
+        -c|--changed)
+            st | awk '/^.(D|M|C|R)/'
+            ;;
+        -s|--staged)
+            st | awk '/^(D|M|C|R|A)./'
+            ;;
+        -u|--unmerged)
+            st | awk '/^(U.|.U)/'
+            ;;
+        -d|--deleted)
+            st | awk '/^.D/'
+            ;;
+        -m|--modified)
+            st | awk '/^.M/'
+            ;;
+        -\?|--untracked)
+            st | awk '/^\?\?/'
+            ;;
+        -no-\?|--no-untracked)
+            st | awk '!/^##/ && !/^\?\?/'
+            ;;
+        *)
+            echo "error: unknown filter-flag, see --help"
+            ;;
+    esac
+    shift
+done

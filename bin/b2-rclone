@@ -1,0 +1,30 @@
+#!/bin/bash
+
+notify() {
+    notify-send \
+        --app-name=b2-rclone \
+        --urgency=low \
+        --category=transfer \
+        "Encrypting and syncing" \
+        "${@}"
+}
+
+rclone-sync() {
+    dir="${1}"
+    target="${2}"
+    shift 2
+    extra_flags="${@}"
+    if [[ -f "${dir}/.filter" ]]; then
+        extra_flags="--filter-from=${dir}/.filter ${extra_flags}"
+    fi
+    set -x
+    rclone sync \
+        --delete-excluded \
+        ${extra_flags} \
+        "${dir}" \
+        "${target}"
+    set +x
+}
+
+rclone-sync /home/robert/Backblaze b2-hibiki-home-dir-crypt:
+rclone-sync /home/robert/Public/b2.gnzler.io b2:7bcb0f2c-a2d6-4045-8d8e-b494c94fc7bb

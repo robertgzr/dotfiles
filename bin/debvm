@@ -1,0 +1,37 @@
+#!/bin/bash
+
+VM_NAME=debvm
+VM_IMAGE=debian:buster
+
+RT='docker run'
+RT_MOUNT="-v $(pwd):/src"
+RT_FLAGS=( --name ${VM_NAME} --rm --privileged ${RT_MOUNT} -it -w /src )
+RT_CMD=
+
+usage() {
+    echo "Usage: debvm [-h] [-d] [-c COMMAND]"
+    exit 0
+}
+
+while getopts ":hc:d" opt; do
+  case ${opt} in
+    d ) 
+      VM_IMAGE=docker:dind
+      RT_FLAGS+=( --entrypoint ${RT_CMD} )
+      ;;
+    c )
+      echo $OPTARG
+      RT_CMD=$OPTARG
+      ;;
+    h ) 
+      usage
+      ;;
+    \? ) 
+      usage
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+
+set -x
+exec ${RT} ${RT_FLAGS[@]} ${VM_IMAGE} ${VM_ARGS}

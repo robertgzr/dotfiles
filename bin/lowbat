@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
+	read -r status capacity
+
+	if [[ $status -eq "Discharging" ]]; then
+		if [[ $capacity -lt 10 ]]; then
+			echo "battery capacity: $capacity"
+			notify-send "battery low" "System will hibernate at 5%"
+		fi
+		if [[ $capacity -lt 5 ]]; then
+			echo "hibernating"
+			notify-send "battery low" "System will hibernate now"
+			systemctl hibernate
+		fi
+	fi
+}

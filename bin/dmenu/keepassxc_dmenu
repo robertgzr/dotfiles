@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+
+KEEPASS="$HOME/.local/bin/KeePassXC-2.4.0-beta2-x86_64.AppImage cli"
+KEEPASS_CLIP_TIMEOUT=
+
+KEEPASS_DB="$HOME/Dropbox/keepass-box.kdbx"
+
+bail() {
+    exec rofi -e "$@"
+    exit 1
+}
+rofi() {
+    exec rofi -dmenu -p keepass -i "$@"
+}
+
+locate() {
+    qw=`rofi -mesg "search..."`
+    if [[ -z ${qw} ]]; then
+        bail "nothing found"
+    fi
+
+    ret=`echo "${pw}" | ${KEEPASS} locate -q "${KEEPASS_DB}" "${qw}" 2>&1`
+    if [[ $? -ne 0 ]]; then
+        bail "${ret}"
+    fi
+    ret=`echo "${ret}" | rofi`
+    if [[ -z ${ret} ]]; then
+        bail "nothing found"
+    fi
+    entry="${ret}"
+
+    ret=`echo "${pw}" | ${KEEPASS} clip -q "${KEEPASS_DB}" "${entry}" "${KEEPASS_CLIP_TIMEOUT}" 2>&1`
+    if [[ $? -ne 0 ]]; then
+        bail "${ret}"
+    fi
+}
+
+pw=`rofi -password -mesg "enter your password"`
+if [[ -z ${pw} ]]; then
+    bail "no password"
+fi
+
+case "${1}" in
+    unlock)
+        ret=`echo "${pw}" | ${KEEPASS} --pw-stdin`
+        if [[ $? -ne 0 ]]; then
+            bail "${ret}"
+        fi
+        sway move scratchpad
+        ;;
+    *)
+        locate
+        ;;
+esac
+

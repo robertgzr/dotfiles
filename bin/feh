@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+SCALE=0.75
+
+/usr/bin/feh --scale-down --geometry=${$((2560 * $SCALE))//./}x${$((1440 * $SCALE))//./} "${@}"

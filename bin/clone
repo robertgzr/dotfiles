@@ -8,6 +8,8 @@
 #
 # If you don't have gitconfig set up like I have (using aliases for github/bitbucket ssh access) this won't really work
 
+SHALLOW=0
+RECURSE_SUBMODULES=
 TEMP=`mktemp -d -p /tmp clone.XXXXXXXXXX`
 
 main() {
@@ -57,7 +59,7 @@ ssh_clone() {
     local ssh_url="$prefix:$url[2]/$url[3]"
 
     # confirm "clone $ssh_url"
-    git clone $ssh_url $to
+    git_clone $ssh_url $to
 }
 
 http_clone() {
@@ -66,7 +68,18 @@ http_clone() {
     local http_url="https://$URL"
 
     # confirm "clone $http_url"
-    git clone $GIT_FLAGS $http_url $to
+    git_clone $GIT_FLAGS $http_url $to
+}
+
+git_clone() {
+    declare -a GIT_FLAGS
+    if [[ ${SHALLOW} -ne 0 ]]; then
+        GIT_FLAGS+="--depth=${SHALLOW}"
+    fi
+    if [[ ! -z ${RECURSE_SUBMODULES} ]]; then
+        GIT_FLAGS+="--recurse-submodules"
+    fi
+    git clone "${GIT_FLAGS[@]}" "${@}"
 }
 
 fail() {
@@ -82,15 +95,34 @@ confirm() {
     fi
 }
 
-case $1 in
-    -h|--help)
-        echo "usage: $0 <url>"
-        echo ""
-        echo "url\texample.com/user/repo"
-        echo "\thttp[s]://example.com/user/repo"
-        exit 0
-        ;;
-    *)
-        main $@
-        ;;
-esac
+usage() {
+    echo "usage: clone [-s][-r] URL"
+    echo ""
+    echo " -s\tshallow clone"
+    echo " -r\trecurse submodules"
+    echo " URL\texample.com/user/repo"
+    echo "\thttp[s]://example.com/user/repo"
+    exit 0
+}
+
+while getopts ":hsr" opt; do
+    case ${opt} in
+        s )
+            echo "Shallow clone"
+            SHALLOW=1
+            ;;
+        r )
+            echo "Recurse submodules"
+            RECURSE_SUBMODULES=1
+            ;;
+        h ) 
+            usage
+            ;;
+        \? ) 
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+main "${@}"

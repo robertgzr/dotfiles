@@ -1,0 +1,43 @@
+#!/bin/sh
+
+ROOTFS=/home/robert/devel/upstream/github.com/dongsupark/debian-firecracker/output/vmlinux
+KERNEL=/home/robert/devel/upstream/github.com/dongsupark/debian-firecracker/output/image.ext4
+
+usage() {
+    printf "usage: fc up|down\n"
+    printf "\n"
+    printf "Spawn/Shutdown firecracker VMs\n\n"
+    exit 0
+}
+
+up() {
+    set -ex -o pipefail
+
+    systemctl --user reset-failed fc-01
+    systemd-run \
+        --user \
+        --unit=fc-01 \
+        --description="firecracker vm" \
+        --setenv=PATH=$PATH \
+        /opt/bin/firectl \
+        --kernel=$KERNEL \
+        --root-drive=$ROOTFS \
+        --kernel-opts="console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw" \
+        --firecracker-log=/tmp/firecracker-vmm.log \
+        --socket-path=/tmp/firecracker-vmm.sock
+
+    exit 0
+}
+
+down() {
+    set -ex -o pipefail
+
+    exit 0
+}
+
+
+case $1 in
+    up) up ;;
+    down) down ;;
+    *) usage ;;
+esac

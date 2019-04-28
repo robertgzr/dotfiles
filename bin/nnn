@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export NNN_SCRIPT=$HOME/devel/scripts/
+export NNN_USE_EDITOR=1
+export NNN_RESTRICT_NAV_OPEN=1
+
+/usr/bin/nnn ${@}

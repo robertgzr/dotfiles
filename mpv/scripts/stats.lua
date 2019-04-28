@@ -1,1 +1,1 @@
-/Users/robert/.config/mpv/scripts/mpv-stats/stats.lua
+mpv-stats/stats.lua

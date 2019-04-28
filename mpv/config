@@ -1,23 +1,16 @@
 # MPV Configuration
-keep-open=yes
+# clean up input config (helps with iina, gnome-mpv etc.)
+no-input-default-bindings
 autoload-files=no
 
 #
 # Video
 #
-# vo=opengl-cb
 # opengl-pbo=yes
-# opengl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
+# glsl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
 # deband
-# icc-profile-auto
-# icc-contrast=10000
 video-sync=display-resample
-# vo=caca
-# null, opengl, opengl-hq, vaapi
 framedrop=vo
-geometry=50%:50%
-autofit-larger=80%x80%
-hidpi-window-scale
 
 #
 # Audio
@@ -25,7 +18,7 @@ hidpi-window-scale
 # ao=coreaudio
 alang=jpn,ja,eng,en,ger,de
 volume-max=200
-# audio-channels=2.0
+audio-channels=auto-safe
 # bs2b filter
 # af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
 
@@ -47,15 +40,17 @@ volume-max=200
 # OSD
 #
 #osc=no
-no-border
+keep-open=yes
 stop-screensaver
 cursor-autohide-fs-only
-osd-font='Iosevka'
+osd-font=Iosevka
 osd-font-size=20
-# osd-scale=1
-# osd-scale-by-window=yes
+osd-scale-by-window=yes
 osd-fractions=yes
 # load-stats-overlay=no
+geometry=50%:50%
+autofit-larger=80%x80%
+hidpi-window-scale
 
 #
 # Misc.
@@ -65,7 +60,7 @@ screenshot-template='%tY%tm%td-%tH%tM%tS-%F-%p'
 screenshot-format=jpg
 screenshot-jpeg-quality=100
 user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
-ytdl-format=bestvideo+bestaudio
+ytdl-format=bestvideo+bestaudio,best
 
 #
 # PROFILES
@@ -73,22 +68,13 @@ ytdl-format=bestvideo+bestaudio
 
 [cache]
 profile-desc="Optimized for streaming web video"
-ytdl-format=bestvideo[ext=mp4]+bestaudio
-hwdec=auto
 cache=yes
 cache-secs=36000
 cache-backbuffer=10000000
 cache-default=10000000
-demuxer-max-bytes=2147483647
+script=~/.config/mpv/scripts/mpv-plugin-streamcache/streamcache.lua
 
 [3d]
 profile-desc="3d"
 hwdec=no
 vf-add=stereo3d=sbs2l:mono
-
-[insane]
-profile-desc="OpenGL-HQ (scale-antiring/fbo:rgba16) + VS [insane] interpolation"
-scale-antiring=0.7
-scale=ewa_lanczos
-icc-profile-auto
-# vf-add=vapoursynth=~/.config/mpv/vapoursynth/interpolation_insane.py

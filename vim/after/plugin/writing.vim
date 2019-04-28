@@ -1,37 +1,13 @@
 " Configuration for writing text in vim
 
-" Markdown
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-
 " Grammer checker
 let g:grammarous#languagetool_cmd = 'languagetool'
-
-" writing autocommands
-function! s:writing_mode_enter()
-    set textwidth=120
-    " ALEToggle
-    " Grammarous keymaps
-    nmap <Leader>c :GrammarousCheck --lang=de
-    nmap <Leader>gi <Plug>(grammarous-move-to-info-window)
-    nmap <Leader>gr <Plug>(grammarous-remove-error)
-    nmap <Leader>gd <Plug>(grammarous-disable-rule)
-    nmap <Leader>gf <Plug>(grammarous-fixit)
-    nmap <Leader>gn <Plug>(grammarous-move-to-next-error)
-    nmap <Leader>gp <Plug>(grammarous-move-to-previous-error)
-endfunction
-
-augroup writing
-    autocmd!
-    au FileType markdown,tex nested call <SID>writing_mode_enter()
-augroup END
 
 " Minimal UX for concentration
 let g:goyo_width = 120
 let g:goyo_height = 90
 let g:goyo_linenr = 0
+nmap <F0> :Goyo<CR>
 
 let g:limelight_default_coefficient = 0.5
 let g:limelight_paragraph_span = 1
@@ -39,6 +15,7 @@ let g:limelight_paragraph_span = 1
 " let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
 
+" goyo enter/leave funcs {{{
 function! s:goyo_enter()
     if has('gui_running') || has('gui_vimr')
         " set linespace = 7
@@ -58,6 +35,7 @@ function! s:goyo_enter()
     autocmd QuitPre <buffer> let b:quitting = 1
     cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
+
 function! s:goyo_leave()
     if has('gui_running') || has('gui_vimr')
         " set linespace = 0
@@ -80,14 +58,31 @@ function! s:goyo_leave()
         endif
     endif
 endfunction
+" }}}
 
-" goyo autocommands
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" writing autocommands
+function! s:writing_mode_enter()
+    set textwidth=120
+    " ALEToggle
+    " Grammarous keymaps
+    nmap <Leader>c :GrammarousCheck --lang=de
+    nmap <Leader>gi <Plug>(grammarous-move-to-info-window)
+    nmap <Leader>gr <Plug>(grammarous-remove-error)
+    nmap <Leader>gd <Plug>(grammarous-disable-rule)
+    nmap <Leader>gf <Plug>(grammarous-fixit)
+    nmap <Leader>gn <Plug>(grammarous-move-to-next-error)
+    nmap <Leader>gp <Plug>(grammarous-move-to-previous-error)
+endfunction
 
-nmap <F3> :Goyo<CR>
+augroup Writing
+    au!
+    au FileType markdown,tex call <SID>writing_mode_enter()
+    " goyo autocommands
+    au User GoyoEnter nested call <SID>goyo_enter()
+    au User GoyoLeave nested call <SID>goyo_leave()
+augroup END
+
 " LaTeX
-
 " let g:vimtex_view_general_viewer
 "             \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 " let g:vimtex_view_general_options = '-r @line @pdf @tex'

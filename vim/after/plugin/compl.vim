@@ -1,10 +1,3 @@
-set completeopt=noinsert,menuone,noselect
-set completeopt-=preview
-set shortmess+=c
-" set showmatch
-
-" let g:coc_auto_copen = 1
-
 " " completion window
 " augroup completion_window
 "     autocmd!

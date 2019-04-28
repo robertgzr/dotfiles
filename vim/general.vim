@@ -4,7 +4,7 @@ set noshowmode
 set autowrite
 set inccommand=split
 set noshowcmd
-
+" set autochdir " automatically sets cwd to the dir containing the file in the current buffer
 " !
 set hidden
 
@@ -20,23 +20,20 @@ set smartcase
 set ignorecase
 set incsearch
 
-" set code folding method
-" setlocal foldmethod=syntax
-
+" set cmdheight=2
 set pumheight=10
 set lazyredraw
 
 set mouse=a
 
-" share OSX clipboard
-set clipboard+=unnamedplus
-" allow backspace in INSERT mode
-set backspace=indent,eol,start
+set clipboard+=unnamedplus " share OSX clipboard
+set backspace=indent,eol,start " allow backspace in INSERT mode
 
 set signcolumn=yes
-" cursorlines
 set cursorline
 " set cursorcolumn
+
+set updatetime=300
 
 " For conceal markers.
 if has('conceal')

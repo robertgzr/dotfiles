@@ -1,21 +1,36 @@
 # ==== ENVS
 
-# Path
+_extend_path_before /usr/local/bin
+_extend_path_before $DOT_DIR/bin
+
 # go
-export GOPATH=$HOME/devel/go
-export PATH=$GOPATH/bin:$PATH
+if command -v go &>/dev/null; then
+    export GOPATH=$HOME/devel/go
+    _extend_path_before $GOPATH/bin
+fi
+
 # rust
-export PATH=$PATH:$HOME/.cargo/bin
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+if command -v rustc &>/dev/null; then
+    export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+    _extend_path_before $HOME/.cargo/bin
+fi
+
+if command -v luarocks &>/dev/null; then
+    _extend_path_before $HOME/.luarocks/bin
+fi
+
 # python
-export PATH=$PATH:$HOME/.local/bin
+_extend_path_after $HOME/.local/bin
+
 # js
-export PATH=$PATH:$HOME/.yarn/bin
+_extend_path_after $HOME/.yarn/bin
 
-# the rest
-export PATH=$PATH:$GEMPATH/bin:$X11PATH/bin:$PHPPATH/bin:$TEXPATH/bin/x86_64-darwin:$GOAPPENGINE:$OPAMROOT/system/bin
+[[ -n $GEMPATH ]] && _extend_path_after $GEMPATH/bin
+[[ -n $PHPPATH ]] && _extend_path_after $PHPPATH/bin
+[[ -n $GOAPPENGINE ]] && _extend_path_after $GOAPPENGINE
+[[ -n $OPAMROOT ]] && _extend_path_after $OPAMROOT/system/bin
 
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
+# export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
 
 # Setup terminal, and turn on colors
 # export TERM=xterm-256color-italic
@@ -50,10 +65,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # VirtualEnv
-export WORKON_HOME=/usr/local/var/virtualenvs
+# export WORKON_HOME=/usr/local/var/virtualenvs
 # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 # export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
@@ -64,14 +79,6 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # postgreSQL
 # export PGDATA=/usr/local/pgsql/data
-
-if command -v rg &>/dev/null; then
-    export RIPGREP_CONFIG_PATH=$DOT_DIR/ripgreprc
-fi
-
-if command -v sk &>/dev/null; then
-    export SKIM_DEFAULT_COMMAND="rg --files || fd --type f || git ls-tree -r --name-only HEAD || find ."
-fi
 
 if command -v hub &>/dev/null; then
     export GITHUB_TOKEN=$(cat $DOT_DIR/GH_TOKEN_HUB)

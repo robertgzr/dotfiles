@@ -7,7 +7,7 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "modules/terminal", from:prezto
     zstyle ':prezto:module:terminal' auto-title 'yes'
     # hibiki == 響 (echo)
-    zstyle ':prezto:module:terminal:window-title' format '>_ %n@%m: %s'
+    zstyle ':prezto:module:terminal:window-title' format '> %n@%m: %s'
 
 zplug "modules/completion", from:prezto
 zplug "modules/fasd", from:prezto

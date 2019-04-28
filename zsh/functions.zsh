@@ -1,148 +1,67 @@
 #!/usr/bin/env zsh
 
-# refresh ZSH configuration
-function source-zsh {
-    source "$ZDOTDIR/zshrc"
-}
-
-# Previews files in Quick Look.
-# Author:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-function ql {
-    if (( $# > 0 )); then
-        qlmanage -p "$@" &> /dev/null
-    fi
-}
-
+# $1 : directory tree to create and cd into
 function mcd {
-    mkdir $1 && cd $1
+    mkdir -p $1 && cd $1
 }
 
+# $1 : relative filename
 function abspath() {
-    # $1 : relative filename
     if [ -d "$(dirname "$1")" ]; then
         echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
     fi
 }
 
-# supercharged locate
-function fzl {
-    locate $1 | fzf
-}
-
-# cd using fzf
-function fcd {
-    local file
-    local dir
-    file=$(fzf +m -0 -q "$1") && dir=$(dirname "$file") && cd "$dir"
-}
-
-# jj using fzf
-function fjj {
-    local dir
-    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "$dir" || return 1
-}
-
-# open using fzf
-function fopen {
-    local file
-    local dir
-    file=$(fzf +m -0 -q "$1") && open "$file"
-}
-
-function fmpv {
-    local file
-    file=$(fzf +m -0 -q "mkv$ | mp4$ | 3gp$ $1") && mpv "$file"
-}
-
-function fzf-fasd-vim {
-    local file
-    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "$file" || return 1
-}
-
+# $1 : encrypted tree
+# $2 : mount point (created if not an existing dir)
 function encfs-mount() {
-    echo "$(abspath $1)" "->" $2
-    encfs --idle=30 "$(abspath $1)" $2 && echo "** success! **"
-}
-
-# locate & open
-function lopen {
-    if [[ $# = 0 ]]; then
-        echo "nüscht da."
-        return
-    fi
-    FILE=$1
-    FOPEN=$(locate -l 1 $FILE)
-    open $FOPEN
-}
-
-# encode input file with base64 and also encode filename
-function b64() {
-    base64 "$2" -i "$1" -o '$(echo "$1" | base64 "$2" -)';
+    local drive=$1
+    local mntdir=`abspath $2`
+    [[ ! -d $mntdir ]] && mkdir -p $mntdir
+    echo "$drive" "->" $mntdir
+    encfs --idle=30 $drive $mntdir && echo "** success! **"
 }
 
 # return the number of files in a directory
+# $1 : directory to count (recurses)
 function tree-count() {
-    fd --type file --hidden --no-ignore | wc -l | awk '{print $1}'
+    fd --type file --hidden --no-ignore '' ${1} | wc -l
 }
 
+# nice tui audio player with mpv
+# $1 : args to pass to mpv
 function mpva() {
-    local chars=" █▄  "
-    mpv --no-video --term-osd=force --term-osd-bar=yes --term-osd-bar-chars=$chars --term-playing-msg='> ${media-title}' --input-media-keys=yes --ytdl-format=bestaudio $@
+    mpv --no-video --term-osd=force --term-osd-bar=yes --term-osd-bar-chars=' █▄  ' --term-playing-msg='> ${media-title}' --input-media-keys=yes --ytdl-format=bestaudio $@
 }
 
-# mpvp script to start mpv with content of the clipboard
-function mpvp
-{
-    local usage="""mpvp [-a] [mpv options]\n
-    -a\tplays only audio\n
-    (takes additional mpv cli flags)
-    """
-    local profile="--profile=cacheplus"
-    local paste=${"$(pbpaste)"}
-    # eval paste before starting
-    if [[ ! $paste =~ '^(http:|https:|rtmp:|/)' ]]; then 
-        echo "it seems '$paste' is not a URL!"
-        return
-    fi
-    # mpvp main
-    if [[ $1 = "-a" ]]; then
-        echo "running: mpva ${@/-a/} $profile $paste";
-        mpva "$profile" "${@/-a/}" "$paste";
-    elif [[ $1 = "-h" ]]; then
-            echo "$usage";
-    else
-        echo "running: mpv $@ $profile $paste"
-        mpv "$profile" "$@" "$paste"
-    fi
-}
-
+# prints wttr.in report
+# $1 : location
 function wego {
-    local loc=$1
-    if -z $loc; then loc="Berlin"; fi
-    curl -s "wttr.in/${loc}" | head -7
+    curl -s "wttr.in/${1:-Berlin}" | head -7
 }
 
+# script to inspect /sys, /proc, etc.
+# $1 : file/dir
 function na {
     local CAT_PROG=${CAT_PROG:-less}
     local LS_PROG=${LS_PROG:-ls -la}
 
     local o=$1
-    [[ -f $o ]] && sh -c "$CAT_PROG $o"
-    [[ -d $o ]] && sh -c "$LS_PROG $o"
+    file $o
+    [[ -d $o ]] && { sudo sh -c "$LS_PROG $o"; return } # directory
+    [[ -f $o ]] && { sudo sh -c "read && $CAT_PROG $o"; return } # regular file
+    [[ -h $o ]] && { sudo sh -c "$LS_PROG $o"; return } # symlink
+    [[ -b $o ]] && { return } # block file
+    [[ -c $o ]] && { return } # character file
 }
 
-function gofat {
-    if [[ ! -f $(which go) ]]; then echo "Go not installed";return; fi
-
-    eval "$(go build -work -a "${1}" 2>&1)" && find "${WORK}" -type f -name "*.a" -print0 | xargs --null -I{} du -hxs "{}" | sort -rh | sed -e s:"$WORK"/::g
-}
-
+# go to a package in your GOPATH
+# $1 : query to start fuzzy finder with
 function gocd {
     if [[ ! -d ${GOPATH} ]]; then echo "GOPATH not found";return; fi
 
     local gopath="$(echo ${GOPATH} | sed -e 's/\//\\\//g')\/src\/";
-    cd "$(echo $gopath | sed -e 's/\\//g')$(fd --follow \
+    local sel="$(fd --follow \
         --type d \
         --threads 4 \
         --color never \
@@ -151,11 +70,12 @@ function gocd {
         '' ${GOPATH}/src \
         2>/dev/null \
         | sed -e s/${gopath}// | \
-        fzf \
+        sk \
         --height=50% \
         --exit-0 \
         --cycle \
         -1 \
         -q "$1")";
-    # zle reset-prompt
+    [[ -z $sel ]] && return
+    cd "$(echo $gopath | sed -e 's/\\//g')$sel"
 }

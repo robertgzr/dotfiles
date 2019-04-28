@@ -2,6 +2,15 @@
     name = Robert Günzler
     email = r@gnzler.io
 
+[sendemail]
+    smtpserver = mail.gandi.net
+    smtpuser = robert@gnzler.io
+    smtpencryption = ssl
+    smtpserverport = 465
+    annotate = true
+    confirm = always
+    suppresscc = author
+
 [core]
     excludesfile = ~/.gitignore_global
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -27,7 +36,7 @@
 [alias]
     stp = status --porcelain --branch
     sti = status --porcelain --branch --ignored
-    st = status -sb
+    sta = status -sb
     stl = ls-files -m -o --exclude-standard
     ci = commit
     br = branch
@@ -60,6 +69,8 @@
     fixup = "!f() { git commit --fixup=${1}; }; f"
     rbi = rebase --autosquash -i
     pushf = push --force-with-lease
+    root = "rev-parse --show-toplevel"
+    trailer = "!f() { msg=$(git rev-parse --show-toplevel)/LAST_COMMIT_MSG; git log -1 --format=%B > $msg; git interpret-trailers --in-place --trailer $@ $msg; git commit --no-verify --amend --only --edit --file $msg; rm $msg; }; f"
 
 [pager]
     diff = less
@@ -122,10 +133,7 @@
     defaultToUpstream = true
     tool = vimdiff
 [mergetool "vimdiff"]
-    trustExitCode = true
     path = nvim
-[mergetool]
-    prompt = false
 
 [rerere]
     enabled = true
@@ -157,11 +165,11 @@
     pushInsteadOf = "gitlab:"
     pushInsteadOf = "git://gitlab.com/"
 
-[url "git@git.sr.ht:~robertgzr/"]
+[url "git@git.sr.ht:~"]
     insteadOf = "srht:"
-    insteadOf = "https://git.sr.ht/~robertgzr/"
+    insteadOf = "https://git.sr.ht/"
     pushInsteadOf = "srht:"
-    pushInsteadOf = "git://git.sr.ht/~robertgzr/"
+    pushInsteadOf = "git://git.sr.ht/"
 
 [url "git://github.com/"]
     insteadOf = "github:"
@@ -175,3 +183,22 @@
 [http]
     sslverify = true
     cookiefile = /Users/robert/.gitcookies
+
+[trailer "sign"]
+	key = "Signed-off-by"
+	ifmissing = add
+	command = SOBMail=$(git config user.signEmail) && echo \"$(git config user.name) <${SOBMail:-$(git config user.email)}>\"
+	where = end
+[trailer "changetype"]
+	key = "Change-type"
+	ifmissing = add
+	ifexists = doNothing
+	where = start
+[trailer "connects"]
+	key = "Connects-to"
+	ifmissing = add
+	where = start
+[trailer "depends"]
+	key = "Depends-on"
+	ifmissing = add
+	where = start

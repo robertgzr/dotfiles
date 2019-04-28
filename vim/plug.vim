@@ -95,6 +95,5 @@ call plug#begin('~/.vim/plugged')
 " Local
     " Plug '~/devel/projects/nihon-theme/vim'
     Plug '~/devel/projects/vim-orgdown'
-    Plug '~/devel/projects/vim-fuzz'
 
 call plug#end()

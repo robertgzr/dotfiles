@@ -3,7 +3,7 @@
 set -ex
 
 exec /usr/bin/rofi \
-    -theme hibiki \
+    -theme ~/.config/wpg/formats/rofi.rasi \
     -font 'Iosevka R 12' \
     -drun-icon-theme Papirus \
     -show-icons \

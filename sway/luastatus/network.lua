@@ -71,7 +71,8 @@ local function mk_wifi(res)
     local txt = ' --'
     if wifi.ready then
         if not wifi.connected then 
-            txt = '***'
+            common.fmt(res, common.icons.no_wifi, txt, WIFI_COLOR)
+            return
         else
             if PRINT_NET_NAMES and not (wifi.ssid == HOME_NET) then
                 txt = string.format('%s %3d', wifi.ssid, wifi.strength)
@@ -80,15 +81,15 @@ local function mk_wifi(res)
             end
         end
     end
-    common.fmt(res, '', txt, WIFI_COLOR)
+    common.fmt(res, common.icons.wifi, txt, WIFI_COLOR)
 end
 local function mk_wired(res)
     if wired.connected then
-        common.fmt(res, '', 'connected', WIRED_COLOR)
+        common.fmt(res, common.icons.lan, 'connected', WIRED_COLOR)
     end
 end
 local function mk_vpn(res)
-    local sym = ''
+    local sym = common.icons.no_vpn
     if vpn.connected or not (vpn.issue == nil) then
         local msg = ''
         if PRINT_NET_NAMES then
@@ -97,7 +98,7 @@ local function mk_vpn(res)
         if not (vpn.issue == nil) then
             msg = vpn.issue
         else
-            sym = ''
+            sym = common.icons.vpn
         end
         common.fmt(res, sym, msg, VPN_COLOR)
     end
@@ -109,7 +110,7 @@ local function update(t, res)
 
     elseif t.what == 'timeout' then
         table.insert(res, {
-                full_text = '!',
+                full_text = common.icons.warn,
                 color = common.colors.normal.white,
                 background = common.colors.normal.red,
             })

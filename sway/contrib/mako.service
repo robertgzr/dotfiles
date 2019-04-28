@@ -1,0 +1,21 @@
+[Unit]
+Description=mako notification daemon
+Documentation=man:mako(1)
+; PartOf=sway-session.target
+; After=sway-session.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.Notifications
+ExecStart=/usr/bin/mako \
+    --font=FiraGo:11 \
+    --default-timeout=3000 \
+    --padding=10 \
+    --width=500 \
+    --height=300 \
+    --background-color=#1C1C1Cee \
+    --text-color=#FCFAF2ff \
+    --border-color=#0B346Edd \
+    --border-radius=3 \
+    --progress-color='source #0B346Edd' \
+    --group-by=app-name

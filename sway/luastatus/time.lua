@@ -7,7 +7,7 @@ widget = {
 
     cb = function()
         local res = {}
-        common.fmt(res, '|', os.date('%a %d %b %R'), COLOR)
+        common.fmt(res, '|', os.date('<i>%a</i> %d %b %R'), COLOR)
         return res
     end,
 

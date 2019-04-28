@@ -1,7 +1,22 @@
-package.path = package.path .. ";" .. os.getenv('HOME') .. '/.cache/wal/luastatus.lua'
-local wal = require "luastatus"
+local wal = require "colors"
 
 local common = {}
+
+common.icons = {
+  cpu = '',
+  mem = '',
+  fs = '',
+  volume = '',
+  volume_mute = '',
+  wifi = '',
+  no_wifi = '',
+  lan = '',
+  vpn = '',
+  no_vpn = '',
+  song = '',
+  warn = '',
+  bluetooth = '',
+}
 
 common.colors = {
     normal = {
@@ -30,9 +45,17 @@ if wal.colors then
   common.colors = wal.colors
 end
 
+local function typecheck(o, typ)
+  if type(o) == typ then
+    return true
+  else
+    error(string.format("%s (type %s) not a string", o, type(o)))
+  end
+end
+
 function common.fmt(res, symbol, text, fg, bg, instance)
   table.insert(res, {full_text = symbol, color = fg, background = bg, instance = instance})
-  table.insert(res, {full_text = text, color = fg, background = bg, instance = instance, separator = true})
+  table.insert(res, {full_text = text, color = fg, background = bg, instance = instance, separator = true, markup = 'pango'})
 end
 
 function common.execute_output(cmd, raw)
@@ -56,7 +79,14 @@ function common.notify(summary, body, lvl, expire_time)
   if not lvl then lvl = common.notify_level_normal end
   if not expire_time then expire_time = 1500 end
   assert(os.execute(string.format(
-        'notify-send --urgency=%s --expire-time=%d "%s" "%s"', lvl, expire_time, summary, body)))
+        'notify-send --app-name=luastatus --urgency=%s --expire-time=%d "%s" "%s"', lvl, expire_time, summary, body)))
+end
+
+function common.nag(message, typ, dismiss_message)
+  if not message then error("'message' required") end
+  if not typ then typ = 'warning' end
+  if not dismiss_message then dismiss_message = 'ok' end
+  common.execute_output(string.format("swaynag --type=%s --message='%s', --dismiss-button='%s'", typ, message, dismiss_message))
 end
 
 -- Print contents of `tbl`, with indentation.
@@ -94,6 +124,47 @@ function common.split(input, at)
       table.insert(parsed, f)
   end
   return parsed
+end
+
+function common.format_duration(duration)
+  duration = tonumber(duration)
+  local s=(duration/1000000)%60
+  local m=(duration/1000000/60)%60
+  local h=(duration/1000000/60/60)
+  if math.floor(h) == 0 then
+      return string.format("%d:%02d",m,s)
+  end
+  return string.format("%d:%02d:%02d",h,m,s)
+end
+
+function common.parse_kv_table(map, t)
+  if not (type(t) == "table") then error("not a table") end
+
+  if #t == 2 and type(t[1]) == "string" then
+    local k = t[1]
+    if type(t[2]) == "table" then
+      local v = {}
+      common.parse_kv_table(v, t[2])
+      map[k] = v
+    else
+      map[k] = t[2]
+    end
+  else
+    local list = {}
+    for i,v in pairs(t) do
+      if type(v) == "table" then
+        common.parse_kv_table(map, v)
+      else
+        map[i] = v
+      end
+    end
+  end
+end
+
+function common.try_with(v, cb)
+  if v then
+    return cb(v)
+  end
 end
 
 return common

@@ -18,10 +18,10 @@ widget = {
             query("## KBD 1 ##"),
             query("## KDB 2 ##"),
         }
-        for _, layout in pairs(layouts) do
+        for kb, layout in pairs(layouts) do
             common.dump(layout)
             if not (layout == '') and not (layout == 'English (Macintosh)') then
-                common.fmt(res, ICON, layout:lower(), common.colors.dim.white)
+                common.fmt(res, ICON, '(' .. kb .. ')' .. layout:lower(), common.colors.dim.white)
                 return res
             end
         end

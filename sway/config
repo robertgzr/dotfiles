@@ -4,126 +4,75 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-set $_menu /opt/bin/rofi
-set $menu $_menu -terminal $term -show drun
-set $wmenu $_menu -modi window -show window
+#
+# Theme
+#
+    set $text #FCFAF2
+    set $text2 #BDC0BA
+    set $bg #1C1C1Cf9
+    set $bg2 #434343
+    set $main #0B346Ef9
+    set $main2 #005CAF
+    set $urgent #DB4D6D
+    set $urgent2 #CB1B45
+    set $indicator #FAD689
+    set $indicator2 #C18A26
 
-# font pango:Fira Code 12
-font pango:Iosevka R Medium, Noto Sans, Font Awesome 13
+#
+# load wpg values, overwrites the above
+#
+    include colors.conf
+
+#
+# Variables:
+#
+    set $term alacritty
+    set $_menu rofi -terminal $term
+    set $menu $_menu -show drun
+    set $wmenu $_menu -modi window -show window
+
+    set $ikb "1:1:AT_Translated_Set_2_keyboard"
+    set $ekb "65261:25700:Input_Club_Infinity_keyboard/QMK"
+    set $trackpad "2:7:SynPS/2_Synaptics_TouchPad"
+    set $trackpoint "2:10:TPPS/2_Elan_TrackPoint"
+    set $trackball "1149:8264:Primax_Kensington_Eagle_Trackball"
+    set $pen "10429:148:XP-PEN_STAR_G640_Mouse"
+
+    set $ws1 1|
+    set $ws2 2|
+    set $ws3 3|
+    set $ws4 4|
+    set $ws5 5|
+    set $ws6 6|
+    set $ws7 7|
+    set $ws8 8|
+    set $ws9 9|
+    set $wsMusic 
+    set $wsVideo 
+    set $wsGame 
+
+# gaps inner 5
+show_marks yes
+font pango:$font-mono, Noto Sans, Font Awesome 13
 
 #
 # Output configuration
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # mostly done by kanshi
-output eDP-1 enable
-output HDMI-A-1 enable
-
-show_marks yes
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/robert/.background fill
+    output eDP-1 enable
+    output HDMI-A-1 enable
+    output * bg $wallpaper fill
 
 #
-# Input configuration
+# colors yeah \o/
 #
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
-# keyboard (built-in)
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout us,de
-    xkb_variant mac,
-    xkb_options 'caps:hyper,grp:lctrl_lwin_toggle,eurosign:5,lvl3:ralt_switch_multikey'
-    # repeat_delay 400
-    # repeat_rate 100
-}
-
-# keyboard (desk)
-input "65261:25700:Input_Club_Infinity_keyboard/QMK" {
-    xkb_layout us,de
-    xkb_variant mac,
-    xkb_options 'caps:hyper,grp:lctrl_lwin_toggle,eurosign:5,lvl3:ralt_switch_multikey'
-    # repeat_delay 400
-    # repeat_rate 100
-}
-
-# trackpad
-input "2:7:SynPS/2_Synaptics_TouchPad" {
-      dwt enabled
-      tap enabled
-      click_method clickfinger
-      scroll_method two_finger
-      natural_scroll enabled
-      accel_profile adaptive
-      # pointer_accel 1
-}
-
-# trackpoint
-input "2:10:TPPS/2_Elan_TrackPoint" {
-      dwt enabled
-      natural_scroll enabled
-      accel_profile adaptive
-      # pointer_accel 1
-}
-
-# trackball
-input "1149:8264:Primax_Kensington_Eagle_Trackball" {
-      accel_profile adaptive
-}
-
-set $pen "10429:148:XP-PEN_STAR_G640_Mouse"
-input $pen {
-    # middle_emulation disabled
-    accel_profile flat
-    drag enabled
-    tap enabled
-    # 331 lower pen button
-    # 332 upper pen button
-    # scroll_method on_button_down
-    # scroll_button 274
-    # click_method clickfinger
-}
-input "10429:148:XP-PEN_STAR_G640" {
-    accel_profile flat
-}
+    client.focused $main2 $main $text $indicator $main
+    client.focused_inactive $bg2 $bg $text2 $indicator2 $bg
+    client.unfocused $bg2 $bg $text2 $indicator2 $bg
+    client.urgent $urgent2 $urgent $text $indicator $urgent
 
 #
-# Theme
+# load more stuff
 #
-set $text #FCFAF2
-set $text2 #BDC0BA
-set $bg #1C1C1Cf9
-set $bg2 #434343
-set $main #0B346Ef9
-set $main2 #005CAF
-set $urgent #DB4D6D
-set $urgent2 #CB1B45
-set $indicator #FAD689
-set $indicator2 #C18A26
-
-include $HOME/.config/wpg/formats/colors-sway
-set $text $color15
-set $text $color8
-set $bg $color0
-set $bg2 $color8
-set $main $color9
-set $main2 $color8
-
-client.focused $main2 $main $text $indicator $main
-client.focused_inactive $bg2 $bg $text2 $indicator2 $bg
-client.unfocused $bg2 $bg $text2 $indicator2 $bg
-client.urgent $urgent2 $urgent $text $indicator $urgent
-
-include config.d/*
-# include /etc/sway/config.d/*
+    include config.d/*

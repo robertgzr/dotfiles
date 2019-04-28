@@ -7,7 +7,7 @@ widget = luastatus.require_plugin('mem-usage-linux').widget{
     cb = function(t)
         local res = {}
         local used_kb = t.total.value - t.avail.value
-        common.fmt(res, '', string.format('%3.2f GiB', used_kb / 1024 / 1024), COLOR)
+        common.fmt(res, common.icons.mem, string.format('%3.2f GiB', used_kb / 1024 / 1024), COLOR)
         return res
     end,
 }

@@ -8,6 +8,13 @@ local full_color = charging_color
 local full = 95
 local critical = 10
 
+local nagged = false
+function powernag(remaining)
+    if nagged then return; end
+    common.nag(string.format('Battery almost empty! %d%% remaining', remaining), nil, 'Plugged in')
+    nagged = true
+end
+
 widget = luastatus.require_plugin('battery-linux').widget{
     est_rem_time = true,
     timer_opts = {period = 2},
@@ -35,6 +42,7 @@ widget = luastatus.require_plugin('battery-linux').widget{
             if tonumber(t.capacity) <= critical then
                 color = common.colors.normal.red
                 symbol = ''
+                powernag(t.capacity)
             end
         end
         local res = {}
@@ -44,7 +52,7 @@ widget = luastatus.require_plugin('battery-linux').widget{
 
     event = function(t)
         if t.button == 1 then -- left
-            common.notify('battery', string.format('%dh %02dm remaining', rem_time.rem_h, rem_time.rem_m))
+            common.notify('battery', string.format('%dh %02dm', rem_time.rem_h, rem_time.rem_m))
         end
     end,
 }

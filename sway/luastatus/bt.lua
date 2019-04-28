@@ -27,7 +27,7 @@ local function mk_bluetooth(res)
                 txt = '<+>'
             end
         end
-        common.fmt(res, '', txt, BLUETOOTH_COLOR)
+        common.fmt(res, common.icons.bluetooth, txt, BLUETOOTH_COLOR)
     end
 end
 

@@ -5,6 +5,7 @@ brew_api_token
 goreleaser_api_token
 vgo_api_token
 
+!bin/
 bitbar/_disabled
 
 mpv/watch_later/

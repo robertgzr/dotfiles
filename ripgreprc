@@ -1,2 +1,3 @@
 # ignore Go's vendor dir
---glob=!vendor/
+# --glob=!vendor/
+--ignore-case

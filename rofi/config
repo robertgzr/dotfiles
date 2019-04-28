@@ -1,0 +1,6 @@
+rofi.theme: wpg.rasi
+rofi.modi: drun,run,combi,window
+rofi.drun-show-actions: true
+rofi.monitor: -1
+rofi.click-to-exit: true
+rofi.show-icons: true

@@ -1,0 +1,146 @@
+#!/bin/sh
+
+## Grimshot: a helper for screenshots within sway
+## Requirements:
+##  - `grim`: screenshot utility for wayland
+##  - `slurp`: to select an area
+##  - `wf-recorder`: screen-recording utility
+##  - `swaymsg`: to read properties of current window
+##  - `wl-copy`: clipboard utility
+##  - `jq`: json uliity to parse swaymsg output
+##  - `notify-send`: to show notifications
+##  - `mktemp`: to create a temporary file
+## Those are needed to be installed, if unsure, run `grimshot check`
+##
+## Examples:
+## `grimshot copy win` - to copy current window
+## `grimshot save area` - to select area and save it to default file (Pictures/Grimshot-$datetime.png)
+## `grimshot save screen ~/screenshot.png` - to save screenshot under ~/screenshot.png
+## `grimshot | grimshot -h` - usage
+## `grimshot check` - verify if tools are installed
+
+ACTION=${1:-usage}
+SUBJECT=${2:-screen}
+FILE=${3:-$(xdg-user-dir PICTURES)/screenshots/$(now).png}
+case "$ACTION" in
+  usage|help|-h|--help)
+  echo "Usage:"
+  echo "  grimshot copy|save|rec|rec-copy win|screen|area [FILE]"
+  echo "Troubleshoot:"
+  echo "  grimshot check"
+  exit
+esac
+
+notify() {
+  # notify-send -i "${TMP:-${FILE}}" -t 3000 -a grimshot "$@"
+  notify-send -i "${TMP:-${FILE}}" -t 3000 "$@"
+}
+notifyOk() {
+  TITLE=${2:-"Screenshot"}
+  MESSAGE=${1:-"OK"}
+  notify "$TITLE" "$MESSAGE"
+}
+notifyError() {
+  TITLE=${2:-"Screenshot"}
+  MESSAGE=${1:-"Error taking screenshot with grim"}
+  notify -u critical "$TITLE" "$MESSAGE"
+}
+
+die() {
+  MSG=${1:-Bye}
+  notifyError "Error: $MSG"
+  exit 2
+}
+
+check() {
+  COMMAND=$1
+  command -v "$COMMAND" > /dev/null 2>&1
+  if [ $? ]; then
+    RESULT="OK"
+  else
+    RESULT="NOT FOUND"
+  fi
+  echo "   $COMMAND: $RESULT"
+}
+
+takeScreenshot() {
+  FILE=$1
+  GEOM=$2
+  if [ -z "$GEOM" ]; then
+    grim "$FILE" || die "Unable to invoke grim"
+  else
+    grim -g "$GEOM" "$FILE" || die "Unable to invoke grim"
+  fi
+}
+
+recordScreen() {
+  FILE=$1
+  GEOM=$2
+  if [ -z "$GEOM" ]; then
+    wf-recorder -f "$FILE" || die "Unable to invoke wf-recorder"
+  else
+    wf-recorder -g "$GEOM" -f "$FILE" || die "Unable to invoke wf-recorder"
+  fi
+}
+
+if [ "$ACTION" = "check" ] ; then
+  echo "Checking if required tools are installed. If something is missing, install it to your system and make it available in PATH..."
+  check grim
+  check slurp
+  check wf-recorder
+  check swaymsg
+  check wl-copy
+  check jq
+  check notify-send
+  check mktemp
+  exit
+elif [ "$SUBJECT" = "area" ] ; then
+  GEOM=$(slurp -d)
+  WHAT="Area"
+elif [ "$SUBJECT" = "win" ] ; then
+  FOCUSED=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[]?, .floating_nodes[]?) | select(.focused)')
+  GEOM=$(echo "$FOCUSED" | jq -r '.rect | "\(.x),\(.y) \(.width)x\(.height)"')
+  APP_ID=$(echo "$FOCUSED" | jq -r '.app_id')
+  WHAT="$APP_ID window"
+elif [ "$SUBJECT" = "screen" ] ; then
+  GEOM=""
+  WHAT="Screen"
+else
+  die "Unknown subject to take a screen shot from" "$SUBJECT"
+fi
+
+if [ "$ACTION" = "copy" ] ; then
+  TMP=$(mktemp) || die "Unable to create temp file: is mktemp installed?"
+  takeScreenshot "$TMP" "$GEOM"
+  wl-copy --type image/png < "$TMP"  || die "Clipboard error"
+  notifyOk "$WHAT copied to buffer"
+  rm "$TMP"
+elif [ "$ACTION" = "save" ] ; then
+  takeScreenshot "$FILE" "$GEOM"
+  if [ $? ]; then
+    TITLE="Screenshot of $SUBJECT"
+    MESSAGE=$(basename "$FILE")
+    notifyOk "$MESSAGE" "$TITLE"
+  else
+    notifyError "Error taking screenshot with grim"
+  fi
+elif [ "$ACTION" = "rec" ] ; then
+  echo "$FILE" | awk '/png$/{exit 0}' && \
+    FILE=$(xdg-user-dir VIDEOS)/grimshot/$(now).mp4
+  recordScreen "$FILE" "$GEOM"
+  if [ $? ]; then
+    TITLE="Screen recording of $SUBJECT"
+    MESSAGE=$(basename "$FILE")
+    notifyOk "$MESSAGE" "$TITLE"
+  else
+    notifyError "Error recording screen with wf-recorder"
+  fi
+elif [ "$ACTION" = "rec-copy" ] ; then
+  TMP=$(mktemp --suffix '.mp4') || die "Unable to create temp file: is mktemp installed?"
+  recordScreen "$TMP" "$GEOM"
+  wl-copy --type video/mp4 < "$TMP"  || die "Clipboard error"
+  notifyOk "$WHAT copied to buffer"
+  rm "$TMP"
+else
+  die "Unknown action" "$ACTION"
+fi

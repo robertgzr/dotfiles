@@ -1,0 +1,21 @@
+cmd:
+  app:
+    main.go: |-
+      package main
+
+      func main() {
+        println("hello world")
+      }
+
+go.mod: |-
+  module example.com/app
+
+  go 1.13
+
+contrib:
+  data: {}
+
+README.md: |-
+  # app
+  
+  this is an app

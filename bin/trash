@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set -e
+
+TRASH="$HOME/.trash"
+if [ ! -d "$TRASH" ]; then
+    mkdir -p "$TRASH"
+fi
+
+empty_trash() {
+    if [ ! -d "$TRASH" ] || [ -z "$(ls "$TRASH")" ]; then
+        exit 0
+    fi
+    echo " +++ trash +++"
+    ls "$TRASH"
+    printf " +++ take it out? [yN] "; read -r yn
+    if [ "$yn" = "y" ]; then
+        printf ' +++ removing %s/* ' "$TRASH"
+        rm -rf "${TRASH:?}/*"
+        echo 'done.'
+    fi
+}
+
+install_auto_empty() {
+    case "$SHELL" in
+        *zsh) logoutfile="$ZDOTDIR/.zlogout" ;;
+        *bash) logoutfile="$HOME/.bash_logout" ;;
+        *)
+            echo "unknown shell $SHELL" 1>&2; exit 1 ;;
+    esac
+    cat > "$logoutfile" <<EOF
+# auto-empty-trash routine of $0
+yes | $0 --empty
+EOF
+}
+
+case "$1" in
+    -e|--empty)
+        empty_trash
+        exit 0 ;;
+    -i|--install)
+        install_auto_empty
+        exit 0 ;;
+    -h|--help)
+        echo "usage: trash [-e|--empty] FILE..."
+        exit 1 ;;
+esac
+
+# main
+for f in "$@"; do
+    echo "+ $(basename "$f")"
+    mv "$f" "$TRASH/"
+done

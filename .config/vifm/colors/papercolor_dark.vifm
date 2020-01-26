@@ -1,0 +1,52 @@
+" Available attributes (some of them can be combined):
+" bold
+" underline
+" reverse or inverse
+" standout
+" none
+
+" let s:palette = {
+" \       'color00' : ['#1c1c1c', '234'],
+" \       'color01' : ['#af005f', '125'],
+" \       'color02' : ['#5faf00', '70'],
+" \       'color03' : ['#d7af5f', '179'],
+" \       'color04' : ['#5fafd7', '74'],
+" \       'color05' : ['#808080', '244'],
+" \       'color06' : ['#d7875f', '173'],
+" \       'color07' : ['#d0d0d0', '252'],
+" \       'color08' : ['#585858', '240'],
+" \       'color09' : ['#5faf5f', '71'],
+" \       'color10' : ['#afd700', '148'],
+" \       'color11' : ['#af87d7', '140'],
+" \       'color12' : ['#ffaf00', '214'],
+" \       'color13' : ['#ff5faf', '205'],
+" \       'color14' : ['#00afaf', '37'],
+" \       'color15' : ['#5f8787', '66'],
+" \       'color16' : ['#5fafd7', '74'],
+" \       'color17' : ['#d7af00', '178'],
+" \ }
+
+highlight clear
+
+highlight Win cterm=none ctermfg=252 ctermbg=234
+highlight Directory cterm=bold ctermfg=74 ctermbg=default
+highlight Link cterm=bold ctermfg=173 ctermbg=default
+highlight BrokenLink cterm=bold ctermfg=240 ctermbg=default
+highlight Socket cterm=bold ctermfg=205 ctermbg=default
+highlight Device cterm=bold ctermfg=125 ctermbg=default
+highlight Fifo cterm=bold ctermfg=148 ctermbg=default
+highlight Executable cterm=bold ctermfg=70 ctermbg=default
+highlight Selected cterm=standout ctermfg=140 ctermbg=default
+highlight CurrLine cterm=bold,reverse ctermfg=default ctermbg=default
+
+highlight TopLine cterm=none ctermfg=default ctermbg=default
+highlight TopLineSel cterm=bold ctermfg=default ctermbg=default
+highlight StatusLine cterm=bold ctermfg=234 ctermbg=74
+highlight WildMenu cterm=underline,reverse ctermfg=white ctermbg=black
+highlight CmdLine cterm=none ctermfg=default ctermbg=default
+highlight ErrorMsg cterm=none ctermfg=125 ctermbg=default
+highlight Border cterm=none ctermfg=default ctermbg=default
+highlight JobLine cterm=bold,reverse ctermfg=default ctermbg=default
+highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
+highlight CmpMismatch cterm=bold ctermfg=252 ctermbg=125
+highlight AuxWin cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default

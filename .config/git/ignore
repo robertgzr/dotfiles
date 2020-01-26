@@ -1,0 +1,49 @@
+# Random
+*~
+._*
+Thumbs.db
+.DS_Store*
+Desktop.ini
+.idea
+ehthumbs.db
+Icon*
+Session.vim
+
+# external
+.Spotlight-V100
+.Trashes
+
+# compiled
+*.o
+*.out
+*.pyc
+*.so
+*.exe
+*.class
+*.dll
+bin/
+tags
+
+# logs and db
+*.log
+*.sql
+*.sqlite
+*.db
+
+# packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# web stuff
+node_modules
+bower_components
+
+# personal stuff
+.todo.md
+.org.md

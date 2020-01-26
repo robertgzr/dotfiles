@@ -1,0 +1,24 @@
+# vim: ft=config
+
+layer=top
+anchor=top-right
+
+# font=Fira Sans
+font=Iosevka Sparkle
+padding=10
+width=500
+height=300
+background-color=#1C1C1Cee
+text-color=#FCFAF2ff
+border-color=#0B346Edd
+border-radius=3
+progress-color=source #0B346Edd
+
+group-by=app-name
+default-timeout=3000
+
+[urgency=high]
+border-color=#db4d6ddd
+
+[app-name="kp-cli"]
+border-color=#26a65bdd

@@ -1,0 +1,191 @@
+#!/bin/bash
+# vim: ft=sh
+
+_meson_dir=`pwd`
+_meson_lang=c
+
+while getopts ":hl:" o; do
+    case $o in
+        l)
+            _meson_lang=$OPTARG
+            ;;
+        h | *)
+            echo "usage: $0 [flags]"
+            echo ""
+            echo "-h :: print help"
+            echo "-l LANG (default: c) :: language to use"
+            echo ""
+            exit 0
+            ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+log() {
+    echo "[*] ${@}" >&2
+}
+
+# allow setting target dir
+if [[ -n $1 ]]; then
+    _meson_dir="$1"
+    [[ ! -d $_meson_dir ]] && mkdir -p $_meson_dir
+    log "creating in $_meson_dir"
+fi
+
+_meson_bin=`basename $_meson_dir`
+_meson_ignore_extra=
+declare -a _meson_default_options
+declare -a _meson_default_files
+
+case $_meson_lang in
+
+    ### C ###
+    c)
+        _meson_default_options=( \
+            'c_std=c11' \
+            'warning_level=2' \
+            'werror=true' \
+        )
+        _meson_default_files=('src/main.c')
+        _meson_ignore_extra='**/*.o'
+        _meson_output="
+x = executable(
+    '$_meson_bin',
+    sources: src
+)"
+
+        log "writing main.c"
+        mkdir $_meson_dir/src
+        cat > $_meson_dir/src/main.c <<EOF
+#define _POSIX_C_SOURCE 200809L
+
+#ifndef VERSION
+#define VERSION "undefined"
+#endif
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+    printf("%s version %s\n\n", *argv, VERSION);
+
+    printf("args (len: %d)", argc-1);
+    for (int i=1; i < argc; ++i) {
+        printf(" '%s'", argv[i]);
+    }
+    printf("\n");
+    return 0;
+}
+EOF
+        ;;
+
+    ### JAVA ###
+    java)
+        _meson_default_options=
+        _meson_default_files=('pkg/Main.class')
+        _meson_ignore_extra='**/*.jar'
+        _meson_output="
+x = jar(
+    '$_meson_bin',
+    main_class: 'pkg.Main',
+    sources: src
+)
+"
+
+        log "writing Main.java"
+        mkdir $_meson_dir/pkg
+        cat > $_meson_dir/pkg/Main.java <<EOF
+package pkg
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("hello world o/");
+    }
+}
+EOF
+        ;;
+
+
+    *)
+        log "$_meson_lang not supported yet :("
+        exit 1
+        ;;
+esac
+
+meson_array_expand() {
+    for o in "${@}"; do 
+        printf "\t'%s',\n" $o
+    done
+}
+
+log "writing meson.build"
+cat > $_meson_dir/meson.build <<EOF
+project(
+    '$_meson_bin',
+    '$_meson_lang',
+    version: '0.1.0',
+    license: 'MIT',
+    default_options: [
+`meson_array_expand ${_meson_default_options[@]}`
+    ],
+)
+
+version = '"@0@ (" __DATE__ ")"'.format(meson.project_version())
+
+# embed version sourced from git ref
+git = find_program('git', native: true, required: false)
+if git.found()
+    git_commit_hash = run_command([git.path(), 'describe', '--always', '--tags'])
+    git_branch = run_command([git.path(), 'rev-parse', '--abbrev-ref', 'HEAD'])
+    if git_commit_hash.returncode() == 0 and git_branch.returncode() == 0
+	version = '"@0@ (" __DATE__ ", branch \'@1@\')"'.format(git_commit_hash.stdout().strip(), git_branch.stdout().strip())
+    endif
+endif
+add_project_arguments('-DVERSION=@0@'.format(version), language: 'c')
+
+src = files(
+`meson_array_expand ${_meson_default_files[@]}`
+)
+
+$_meson_output
+
+test('smoke', x)
+EOF
+
+log "intialializing git"
+git init -q $_meson_dir
+
+log "writing .gitignore"
+cat > $_meson_dir/.gitignore <<EOF
+/build
+$_meson_ignore_extra
+EOF
+
+log "writing Makefile"
+cat > $_meson_dir/Makefile <<EOF
+RT ?= podman
+IMAGE ?= docker.io/robertgzr/mesonbuild-$_meson_lang
+
+all: clean compile
+
+build/build.ninja:
+	meson build
+
+build/$_meson_bin$([[ $_meson_lang -eq java ]] && echo '.jar'): compile
+build: build/build.ninja
+	ninja -C build
+
+test: build/$_meson_bin$([[ $_meson_lang -eq java ]] && echo '.jar')
+	ninja -C build test
+
+cbuild:
+        \$(RT) run --rm -it -v \$(shell pwd):/src -w /src \$(IMAGE) make
+
+ctest:
+        \$(RT) run --rm -it -v \$(shell pwd):/src -w /src \$(IMAGE) make test
+
+clean:
+	\$(RM) -r build
+
+.PHONY: clean build test cbuild ctest
+EOF

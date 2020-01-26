@@ -1,0 +1,25 @@
+snippet eapi7 "eapi7"
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+DESCRIPTION="$2"
+HOMEPAGE="$3"
+
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/$1/${PN}.git"
+else
+	SRC_URI="https://github.com/$1/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
+
+LICENSE="MIT"
+SLOT="0"
+IUSE=""
+
+DEPEND="$0"
+RDEPEND="${DEPEND}"
+BDEPEND=""
+endsnippet

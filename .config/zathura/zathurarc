@@ -1,0 +1,33 @@
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#1c1c1c"
+set completion-fg "#d0d0d0"
+
+set completion-highlight-bg "#5faf00"
+set completion-highlight-fg "#1c1c1c"
+
+set inputbar-bg "#1c1c1c"
+set inputbar-fg "#d0d0d0"
+
+set statusbar-bg "#1c1c1c"
+set statusbar-fg "#d0d0d0"
+
+set recolor-lightcolor "#1c1c1c"
+set recolor-darkcolor "#d0d0d0"
+set default-bg "#1c1c1c"
+
+set index-bg "#585858"
+set index-fg "#d0d0d0"
+set index-active-bg "#1c1c1c"
+set index-active-fg "#d0d0d0"
+
+map P print
+map c recolor
+map R rotate rotate-ccw
+map n zoom in
+map p zoom out
+map M mark_add
+map m mark_evaluate

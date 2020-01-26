@@ -1,0 +1,20 @@
+snippet link "Link"
+[$1](${2:${VISUAL}})
+endsnippet
+
+snippet code "Code block" b
+\`\`\`$1
+${2:${VISUAL}}
+\`\`\`
+$0
+endsnippet
+
+snippet detail "Detail block" b
+<details>
+<summary>$1<summary>
+
+${2:${VISUAL}}
+
+</details>
+$0
+endsnippet

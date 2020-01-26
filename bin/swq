@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+swtree()
+{
+    swaymsg -t get_tree
+}
+
+has_appid()
+{
+    swtree | jq "[ .. | select(.app_id?==\"$1\") // select(.window_properties?.class==\"$1\") // select(.window_properties?.instance==\"$1\") ]"
+}
+
+has_pid()
+{
+    q=''
+    IFS=$' '; for pid in $1; do
+        if [[ -n $q ]]; then
+            q=".pid?==$pid or $q"
+        else
+            q=".pid?==$pid"
+        fi
+    done
+    swtree | jq "[ .. | select($q) ]"
+}
+
+has_exe()
+{
+    pid_of_win="$(pgrep -x "$1" -d' ')"
+    if [[ -z "$pid_of_win" ]]; then 
+        echo "process not found" >&2
+        exit 1
+    fi
+
+    ppid_of_proc="$(ps -q "$(echo "$pid_of_win" | tr ' ' ',')" -o ppid= |tr -d ' '| tr '\n' ','| sed 's/,$//')"
+    if [[ -z "$ppid_of_proc" ]]; then
+        echo "parent process not found" >&2
+    fi
+    IFS=$'\n'; for comm in $(ps -q "$ppid_of_proc" -o pid=,comm=); do
+        if [[ "$comm"  =~ ^.*sh$ ]]; then
+            # parent process is a shell
+            # need to get parent process of shell (the terminal emulator)
+            pid_of_win="$pid_of_win $(ps -p "$(echo "$comm" | awk '{print $1}')" -o ppid= | tr -d ' ')"
+        fi
+    done
+
+    if [[ -z "$pid_of_win" ]]; then 
+        echo "process not found" >&2
+        exit 1
+    fi
+    has_pid "$pid_of_win"
+}
+
+latest()
+{
+    type="$1"
+    swtree | jq "[ .. | select(.type?==\"$type\") ] | max_by(.id)"
+}
+
+list()
+{
+    swtree | jq "[ .. | select(.type?==\"$1\") | .nodes=[\"...\"] ]"
+}
+
+moveto()
+{
+    if [ ! -t 0 ]; then
+        read -r -i -e conId
+        sway [con_id="$conId"] move to workspace "$1" 
+    else
+        sway [app_id="$1"] move to workspace "$2" 
+    fi
+}
+
+# meta commands
+
+_has()
+{
+    case "$1" in
+        appid) has_appid "$2" ;;
+        pid) has_pid "$2";;
+        exe) has_exe "$2";;
+        *)
+            printf 'usage: swq has COMMAND <args>\n'
+            printf '\nCOMMANDS:\n'
+            printf ' appid: returns the json of the window filtered by app_id/class\n'
+            printf ' pid:   returns the json of the window filtered by pid\n'
+            printf ' exe:   returns the json of the window filtered by process name\n'
+            printf '\n'
+    esac
+}
+_latest()
+{
+    [ "$1" == "ws" ] && 1="workspace"
+    latest "$1"
+}
+_list()
+{
+    [ -n "$1" ] || { echo "usage: swq list <con|workspace>"; exit 1; }
+    [ "$1" == "ws" ] && _list workspace
+    list "$1"
+}
+_current()
+{
+    case "$1" in
+        window) _current con ;;
+        con) swtree | jq '.. | select(.type?=="con" and .focused?==true)' ;;
+
+        ws) _current workspace ;;
+        workspace) swtree | jq '.. | select(.type?=="workspace") | . as $parent | .nodes[]? | if .focused then $parent else empty end' ;;
+        output) $0 current workspace | jq -r '.output' ;;
+        *)
+            printf 'usage: swq current <con|workspace|output>\n\n' ;;
+    esac
+}
+
+case "$1" in
+    has) shift; _has $@ ;;
+    latest) shift; _latest $@ ;;
+    list|ls) shift; _list $@ ;;
+    current|cur) shift; _current $@ ;;
+
+    focus-latest-con) sway [con_id="$(latest con | jq -r '.id')"] focus ;;
+    moveto) shift; moveto $@ ;;
+
+    *)
+        printf 'usage: swq COMMAND\n'
+        printf '\n'
+        printf 'QUERY COMMANDS:\n'
+        printf ' has:     get object by criteria\n'
+        printf ' latest:  get newest objects\n'
+        printf ' list:    list objects\n'
+        printf ' current: get focused objects\n'
+
+        printf '\n'
+        printf 'ACTION COMMANDS:\n'
+        printf ' focus-latest-con\n'
+        printf ' moveto <appid> <ws>:  move container with <appid> to <ws>\n'
+        printf '\n'
+esac

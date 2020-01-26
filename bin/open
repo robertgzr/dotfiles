@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -m
+termmode=0
+
+while getopts ":hg" opt; do
+    case $opt in
+        g)
+            termmode=1
+            ;;
+        h|*)
+            echo "usage: open [-t] FILE"
+            echo ""
+            echo "  -t  Use only Terminal-based applications"
+            exit 2
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+in="$1"
+
+mime=$(file --mime-type $in | awk -F': ' '{print $2}' )
+ext=$(basename $in | rev | cut -d'.' -f1 | rev)
+opener=xdg-open
+
+fork() {
+    exec $@ 1>&2 2>/dev/null &
+}
+
+term() {
+    fork alacritty --title="$1" --command "$@"
+}
+
+case $mime in
+    inode/directory)    [ $termmode -eq 0 ] && vifm "$in" || fork nautilus -w "$in" ;;
+    # inode/file)         fork nautilus -w $in ;;
+
+    image/*)            fork sxiv "$in" ;;
+    video/*)            fork mpv --force-widow=yes "$in" ;;
+    audio/*)            fork mpv --force-widow=yes "$in" ;;
+
+    application/pdf)    fork zathura "$in" ;;
+    application/vnd.ms-opentype|application/font-sfnt)
+                        fork gnome-font-viewer "$in" ;;
+
+    # now text...
+    text/*)
+        # echo $mime $ext
+        case $ext in
+            md|markdown) fork shiba "$(readlink -f "$in")" ;;
+            desktop) fork gtk-launch "$(basename "$in" | cut -d'.' -f1)" ;;
+            *)           fork term nvim "$in" ;;
+        esac
+        ;;
+
+    # everything else...
+    *) exec $opener "$in" ;;
+esac

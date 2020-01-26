@@ -1,0 +1,127 @@
+#!/bin/bash
+#
+# To use this create a directory that you want to use for git repos, e.g. $HOME/git and copy/symlink this script into it.
+# Then you can use it like this:
+#
+# ./clone github.com/robertgzr/dotfiles
+# ./clone https://bitbucket.org/foo/bar
+#
+# If you don't have gitconfig set up like I have (using aliases for github/bitbucket ssh access) this won't really work
+set -e
+
+SHALLOW=0
+RECURSE_SUBMODULES=
+TEMP="$(mktemp -d -p /tmp clone.XXXXXXXXXX)"
+
+URL=$1
+if [[ -z "${URL}" ]]; then
+    fail "no input"
+else
+    URL="${URL//(http|https):\/\//}"
+fi
+
+make_dirs() {
+    local url=$1
+
+    if [[ -d "${url}" ]]
+    then
+        echo "exists: ${url}"
+        return
+    fi
+
+    confirm "create ${url}"
+    mkdir -p "${url}"
+}
+
+clone() {
+    local in=$1
+    local to=$2
+    IFS='/' read -r -a url <<< "${in}"
+
+    case "${url[0]}" in
+        github.com ) ssh_clone gh "${in}" "${to}";;
+        gitlab.com ) ssh_clone gl "${in}" "${to}";;
+        bitbucket.org ) ssh_clone bb "${in}" "${to}";;
+        git.sr.ht ) ssh_clone srht "${in}" "${to}";;
+        * ) http_clone "${url[@]// /\/}" "${to}";;
+    esac
+}
+
+ssh_clone() {
+    local prefix=$1
+    local in=$2
+    local to=$3
+    IFS='/' read -r -a url <<< "${in}"
+    local ssh_url="${prefix}:${url[1]}/${url[2]}"
+
+    # confirm "clone $ssh_url"
+    git_clone "${ssh_url}" "${to}"
+}
+
+http_clone() {
+    local to=$2
+    local http_url="https://${URL}"
+
+    # confirm "clone $http_url"
+    git_clone "${GIT_FLAGS}" "${http_url}" "${to}"
+}
+
+git_clone() {
+    declare -a GIT_FLAGS
+    if [[ ${SHALLOW} -ne 0 ]]; then
+        GIT_FLAGS+="--depth=${SHALLOW}"
+    fi
+    if [[ ! -z ${RECURSE_SUBMODULES} ]]; then
+        GIT_FLAGS+="--recurse-submodules"
+    fi
+    git clone "${GIT_FLAGS[@]}" "${@}"
+}
+
+fail() {
+    echo "${1:-error}"
+    exit ${2:-1}
+}
+
+confirm() {
+    echo -n "${1:-'do something'}, ok (y/n)? "
+    read yn
+    if [[ "$yn" = "${yn#[Yy]}" ]]; then
+        fail "ok, exiting" 0
+    fi
+}
+
+usage() {
+    echo "usage: clone [-s][-r] URL"
+    echo ""
+    echo -e " -s\tshallow clone"
+    echo -e " -r\trecurse submodules"
+    echo -e " URL\texample.com/user/repo"
+    echo -e "\thttp[s]://example.com/user/repo"
+    exit 0
+}
+
+while getopts ":hsr" opt; do
+    case ${opt} in
+        s )
+            echo "Shallow clone"
+            SHALLOW=1
+            ;;
+        r )
+            echo "Recurse submodules"
+            RECURSE_SUBMODULES=1
+            ;;
+        h ) 
+            usage
+            ;;
+        \? ) 
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+clone "${URL}" "${TEMP}/${URL}" || fail
+
+target="${PWD}/$(dirname "${URL}")"
+install -d "${target}" || fail
+mv "${TEMP}/${URL}" "${target}" || fail

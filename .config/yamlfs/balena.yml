@@ -1,0 +1,18 @@
+docker-compose.yml: |-
+  version: '2.1'
+
+  services:
+    build: ./container
+  
+  volumes:
+    ctr-data:
+
+container:
+  Dockerfile.template: |-
+    # vim: ft=dockerfile
+    FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:run
+
+    # RUN apk add --no-cache
+
+    # COPY ./start.sh /usr/local/bin/
+    # CMD [ "start.sh" ]

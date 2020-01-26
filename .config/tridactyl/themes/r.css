@@ -1,0 +1,59 @@
+:root.TridactylThemeR {
+    --tridactyl-bg: #1c1c1c;
+    --tridactyl-bg-second: #38383d;
+    --tridactyl-fg: #f9f9fa;
+    --tridactyl-of-bg: #005CAF;
+    /* --tridactyl-of-fg: ; */
+    /* --tridactyl-hightlight-box-bg: ; */
+    /* --tridactyl-hightlight-box-fg: ; */
+    --tridactyl-font-family: "Iosevka Sparkle", monospace;
+    --tridactyl-font-family-sans: sans-serif;
+    --tridactyl-font-size: 12pt !important;
+    --tridactyl-small-font-size: 12pt;
+    --tridactyl-cmdl-bg: #1c1c1c;
+    --tridactyl-cmdl-small-font-size: 12pt;
+    --tridactyl-cmplt-bg: #1c1c1c;
+    --tridactyl-cmplt-small-font-size: 12pt;
+}
+
+/* :root.TridactylThemeR body { */
+/* } */
+
+:root.TridactylThemeR #command-line-holder {
+    order: 1;
+}
+
+:root.TridactylThemeR #completions {
+    order: 2;
+    border-top: 1px solid var(--tridactyl-complt-bg);
+}
+
+:root.TridactylThemeR #completions .sectionHeader {
+    display: none;
+}
+
+/* :root.TridactylThemeR #tridactyl-colon { */
+/*     margin-left: 2px; */
+/* } */
+:root.TridactylThemeR #tridactyl-colon::before {
+    content: " > ";
+}
+
+/* :root.TridactylThemeR #completions .focused, */
+/* :root.TridactylThemeR #completions .focused .url { */
+/*     background: var(--tridactyl-bg-second); */
+/*     text-decoration: italic; */
+/* } */
+
+:root.TridactylThemeR #cmdline_iframe {
+    position: fixed !important;
+    bottom: unset;
+    top: -1px !important;
+    left: 0% !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px !important;
+    /* opacity: 0.9; */
+}
+
+/* :root.TridactylThemeR #changelog { */
+/*     background: var(--tridactyl-bg-second); */
+/* } */

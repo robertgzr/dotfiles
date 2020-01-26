@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+
+lock_bg=$HOME/.background_lock
+
+blur() {
+    if [ -n "$USE_GRIM" ]; then
+        in=$(mktemp --tmpdir lock-XXX.png)
+        grim -o $(swq current output) ${in}
+    else
+        in=$(readlink -f $HOME/.background)
+    fi
+
+    convert ${in} -filter Gaussian -resize 50% \
+        -define filter:sigma=8.0 -resize 200% ${lock_bg}
+    # convert ${in} -scale 5% -blur 0x2.5 -resize 2000% ${lock_bg}
+    # $GOPATH/bin/stackblur -radius 60 -in $img -out $img
+    # $HOME/devel/go/bin/stackblur -radius 60 -in ${in} -out ${lock_bg} >/dev/null
+}
+
+case "$1" in
+	-h) echo "usage: $0 [gen]"; exit 0 ;;
+	gen) blur; exit 0 ;;
+	*) exec swaylock -f -i ${lock_bg} \
+		--scaling=fill \
+		--font=Iosevka\ R\ Medium \
+		--ignore-empty-password \
+	    	--indicator-caps-lock \
+	    	--show-failed-attempts \
+		--hide-keyboard-layout ;;
+esac

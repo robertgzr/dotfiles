@@ -1,0 +1,55 @@
+env:
+  TERM: alacritty
+  GUICALL: '1'
+
+window:
+  padding:
+    x: 8
+    y: 8
+  dynamic_padding: true
+  decorations: none
+
+font:
+  normal:
+    family: Iosevka
+    style: Medium
+  bold:
+    style: Bold
+  italic:
+    style: Italic
+  size: 13.0
+
+colors:
+  primary:
+    background: '#221e1d'
+    foreground: '#fffefe'
+    dim_foreground: '#BDC0BA'
+    bright_foreground: '#ffffff' # just white ;)
+  cursor:
+    text: '#221e1d'
+    cursor: '#fffefe'
+  normal:
+    black:   '#221e1d'
+    red:     '#b76868'
+    green:   '#bfbd90'
+    yellow:  '#ae9892'
+    blue:    '#b5c1c0'
+    magenta: '#76a3b0'
+    cyan:    '#4777aa'
+    white:   '#c7c6c6'
+  bright:
+    black:   '#3d3533'
+    red:     '#ff7474'
+    green:   '#ffffa5'
+    yellow:  '#f6b9a9'
+    blue:    '#d3ffff'
+    magenta: '#86def7'
+    cyan:    '#4c9aec'
+    white:   '#fffefe'
+
+background_opacity: 0.95
+# shell:
+#   program: /usr/bin/env
+#   args:
+#     - LD_LIBRARY_PATH=/usr/local/lib64
+#     - mrsh

@@ -1,0 +1,35 @@
+#!/bin/env bash
+
+D_SQUASHFS="solus_2019-12-23.squashfs"
+D_RAW="${D_SQUASHFS%.squashfs}.img"
+
+mount() {
+	udisksctl mount -b /dev/disk/by-partlabel/rTranscend
+
+	mkdir -p /tmp/mnt-solus-squashfs
+	sudo mount /run/media/robert/rTranscend/${D_SQUASHFS} /tmp/mnt-solus-squashfs
+
+	sudo losetup --partscan /dev/loop1 /tmp/mnt-solus-squashfs/${D_RAW}
+	sudo pvs
+	sudo vgchange -a y SolusSystem
+
+	mkdir -p /tmp/mnt-solus
+	sudo mount -o ro /dev/SolusSystem/Root /tmp/mnt-solus
+
+	ls /tmp/mnt-solus
+}
+
+unmount() {
+	sudo umount /tmp/mnt-solus
+	sudo vgchange -a n SolusSystem
+	sudo losetup -d /dev/loop1
+	sudo umount /tmp/mnt-solus-squashfs
+	udisksctl unmount -b /dev/disk/by-partlabel/rTranscend
+}
+
+set -x
+
+case "$1" in
+	-u) unmount ;;
+	*) mount ;;
+esac

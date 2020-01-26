@@ -1,0 +1,121 @@
+#!/bin/env python3
+# -*- coding: utf-8 -*-
+
+import argparse
+import logging
+import sys
+
+from obswebsocket import obsws, requests
+
+
+def __call(ws, req, cb=None):
+    r = ws.call(req)
+    if r.status:
+        logging.debug('Success calling %s' % req)
+        if cb:
+            try:
+                return cb(r)
+            except Exception as e:
+                raise(e)
+    else:
+        raise Exception(r)
+
+
+def listActions(*_):
+    for a in actions:
+        print(a)
+
+
+def startRecording(ws, _):
+    __call(ws, requests.StartRecording())
+
+
+def stopRecording(ws, _):
+    __call(ws, requests.StopRecording())
+    __call(ws, requests.GetRecordingFolder(),
+           lambda r: print('Saved recording at: %s' % r.getRecFolder()))
+
+
+def startStreaming(ws, _):
+    __call(ws, requests.StartStreaming())
+
+
+def stopStreaming(ws, _):
+    __call(ws, requests.StopStreaming())
+
+
+def listScenes(ws, _):
+    def cb(r):
+        current_scene = r.getCurrentScene()
+        for scene in r.getScenes():
+            scene = scene['name']
+            print('%s %s' % (('*' if current_scene == scene else ' '), scene))
+
+    __call(ws, requests.GetSceneList(), cb)
+
+
+def switchScene(ws, args):
+    def cb(r):
+        return list(map(lambda s: s['name'], r.getScenes()))
+
+    scenes = __call(ws, requests.GetSceneList(), cb)
+
+    if len(args) != 1:
+        raise Exception('need exactly 1 argument')
+
+    if args[0] in scenes:
+        __call(ws, requests.SetCurrentScene(args[0]))
+
+
+sys.path.append('../')
+
+actions = {
+    'list-actions': listActions,
+    'start-recording': startRecording,
+    'stop-recording': stopRecording,
+    'start-streaming': startStreaming,
+    'stop-streaming': stopStreaming,
+    'list-scenes': listScenes,
+    'switch-scene': switchScene,
+}
+
+if __name__ == '__main__':
+    try:
+        app = argparse.ArgumentParser(
+            description=__doc__,
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+        app.add_argument('-d', '--debug',
+                         action='store_true',
+                         help='show debug logs')
+        app.add_argument('-H', '--host', type=str,
+                         default='localhost',
+                         help='obs-websocket host')
+        app.add_argument('-P', '--port', type=int,
+                         default=4444,
+                         help='obs-websocket port')
+        app.add_argument('-p', '--password', type=str,
+                         help='obs-websocket password')
+        app.add_argument('action', type=str,
+                         choices=actions.keys(),
+                         help='the command to run')
+        app.add_argument('args',
+                         nargs=argparse.REMAINDER,
+                         help='optional action argument')
+        args = app.parse_args()
+
+        if args.debug:
+            logging.basicConfig(level=logging.DEBUG)
+
+        ws = obsws(args.host, args.port, args.password)
+        ws.connect()
+
+        actions[args.action](ws, args.args)
+
+        ws.disconnect()
+        exit(0)
+
+    except KeyboardInterrupt:
+        pass
+    except Exception as e:
+        logging.error(e)

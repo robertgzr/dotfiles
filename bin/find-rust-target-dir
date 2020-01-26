@@ -1,0 +1,16 @@
+#!/bin/bash
+
+is_rust_root() {
+    [ -f $1/Cargo.toml ] || return 1
+    [ -d $1/target ] || return 1
+    return 0
+}
+
+inspect() {
+    for dir in `fd -t d -d 1 '' "${1}"`; do
+        is_rust_root ${dir} && { echo ${dir}; du -h -d 0; echo -e "\n"; continue; }
+        inspect ${dir}
+    done
+}
+
+inspect ${1:-$PWD}

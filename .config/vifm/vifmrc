@@ -1,0 +1,216 @@
+" vim: filetype=vifm :
+
+colorscheme papercolor_dark
+
+set vicmd=nvim
+set trash
+set history=100
+set nofollowlinks
+set sortnumbers
+set undolevels=100
+set vimhelp
+set norunexec
+set timefmt=%m/%d\ %H:%M
+set wildmenu
+set wildstyle=popup
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+set ignorecase
+set smartcase
+set nohlsearch
+set incsearch
+set scrolloff=4
+
+" Don't do too many requests to slow file systems
+if !has('win')
+    set slowfs=curlftpfs
+endif
+
+set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+
+" ------------------------------------------------------------------------------
+
+mark b ~/bin/
+mark h ~/
+
+" ------------------------------------------------------------------------------
+
+" :com[mand][!] command_name action
+" The following macros can be used in a command
+" %a is replaced with the user arguments.
+" %c the current file under the cursor.
+" %C the current file under the cursor in the other directory.
+" %f the current selected file, or files.
+" %F the current selected file, or files in the other directory.
+" %b same as %f %F.
+" %d the current directory name.
+" %D the other window directory name.
+" %m run the command in a menu window
+
+command! df df -h %m 2> /dev/null
+command! diff vi -d %f %F
+command! zip zip -r %f.zip %f
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! vgrep vi "+grep %a"
+command! reload :write | restart
+
+command ssh
+\ : let $SSH_FILE = system('mktemp /tmp/vifm-XXXX.ssh')
+\ | execute '!echo ''%a'' > $SSH_FILE; ls $SSH_FILE %%U'
+\ | execute 'normal l'
+\ | execute '!rm $SSH_FILE'
+
+" ------------------------------------------------------------------------------
+
+" Pdf
+filextype *.pdf 
+        \ {View in mupdf}
+        \ mupdf %c &,
+        \ {View in zathura}
+        \ zathura %c %i &,
+fileviewer *.pdf pdftotext -nopgbrk %c -
+" PostScript
+filextype *.ps,*.eps,*.ps.gz
+        \ {View in zathura}
+        \ zathura %f,
+" Djvu
+filextype *.djvu
+        \ {View in zathura}
+        \ zathura %f,
+
+" Audio
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
+       \ {Play using mpv}
+       \ mpv --no-video %c,
+       \ {Play using ffplay}
+       \ ffplay -nodisp %c,
+       \ {Enqueue using xap}
+       \ xap add %c:p,
+fileviewer *.mp3 mp3info
+
+" Video
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+         \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+         \*.as[fx]
+        \ {View using mpv}
+        \ mpv %f,
+        \ {View using ffplay}
+        \ ffplay -fs %f,
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+          \*.as[fx]
+         \ ffprobe -pretty %c 2>&1
+
+" Web
+filextype *.html,*.htm
+        \ {Open with w3m}
+        \ w3m %f %i &,
+        \ {Open with firefox}
+        \ firefox %f &,
+
+" Object
+filetype *.o nm %f | less
+
+" Man page
+filetype *.[1-8] man ./%c
+fileviewer *.[1-8] man ./%c | col -b
+
+" Images
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+        \ {View in imv}
+        \ imv -n %c %d 2>/dev/null &,
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+         \ convert -identify %f -verbose /dev/null
+
+" MD5
+filetype *.md5
+       \ {Check MD5 hash sum}
+       \ md5sum -c %f %S,
+" SHA1
+filetype *.sha1
+       \ {Check SHA1 hash sum}
+       \ sha1sum -c %f %S,
+" SHA256
+filetype *.sha256
+       \ {Check SHA256 hash sum}
+       \ sha256sum -c %f %S,
+" SHA512
+filetype *.sha512
+       \ {Check SHA512 hash sum}
+       \ sha512sum -c %f %S,
+" GPG signature
+filetype *.asc
+       \ {Check signature}
+       \ !!gpg --verify %c,
+
+filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
+       \ {View contents}
+       \ zip -sf %c | less,
+       \ {Extract here}
+       \ tar -xf %c,
+filetype *.zip
+       \ {Extract ZIP}
+       \ unzip %c
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+
+" ArchiveMount
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.txz,*.txz xz --list %c
+fileviewer *.tar tar -tf %c
+
+" ------------------------------------------------------------------------------
+
+" What should be saved automatically between vifm runs
+" Like in previous versions of vifm
+" set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
+" Like in vi
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+" ------------------------------------------------------------------------------
+
+" Examples of configuring both panels
+
+" Customize view columns a bit (enable ellipsis for truncated file names)
+"
+" set viewcolumns=-{name}..,6{}.
+
+" Filter-out build and temporary files
+"
+" filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
+
+" ------------------------------------------------------------------------------
+
+" Start shell in current directory
+nnoremap s :shell<cr>
+" Display sorting dialog
+nnoremap S :sort<cr>
+
+" Toggle visibility of preview window
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+
+" Open file in the background using its default program
+nnoremap gb :file &<cr>l
+
+" Yanking...
+nnoremap yf :!echo -n %c:p | wl-copy %i<cr>
+nnoremap yn :!echo -n %c | wl-copy %i<cr>
+nnoremap yd :!echo -n %d | wl-copy %i<cr>
+nnoremap yff :!cat -n %c:p | wl-copy %i<cr>
+
+" Mappings for faster renaming
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw
+
+" Open console in current directory
+nnoremap ,t :!alacritty &<cr>
+" Open editor to edit vifmrc and apply settings after returning to vifm
+nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
+" Toggle wrap setting on ,w key
+nnoremap ,w :set wrap!<cr>
+
+nnoremap q :quit<cr>

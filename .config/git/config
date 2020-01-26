@@ -1,0 +1,219 @@
+[user]
+    name = Robert Günzler
+    email = r@gnzler.io
+
+[sendemail]
+    smtpserver = /usr/bin/msmtp
+    smtpserveroption=-a
+    smtpserveroption=gnzler
+    annotate = true
+    confirm = always
+
+[core]
+    excludesfile = ~/.git/ignore
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+    filemode = false
+
+[init]
+    # templateDir = ~/.dotfiles/git/templates
+
+[commit]
+    # template = ~/.gitmessage
+
+[alias]
+    stp = status --porcelain --branch
+    sti = status --porcelain --branch --ignored
+    st = status -sb
+    stl = ls-files -m -o --exclude-standard
+    ci = commit
+    br = branch
+    co = checkout
+    cp = cherry-pick
+    cr = clone --recursive
+    df = diff --word-diff
+    d = "!f() { local a=${1:-HEAD}; local b=${2:-master}; if [[ $a == '-' ]]; then a=HEAD; fi; printf  ' %s is %s commits ahead and %s commits behind %s\n' `git rev-parse --short=7 $a` `git rev-list --count $b..$a` `git rev-list --count $a..$b` $b; printf ' last common commit (merge-base): %s\n' `git merge-base $a $b`; git diff --shortstat $a..$b; }; f"
+    unstage = reset --hard HEAD
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=oneline --graph --abbrev-commit
+    lm = log --pretty=format:'* %s (%h)'
+    lg = log -p
+    g = grep --break --heading --line-number
+    amend = commit --amend --reuse-message=HEAD --edit
+    contrib = shortlog --summary --numbered
+    show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+    # usage: change-date [rev] [date] [...additional filter-branch flags]
+    # rewrites the commit/author date of <rev> to be <date>
+    # if <rev> is empty HEAD is used
+    # if <date> is empty the current time is used
+    change-date = "!f() { now=\"$(date +'%a %b %d %H:%M:%S %Y %z')\"; head=\"$(git rev-parse HEAD)\"; git filter-branch $3 --env-filter 'if [[ $GIT_COMMIT = ${1-$head} ]]; then export GIT_AUTHOR_DATE=${2:-$now}; export GIT_COMMITTER_DATE=${2:-$now}; fi'; }; f"
+    # usage: ld <n>
+    # prints out the `git log` for the n last days
+    log-since = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+    # usage: pr <num> [<remote>]
+    # creates local branch pr/<num> from origin or <remote> and checks it out
+    pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    total-lines = "! git ls-tree -r master --name-only | xargs -I {} git blame --line-porcelain {} | sed -n 's/^author //p' | sort | uniq -c | sort -rn"
+    fixup = "!f() { git commit --fixup=${1}; }; f"
+    rbi = rebase --autosquash -i
+    rbi-pr = !bash -c 'git rebase --autosquash -i `git merge-base HEAD ${1:-origin/master}`'
+    pushf = push --force-with-lease
+    root = "rev-parse --show-toplevel"
+    trailer = "!f() { msg=$(git rev-parse --show-toplevel)/LAST_COMMIT_MSG; git log -1 --format=%B > $msg; git interpret-trailers --in-place --trailer $@ $msg; git commit --allow-empty --no-verify --amend --only --edit --file $msg; rm $msg; }; f"
+    a = add --patch
+    edit = !bash -c 'set -x && git rbi "${1:-HEAD}"^' -
+    oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent ${1:-master}) <(git rev-list --first-parent ${2:-HEAD}) | sed -ne \"s/^ //p\" | head -1'
+    rebase-onto = !bash -c 'git rebase --onto ${1} `git oldest-ancestor ${2} ${3}` ${3}' -
+    find-by-subject = "!f() { set -ex; s=`git log -1 --format=%s ${1}`; git --no-pager log -1 --grep=\"^${s}$\" --no-merges ${2}; }; f"
+    tig = !tig
+
+
+[pager]
+    diff = less
+
+[apply]
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
+
+[color]
+    # Use colors in Git commands that are capable of colored output when
+    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[credential]
+    # helper = osxkeychain
+
+[diff]
+    # Detect copies as well as renames
+    renames = copies
+    renameLimit = 3210
+
+[diff "bin"]
+    # Use `hexdump` to diff binary files
+    textconv = hexdump -v -C
+    renames = copies
+    tool = vimdiff
+[difftool]
+    prompt = false
+
+[fetch]
+    prune = true
+
+[grep]
+    lineNumber = true
+
+[help]
+    # Automatically correct and execute mistyped commands
+    autocorrect = 10
+
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+    defaultToUpstream = true
+    tool = vimdiff
+[mergetool "vimdiff"]
+    path = /usr/bin/nvim
+    conflictstyle = diff3
+    prompt = false
+
+[rebase]
+    ; instructionFormat = "%aI %an <%ae> |  %s"
+
+[rerere]
+    enabled = false
+
+[push]
+    # Use the Git 1.x.x default to avoid errors on machines with old Git
+    # installations. To use `simple` instead, add this to your `~/.extra` file:
+    # `git config --global push.default simple`. See http://git.io/mMah-w.
+    default = simple
+    # Make `git push` push relevant annotated tags when pushing branches out.
+    followTags = true
+
+# URL shorthands
+[url "git@github.com:"]
+    insteadOf = "gh:"
+    insteadOf = "https://github.com/"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+
+[url "git@bitbucket.org:"]
+    insteadOf = "bb:"
+    insteadOf = "https://bitbucket.org/"
+    pushInsteadOf = "bitbucket:"
+    pushInsteadOf = "git://bitbucket.org/"
+
+[url "git@gitlab.com:"]
+    insteadOf = "gl:"
+    insteadOf = "https://gitlab.com/"
+    pushInsteadOf = "gitlab:"
+    pushInsteadOf = "git://gitlab.com/"
+
+[url "git@git.sr.ht:"]
+    insteadOf = "srht:"
+    insteadOf = "https://git.sr.ht/"
+    pushInsteadOf = "srht:"
+    pushInsteadOf = "git://git.sr.ht/"
+
+[url "git://github.com/"]
+    insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+    insteadOf = "gst:"
+    insteadOf = "gist:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+
+[http]
+    sslverify = true
+	cookiefile = /home/robert/.gitcookies
+
+[trailer "sign"]
+	key = "Signed-off-by"
+	ifmissing = add
+	; command = bash -c 'echo \"$(git config user.name) <${$(git config user.signemail):-$(git config user.email)}>\"'
+	command = echo \"`git config user.name` <`git config user.signemail || git config user.email`>\"
+	where = end
+[trailer "changetype"]
+	key = "Change-type"
+	ifmissing = add
+	ifexists = doNothing
+	where = start
+[trailer "connects"]
+	key = "Connects-to"
+	ifmissing = add
+	where = start
+[trailer "depends"]
+	key = "Depends-on"
+	ifmissing = add
+	where = start
+[trailer "changelog"]
+	key = "Changelog-entry"
+	ifmissing = add
+	where = start

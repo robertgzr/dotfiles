@@ -1,0 +1,82 @@
+{
+  "coc.preferences.snippets.enable": true,
+  "coc.preferences.formatOnType": false,
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.enableFloatHighlight": true,
+  "coc.preferences.extensionUpdateCheck": "never",
+
+  "list.signOffset": 900,
+
+  "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.minTriggerInputLength": 1,
+  "suggest.noselect": true,
+  "suggest.enablePreview": true,
+  "suggest.enablePreselect": false,
+  "suggest.floatEnable": true,
+
+  "signature.enable": true,
+  "signature.target": "float",
+  "signature.preferShownAbove": true,
+
+  "diagnostic.enable": true,
+  "diagnostic.checkCurrentLine": false,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextLines": 1,
+  "diagnostic.messageTarget": "float",
+  "diagnostic.level": "hint",
+  "diagnostic.enableSign": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "‼",
+  "diagnostic.infoSign": "i",
+  "diagnostic.hintSign": "☛",
+
+  "rust-client.channel": "stable",
+  "rust-client.rlsPath": "ra_lsp_server",
+
+  "python.linting.flake8Enabled": false,
+  "python.linting.pylintEnabled": true,
+
+  "languageserver": {
+    "gopls": {
+      "enable": false,
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    "go-langserver": {
+      "enable": false,
+      "command": "go-langserver",
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      },
+      "filetypes": ["go"]
+    },
+    "ccls": {
+      "enable": false,
+      "command": "ccls",
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      },
+      "filetypes": ["c", "cpp", "objc", "objcpp"]
+    },
+    "rust-analyzer": {
+      "enable": false,
+      "command": "ra_lsp_server",
+      "rootPatterns": ["Cargo.toml", "Cargo.lock", ".git/"],
+      "filetypes": ["rust"]
+    },
+    "efm": {
+      "enable": false,
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": ["vim", "markdown", "yaml"]
+    }
+  }
+}

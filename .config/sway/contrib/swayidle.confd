@@ -1,0 +1,8 @@
+
+SWAYIDLE_COMMAND=<<EOF
+timeout 540 'notify-send swayidle "screen off in 60s"'
+timeout 600 'sway output * dpms off'
+	resume 'sway output * dpms on'
+timeout 800 suspend
+before-sleep lock
+EOF

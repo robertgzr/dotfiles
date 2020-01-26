@@ -1,0 +1,71 @@
+# vim: ft=i3 fdm=marker
+
+set $mod Mod4
+set $alt Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+set $floating_term $term --config-file $HOME/.config/alacritty/launcher.yml --class '__floating-Alacritty'
+set $menu wofi -k /dev/null --terminal $term --show drun
+set $run_menu menu -run
+
+# workspaces {{{
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $wsMusic m
+set $wsVideo v
+set $wsGame g
+# }}}
+
+# gaps inner 5
+show_marks yes
+
+# default keyboard
+input * {
+    xkb_layout us
+    xkb_variant mac
+    xkb_options 'caps:hyper,lvl3:ralt_switch_multikey'
+    repeat_rate 70
+}
+
+# default pointer
+input * {
+    accel_profile adaptive
+}
+
+# TODO
+include input.conf
+include binds.conf
+include auto.conf
+
+# style {{{
+set $text #FCFAF2
+set $text2 #BDC0BA
+set $bg #1C1C1C
+set $bg2 #434343
+set $main  #0B346F
+set $main2 #005CAF
+set $urgent #DB4D6D
+set $urgent2 #CB1B45
+set $indicator #FAD689
+set $indicator2 #C18A26
+
+client.focused $main2 $main $text $indicator $main
+client.focused_inactive $bg2 $bg $text2 $indicator2 $bg
+client.unfocused $bg2 $bg $text2 $indicator2 $bg
+client.urgent $urgent2 $urgent $text $indicator $urgent
+# }}}
+
+include config.d/*
+include "`uname -n`"

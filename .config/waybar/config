@@ -1,0 +1,168 @@
+// vim: commentstring=//\ %s
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+
+    "modules-left": ["sway/mode", "sway/workspaces", "sway/window", "custom/media", "custom/toggl"],
+    // "modules-center": ["sway/window"],
+    "modules-right": ["cpu", "memory", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network", "battery", "clock#local", "clock#utc", "tray"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{icon}",
+        "format-icons": {
+            // "urgent": "",
+            // "focused": "",
+            // "default": "",
+            // "1": "",
+            // "2": "",
+            // "3": "",
+            // "4": "",
+            // "5": "",
+            // "6": "",
+            // "7": "",
+            // "8": "",
+            // "9": "",
+            "m": "",
+            "v": "",
+            "g": ""
+        }
+    },
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50,
+        "tooltip": false
+    },
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock#local": {
+        "tooltip": false,
+        "format": "{:<i>%a</i> %d %b %H:%M}",
+        "timezone": "Europe/Berlin"
+    },
+    "clock#utc": {
+        "tooltip": false,
+        "format": "(UTC {:%H:%M})",
+        "timezone": "UTC"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "critical-threshold": 90,
+        "format": "{temperatureC}℃ {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": [""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-full": "{icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip": false
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format-wifi": " {ifname}",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "{volume}%  ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "{volume}% ",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "tooltip": false,
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 80,
+        "format-icons": {
+            "spotify": "",
+            "mpv": "",
+            "default": ""
+        },
+        "on-click": "sway [workspace=$wsMusic] focus",
+        "escape": false,
+        "exec": "$HOME/.config/waybar/mediaplayer.py -I chromium 2> /dev/null"
+    },
+    "custom/toggl": {
+        "exec": "$HOME/.config/waybar/toggl.lua 2>/dev/null",
+        "interval": 30
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format-disconnected": "Disconnected",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    }
+}

@@ -1,0 +1,75 @@
+#!/bin/sh
+
+set -e -o pipefail
+
+KP="$HOME/.local/bin/KeePassXC-2.5.1-x86_64.AppImage"
+[ -e "$KP" ] || {
+    echo "$KP not found" >&2; exit 1
+}
+
+DB="${KP_DB:-$HOME/Dropbox/keepass-box.kdbx}"
+[ -e "$DB" ] || {
+    echo "$DB not found" >&2; exit 1
+}
+
+keepass()
+{
+    "$KP" $@
+}
+
+wofi()
+{
+    wofi -k /dev/null --dmenu --prompt 'Select an entry'
+}
+
+unset passwd
+passwd="$(ASKPASS_PROMPT='Enter KeePassXC password' askpass)"
+[ -n "$passwd" ] || {
+    echo "No password" >&2; exit 1
+}
+
+_kp_command=show
+_kp_opts='-q -a Password'
+_kp_extra_args=
+case $1 in
+    clip)
+        _kp_command='clip'
+        _kp_opts='-q'
+        _kp_extra_args='15' # timeout
+        shift
+        ;;
+    dump)
+        echo "$passwd" | keepass cli export -f csv "$DB"
+        exit 0
+        ;;
+esac
+
+entry="$1"
+[ -n "$entry" ] || {
+    entry=$(echo "$passwd" \
+        | keepass cli ls -q -R "$DB" \
+        | awk '
+{
+    if ($0~/\/$/) { 
+        sub(/^\s+/, "")
+        if ($0!~/^\s+/) {
+            grp = $0
+        } else {
+            print substr($0, match($0, /^\s+/))
+            grp = grp $0
+        }
+            next 
+    } else { 
+        sub(/^\s+/, "")
+        print "/" grp $0 
+    } 
+}' \
+        | grep -v '^/Recycle Bin' \
+        | sort -t/ -k2n \
+        | wofi)
+    [ -n "$entry" ] || {
+        echo "No entry" >&2; exit 1
+    }
+}
+
+echo "$passwd" | keepass cli "$_kp_command" "$_kp_opts" "$DB" "$entry" "$_kp_extra_args"

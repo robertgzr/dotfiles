@@ -1,0 +1,83 @@
+#!/usr/bin/env sh
+# Download extensions from chrome webstore
+#
+# source: https://gitlab.com/snippets/1888145
+
+[ -z "$EXTENSIONS_DIR" ] && EXTENSIONS_DIR="${extensions_dir:=${XDG_DATA_HOME:=$HOME/.local/share}/chrome-extensions}"
+
+magenta="\033[35;1m"
+nc="\033[m"
+
+die() { printf 'Error: %s\n' "$1" >&2; exit 1; }
+
+parse_url(){
+    extension_id="$(echo "$1" | grep -oP '[_a-zA-Z0-9]{30,}')"
+    download_extension
+}
+
+download_extension(){
+    extension_file="$(mktemp "${TMPDIR:-/tmp/}$extension_id.XXXXXXXXXXXX.zip")"
+    printf "\nDownloading extension %s\n" "$extension_id"
+    curl -fsSL "https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3D$extension_id%26installsource%3Dondemand%26uc" --output "$extension_file" || die "Unable to download extension"
+    extract_extension
+}
+
+extract_extension(){
+    nohup rm -fr "$extensions_dir/${extension_id:?}" > /dev/null 2>&1 ||:
+    mkdir -p "$extensions_dir/$extension_id"
+    nohup unzip -q "$extension_file" -d "$extensions_dir/$extension_id" > /dev/null 2>&1
+    printf "\n Extension installed to directory %s\n" "$extensions_dir/$extension_id"
+    install_help
+}
+
+update_extensions(){
+    cd "$extensions_dir" || die "Extensions directory does not exist"
+    for extension in *; do
+        if [ -d "$extension" ]; then
+            printf "\nUpdating extension %s\n" "$extension"
+            extension_id="$extension"
+            download_extension
+        fi
+    done
+}
+
+general_help(){
+    echo -e "
+    ${magenta}NAME${nc}
+    $(basename "$0") - install chrome extensions
+
+    ${magenta}SYNOPSIS${nc}
+    $(basename "$0") [webstore url]
+    $(basename "$0") update
+
+    ${magenta}DESCRIPTION${nc}
+    $(basename "$0") Download extensions from chrome webstore.
+
+    set EXTENSIONS_DIR to change extensions folder."
+}
+
+install_help(){
+    echo -e "
+    ${magenta}Install Guide:${nc}
+    1. Visit chrome://extensions in your browser.
+    2. Ensure that the Developer mode checkbox in the top right-hand corner is checked.
+    3. Click Load unpacked extension... to pop up a file-selection dialog.
+    4. Navigate to $extensions_dir/, and select it."
+}
+
+main(){
+    if [ "$#" -eq 0 ]; then
+        general_help && install_help
+    else
+        for input in "$@"; do
+            shift
+            case "$input" in
+                -h|--h*) general_help && install_help ;;
+                u*) update_extensions ;;
+                *)  parse_url "$input" ;;
+            esac
+        done
+    fi
+}
+
+main "$@"

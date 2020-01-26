@@ -1,0 +1,39 @@
+# vim: ft=i3
+
+output * scale 1
+output * bg $HOME/.background fill
+
+font pango:Iosevka Sparkle 12
+
+output * max_render_time 1
+# for_window [app_id=Alacritty] max_render_time 2
+for_window [app_id=firefox] max_render_time 3
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_options 'caps:hyper,lvl3:ralt_switch_multikey,grp:alt_space_toggle,eurosign:5'
+}
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    natural_scroll enabled
+    dwt enabled
+    tap enabled
+    click_method clickfinger
+    scroll_method two_finger
+    # pointer_accel 1
+}
+input "2:10:TPPS/2_Elan_TrackPoint" {
+    dwt enabled
+    natural_scroll enabled
+}
+
+bar {
+	swaybar_command waybar
+}
+
+exec mako
+exec kanshi
+exec swayidle \
+	timeout 540 'notify-send swayidle "screen off in 60s"' \
+	timeout 600 'sway output * dpms off' \
+		resume 'sway output * dpms on' \
+	timeout 800 suspend \
+	before-sleep lock

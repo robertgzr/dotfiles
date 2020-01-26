@@ -1,0 +1,133 @@
+#!/bin/sh
+# 
+# This script changes the pulseaudio sink for the currently focused application 
+#
+# If it is run with $1 = global the default sink will be switched instead
+
+set -eo pipefail
+
+rofi() {
+    # exec rofi -dmenu -p pactl -l 5 -i "$@"
+    exec wofi --dmenu -k /dev/null --prompt pactl "$@"
+}
+bail() {
+    exec echo "$@" | wofi -p pactrl-error
+    exit 1
+}
+
+list_sinks() {
+    pacmd list-sinks | tr '\n' '\r' | perl -pe 's/[^\r]*index: ([0-9]+).+?name: <([^\r]+)>.+?device.description = "([^\r]+)"\r.+?(?=index:|$)/\1: \3 \t<\2>\r/g' | tr '\r' '\n' | tail -n +2
+}
+parse_sink() {
+    perl -pe 's/.*<([^\r]+)>/\1/g'
+}
+
+# usage: move_sink_inputs_to <target-sink> <sink-input-ids>
+move_sink_inputs_to() {
+    target_sink_id="${1}"
+    shift
+    for sink_input_id in "${@}"; do
+        # notify-send "pactl-debug" "pacmd move-sink-input ${sink_input_id} ${target_sink_id}"
+        pacmd move-sink-input ${sink_input_id} ${target_sink_id}
+    done
+}
+
+list_active_sink_input_ids() {
+    pacmd list-sink-inputs | tr '\n' '\r' | perl -pe 's/[^\r]*index: ([0-9]+).+?application\.process\.binary = "([^\r]+)"\r.+?(?=index:|$)/\2: \1\r/g' | tr '\r' '\n' | tail -n +2
+}
+parse_active_sink_input_id() {
+    perl -pe 's/.*:([^\r]+)/\1/g'
+}
+
+list_cards() {
+    pacmd list-cards | tr '\n' '\r' | perl -pe 's/[^\r]*index: ([0-9]+).+?device.description = \"([^\r]+)\".+?active.profile: <([^\r]+)>.+?(?=index|$)/\1: \2\tProfile: <\3>\r/g' | tr '\r' '\n' | tail -n +2
+}
+
+list_card_profiles() {
+    idx="${1}"
+    pacmd list-cards | tr '\n' '\r' | perl -pe "s/.+index: $idx\\r.+?[^\\r]*profiles:\\r(.+?)[^\\r]*active.+?$/\\1/g;" -e 's/\t\t//g;' -e 's/\([^\r]+\)\r/\r/g;' -e 's/([^\r]+):[\s]+([^\r]+)[\s]+(\r|$)/\2  <\1>\r/g;' | tr '\r' '\n' | tail -n +2
+}
+parse_profile() {
+    perl -pe 's/^.+<(.+)>$/\1/g'
+}
+
+get_focused_command() {
+    focused_pid=`swaymsg -t get_tree | jq '.. | select(.focused? == true) | .pid'`
+    ps -o comm= $focused_pid
+}
+
+# switch default global sink
+_default() {
+    target_sink=`echo "${sel}" | parse_sink`
+    pacmd set-default-sink $target_sink
+    notify-send --expire-time=2000 "New default sink" "<b>${target_sink}</b>"
+    move_sink_inputs_to $target_sink `pactl list sink-inputs short | cut -f 1 | tr '\n' ' '`
+}
+
+# switch output sink of focused application
+_focused() {
+    focused_app=`get_focused_command`
+    focused_app_input_sink_id=`list_active_sink_input_ids | grep "${focused_app}" | parse_active_sink_input_id`
+    target_sink=`list_sinks | rofi | parse_sink`
+
+    notify-send --expire-time=2000 "Switch sink" "Switch <b>${focused_app}</b> to <i>${target_sink}</i>"
+    move_sink_inputs_to "${target_sink}" "${focused_app_input_sink_id}"
+}
+
+# switch output sink of application
+_app() {
+    ret=`list_active_sink_input_ids | rofi`
+    focused_app_input_sink_id=`echo $ret | parse_active_sink_input_id`
+    focused_app=`echo $ret | perl -pe 's/^(.+):.+$/\1/g'`
+
+    target_sink=`list_sinks | rofi | parse_sink`
+
+    notify-send --expire-time=2000 "Switch sink" "Switch <b>${focused_app}</b> to <i>${target_sink}</i>"
+    move_sink_inputs_to "${target_sink}" "${focused_app_input_sink_id}"
+}
+
+_switch_profile() {
+    card=`list_cards | rofi`
+    card_id=`echo $card | perl -pe 's/([0-9]+):.+$/\1/g'`
+    card_name=`echo $card | perl -pe 's/^.+: (.+?)[\s]+Profile.+$/\1/g'`
+    new_profile=`list_card_profiles $card_id | rofi | parse_profile`
+
+    notify-send -t 2000 "Change card profile" "Switch <b>$card_name</b> to <i>$new_profile</i>"
+    # notify-send "pactl-debug" "pacmd set-card-profile $card_id $new_profile"
+    pacmd set-card-profile $card_id $new_profile
+}
+
+ACTIONS=(
+    "Switch profile"
+    "Change app output sink"
+)
+list_actions() {
+    for a in "${ACTIONS[@]}"; do echo "$a"; done
+}
+
+_global() {
+    sel=`{ list_sinks; echo ; list_actions; } | rofi`
+    if [[ -z $sel ]]; then
+        return
+    fi
+    case "${sel}" in
+        ${ACTIONS[0]}) 
+            _switch_profile 
+            ;;
+        ${ACTIONS[1]}) 
+            _app
+            ;;
+        *)
+            _default
+            ;;
+    esac
+}
+
+case "${1}" in
+    global)
+        _global
+        ;;
+    *)
+        _focused
+        ;;
+esac

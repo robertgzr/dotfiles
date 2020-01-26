@@ -1,0 +1,105 @@
+" vim: ft=vim
+" sanitise tridactyllocal tridactylsync
+
+set browser firefox-nightly
+set allowautofocus false
+set searchengine duckduckgo
+set tabopencontaineraware true
+set editorcmd alacritty -t tridactyledit -e nvim
+set historyresults 50
+set newtabfocus page
+set allowautofocus false
+
+colors r
+
+" remove annoying binds
+unbind s
+unbind <C-f>
+unbind <C-a>
+unbind <F1>
+
+bind <Space>tw fillcmdline tabopen -c wee
+bind <Space>tp fillcmdline tabopen -c pers
+bind <Space>tb fillcmdline tabopen -c bank
+bind <Space>ts fillcmdline tabopen -c shop
+
+bind <space>s fillcmdline tabopen search
+bind <space>n fillcmdline nativeopen
+
+bind / fillcmdline find
+bind n findnext 1
+bind N findnext -1
+bind <Space>, nohlsearch
+
+bind <Space>l fillcmdline urlmodify -g 
+
+" select all in cmdline
+unbind --mode=ex <C-a>
+
+bindurl news.ycombinator.com ;c hint -fr \d+\scomments
+bindurl news.ycombinator.com f hint -c [class*="storylink"]
+
+" better result hinting on ddg
+bindurl duckduckgo.com f hint -c [class*="result__url"]
+bindurl duckduckgo.com F hint -b -c [class*="result__url"]
+
+" hint: mpv/video
+bind gv composite get_current_url | !s mpv --profile=cache
+bind yv composite js navigator.clipboard.readText() | !s mpv --profile=cache
+bind ;v hint -W !s mpv --profile=cache
+
+" hint: other
+bind ;i hint -W !s imv
+bind ;e hint -W !s alacritty --class '__floating-tridactyledit' -e nvim
+
+bind gp fillcmdline winopen -popup
+bind g1 tab 2
+bind g2 tab 3
+bind g3 tab 4
+bind g4 tab 5
+
+" some autocommands that rewrite URLs
+" autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+" autocmd DocStart *.solus-project.com js tri.excmds.urlmodify("-t", "solus-project.com", "getsol.us")
+" autocmd DocStart golang.org/pkg js tri.excmds.urlmodify("-t", "golang.org/pkg", "godoc.org")
+" autocmd DocStart typeform.com mode ignore
+
+" autocontainers
+" aucon meetup.com personal
+" aucon trello.com personal
+" aucon reddit.com weeb
+" aucon kitsu.io weeb
+" aucon youtube.com weeb
+" aucon shanaproject.com weeb
+" aucon kum4.cf weeb
+" aucon nyaa.si weeb
+" aucon amazon.(com|de|co.jp|co.uk) shopping
+" aucon flowdock.com work
+" aucon calamari.io work
+
+seturl overleaf.com mode ignore
+
+" fix youtube
+seturl youtube.com noiframe true
+unbindurl youtube.com f
+bindurl youtube.com h hint
+bindurl youtube.com T tabopen ddg.gg
+
+" fix reddit
+seturl reddit.com allowautofocus true
+unbindurl reddit.com <Escape>
+unbindurl reddit.com j
+unbindurl reddit.com k
+unbindurl reddit.com n
+unbindurl reddit.com p
+unbindurl reddit.com a
+unbindurl reddit.com z
+unbindurl reddit.com c
+" unbindurl reddit.com r
+unbindurl reddit.com s
+unbindurl reddit.com h
+unbindurl reddit.com x
+unbindurl reddit.com l
+
+set leavegithubalone false
+set blacklistkeys ["/","<Space>",";"]

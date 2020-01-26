@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "${ASKPASS_PROMPT:-Enter your password}" | \
+    wofi -k /dev/null \
+        --height 50 \
+        --dmenu \
+        --password \
+        --prompt ' Password'

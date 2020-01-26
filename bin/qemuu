@@ -1,0 +1,56 @@
+#!/bin/sh
+
+Q_ARCH='x86_64'
+Q_NAME='qemu'
+Q_SSH_PORT='2222'
+
+USAGE="usage: `basename $0` [options] [--] [qemu options...]
+Options:
+    -A ARCH     VM architecture
+    -p PORT     The port on localhost to map to the VM's sshd. [2222]
+    -d FILE     Set disk
+    -n NAME     Set name
+    -h          This ;-)
+
+A simple wrapper around qemu for running balenaOS images.
+See the qemu(1) man page for more details.
+"
+
+Q_ARGS=""
+
+while getopts ":hvd:A:n:" o; do
+    case "$o" in
+        A)
+            Q_ARCH="$OPTARG"
+            die "Found \"-$o $Q_ARCH\", not supported yet!" ;;
+        d)
+            Q_DISK="$OPTARG"
+            Q_ARGS="${Q_ARGS} -drive file="${Q_DISK}",media=disk,cache=none,format=raw" ;;
+        p)
+            Q_SSH_PORT="$OPTARG" ;;
+        n)
+            Q_NAME="$OPTARG" ;;
+        v)
+            set -x ;;
+        h|*)
+            echo "$USAGE"
+            exit ;;
+    esac
+done
+shift $(($OPTIND-1))
+
+case "${Q_ARCH}" in
+    x86_64|amd64)
+        qemu-system-x86_64 \
+            -name "$Q_NAME" \
+            -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
+            -net nic,model=virtio -net user \
+            -nic user,hostfwd=tcp::${Q_SSH_PORT}-:22222 \
+            -machine type=pc,accel=kvm -smp 4 -cpu host \
+            ${Q_ARGS} \
+            "$@"
+        ;;
+    *) die "Unsupported arch" ;;
+esac
+
+exit $?

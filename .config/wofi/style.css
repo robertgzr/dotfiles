@@ -1,0 +1,16 @@
+window {
+    font-family: Iosevka;
+    font-size: large;
+}
+
+#input {
+    margin: .5em;
+}
+
+#text {
+    margin: .2em .5em;
+}
+
+#img {
+    -gtk-icon-transform: scale(.6);
+}

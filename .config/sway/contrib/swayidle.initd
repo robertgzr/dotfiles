@@ -1,0 +1,6 @@
+#!/sbin/openrc-run
+
+command=swayidle
+command_args="${SWAYIDLE_COMMAND}"
+
+pidfile=/var/run/swayidle.pid

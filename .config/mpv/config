@@ -1,0 +1,97 @@
+# MPV Configuration
+# clean up input config (helps with iina, gnome-mpv etc.)
+# no-input-default-bindings
+autoload-files=no
+input-ipc-server=/var/run/user/1000/mpv 
+
+#
+# Video
+#
+framedrop=vo
+video-sync=display-resample
+gpu-context=wayland
+
+#
+# Audio
+#
+alang=jpn,ja,eng,en,ger,de
+volume-max=200
+audio-channels=auto-safe
+# bs2b filter
+# af-add=lavfi=[bs2b=profile=jmeier] #default,cmoy
+
+#
+# Subtitles
+#
+slang=eng,en,ger,de
+sub-font="Rosario"
+sub-bold=yes
+sub-ass-force-style=Kerning=yes
+
+#
+# OSD
+#
+#osc=no
+keep-open=yes
+stop-screensaver=yes
+cursor-autohide-fs-only
+osd-font="Iosevka Sparkle"
+# osd-font=monospace
+osd-font-size=14
+osd-scale-by-window=yes
+osd-fractions=yes
+geometry=50%:50%
+hidpi-window-scale
+load-stats-overlay=yes
+load-osd-console=yes
+
+#
+# Misc.
+#
+screenshot-directory=~/Pictures/screenshots/mpv
+screenshot-template='%tY%tm%td-%tH%tM%tS-%F-%p'
+# screenshot-format=png
+# screenshot-jpeg-quality=100
+# user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:42.0) Gecko/20100101 Firefox/42.0"
+# ytdl-format=bestvideo+bestaudio,best
+
+#
+# PROFILES
+#
+
+[anime]
+profile-desc="Optimized for watching anime with ASS subtitles"
+sub-auto=fuzzy
+# deband=yes
+# sub-border-size=2
+# sub-font-size=45
+# sub-margin-y=50
+# sub-spacing=1
+
+[cache]
+profile-desc="Optimized for streaming web video"
+cache=yes
+cache-secs=36000
+script=~/.config/mpv/scripts/mpv-plugin-streamcache/streamcache.lua
+ytdl-format='bestvideo[ext=mp4]+bestaudio'
+
+[3d]
+profile-desc="Convert 3d to 2d"
+hwdec=no
+vf-add=stereo3d=sbs2l:mono
+
+[webcam]
+profile-desc="Optimized for showing internal webcam feed"
+osc=no
+profile=low-latency
+video-sync=display-desync # needed or external audio will fail
+pulse-latency-hacks=yes
+demuxer-lavf-o=input_format=mjpeg,video_size=848x480
+framedrop=no
+# no-demuxer-thread
+opengl-glfinish=yes
+opengl-swapinterval=0
+vf=hflip
+
+[sharp]
+glsl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"

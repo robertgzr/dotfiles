@@ -1,0 +1,10 @@
+[options]
+overlay = true
+overlay_font = Iosevka Sparkle:14
+
+[binds]
+n = next 
+p = prev
+e = exec echo $imv_current_file
+u = scaling none
+y = scaling full

@@ -17,9 +17,7 @@ export MAKEOPTS="-j${NUMCPUSplusone} -l${NUMCPUS}"
 export EMERGE_DEFAULT_OPTS="--jobs=${NUMCPUSplusone} --load-average=${NUMCPUS}"
 
 # Set prompt
-GREEN="\[$(tput setaf 2)\]"
-RESET="\[$(tput sgr0)\]"
-export PS1="${GREEN}\w${RESET} $(porcelain) ❱ "
+export PS1="$(prompt)"
 # enlable vi mode
 set -o vi
 bind -m vi-insert -x '"\C-l": clear'

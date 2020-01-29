@@ -20,3 +20,4 @@ augroup vim_mail
 augroup END
 
 set commentstring=>\ %s
+set showtabline=0

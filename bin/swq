@@ -7,7 +7,7 @@ swtree()
 
 has_appid()
 {
-    swtree | jq "[ .. | select(.app_id?==\"$1\") // select(.window_properties?.class==\"$1\") // select(.window_properties?.instance==\"$1\") ]"
+    swtree | jq "[ .. | (select(.app_id?) | select(.app_id | test(\"$1\"))) // (select(.window_properties?.class?) | select(.window_properties.class | test(\"$1\"))) ]"
 }
 
 has_pid()
@@ -82,16 +82,23 @@ _has()
         *)
             printf 'usage: swq has COMMAND <args>\n'
             printf '\nCOMMANDS:\n'
-            printf ' appid: returns the json of the window filtered by app_id/class\n'
+            printf ' appid: returns the json of the window filtered by app_id/class (fuzzy matching)\n'
             printf ' pid:   returns the json of the window filtered by pid\n'
             printf ' exe:   returns the json of the window filtered by process name\n'
             printf '\n'
+            exit 2 ;;
     esac
 }
 _latest()
 {
-    [ "$1" == "ws" ] && 1="workspace"
-    latest "$1"
+    case "$1" in
+        workspace|ws) latest workspace ;;
+        container|con) latest con ;;
+        output) latest output ;;
+        *)
+            printf 'usage: swq latest <con|workspace|output>\n\n'
+            exit 2 ;;
+    esac
 }
 _list()
 {
@@ -109,7 +116,8 @@ _current()
         workspace) swtree | jq '.. | select(.type?=="workspace") | . as $parent | .nodes[]? | if .focused then $parent else empty end' ;;
         output) $0 current workspace | jq -r '.output' ;;
         *)
-            printf 'usage: swq current <con|workspace|output>\n\n' ;;
+            printf 'usage: swq current <con|workspace|output>\n\n'
+            exit 2 ;;
     esac
 }
 
@@ -136,4 +144,5 @@ case "$1" in
         printf ' focus-latest-con\n'
         printf ' moveto <appid> <ws>:  move container with <appid> to <ws>\n'
         printf '\n'
+        exit 2 ;;
 esac

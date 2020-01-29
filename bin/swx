@@ -1,0 +1,99 @@
+#!/bin/sh
+set -e
+
+border=
+wspace=
+output=
+geometry=
+termify=
+appid_override=
+while getopts b:w:o:g:I:th name; do
+	case "$name" in
+	b)	# border
+		border="${OPTARG}" ;;
+	w)	# move to workspace
+		wspace="${OPTARG}" ;;
+	o)	# move to output
+		output="${OPTARG}" ;;
+	g)	# geometry
+		geometry="${OPTARG}" ;;
+	t)	# termify
+		termify=1 ;;
+	I)	# override app_id for non-terminal applications
+		appid_override="${OPTARG}" ;;
+	h|?)	printf "usage: %s [-bwog] COMMAND\n" "$(basename "$0")"
+		printf "\n"
+		printf "  -t \t\t(run COMMAND in \$TERM)\n"
+		printf "  -b BORDER \t(set border property)\n"
+		printf "  -w WORKSPACE \t(move to workspace)\n"
+		printf "  -o OUTPUT \t(move to output)\n"
+		printf "  -g GEOMETRY \t(resize/position window)\n"
+		printf "  -I APP_ID \t(override app_id used to detect window, only makes sense with -t)\n"
+		printf "\n"
+		printf "For this to work swq(1) is required.\n"
+		printf "See sway(5) for possible options for BORDER, WORKSPACE, OUTPUT and GEOMETRY.\n"
+		exit 2 ;;
+	esac
+done
+shift $((OPTIND - 1))
+
+arg0=$(basename "$1")
+appid=${arg0}
+if [ -z "${arg0}" ]; then
+	exec "$0" -h
+fi
+shift
+
+if [ -n "${termify}" ]; then
+	case ${TERM} in
+	alacritty)	args="--title=${arg0} --class=${arg0} --command" ;;
+	*) 		args="" ;;
+	esac
+	command="${TERM} ${args} ${arg0} $*"
+else
+	[ -n "${appid_override}" ] && appid=${appid_override}
+	command="${arg0} $*"
+fi
+
+sway exec "${command}" >/dev/null
+
+sway_props_done=
+waiting=0
+while [ -z "${sway_props_done}" ]; do
+	if ! swq has appid "${appid}" | jq -e 'length>0'; then
+		waiting=$((waiting+1))
+		if [ "${waiting}" -gt 20 ]; then
+			printf "Failed to run %s.\n" "${arg0}"
+			if [ -z "${termify}" ]; then
+				printf "If you do see the application try running:\n"
+				printf "%s -I %s %s\n" \
+					"$(basename "$0")" \
+					"$(swq current con | jq -r '.app_id')" \
+					"${arg0} $*"
+			fi
+			exit 1
+		fi >&2
+		continue
+	fi
+	if [ -n "${border}" ]; then
+		sway border "${border}"
+	fi
+	if [ -n "${wspace}" ]; then
+		sway move workspace "${wspace}"
+	fi
+	if [ -n "${output}" ]; then
+		sway move output "${wspace}"
+	fi
+	if [ -n "${geometry}" ]; then
+		sway floating enable
+		wh=$(printf "%s" "${geometry}" | cut -d' ' -f2)
+		sway resize set \
+			width "$(printf "%s" "${wh}" | cut -d'x' -f1)" px \
+			height "$(printf "%s" "${wh}" | cut -d'x' -f2)" px
+		xy=$(printf "%s" "${geometry}" | cut -d' ' -f1)
+		sway move absolute position \
+			"$(printf "%s" "${xy}" | cut -d',' -f1)" px \
+			"$(printf "%s" "${xy}" | cut -d',' -f2)" px
+	fi
+	sway_props_done=1
+done >/dev/null

@@ -6,7 +6,7 @@
 
     "modules-left": ["sway/mode", "sway/workspaces", "sway/window", "custom/media", "custom/toggl"],
     // "modules-center": ["sway/window"],
-    "modules-right": ["cpu", "memory", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network", "battery", "clock#local", "clock#utc", "tray"],
+    "modules-right": ["cpu", "memory", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery", "clock#local", "clock#utc", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -96,11 +96,10 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip": false
     },
-    "network#vpn": {
-        "interface": "tun0",
-        "format-wifi": " {ifname}",
-        "format-ethernet": " {ifname}",
-        "format-disconnected": "",
+    "network#wg": {
+        "interface": "wg*",
+        "format": "",
+	"format-alt": "{ifname}",
         "tooltip": false
     },
     "pulseaudio": {

@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-N=${1:-10}
-
-for d in {0..$N}; do
-    printf '%s' ${RANDOM:0:1}
-done
-printf '\n'

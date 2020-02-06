@@ -48,7 +48,11 @@ if [ -n "${global}" ]
 then
 	target_sink=$(select_sink)
 	notify-send -a soundswitch "soundswitch: global" "switch to <i>${target_sink}</i>"
+	# set new default sink
 	pactl set-default-sink "${target_sink}"
+	# move all sink-inputs to the new sink
+	pactl list sink-inputs short | cut -f1 \
+		| xargs -i pactl move-sink-input "{}" "${target_sink}"
 
 elif [ -n "${focused}" ]
 then

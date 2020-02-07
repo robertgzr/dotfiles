@@ -31,12 +31,10 @@
     },
     "sway/window": {
         "format": "{}",
-        "max-length": 50,
-        "tooltip": false
+        "max-length": 50
     },
     "sway/mode": {
-        "format": "{}",
-        "tooltip": false
+        "format": "{}"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -49,18 +47,17 @@
         "spacing": 10
     },
     "clock#local": {
-        "tooltip": false,
+        "timezone": "Europe/Berlin",
         "format": "{:<i>%a</i> %d %b %H:%M}",
-        "timezone": "Europe/Berlin"
+	"tooltip-format": "{:%Z %z}"
     },
     "clock#utc": {
-        "tooltip": false,
-        "format": "(UTC {:%H:%M})",
-        "timezone": "UTC"
+        "timezone": "UTC",
+        "format": "({:%Z %H:%M})",
+	"tooltip-format": "{:%Z %z}"
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": true
+        "format": "{usage}% "
     },
     "memory": {
         "format": "{}% "
@@ -85,22 +82,21 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-full": "{icon}",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": false
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip": false
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "disconnected"
     },
     "network#wg": {
-        "interface": "wg*",
+        "interface": "wg0",
         "format": "",
-	"format-alt": "{ifname}",
-        "tooltip": false
+	"tooltip-format": "wg0: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "disconnected"
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
@@ -117,7 +113,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "tooltip": false,
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click": "pavucontrol"
     },

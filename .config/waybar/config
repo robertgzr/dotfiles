@@ -5,8 +5,8 @@
     "height": 30,
 
     "modules-left": ["sway/mode", "sway/workspaces", "sway/window", "custom/media", "custom/toggl"],
-    // "modules-center": ["sway/window"],
-    "modules-right": ["cpu", "memory", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery", "clock#local", "clock#utc", "tray"],
+    "modules-center": ["clock#local", "clock#utc"],
+    "modules-right": ["cpu", "memory", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -48,12 +48,12 @@
     },
     "clock#local": {
         "timezone": "Europe/Berlin",
-        "format": "{:<i>%a</i> %d %b %H:%M}",
-	"tooltip-format": "{:%Z %z}"
+        "format": "{:<i>%a</i> %d %b <b>%H:%M</b>}",
+	"tooltip-format": "{:%Z %z}\n\n{calendar}"
     },
     "clock#utc": {
         "timezone": "UTC",
-        "format": "({:%Z %H:%M})",
+        "format": "({:<small>%Z</small> %H:%M})",
 	"tooltip-format": "{:%Z %z}"
     },
     "cpu": {

@@ -84,10 +84,10 @@ vf-add=stereo3d=sbs2l:mono
 profile-desc="Optimized for showing internal webcam feed"
 osc=no
 profile=low-latency
-video-sync=display-desync # needed or external audio will fail
+# video-sync=display-desync # needed or external audio will fail
 pulse-latency-hacks=yes
 demuxer-lavf-o=input_format=mjpeg,video_size=848x480
-framedrop=no
+# framedrop=no
 # no-demuxer-thread
 opengl-glfinish=yes
 opengl-swapinterval=0

@@ -3,7 +3,7 @@
 "
 " ref: https://vimways.org/2019/personal-notetaking-in-vim/
 
-let g:zettel_dir = '~/wiki'
+let g:zettel_dir = $HOME.'/wiki'
 let g:zettel_ext = '.md'
 
 func! zettel#is_zettel(fpath)
@@ -12,26 +12,27 @@ func! zettel#is_zettel(fpath)
 endfunc
 
 func! zettel#set_filetype()
-    silent exec 'setlocal filetype=zettel.' . &filetype
+    silent exec 'setlocal filetype=zettel'
 endfunc
 
 func! zettel#edit(...)
-    let l:sep = ''
-    if len(a:000) > 0
-        " argument is a title for the note
-        let l:sep = '-'
-    endif
     let l:fname = expand(g:zettel_dir) . '/'
-        \ . strftime('%Y-%m-%dT%H-%M')
-        \ . l:sep . join(a:000, l:sep) . g:zettel_ext
+        \ . strftime('%Y') . '/'
+        \ . tolower(strftime('%m-%b')) . g:zettel_ext
 
     silent exec 'e ' . l:fname
+endfunc
 
-    " if len(a:000) > 0
-    "     silent exec 'normal gg0\<c-r>=strftime("%Y-%m-%d %H:%M")\<cr> '
-    "         \ . join(a:000)
-    "         \ . '\<cr>\<esc>G'
-    " else
-    "     silent exec 'normal gg0\<c-r>=strftime("%Y-%m-%d %H:%M")\<cr>\<cr>\<esc>G'
-    " endif
+
+func! zettel#newday()
+    let linenr = line('$')
+    " backtrace to last non-empty line
+    while empty(getline(linenr))
+        let linenr -= 1
+    endwhile
+    let e = append(linenr, ['', '---', '', strftime('# %d/%m/%y')])
+    if !e
+        let &modified = 1
+    endif
+    silent execute 'normal ' . line('$'). 'gg2o'
 endfunc

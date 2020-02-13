@@ -38,3 +38,6 @@ exec swayidle \
 		resume 'sway output * dpms on' \
 	timeout 800 suspend \
 	before-sleep lock
+
+bindswitch --locked lid:on output $laptop disable; exec notify-send clamshell-mode enabled
+bindswitch --locked lid:off output $laptop enable; exec notify-send clamshell-mode disabled

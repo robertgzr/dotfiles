@@ -73,6 +73,7 @@ window#waybar.hidden {
 #battery,
 #cpu,
 #memory,
+#disk,
 #temperature,
 #backlight,
 #network,
@@ -98,6 +99,13 @@ window#waybar.hidden {
 }
 #clock.utc {
   color: @dimmed;
+}
+
+#disk.root {
+  margin-right: 0;
+  padding-right: 0;
+}
+#disk.home {
 }
 
 #battery {

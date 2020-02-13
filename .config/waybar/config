@@ -6,7 +6,7 @@
 
     "modules-left": ["sway/mode", "sway/workspaces", "sway/window", "custom/media", "custom/toggl"],
     "modules-center": ["clock#local", "clock#utc"],
-    "modules-right": ["cpu", "memory", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery", "tray"],
+    "modules-right": ["cpu", "memory", "disk#root", "disk#home", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -55,6 +55,14 @@
         "timezone": "UTC",
         "format": "({:<small>%Z</small> %H:%M})",
 	"tooltip-format": "{:%Z %z}"
+    },
+    "disk#root": {
+	"path": "/",
+	"format": "<small>/ </small>{percentage_used}%"
+    },
+    "disk#home": {
+	"path": "/home",
+	"format": "<small>/home </small>{percentage_used}% "
     },
     "cpu": {
         "format": "{usage}% "

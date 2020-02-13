@@ -25,7 +25,7 @@ set index-active-bg "#1c1c1c"
 set index-active-fg "#d0d0d0"
 
 map P print
-map c recolor
+map c set recolor
 map R rotate rotate-ccw
 map n zoom in
 map p zoom out

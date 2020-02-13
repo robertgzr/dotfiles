@@ -10,20 +10,20 @@ function! s:enable_hardmode(bang)
     try
       " map arrow keys to more useful actions
       " https://coderoncode.com/posts/vim-is-the-perfect-ide
-      nmap r<up> :resize +2<CR>
-      nmap r<down> :resize -2<CR>
-      nmap r<left> :vertical resize +2<CR>
-      nmap r<right> :vertical resize +2<CR>
+      nmap R<up> :resize +2<CR>
+      nmap R<down> :resize -2<CR>
+      nmap R<left> :vertical resize +2<CR>
+      nmap R<right> :vertical resize +2<CR>
 
-      nmap w<up> :wincmd k<CR>
-      nmap w<down> :wincmd j<CR>
-      nmap w<left> :wincmd h<CR>
-      nmap w<right> :wincmd l<CR>
+      nmap W<up> :wincmd k<CR>
+      nmap W<down> :wincmd j<CR>
+      nmap W<left> :wincmd h<CR>
+      nmap W<right> :wincmd l<CR>
 
-      nmap wm<up> :wincmd K<CR>
-      nmap wm<down> :wincmd J<CR>
-      nmap wm<left> :wincmd H<CR>
-      nmap wm<right> :wincmd L<CR>
+      nmap Wm<up> :wincmd K<CR>
+      nmap Wm<down> :wincmd J<CR>
+      nmap Wm<left> :wincmd H<CR>
+      nmap Wm<right> :wincmd L<CR>
 
       " or bail on them altogether
       nmap <up> :call <SID>bail()<CR>

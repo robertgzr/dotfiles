@@ -5,15 +5,17 @@
 export DESKTOP_SESSION=gnome
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
+export SDK_VIDEODRIVER=wayland
 
-# export QT_QPA_PLATFORM=wayland-egl
-export QT_QPA_PLATFORM=
+export QT_QPA_PLATFORM=wayland-egl
+# export QT_QPA_PLATFORM=
 # export QT_AUTO_SCREEN_SCALE_FACTOR=0
 # export QT_SCREEN_SCALE_FACTORS='1.5;1'
 export QT_QPA_PLATFORMTHEME=qgnomeplatform
 export QT_STYLE_OVERRIDE=adwaita
 
 export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_ENABLE_WAYLAND=1
 
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus

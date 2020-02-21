@@ -11,6 +11,12 @@ framedrop=vo
 video-sync=display-resample
 gpu-context=wayland
 
+scale=ewa_lanczossharp
+cscale=ewa_lanczossharp
+dscale=ewa_lanczossharp
+correct-downscaling=yes
+sigmoid-upscaling=yes
+
 #
 # Audio
 #
@@ -93,5 +99,9 @@ opengl-glfinish=yes
 opengl-swapinterval=0
 vf=hflip
 
-[sharp]
-glsl-shaders="~/.config/mpv/shaders/finesharp/FineSharp.glsl"
+[finesharp]
+glsl-shaders="~~/shaders/finesharp/FineSharp.glsl"
+
+[fsrcnnx]
+profile=gpu-hq
+glsl-shaders="~~/shaders/fsrcnnx/FSRCNNX_x2_8-0-4-1.glsl"

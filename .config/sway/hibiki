@@ -25,6 +25,8 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
     natural_scroll enabled
 }
 
+seat * hide_cursor 2000
+
 bar {
 	swaybar_command waybar
 }

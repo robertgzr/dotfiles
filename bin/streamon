@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -ex
-
-sway exec "wshowkeys -a bottom -a left -F 'Iosevka R 26' -t 1"
-
-obsctl start-streaming

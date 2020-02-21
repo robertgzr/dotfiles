@@ -11,12 +11,14 @@ window:
 
 font:
   normal:
-    family: Iosevka
-    style: Medium
+    family: Iosevka SS05
+    style: Slim
   bold:
     style: Bold
   italic:
     style: Italic
+  bold_italic:
+    style: Bold Italic
   size: 13.0
 
 colors:

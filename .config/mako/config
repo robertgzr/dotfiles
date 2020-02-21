@@ -4,7 +4,8 @@ layer=top
 anchor=top-right
 
 # font=Fira Sans
-font=Iosevka Sparkle
+font=Iosevka SS08
+# font=Cozette Vector
 padding=10
 width=500
 height=300

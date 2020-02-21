@@ -1,6 +1,6 @@
 [options]
 overlay = true
-overlay_font = Iosevka Sparkle:14
+overlay_font = Iosevka Sparkle:16
 
 [binds]
 n = next 

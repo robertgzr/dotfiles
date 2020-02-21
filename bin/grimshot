@@ -76,10 +76,11 @@ takeScreenshot() {
 recordScreen() {
   FILE=$1
   GEOM=$2
+  REC_OPTS="-c h264_vaapi -d /dev/dri/renderD128"
   if [ -z "$GEOM" ]; then
-    wf-recorder -f "$FILE" || die "Unable to invoke wf-recorder"
+    wf-recorder ${REC_OPTS} -f "$FILE" || die "Unable to invoke wf-recorder"
   else
-    wf-recorder -g "$GEOM" -f "$FILE" || die "Unable to invoke wf-recorder"
+    wf-recorder ${REC_OPTS} -g "$GEOM" -f "$FILE" || die "Unable to invoke wf-recorder"
   fi
 }
 

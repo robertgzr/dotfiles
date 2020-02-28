@@ -11,12 +11,6 @@ framedrop=vo
 video-sync=display-resample
 gpu-context=wayland
 
-scale=ewa_lanczossharp
-cscale=ewa_lanczossharp
-dscale=ewa_lanczossharp
-correct-downscaling=yes
-sigmoid-upscaling=yes
-
 #
 # Audio
 #
@@ -98,6 +92,13 @@ demuxer-lavf-o=input_format=mjpeg,video_size=848x480
 opengl-glfinish=yes
 opengl-swapinterval=0
 vf=hflip
+
+[scale]
+scale=ewa_lanczossharp
+cscale=ewa_lanczossharp
+dscale=ewa_lanczossharp
+correct-downscaling=yes
+sigmoid-upscaling=yes
 
 [finesharp]
 glsl-shaders="~~/shaders/finesharp/FineSharp.glsl"

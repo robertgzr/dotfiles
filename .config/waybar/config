@@ -12,18 +12,6 @@
         "all-outputs": false,
         "format": "{icon}",
         "format-icons": {
-            // "urgent": "",
-            // "focused": "",
-            // "default": "",
-            // "1": "",
-            // "2": "",
-            // "3": "",
-            // "4": "",
-            // "5": "",
-            // "6": "",
-            // "7": "",
-            // "8": "",
-            // "9": "",
             "m": "",
             "v": "",
             "g": ""
@@ -58,25 +46,25 @@
     },
     "disk#root": {
 	"path": "/",
-	"format": "<small>/ </small>{percentage_used}%"
+	"format": " <small>/ </small>{percentage_used}%"
     },
     "disk#home": {
 	"path": "/home",
-	"format": "<small>/home </small>{percentage_used}% "
+	"format": "<small>/home </small>{percentage_used}%"
     },
     "cpu": {
-        "format": "{usage}% "
+        "format": " {usage}%"
     },
     "memory": {
-        "format": "{}% "
+        "format": " {}%"
     },
     "temperature": {
         "critical-threshold": 90,
-        "format": "{temperatureC}℃ {icon}",
+        "format": "{icon} {temperatureC}℃",
         "format-icons": ["", "", ""]
     },
     "backlight": {
-        "format": "{percent}% {icon}",
+        "format": "{icon} {percent}%",
         "format-icons": [""]
     },
     "battery": {
@@ -85,18 +73,18 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         "format-full": "{icon}",
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": " Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "disconnected"
     },
@@ -107,11 +95,11 @@
         "tooltip-format-disconnected": "disconnected"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "{volume}%  ",
-        "format-source": "{volume}% ",
-        "format-source-muted": "{volume}% ",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
         "format-icons": {
             "headphones": "",
             "handsfree": "",

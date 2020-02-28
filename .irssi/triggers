@@ -1,0 +1,2 @@
+#Triggers file version 1.2.3
+-all -nocase -regexp 'rgzr' -command 'exec notify-send -a irssi "irc: %\N" "%\M"' 

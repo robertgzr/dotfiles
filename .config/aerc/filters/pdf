@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec pdftohtml -s -i -stdout /dev/stdin \
+	| /usr/share/aerc/filters/html

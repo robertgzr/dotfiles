@@ -65,10 +65,10 @@ command ssh
 
 " Pdf
 filextype *.pdf 
-        \ {View in mupdf}
-        \ mupdf %c &,
         \ {View in zathura}
         \ zathura %c %i &,
+        \ {View in mupdf}
+        \ mupdf %c &,
 fileviewer *.pdf pdftotext -nopgbrk %c -
 " PostScript
 filextype *.ps,*.eps,*.ps.gz

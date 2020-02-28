@@ -1,5 +1,9 @@
 # vim: ft=i3
 
+set $laptop eDP-1
+set $desk "Dell Inc. DELL U2518D 3C4YP87AAK3L"
+set $side "Samsung Electric Company SyncMaster H9XQ502424"
+
 output * scale 1
 output * bg $HOME/.background fill
 
@@ -12,7 +16,8 @@ for_window [app_id=firefox] max_render_time 3
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options 'caps:hyper,lvl3:ralt_switch_multikey,grp:alt_space_toggle,eurosign:5'
 }
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+set $trackpad "2:7:SynPS/2_Synaptics_TouchPad"
+input $trackpad {
     natural_scroll enabled
     dwt enabled
     tap enabled
@@ -34,12 +39,12 @@ bar {
 exec redshift -l 52.52:13.40
 exec mako
 exec kanshi
-exec swayidle \
-	timeout 540 'notify-send swayidle "screen off in 60s"' \
-	timeout 600 'sway output * dpms off' \
-		resume 'sway output * dpms on' \
-	timeout 800 suspend \
-	before-sleep lock
+exec swayidle -w \
+	timeout 540 'lock' \
+	timeout 600 'swaymsg "output * dpms off"' \
+	     resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock -f -c 000000' \
+	lock lock
 
-bindswitch --locked lid:on output $laptop disable; exec notify-send clamshell-mode enabled
-bindswitch --locked lid:off output $laptop enable; exec notify-send clamshell-mode disabled
+bindswitch --locked lid:on output $laptop disable
+bindswitch --locked lid:off output $laptop enable

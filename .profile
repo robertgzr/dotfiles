@@ -7,6 +7,11 @@ if [ -d "${HOME}/AppImages" ]; then
 	pathappend "${HOME}/AppImages"
 fi
 
+export GOPATH="${HOME}/go"
+if [ -d "${GOPATH}" ]; then
+	pathappend "${GOPATH}/bin"
+fi
+
 # Use the new build backend in docker
 export DOCKER_BUILDKIT=1
 

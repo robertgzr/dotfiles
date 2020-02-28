@@ -7,7 +7,8 @@ output=
 geometry=
 termify=
 appid_override=
-while getopts b:w:o:g:I:th name; do
+rotate=
+while getopts b:w:o:g:I:r:th name; do
 	case "$name" in
 	b)	# border
 		border="${OPTARG}" ;;
@@ -21,6 +22,12 @@ while getopts b:w:o:g:I:th name; do
 		termify=1 ;;
 	I)	# override app_id for non-terminal applications
 		appid_override="${OPTARG}" ;;
+	r)	# rotate
+		if ! command -v cage >/dev/null; then
+			printf "%s: cage not installed but required to rotate containers" "$0" >&2
+			exit 1
+		fi
+		rotate="${OPTARG}" ;;
 	h|?)	printf "usage: %s [-bwog] COMMAND\n" "$(basename "$0")"
 		printf "\n"
 		printf "  -t \t\t(run COMMAND in \$TERM)\n"
@@ -44,6 +51,8 @@ if [ -z "${arg0}" ]; then
 fi
 shift
 
+# needs to be termified?
+# spawn a $TERM instance and exec that
 if [ -n "${termify}" ]; then
 	case ${TERM} in
 	alacritty)	args="--title=${arg0} --class=${arg0} --command" ;;
@@ -55,6 +64,24 @@ else
 	command="${arg0} $*"
 fi
 
+# needs to be rotated
+# spawn a cage(1) instance and exec that, takes previous $command
+if [ -n "${rotate}" ]; then
+	# figure out how many "-r" flags we need
+	rotate_args=""
+	while [ $(( (rotate / 90) >= 1 )) = 1 ]; do
+		rotate_args="${rotate_args} -r"
+		rotate=$((rotate - 90))
+	done
+	# allow for the firefox workaround that spawns a kiosk window
+	# under firejail (to avoid profile folder issues)
+	if echo "$command" | grep -E 'firefox'; then
+		command="firejail --overlay-tmpfs --profile=firefox ${command} --no-remote --kiosk"
+	fi
+	command="cage -d ${rotate_args} -- ${command}"
+	appid="wlroots"
+fi
+
 sway exec "${command}" >/dev/null
 
 sway_props_done=
@@ -63,13 +90,13 @@ while [ -z "${sway_props_done}" ]; do
 	if ! swq has appid "${appid}" | jq -e 'length>0'; then
 		waiting=$((waiting+1))
 		if [ "${waiting}" -gt 20 ]; then
-			printf "Failed to run %s.\n" "${arg0}"
+			printf "%s: failed to run %s.\n" "$0" "${arg0}" >&2
 			if [ -z "${termify}" ]; then
-				printf "If you do see the application try running:\n"
+				printf "If you do see the application try running:\n" >&2
 				printf "%s -I %s %s\n" \
 					"$(basename "$0")" \
 					"$(swq current con | jq -r '.app_id')" \
-					"${arg0} $*"
+					"${arg0} $*" >&2
 			fi
 			exit 1
 		fi >&2

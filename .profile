@@ -32,7 +32,7 @@ set -o vi
 bind -m vi-insert -x '"\C-l": clear'
 
 # Set less default options
-export LESS='--hilite-search --hilite-unread --long-prompt --raw-control-chars --chop-long-lines'
+export LESS='--hilite-search --hilite-unread --long-prompt --raw-control-chars --chop-long-lines --quit-if-one-screen --no-init'
 
 # Set the rsync ssh command to use by default
 export RSYNC_RSH='ssh -T -x -o Compression=no'

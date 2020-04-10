@@ -12,6 +12,10 @@ if [ -d "${GOPATH}" ]; then
 	pathappend "${GOPATH}/bin"
 fi
 
+if [ -d "${HOME}/.cargo/bin" ]; then
+	pathappend "${HOME}/.cargo/bin"
+fi
+
 # Use the new build backend in docker
 export DOCKER_BUILDKIT=1
 

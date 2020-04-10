@@ -214,3 +214,13 @@
     key = "Changelog-entry"
     ifmissing = add
     where = start
+
+[tig "bind"]
+    generic = I !@wl-copy -n "%(commit)"
+
+    main = g none
+    main = gg :move-first-line
+    main = G :move-last-line
+    diff = g none
+    diff = gg :move-first-line
+    diff = G :move-last-line

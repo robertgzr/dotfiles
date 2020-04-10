@@ -123,7 +123,7 @@
         },
         "on-click": "sway [workspace=$wsMusic] focus",
         "escape": false,
-        "exec": "$HOME/.config/waybar/mediaplayer.py -I chromium 2> /dev/null"
+        "exec": "$HOME/.config/waybar/mediaplayer.py -I chromium -I firefox 2> /dev/null"
     },
     "custom/toggl": {
         "exec": "$HOME/.config/waybar/toggl.lua 2>/dev/null",

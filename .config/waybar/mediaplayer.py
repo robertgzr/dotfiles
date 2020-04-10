@@ -71,9 +71,10 @@ def on_metadata(player, metadata, manager):
     write_output(track_info, player)
 
 
-def on_player_appeared(manager, player, selected_player=None):
-    if player is not None and (selected_player is None
-                               or player.name == selected_player):
+def on_player_appeared(manager, player, selected_player=None, ignored_players=None):
+    if player is not None \
+            and (selected_player is None or player.name == selected_player) \
+            and not (player.name in ignored_players):
         init_player(manager, player)
     else:
         logger.debug(
@@ -140,7 +141,7 @@ def main():
     loop = GLib.MainLoop()
 
     manager.connect('name-appeared',
-                    lambda *args: on_player_appeared(*args, arguments.player))
+                    lambda *args: on_player_appeared(*args, arguments.player, arguments.ignore))
     manager.connect('player-vanished', on_player_vanished)
 
     signal.signal(signal.SIGINT, signal_handler)

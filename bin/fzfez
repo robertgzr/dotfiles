@@ -1,0 +1,66 @@
+#!/bin/sh
+
+set -e
+
+exec_hist=/tmp/fzf-interactive_exec-hist
+if [ ! -f "$exec_hist" ]; then
+	touch "$exec_hist"
+fi
+
+case "$1" in
+	exec)
+		uniq "$exec_hist" \
+			| grep -v '^$' \
+			| fzf \
+				--header 'Select or enter a command, {} is previous selection' \
+				--bind 'tab:replace-query' \
+				--bind 'enter:print-query' \
+			| tee -a $exec_hist \
+			| sed "s#{}#$2#g"  \
+			| sh -s
+		exit $?
+		;;
+	
+	git-branches)
+		git rev-parse HEAD > /dev/null 2>&1 || exit 1
+		git branch -a --sort=refname --format='%(refname)' \
+			| $0 \
+				--border --ansi --no-sort --reverse --tac \
+				--header 'Press ctrl-s to toggle sort' \
+				--bind 'ctrl-s:toggle-sort' \
+				--preview 'git log --oneline --graph --date=short --color=always {} | head -${LINES}' \
+				--preview-window right:70% \
+			| cut -d' ' -f1 \
+			| sed 's#^refs/##' \
+			| sed 's#^remotes/##' \
+			| sed 's#^heads/##'
+		;;
+
+	git-tags)
+		git rev-parse HEAD > /dev/null 2>&1 || exit 1
+		  git tag --sort -version:refname \
+			| $0 \
+				--border --no-sort \
+				--preview 'git show --color=always {} | head -${LINES}' \
+				--preview-window right:70% \
+			| cut -d' ' -f1 \
+			| sed 's#^refs/##' \
+			| sed 's#^remotes/##' \
+			| sed 's#^heads/##'
+		;;
+
+	rg)
+		shift
+		rg $@ --files-with-matches \
+			| $0 \
+				--border \
+				--header 'Press ctrl-s to toggle sort' \
+				--bind 'ctrl-s:toggle-sort' \
+				--preview "rg $* --color=always --no-filename --glob='{}' --context=5 --line-number"
+		;;
+	
+	*)
+		fzf \
+			--bind "ctrl-x:execute(${0} exec {})" \
+			"$@" ;;
+esac

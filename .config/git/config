@@ -72,7 +72,7 @@
     rbi-pr = !bash -c 'git rebase --autosquash -i `git merge-base HEAD ${1:-origin/master}`'
     pushf = push --force-with-lease
     root = "rev-parse --show-toplevel"
-    trailer = "!f() { msg=$(git rev-parse --show-toplevel)/LAST_COMMIT_MSG; git log -1 --format=%B > $msg; git interpret-trailers --in-place --trailer $@ $msg; git commit --allow-empty --no-verify --amend --only --edit --file $msg; rm $msg; }; f"
+    trailer = "!f() { trailer=${1:-}; ref=${2:-HEAD}; mode='--amend'; [ $ref != 'HEAD' ] && mode='--fixup=$ref'; msg=$(git rev-parse --show-toplevel)/LAST_COMMIT_MSG; git log -1 --format=%B $ref > $msg; git interpret-trailers --in-place --trailer $trailer $msg; git commit --allow-empty --no-verify --only --edit --file $msg $mode; rm $msg; }; f"
     a = add --patch
     edit = !bash -c 'set -x && git rbi "${1:-HEAD}"^' -
     oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent ${1:-master}) <(git rev-list --first-parent ${2:-HEAD}) | sed -ne \"s/^ //p\" | head -1'

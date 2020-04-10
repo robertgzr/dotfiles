@@ -9,19 +9,23 @@ let g:goyo_height = 90
 let g:goyo_linenr = 0
 nmap <F0> :Goyo<CR>
 
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermbg = 'none'
+let g:limelight_conceal_guifg = 'gray'
+let g:limelight_conceal_guibg = 'none'
+
 let g:limelight_default_coefficient = 0.5
 let g:limelight_paragraph_span = 1
-" let g:limelight_default_coefficient = 0.5
-" let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
 
 " goyo enter/leave funcs {{{
 function! s:goyo_enter()
     if has('gui_running') || has('gui_vimr')
         " set linespace = 7
-
-    elseif exists('$TMUX')
+    end
+    if executable('tmux') && strlen($TMUX)
         silent !tmux set status off
+        silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
     endif
 
     " set noshowmode
@@ -30,18 +34,19 @@ function! s:goyo_enter()
     Limelight
 
     " make sure :q in the last buffer, in Goyo also quits vim
-    let b:quitting = 0
-    let b:quitting_bang = 0
-    autocmd QuitPre <buffer> let b:quitting = 1
-    cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+    " let b:quitting = 0
+    " let b:quitting_bang = 0
+    " autocmd QuitPre <buffer> let b:quitting = 1
+    " cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
 
 function! s:goyo_leave()
     if has('gui_running') || has('gui_vimr')
         " set linespace = 0
-
-    elseif exists('$TMUX')
+    endif
+    if executable('tmux') && strlen($TMUX)
         silent !tmux set status on
+        silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
     endif
 
     " set showmode
@@ -50,13 +55,15 @@ function! s:goyo_leave()
     Limelight!
 
     " make sure :q in the last buffer, in Goyo also quits vim
-    if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        if b:quitting_bang
-          qa!
-        else
-          qa
-        endif
-    endif
+    " if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    "     if b:quitting_bang
+    "       qa!
+    "     else
+    "       qa
+    "     endif
+    " endif
+
+    hi SignColumn guibg=none ctermbg=none
 endfunction
 " }}}
 

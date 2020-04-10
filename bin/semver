@@ -6,12 +6,48 @@
 # desc: will tag a new version either based on last tag or <new_version>
 #
 # patch(robertgzr)
-# allow simply tagging a new non-annotated release
+# allow tagging a new non-annotated release
 
 import os
 import subprocess
 import sys
 import tempfile
+import getopt
+
+simple_tag = False
+force = False
+
+def usage():
+    print(f"usage: {sys.argv[0]} OPTIONS COMMANDS")
+    print("""
+OPTIONS:
+\t-h\tshow this help
+\t-t\tonly create a simple tag, otherwise annotate as well
+\t-f\toverwrite existing tag
+
+COMMANDS:
+\tpatch
+\tminor
+\tmajor\tbump the previous tag and create a new one
+          """)
+    sys.exit(2)
+
+
+try:
+    opts, argv = getopt.getopt(sys.argv[1:], 'tfh')
+except getopt.GetoptError as err:
+    print(err)
+    usage()
+
+for o, val in opts:
+    if o == "-t":
+        simple_tag = True
+    elif o == "-f":
+        force = True
+    elif o == "-h":
+        usage()
+    else:
+        assert False, "unhandled option"
 
 if subprocess.run(["git", "branch", "--show-current"],
                   stdout=subprocess.PIPE).stdout.decode().strip() != "master":
@@ -19,23 +55,22 @@ if subprocess.run(["git", "branch", "--show-current"],
 
 subprocess.run(["git", "pull", "--rebase"])
 
-if sys.argv[1] == "-t":
-    sys.argv = [sys.argv[0]] + sys.argv[2:]
-    simple_tag = True
-    describe_args = "--tag"
-else:
-    describe_args = "--abbrev=0"
-
-p = subprocess.run(["git", "describe", describe_args], stdout=subprocess.PIPE)
+p = subprocess.run(["git", "describe", "--abbrev=0"], stdout=subprocess.PIPE)
 describe = p.stdout.decode().strip()
+# TODO also ask to re-append the trailing portion.... e.g. -rev1
 old_version = describe.split("-")[0].split(".")
 if len(old_version) == 2:
     [major, minor] = old_version
     [major, minor] = map(int, [major, minor])
     patch = 0
-else:
+elif len(old_version) == 3:
     [major, minor, patch] = old_version
     [major, minor, patch] = map(int, [major, minor, patch])
+
+else:
+    print(f"WARNING: git describe returned invalid semver version: \"{describe}\"")
+    # sys.exit(1)
+    # old_version = [0, 0, 0]
 
 p = subprocess.run(["git", "shortlog", "--no-merges", f"{describe}..HEAD"],
                    stdout=subprocess.PIPE)
@@ -43,16 +78,16 @@ shortlog = p.stdout.decode()
 
 new_version = None
 
-if sys.argv[1] == "patch":
+if argv[0] == "patch":
     patch += 1
-elif sys.argv[1] == "minor":
+elif argv[0] == "minor":
     minor += 1
     patch = 0
-elif sys.argv[1] == "major":
+elif argv[0] == "major":
     major += 1
     minor = patch = 0
 else:
-    new_version = sys.argv[1]
+    new_version = argv[0]
 
 if new_version is None:
     if len(old_version) == 2 and patch == 0:
@@ -74,15 +109,21 @@ if p and p.returncode != 0:
     print("Error: _incr_version returned nonzero exit code")
     sys.exit(1)
 
-if simple_tag:
-    subprocess.run(["git", "tag", new_version])
+args = ["git", "tag"]
+if force:
+    args.extend(["-f"])
 
-else:
+if not simple_tag:
     with tempfile.NamedTemporaryFile() as f:
         basename = os.path.basename(os.getcwd())
         f.write(f"{basename} {new_version}\n\n".encode())
         f.write(shortlog.encode())
         f.flush()
-        subprocess.run(["git", "tag", "-e", "-F", f.name, "-a", new_version])
+        args.extend(["-e", "-F", f.name, "-a", new_version])
+        subprocess.run(args)
+else:
+    args.extend([new_version])
+    subprocess.run(args)
 
+print(args)
 print(new_version)

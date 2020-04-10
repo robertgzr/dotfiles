@@ -55,3 +55,8 @@ background_opacity: 0.95
 #   args:
 #     - LD_LIBRARY_PATH=/usr/local/lib64
 #     - mrsh
+
+mouse:
+  url:
+    launcher:
+      program: url-launcher

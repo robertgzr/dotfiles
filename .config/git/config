@@ -85,11 +85,6 @@
     # Detect whitespace errors when applying a patch
     whitespace = fix
 
-[color]
-    # Use colors in Git commands that are capable of colored output when
-    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-    ui = auto
-
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -105,9 +100,6 @@
     added = yellow
     changed = green
     untracked = cyan
-
-[credential]
-    # helper = osxkeychain
 
 [diff]
     # Detect copies as well as renames
@@ -192,28 +184,28 @@
 
 [http]
     sslverify = true
-	cookiefile = /home/robert/.gitcookies
+    cookiefile = /home/robert/.gitcookies
 
 [trailer "sign"]
-	key = "Signed-off-by"
-	ifmissing = add
-	; command = bash -c 'echo \"$(git config user.name) <${$(git config user.signemail):-$(git config user.email)}>\"'
-	command = echo \"`git config user.name` <`git config user.signemail || git config user.email`>\"
-	where = end
+    key = "Signed-off-by"
+    ifmissing = add
+    ; command = bash -c 'echo \"$(git config user.name) <${$(git config user.signemail):-$(git config user.email)}>\"'
+    command = echo \"`git config user.name` <`git config user.signemail || git config user.email`>\"
+    where = end
 [trailer "changetype"]
-	key = "Change-type"
-	ifmissing = add
-	ifexists = doNothing
-	where = start
+    key = "Change-type"
+    ifmissing = add
+    ifexists = doNothing
+    where = start
 [trailer "connects"]
-	key = "Connects-to"
-	ifmissing = add
-	where = start
+    key = "Connects-to"
+    ifmissing = add
+    where = start
 [trailer "depends"]
-	key = "Depends-on"
-	ifmissing = add
-	where = start
+    key = "Depends-on"
+    ifmissing = add
+    where = start
 [trailer "changelog"]
-	key = "Changelog-entry"
-	ifmissing = add
-	where = start
+    key = "Changelog-entry"
+    ifmissing = add
+    where = start

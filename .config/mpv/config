@@ -3,6 +3,7 @@
 # no-input-default-bindings
 autoload-files=no
 input-ipc-server=/var/run/user/1000/mpv 
+autofit-larger=90%x90%
 
 #
 # Video

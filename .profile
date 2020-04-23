@@ -47,3 +47,4 @@ alias rsyncez='rsync --verbose --archive -hhh --partial --progress --stats --pro
 alias webcam='mpv --profile=webcam av://v4l2:/dev/video0'
 alias balssh='ssh -p 22222 -o User=root -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias balscp='scp -P 22222 -o User=root -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias k=kubectl

@@ -1,13 +1,26 @@
-laptop{
-    output eDP-1 mode 2560x1440 scale 1 position 0,0 enable
+profile laptop {
+  output eDP-1 enable
 }
 
-desk{
-    output "Dell Inc. DELL U2518D 3C4YP87AAK3L" mode 2560x1440 position 0,0 enable
-    output eDP-1 mode 2560x1440 scale 1 position 2560,0 enable
+profile desk_single {
+    #output "Dell Inc. DELL U2518D 3C4YP87AAK3L" position 0,0 enable
+    output "Dell Inc. DELL U2518D 3C4YP9B9636L" position 0,0 enable
+    output eDP-1 position 2560,0 enable
 }
 
-tv{
+profile desk_dual {
+    output "Dell Inc. DELL U2518D 3C4YP87AAK3L" position 0,0 transform 270 enable
+    output "Dell Inc. DELL U2518D 3C4YP9B9636L" position 1440,0 enable
+    output eDP-1 disable
+}
+
+profile desk_dual_wide {
+    output "Dell Inc. DELL U2518D 3C4YP87AAK3L" position 0,0 enable
+    output "Dell Inc. DELL U2518D 3C4YP9B9636L" position 2560,0 enable
+    output eDP-1 disable
+}
+
+profile tv {
    output HDMI-A-1 position 2560,0 enable
-   output eDP-1 mode 2560x1440 scale 1 position 0,0 enable
+   output eDP-1 scale 1 position 0,0 enable
 }

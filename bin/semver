@@ -55,7 +55,7 @@ if subprocess.run(["git", "branch", "--show-current"],
 
 subprocess.run(["git", "pull", "--rebase"])
 
-p = subprocess.run(["git", "describe", "--abbrev=0"], stdout=subprocess.PIPE)
+p = subprocess.run(["git", "describe", "--abbrev=0", "--tags"], stdout=subprocess.PIPE)
 describe = p.stdout.decode().strip()
 # TODO also ask to re-append the trailing portion.... e.g. -rev1
 old_version = describe.split("-")[0].split(".")

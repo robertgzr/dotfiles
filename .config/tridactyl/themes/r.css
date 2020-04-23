@@ -54,6 +54,6 @@
     /* opacity: 0.9; */
 }
 
-/* :root.TridactylThemeR #changelog { */
-/*     background: var(--tridactyl-bg-second); */
-/* } */
+:root.TridactylThemeR #changelog {
+    background: var(--tridactyl-bg-second);
+}

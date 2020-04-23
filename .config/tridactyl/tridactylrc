@@ -26,6 +26,9 @@ bind <Space>ts fillcmdline tabopen -c shop
 bind <space>s fillcmdline tabopen search
 bind <space>n fillcmdline nativeopen
 
+bind <C-o> back
+bind <C-i> forward
+
 bind / fillcmdline find
 bind n findnext 1
 bind N findnext -1

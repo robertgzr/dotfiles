@@ -1,6 +1,15 @@
 #!/bin/sh
 # dependencies: grim slurp wl-clipboard
 # src: https://git.sr.ht/~sircmpwn/dotfiles/tree/f9e7e88a72c2b87e5ab823205cb3a3aa8f3babd0/bin/colorpick
-color=$(grim -g "$(slurp -p -b 00000000)" - | convert - txt:- | awk 'END{print $3}')
-wl-copy "$color"
-notify-send "Color copied to clipboard" "$color" --icon '/usr/share/icons/Adwaita/scalable/actions/color-select-symbolic.svg'
+notify-send \
+	--icon '/usr/share/icons/Adwaita/scalable/actions/color-select-symbolic.svg' \
+	"Pick a color"
+
+(
+	color=$(grim -g "$(slurp -p -b 00000000)" - | convert - txt:- | awk 'END{print $3}')
+	wl-copy "$color"
+)
+
+notify-send \
+	--icon '/usr/share/icons/Adwaita/scalable/actions/color-select-symbolic.svg' \
+	"Color copied to clipboard" "$color"

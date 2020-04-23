@@ -36,7 +36,7 @@ bar {
 	swaybar_command waybar
 }
 
-exec redshift -l 52.52:13.40
+exec redshift
 exec mako
 exec kanshi
 exec swayidle -w \

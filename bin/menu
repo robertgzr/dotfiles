@@ -12,7 +12,9 @@ while test $# -gt 0; do
 done
 
 exec "${arg0}" \
-   -i \
+   --list=4 \
+   --index \
+   --ignorecase \
    --bottom \
    --no-overlap \
    --prompt "${prompt}:" \

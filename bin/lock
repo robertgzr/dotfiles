@@ -1,32 +1,25 @@
 #!/bin/sh
 
-set -e
+exec swaylock -f \
+    --scaling=fill \
+    --font=Iosevka\ Sparkle \
+    --font-size=18 \
+    --text-color=FFFFFFFF \
+    --ring-color=0B346Fee \
+    --key-hl-color=FFFFFF55 \
+    --inside-color=000000bb \
+    --ignore-empty-password \
+    --indicator-caps-lock \
+    --show-failed-attempts \
+    --hide-keyboard-layout \
+    --indicator-idle-visible \
+    --screenshots \
+    --effect-scale 0.5 --effect-blur 10x5 --effect-scale 2 \
+    --effect-vignette 0.6:0.3 \
+    --effect-compose '49%,50%;20%x-1;center;/home/robert/.lock.png' \
+    --clock \
+    --timestr "%H:%M" --datestr "%F"
 
-lock_bg=$HOME/.background_lock
-
-blur() {
-    if [ -n "$USE_GRIM" ]; then
-        in=$(mktemp --tmpdir lock-XXX.png)
-        grim -o $(swq current output) ${in}
-    else
-        in=$(readlink -f $HOME/.background)
-    fi
-
-    convert ${in} -filter Gaussian -resize 50% \
-        -define filter:sigma=8.0 -resize 200% ${lock_bg}
-    # convert ${in} -scale 5% -blur 0x2.5 -resize 2000% ${lock_bg}
-    # $GOPATH/bin/stackblur -radius 60 -in $img -out $img
-    # $HOME/devel/go/bin/stackblur -radius 60 -in ${in} -out ${lock_bg} >/dev/null
-}
-
-case "$1" in
-	-h) echo "usage: $0 [gen]"; exit 0 ;;
-	gen) blur; exit 0 ;;
-	*) exec swaylock -f -i ${lock_bg} \
-		--scaling=fill \
-		--font=Iosevka\ Sparkle \
-		--ignore-empty-password \
-	    	--indicator-caps-lock \
-	    	--show-failed-attempts \
-		--hide-keyboard-layout ;;
-esac
+    # --effect-compose '7.5%,93%;10%x-1;center;/home/robert/Pictures/gentoo-logo/gentoo-horizontal.png' \
+    # --effect-compose '20%,50%;5%x-1;center;/home/robert/Pictures/hexagon.png' \
+    # --effect-compose '30%,50%;10%x-1;center;/home/robert/Pictures/gentoo-logo/gentoo-logo.png' \

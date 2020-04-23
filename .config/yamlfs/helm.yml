@@ -1,0 +1,378 @@
+README.md: |-
+  # {% .name %}
+
+  ## Configuration
+
+  | Parameter | Default | Description
+  |-----------|---------|------------
+  | replicas | 1 |
+  | image.repository | |
+  | image.tag | latest |
+  | image.pullPolicy | Always |
+  | service.port | 8080 |
+  | service.type | ClusterIP |
+  | service.loadBalancerIP | "" |
+  | service.annotations | [] |
+{%- if .configmap %}
+  | configmap.config | "" |
+{%- end %}
+  | nodeSelector | {} |
+  | affinity | {} |
+  | podAnnotations | {} |
+  | prometheus.enabled | false |
+{%- if .ingress %}
+  | ingress.enabled | false |
+  | ingress.annotations | {} |
+  | ingress.hosts | false |
+  | ingress.path | / |
+  | ingress.tls | {} |
+{%- end %}
+{%- if .pvc %}
+  | persistence.enabled | false |
+  | persistence.accessModes | [ReadOnlyOnce] |
+  | persistence.size | 500Mi |
+  | persistence.storageClass | "-" |
+  | persistence.existingClaim | "" |
+  | persistence.subPath | "" |
+  | persistence.hostPath | "" | this skips setting up any PVs/PVCs
+{%- end %}
+  | resources.requests.memory | |
+  | resources.requests.cpu | |
+  | resources.limits.memory | |
+  | resources.limits.cpu | |
+
+Chart.yaml: |-
+  apiVersion: v1
+  name: {% .name %}
+  version: {% default "0.1.0" .version %}
+  description: {% default "TODO" .desc %}
+  home: TODO
+  icon: TODO
+  sources:
+    - TODO
+  maintainers:
+    - name: TODO
+      email: TODO
+  engine: gotpl
+
+values.yaml: |-
+  replicas: 1
+
+  image:
+    repository: docker.io/TODO/TODO
+    tag: latest
+    pullPolicy: Always
+
+  additionalArgs: []
+
+  # service:
+  #   port: 8080
+
+{%- if .configmap %}
+  # configmap:
+  #   config: |-
+  #     # TODO
+{%- end %}
+
+  nodeSelector: {}
+  affinity: {}
+
+  podAnnotations: {}
+
+  prometheus:
+    enabled: false
+
+{%- if .ingress %}
+  ingress:
+    enabled: false
+    # annotations:
+    # - TODO
+    # path: /
+    # hosts:
+    # - TODO
+    # tls:
+{%- end %}
+
+{%- if .pvc %}
+  ## Enable persistence using Persistent Volume Claims
+  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  persistence:
+    enabled: true
+
+    accessModes:
+      - ReadWriteOnce
+
+    ## Persistent Volume Size
+    size: 5Gi
+
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    # storageClass: "-"
+
+    ## PersistentVolume existing claim name
+    ## If defined, PVC must be created manually before volume will be bound
+    ##
+    existingClaim: ""
+
+    ## Subdirectory of Persistent Volume to mount
+    ## Useful if the volume's root directory is not empty
+    ##
+    subPath: ""
+
+    ## Host directory to mount in to the pod
+    ## Only use with nodeSelector!
+    # hostPath: ""
+{%- end %}
+
+  ## Configure resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  # resources:
+  #   requests:
+  #     memory: 512Mi
+  #     cpu: 300m
+  #   limits:
+  #     memory: 2Gi
+  #     cpu: 1.0
+
+templates:
+  _helpers.tpl: |-
+    {{/* vim: set filetype=mustache: */}}
+
+    {{/*
+    Expand the name of the chart.
+    */}}
+    {{- define "{% .name %}.name" -}}
+    {{- printf "%s" .Chart.Name | trunc 63 | trimSuffix "-" -}}
+    {{- end -}}
+
+    {{/*
+    Create a default fully qulified app name.
+    We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+    */}}
+    {{- define "{% .name %}.fullname" -}}
+    {{- $name := default .Chart.Name .Values.nameOverride -}}
+    {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+    {{- end -}}
+
+    {{/*
+    Create chart name and version as used by the chart label.
+    */}}
+    {{- define "{% .name %}.chart" -}}
+    {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
+    {{- end -}}
+
+  deployment.yaml: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: {{ template "{% .name %}.name" }}
+      labels:
+        app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
+        app: {{ template "{% .name %}.name" . }}
+        chart: {{ template "{% .name %}.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    spec:
+      replicas: {{ default 1 .Values.replicas }}
+      selector:
+        matchLabels:
+          app: {{ template "{% .name %}.name" . }}
+          release: "{{ .Release.Name }}"
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
+            app: {{ template "{% .name %}.name" . }}
+          annotations:
+          {{- if .Values.prometheus.enabled }}
+            prometheus.io/scrape: "true"
+          {{- end }}
+          {{- if .Values.podAnnotations }}
+          {{- .Values.podAnnotations | toYaml | indent 8 }}
+          {{- end }}
+        spec:
+          {{- if .Values.nodeSelector }}
+          nodeSelector:
+          {{- .Values.nodeSelector | toYaml | trimSuffix "\n" | nindent 8 }}
+          {{- end }}
+          {{- if .Values.affinity }}
+          affinity:
+          {{- .Values.affinity | toYaml | trimSuffix "\n" | nindent 8 }}
+          {{- end }}
+          containers:
+          - name: {{ template "{% .name %}.fullname" . }}
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+            imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+            args:
+            {{- if .Values.additionalArgs }}
+            {{- .Values.additionalArgs | toYaml | indent 10 }}
+            {{- end }}
+            ports:
+            - name: http
+              containerPort: TODO
+            # livenessProbe:
+            # readinessProbe:
+            env: []
+            volumeMounts:
+{%- if .pvc %}
+            - name: {% .name %}-data
+              mountPath: /data
+{%- end %}
+            {{- if .Values.configmap }}
+            - name: {% .name %}-config
+              mountPath: /config
+            {{- end }}
+          volumes:
+{%- if .pvc %}
+          - name: {% .name %}-data
+            {{- if .Values.persistence.enabled }}
+            {{- if .Values.persistence.hostPath }}
+            hostPath:
+              path: {{ .Values.persistence.hostPath | quote }}
+              type: Directory
+            {{- else }}
+            persistentVolumeClaim:
+              claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "{% .name %}.name" . }}{{- end }}
+            {{- end }}
+            {{- else }}
+            emptyDir: {}
+            {{- end }}
+{%- end %}
+{%- if .configmap %}
+          {{- if .Values.configmap }}
+          - name: {% .name %}-config
+            configMap:
+              name: {{ template "{% .name %}.name" . }}-config
+          {{- end }}
+{%- end %}
+          resources:
+          {{- toYaml .Values.resources | indent 10 }}
+
+  svc.yaml: |-
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: {{ template "{% .name %}.name" }}
+      labels:
+        app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
+        app: {{ template "{% .name %}.name" . }}
+        chart: {{ template "{% .name %}.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+      {{- if .Values.service.annotations }}
+      annotations:
+      {{- .Values.service.annotations | toYaml | trimSuffix "\n" | nindent 4 }}
+      {{- end }}
+    spec:
+      {{ $serviceType := default "ClusterIP" .Values.service.type }}
+      type: {{ $serviceType }}
+      {{- if eq $serviceType "LoadBalancer" }}
+      loadBalancerIP: {{ default "" .Values.service.loadBalancerIP }}
+      {{- end }}
+      ports:
+      - name: http
+        port: {{ default "80" .Values.service.Port }}
+        targetPort: http
+      selector:
+        app: {{ template "{% .name %}.name" . }}
+        release: "{{ .Release.Name }}"
+
+{%- if .ingress %}
+  ingress.yaml: |-
+    {{- if .Values.ingress.enabled -}}
+    {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+    apiVersion: networking.k8s.io/v1beta1
+    {{- else -}}
+    apiVersion: extensions/v1beta1
+    {{- end }}
+    kind: Ingress
+    metadata:
+      name: {{ template "{% .name %}.name" }}
+      labels:
+        app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
+        app: {{ template "{% .name %}.name" . }}
+        chart: {{ template "{% .name %}.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+      {{- if .Values.ingress.annotations }}
+      annotations:
+      {{- .Values.ingress.annotations | toYaml | trimSuffix "\n" | nindent 4 }}
+      {{- end }}
+    spec:
+      {{- with .Values.ingress.tls }}
+      tls:
+        {{- toYaml . | indent 4 }}
+      {{- end }}
+      rules:
+      {{ $ingressPath := default "/" .Values.ingress.path }}
+      {{ $fullname := template "{% .name %}.name" . }}
+      {{- range .Values.ingress.hosts }}
+      - host: {{ . | quote }}
+        http:
+          paths:
+          - path: {{ $ingressPath }}
+            backend:
+              serviceName: {{ $fullname }}
+              servicePort: http
+      {{- end }}
+    {{- end -}}
+{%- end %}
+
+{%- if .pvc %}
+  pvc.yaml: |-
+    {{- if .Values.persistence.enabled -}}
+    {{- if not .Values.persistence.hostPath -}}
+    {{- if not .Values.persistence.existingClaim -}}
+    kind: PersistentVolumeClaim
+    apiVersion: v1
+    metadata:
+      name: {{ template "{% .name %}.name" }}
+      labels:
+        app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
+        app: {{ template "{% .name %}.name" . }}
+        chart: {{ template "{% .name %}.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    spec:
+      accessModes:
+        {{- toYaml .Values.persistence.accessModes | indent 4 }}
+      {{- if .Values.persistence.storageClass }}
+      {{- if (eq "-" .Values.persistence.storageClass) }}
+      storageClassName: ""
+      {{- else }}
+      storageClassName: "{{ .Values.persistence.storageClass }}"
+      {{- end }}
+      {{- end }}
+      resources:
+        requests:
+          storage: {{ .Values.persistence.size }}
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
+{%- end %}
+
+{%- if .configmap %}
+  configmap.yaml: |-
+    {{- if .Values.configmap }}
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: {{ template "{% .name %}.name" }}
+      labels:
+        app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
+        app: {{ template "{% .name %}.name" . }}
+        chart: {{ template "{% .name %}.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    data:
+    {{- .Values.configmap | indent 2 }}
+    {{- end -}}
+{%- end %}
+

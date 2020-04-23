@@ -3,7 +3,7 @@ docker-compose.yml: |-
 
   services:
     build: ./container
-  
+
   volumes:
     ctr-data:
 

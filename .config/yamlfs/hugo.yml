@@ -1,0 +1,194 @@
+{% exec git init %}
+{% exec hugo new site -f toml %}
+
+Makefile: |-
+  repo ?= {% default "TODO" .repo %}
+  rev ?= $(shell git describe --tags --always --abbrev=7)
+
+  all: clean public/index.html
+
+  public/index.html:
+    DOCKER_BUILDKIT=1 docker build --platform=linux/amd64 \
+      --output=./public \
+      --target=final .
+
+  clean:
+    rm -rf ./public/*
+
+  .PHONY:
+    all clean
+    dev
+    container container-clean push
+
+  dev:
+    docker image inspect hugo:server >/dev/null || \
+      docker build --target=server --tag=hugo:server .
+    docker run --rm -it \
+      --mount type=bind,src=$(PWD),dst=/src,ro \
+      --mount type=tmpfs,dst=/src/public \
+      --publish 1313:1313 \
+      hugo:server
+
+  container:
+    img build --platform=linux/amd64 --tag=$(repo):$(rev) \
+      --target=deploy \
+      --no-console .
+    img tag $(repo):$(rev) $(repo):latest
+
+  container-clean:
+    img rm $(repo):latest || true
+    img rm $(repo):$(rev) || true
+
+  push:
+    img push $(repo):$(rev)
+    img push $(repo):latest
+
+Caddyfile: |-
+  :2015
+  root * /public
+  @index {
+    path_regexp .*/$
+  }
+  uri_replace @index {path} {path}index.html
+  try_files {uri} 404.html /404.html
+  respond /healthz 200
+  respond /readyz 200
+  encode zstd gzip
+  file_server
+
+Dockerfile: |-
+  FROM docker.io/library/alpine AS hugo
+  RUN apk add git hugo
+
+  FROM hugo AS dev
+  WORKDIR /src
+  ENTRYPOINT [ "hugo" ]
+
+  FROM dev AS build
+  COPY . .
+  ARG HUGO_BUILD_ARGS="--cleanDestinationDir"
+  RUN hugo ${HUGO_BUILD_ARGS}
+
+  FROM scratch AS final
+  COPY --from=build /src/public /public
+
+  FROM dev AS server
+  CMD ["server", "--bind=0.0.0.0"]
+
+  FROM scratch AS final
+  COPY --from=build /src/public/* /
+
+  FROM docker.io/robertgzr/caddy:v2.0.0-beta13 AS caddy
+  FROM scratch AS deploy
+  COPY --from=caddy /usr/bin/caddy /caddy
+  COPY --from=build /src/public /public
+  COPY ./Caddyfile /Caddyfile
+  WORKDIR /public
+  EXPOSE 2015
+  ENTRYPOINT ["/caddy", "run", "--config=/Caddyfile"]
+
+assets:
+  scss:
+    main.scss: |-
+      @import "reset";
+
+      @import "modules/all";
+
+      @import "partials/content";
+      @import "partials/header";
+      @import "partials/footer";
+      @import "partials/typo";
+
+    _reset.scss: |-
+      html {
+        font-size: $fs-normal;
+      }
+
+      * {
+        box-sizing: border-box;
+        text-rendering: geometricPrecision;
+      }
+
+      body {
+        font-size: $fs-normal;
+        line-height: 1.5rem;
+        margin: 0;
+        font-family: serif;
+        word-wrap: break-word;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        line-height: 1.3em;
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      pre {
+        padding: 2rem;
+        margin: 1.75rem 0;
+        background-color: white;
+        border: 1px solid #ccc;
+        overflow: auto;
+      }
+
+      pre code,
+      code[class*="language-"], pre[class*="language-"] {
+        font-weight: 100;
+        text-shadow: none;
+        margin: 1.75rem 0;
+      }
+
+      a {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+    modules:
+      _all.scss: |-
+        // mixins go here
+
+        @mixin invert() {
+          filter: hue-rotate(180deg) contrast(100%) invert(100%);
+          -webkit-filter: hue-rotate(180deg) contrast(100%) invert(100%);
+        }
+        @mixin invert_img() {
+          filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
+          -webkit-filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
+        }
+
+    partials:
+      _content.scss: |-
+        // TODO content style
+      _header.scss: |-
+        // TODO header style
+      _footer.scss: |-
+        // TODO footer style
+      _typo.scss: |-
+        // TODO typography style
+
+layouts/humans.txt: |-
+  User-agent: *
+  {{ if (getenv "HUGO_ENV") "production" }}
+  Disallow:
+  {{ else }}
+  Disallow: /
+  {{ end }}
+
+static/humans.txt: |-
+  /* WHAT IS THIS? */
+      https://humanstxt.org
+
+  /* AUTHOR */
+      Standard: TODO
+      Email: TODO
+
+  /* SITE */
+      Last update:{% printf "%s" time.Now().Format("2006/01/02") %}
+      Language: English
+      Doctype:HTML5
+      IDE: vim, alacritty
+      Technologies: hugo, scss, yamlfs, docker

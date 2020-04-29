@@ -1,6 +1,14 @@
 #!/bin/sh
 
 set -e
+
+if [ -n "$1" ]; then
+	printf "usage: %s\n" "$(basename "$0")"
+	printf "\n"
+	printf "launches wayvnc(1), wshowkeys(1) and remmina(1)\n"
+	exit 2
+fi
+
 trap '{ pkill wshowkeys; pkill wayvnc; pkill remmina; }' EXIT
 
 echo "=> starting wshowkeys"
@@ -8,7 +16,7 @@ swaymsg exec "wshowkeys -a bottom -a left -F 'Iosevka Sparkle 25' -t 1" >/dev/nu
 echo "=> starting wayvnc"
 swaymsg exec "wayvnc 0.0.0.0 5500" >/dev/null
 echo "=> starting remmina"
-swx -g "1820,50 720x450" -b none -s -I "org.remmina.Remmina" remmina -c $HOME/.local/share/remmina/group_vnc_wayvnc_localhost-5500.remmina
+swx -g "1820,50 720x450" -b none -s -I "org.remmina.Remmina" remmina -c "$HOME"/.local/share/remmina/group_vnc_wayvnc_localhost-5500.remmina
 
 while true; do
 	sleep $((1024*1024))

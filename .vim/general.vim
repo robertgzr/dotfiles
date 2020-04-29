@@ -63,3 +63,4 @@ endif
 " set ts=8 sts=0 et sw=4 sta
 
 set diffopt+=algorithm:patience
+set path+=expand('%:h:p')

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 arg0=bemenu
+prompt=${MENU_PROMPT:-">"}
 while test $# -gt 0; do
    case "$1" in
       -run)
@@ -12,12 +13,12 @@ while test $# -gt 0; do
 done
 
 exec "${arg0}" \
+   --bottom \
+   --ignorecase \
    --list=4 \
    --index \
-   --ignorecase \
-   --bottom \
    --no-overlap \
-   --prompt "${prompt}:" \
+   --prompt "${prompt}" \
    --fn 'Iosevka Sparkle 11' \
    --nb '#221E1D' --nf '#fffefe' \
    --tb '#0B346F' --tf '#fffefe' \

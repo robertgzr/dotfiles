@@ -1,28 +1,39 @@
 #!/bin/sh
 set -e
+[ -n "$DEBUG" ] && set -x
 
 DEFAULT_PROFILE="output:analog-stereo+input:analog-stereo"
 HDMI_PROFILE="output:hdmi-stereo"
+export MENU_PROMPT="soundswitch"
 
 global=
 focused=
 hdmi=
 reset=
-while getopts fgHRh name; do
+output=
+input=
+usage() {
+	printf "usage: %s [-gfhr]\n" "$(basename "$0")"
+	printf "\n"
+	printf "  -O \t(manipulate pulseaudio sinks)\n"
+	printf "  -I \t(manipulate pulseaudio sources)\n"
+	printf "  -g \t(set default sink and switch global output)\n"
+	printf "  -f \t(switch focused container output)\n"
+	printf "  -H \t(switch card to HDMI profile)\n"
+	printf "  -R \t(switch card to default profile)\n"
+	printf "\n"
+	printf "Needs swq(1) to work.\n"
+	exit 2
+}
+while getopts OIfgHRh name; do
 	case ${name} in
 	g) 	global=1 ;;
 	f) 	focused=1 ;;
 	H) 	hdmi=1 ;;
 	R)	reset=1 ;;
-	h|?) 	printf "usage: %s [-gfhr]\n" "$(basename "$0")"
-		printf "\n"
-		printf "  -g \t(set default sink and switch global output)\n"
-		printf "  -f \t(switch focused container output)\n"
-		printf "  -h \t(switch card to HDMI profile)\n"
-		printf "  -r \t(switch card to default profile)\n"
-		printf "\n"
-		printf "Needs swq(1) to work.\n"
-		;;
+	O)	output=1 ;;
+	I)	input=1 ;;
+	h|?) 	usage ;;
 	esac
 done
 
@@ -34,52 +45,71 @@ if [ "$#" -lt 1 ]; then
 		focused) 	exec "$0" -f ;;
 		hdmi_profile)	exec "$0" -H ;;
 		reset_profile) 	exec "$0" -R ;;
+		*)		usage ;;
 		esac
 	}
+	exit $?
+fi
+if [ -n "$global" ] || [ -n "$focused" ]; then
+	if [ -z "$output" ] && [ -z "$input" ]; then
+		printf "output\ninput\n" | menu | {
+			read -r line
+			case ${line} in
+			output) 	exec "$0" -O "$*" ;;
+			input) 		exec "$0" -I "$*" ;;
+			*)		usage ;;
+			esac
+		}
+		exit $?
+	fi
 fi
 
+[ -n "$output" ] && keyword="sink" && what="sink-input"
+[ -n "$input" ] && keyword="source" && what="source-output"
+
 # returns the sink_id
-select_sink()
+selects()
 {
-	pactl list short sinks | awk '{print $2}' | menu
+	pactl list short "${keyword}s" | awk '{print $2}' | menu
 }
 
 if [ -n "${global}" ]
 then
-	target_sink=$(select_sink)
-	notify-send -a soundswitch "soundswitch: global" "switch to <i>${target_sink}</i>"
-	# set new default sink
-	pactl set-default-sink "${target_sink}"
-	# move all sink-inputs to the new sink
-	pactl list sink-inputs short | cut -f1 \
-		| xargs -i pactl move-sink-input "{}" "${target_sink}"
+	target=$(selects)
+	notify-send -a soundswitch "soundswitch: global" "switch to <i>${target}</i>"
+	# set new default
+	pactl "set-default-${keyword}" "${target}"
+	# move all attached to the new target
+	pactl list "${what}s" short | cut -f1 \
+		| xargs -i pactl "move-${what}" "{}" "${target}"
 
 elif [ -n "${focused}" ]
 then
 	# parse pid of currently focused container
 	# then get the sink-inputs for it and parse the sink-input-id
 	focused_binary=$(swq current con | jq -r '.pid' | xargs ps -o comm=)
-	sink_input_id=$(printf "%s\n" "${focused_binary}" \
-		| xargs pacmd list-sink-inputs \
+	what_id=$(printf "%s\n" "${focused_binary}" \
+		| xargs pacmd "list-${what}s" \
 			| tr '\n' '\r' \
 			| perl -pe 's/[^\r]*index: ([0-9]+).+?application\.process\.binary = "([^\r]+)"\r.+?(?=index:|$)/\2=\1\r/g' \
 			| tr '\r' '\n' \
 			| grep "^{}" \
 		| cut -d'=' -f2)
-	[ -z "${sink_input_id}" ] && exit 1
+	[ -z "${what_id}" ] && exit 1
 
-	# select which sink to switch to
-	target_sink=$(select_sink)
-	[ -z "${sink_input_id}" ] && exit 1
+	# select where to switch to
+	target=$(selects)
+	[ -z "${what_id}" ] && exit 1
 
-	notify-send -a soundswitch "soundswitch: ${focused_binary}" "switch to <i>${target_sink}</i>"
-        pacmd move-sink-input "${sink_input_id}" "${target_sink}"
+	notify-send -a soundswitch "soundswitch: ${focused_binary}" "switch to <i>${target}</i>"
+        pacmd move-sink-input "${what_id}" "${target}"
 
 elif [ -n "${hdmi}" ]
 then
 	target_card=$(pactl list short cards | awk '{print $2}' | menu)
 	notify-send -a soundswitch "soundswitch: hdmi" "switch <i>${target_card}</i> to HDMI profile"
 	pactl set-card-profile "${target_card}" ${HDMI_PROFILE}
+	exit $?
 
 elif [ -n "${reset}" ]
 then
@@ -88,5 +118,3 @@ then
 	pactl set-card-profile "${target_card}" ${DEFAULT_PROFILE}
 
 fi
-
-exit $?

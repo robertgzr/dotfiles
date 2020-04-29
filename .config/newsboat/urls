@@ -1,0 +1,15 @@
+https://blog.fefe.de/rss.xml news
+http://www.tagesschau.de/xml/atom/ news
+
+# https://www.cgpgrey.com/rss.xml?html internet
+
+https://blog.nightly.mozilla.org/feed/ dev
+https://drewdevault.com/feed.xml dev
+https://emersion.fr/blog/rss.xml dev
+https://hacktivis.me/feed.atom dev
+https://wolf480pl.github.io/feed.xml dev
+https://cli.fan/posts/index.xml dev
+https://blog.jessfraz.com/index.xml dev
+
+https://git.sr.ht/~sircmpwn/aerc/log/rss.xml dev repos
+https://git.sr.ht/~emersion/soju/log/rss.xml dev repos

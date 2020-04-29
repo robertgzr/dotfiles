@@ -1,0 +1,40 @@
+#!/bin/sh
+
+if [ "$1" = "-h" ]; then
+	printf "usage: %s [RESIZE_PERC]\n" "$(basename "$0")"
+	exit 2
+fi
+
+con=$(swq current con)
+if [ "$(echo "$con" | jq -r '.type')" = "con" ]; then
+	printf "not a floating container\n"
+	exit 1
+fi
+
+ws=$(swq current workspace)
+ws_width=$(echo "$ws" | jq -r '.rect.width')
+ws_height=$(echo "$ws" | jq -r '.rect.height')
+ws_x=$(echo "$ws" | jq -r '.rect.x')
+ws_y=$(echo "$ws" | jq -r '.rect.y')
+
+center_x=$(awk "BEGIN{print int($ws_width - $ws_x)/2}")
+center_y=$(awk "BEGIN{print int($ws_height - $ws_y)/2}")
+
+if [ -n "$1" ]; then
+	perc="$1"
+	con_width=$(awk "BEGIN{print int($ws_width * $perc)}")
+	con_height=$(awk "BEGIN{print int($ws_height * $perc)}")
+	swaymsg resize set "$con_width" "$con_height"
+else
+	con_width=$(echo "$con" | jq -r '.window_rect.width')
+	con_height=$(echo "$con" | jq -r '.window_rect.height')
+fi
+
+echo "center: $center_x x $center_y"
+echo "con: $con_width x $con_height"
+
+tar_x=$(awk "BEGIN{print int($center_x - ($con_width / 2))}")
+tar_y=$(awk "BEGIN{print int($center_y - ($con_height / 2))}")
+
+echo "moveto: $tar_x x $tar_y"
+swaymsg move position "$tar_x" "$tar_y"

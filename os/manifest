@@ -1,0 +1,21 @@
+/etc/buildkernel.conf
+/etc/doas.conf
+/etc/fstab
+
+# portage stuff
+/etc/portage/make.conf
+/etc/portage/package.env
+/etc/portage/env/
+/etc/portage/package.accept_keywords/
+/etc/portage/package.license/
+/etc/portage/package.mask/
+/etc/portage/package.unmask/
+/etc/portage/package.use/
+/etc/portage/patches/
+/etc/portage/repos.conf/gentoo.conf
+/etc/portage/repos.conf/robertgzr.conf
+/etc/portage/repos.conf/eselect-repo.conf
+/etc/portage/sets/distro
+/etc/portage/sets/sway-stack
+
+/var/lib/portage/world

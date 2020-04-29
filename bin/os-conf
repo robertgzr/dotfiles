@@ -1,0 +1,56 @@
+#!/bin/sh
+
+OS_DIR=${OS_DIR:-$HOME/os}
+OS_MANIFEST=$OS_DIR/manifest
+
+noop="echo "
+total=0
+
+copy_file() {
+	path=$1
+	if [ -f "$path" ]; then
+		# check that the file in the manifest matches
+		# skip if it does
+		if cmp "$path" "$OS_DIR$path" >/dev/null; then
+			return
+		fi
+		# mkdir base path
+		mkdir -p "$(dirname "$OS_DIR$path")"
+		# copy
+		cp -v "$path" "$OS_DIR$path"
+		# tally
+		total=$((total + 1))
+	elif [ -d "$path" ]; then
+		# handle dir
+		for file in "$path"/*; do
+			copy_file "$file"
+		done
+	else
+		# noop
+		echo "noop: $path"
+		return
+	fi
+}
+
+main() {
+	while IFS="\r" read -r line
+	do
+		[ -z "$line" ] && continue
+		echo "$line" | awk '/#.*/{exit 1}' || continue
+
+		# check that the file in the manifest exists
+		if [ ! -e "$line" ]; then
+			echo "error: $line not found" >&2
+			continue
+		fi
+		copy_file "$line"
+
+	done
+}
+
+uniq "$OS_MANIFEST" \
+	| grep -v '^$' \
+	| grep -v '^#' \
+	| main
+
+echo "$total files."

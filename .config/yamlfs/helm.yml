@@ -41,6 +41,22 @@ README.md: |-
   | resources.limits.memory | |
   | resources.limits.cpu | |
 
+.editorconfig: |-
+  ; http://editorconfig.org/
+
+  root = true
+
+  [*]
+  charset = utf-8
+  end_of_line = lf
+  indent_style = space
+
+  [*.yaml]
+  indent_size = 2
+
+  [*.md]
+  trim_trailing_whitespace = false
+
 Chart.yaml: |-
   apiVersion: v1
   name: {% .name %}

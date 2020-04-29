@@ -25,57 +25,84 @@ go.mod: |
   go {% $goversion %}
 
 Dockerfile: |
-  #syntax=docker/dockerfile:experimental
+  # syntax=docker/dockerfile:1.1-experimental
+  # vim: ft=dockerfile
 
-  FROM docker.io/library/golang:{% $goversion %}-alpine AS base
-  RUN apk add -U --no-cache \
-      ca-certificates
+  FROM --platform=$BUILDPLATFORM docker.io/library/alpine:3.11 AS base
+  RUN apk add -U --no-cache ca-certificates
 
-  FROM base AS build
+  FROM --platform=$BUILDPLATFORM docker.io/tonistiigi/xx:golang AS xx
+  FROM --platform=$BUILDPLATFORM docker.io/library/golang:{% $goversion %}-alpine AS build
+  COPY --from=xx / /
+  ARG TARGETPLATFORM
   WORKDIR /src
+  RUN apk add -U --no-cache make
   RUN --mount=target=/src,rw \
       --mount=type=cache,target=/go/pkg \
-      --mount=type=cache,target=/root/.cache/go-build \
-      make all
-
-  FROM base AS run
-  COPY --from=dev /src/{% .name %} /usr/local/bin/
-  ENTRYPOINT [ "{% .name %}" ]
+      --mount=type=cache,target=/root/.cache \
+      make DESTDIR=/out clean build
 
   FROM scratch AS final
-  COPY --from=build /src/{% .name %} /
+  COPY --from=build /out/{% .name %} /
+
+  FROM base AS run
+  COPY --from=build /out/{% .name %} /usr/local/bin/
+  ENTRYPOINT [ "{% .name %}" ]
 
 Makefile: |
   .POSIX:
 
   all: validate test {% .name %}
 
+  DESTDIR  ?= .
+  PREFIX   ?=
+  VERSION  ?= $(shell git describe --match 'v[0-9]*' --dirty='+dev' --always --tags)
+  REVISION ?= $(shell git rev-parse HEAD)
+
   GO ?= go
   GO_PKG ?= {% $gopkg %}
   GO_BUILDTAGS ?= netgo osusergo static_build
   GO_LDFLAGS ?= -s -w -extldflags "-static"
-
-  VERSION ?= $(shell git describe --match 'v[0-9]*' --dirty='+dev' --always --tags)
-  REVISION ?= $(shell git rev-parse HEAD)
   GO_VERSIONFLAGS = -X {% $gopkg %}/version.Version=$(VERSION) -X {% $gopkg %}/version.Revision=$(REVISION)
 
+  .PHONY: build
   build: {% .name %}
   {% .name %}:
   	$(GO) build \
   		-tags '$(GO_BUILDTAGS)' -ldflags '$(GO_LDFLAGS) $(GO_VERSIONFLAGS)' \
-  		-o {% .name %} \
+  		-o $(DESTDIR)$(PREFIX)/{% .name %} \
   		./cmd/{% .name %}
 
-  RM ?= rm -f
+  PLATFORM ?= linux/amd64
+  REPO ?= {% .name %}
+  TAG ?= $(VERSION)
 
-  clean:
-  	$(RM) {% .name %}
-
+  .PHONY: container-build
   container-build:
   	DOCKER_BUILDKIT=1 \
-  	docker build --target final -o . .
+  	docker build --platform $(PLATFORM) --target final -o . .
+
+  .PHONY: container-image
+  container-image:
+  	DOCKER_BUILDKIT=1 \
+  	docker build --platform $(PLATFORM) --target run -t $(REPO):$(TAG) .
+
+  .PHONY: cross
+  cross:
+  	docker run --rm -it --privileged \
+  		--mount type=bind,src=$(PWD),dst=/src \
+  		--entrypoint buildctl-daemonless.sh \
+  		moby/buildkit:latest \
+  			buildctl build --frontend=dockerfile.v0 \
+  			--local context=/src --local dockerfile=/src \
+  			--opt filename=Dockerfile \
+  			--opt platform=$(PLATFORM) \
+  			--opt target=run \
+  			--output type=image,name=$(REPO):$(TAG),push=true
 
   GOLANGCI_LINT ?= golangci-lint
+
+  .PHONY: validate
   validate:
   	$(GOLANGCI_LINT) run --build-tags "$(GO_BUILDTAGS)"
 
@@ -85,6 +112,8 @@ Makefile: |
   else
   GOTEST ?= go test
   endif
+
+  .PHONY: test
   test:
   	$(GOTEST) \
   		-tags '$(GO_BUILDTAGS)' \
@@ -92,7 +121,27 @@ Makefile: |
   		-covermode=atomic \
   		$(GOTEST_FLAGS)
 
-  .PHONY: all build clean container-build test validate
+  RM ?= rm -f
+
+  .PHONY: clean
+  clean:
+  	$(RM) {% .name %}
+
+  .PHONY: help
+  help:
+  	@printf "usage:\n"
+  	@printf "\n"
+  	@printf "  build             local build\n"
+  	@printf "  validate          linter\n"
+  	@printf "  test              tests\n"
+  	@printf "  container-build   build w/ docker\n"
+  	@printf "  container-image   image build\n"
+  	@printf "  cross             build w/ buildkit (multi-platform support)\n"
+  	@printf "\n"
+  	@printf "  DESTDIR, PREFIX   output location\n"
+  	@printf "  PLATFORM          output platform\n"
+  	@printf "  REPO, TAG         image repository:tag\n"
+  	@printf "\n"
 
 .editorconfig: |
   ; http://editorconfig.org/

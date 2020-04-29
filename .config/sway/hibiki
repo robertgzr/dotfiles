@@ -38,7 +38,8 @@ bar {
 
 exec redshift
 exec mako
-exec kanshi
+exec 'sh -c "while true; do kanshi; done"'
+exec_always pkill kanshi
 exec swayidle -w \
 	timeout 540 'lock' \
 	timeout 600 'swaymsg "output * dpms off"' \

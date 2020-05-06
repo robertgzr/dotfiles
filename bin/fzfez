@@ -49,6 +49,16 @@ case "$1" in
 			| sed 's#^heads/##'
 		;;
 
+	git-log)
+		git log --color=always --oneline \
+			| $0 \
+				--border --no-sort --ansi \
+				--preview 'echo {} | cut -d\  -f1 | xargs -I% sh -c "git log --color=always -1 --pretty=full %; echo; git diff --color=always %^..%;"' \
+				--preview-window right:50% \
+			| cut -d' ' -f1 \
+			| xargs -i git log -1 --pretty=%H {}
+		;;
+
 	rg)
 		shift
 		rg $@ --files-with-matches \

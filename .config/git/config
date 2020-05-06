@@ -80,7 +80,9 @@
     find-by-subject = "!f() { set -ex; s=`git log -1 --format=%s ${1}`; git --no-pager log -1 --grep=\"^${s}$\" --no-merges ${2}; }; f"
     tig = !tig
     amend = commit --amend
-    fbr = !fzfez git-branches
+    b = !fzfez git-branches
+    l = !fzfez git-log
+    t = !fzfez git-tags
 
 
 [apply]

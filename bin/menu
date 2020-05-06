@@ -14,6 +14,7 @@ done
 
 exec "${arg0}" \
    --bottom \
+   --monitor=all \
    --ignorecase \
    --list=4 \
    --index \

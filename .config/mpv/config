@@ -33,16 +33,19 @@ sub-ass-force-style=Kerning=yes
 #
 # OSD
 #
-#osc=no
+osc=no
+osd-bar=no
+border=no
+#
 keep-open=yes
 stop-screensaver=yes
 cursor-autohide-fs-only
 osd-font="Iosevka Sparkle"
 # osd-font=monospace
-osd-font-size=14
+osd-font-size=15
 osd-scale-by-window=yes
 osd-fractions=yes
-geometry=50%:50%
+geometry=50%x50%
 hidpi-window-scale
 load-stats-overlay=yes
 load-osd-console=yes

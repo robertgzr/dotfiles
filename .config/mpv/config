@@ -111,3 +111,7 @@ glsl-shaders=~~/shaders/FSRCNNX_x2_16-0-4-1.glsl
 [gpuscale16]
 profile=gpu-hq
 glsl-shaders=~~/shaders/FSRCNNX_x2_8-0-4-1.glsl
+
+[interpolate]
+profile=gpu-hq
+vf=format=yuv420p,vapoursynth=~~/vapoursynth/interpolate.vpy:4:4

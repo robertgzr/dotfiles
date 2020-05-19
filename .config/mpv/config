@@ -11,6 +11,7 @@ autofit-larger=90%x90%
 framedrop=vo
 video-sync=display-resample
 gpu-context=wayland
+window-maximized=yes # prevent wayland problems with buffer resize
 
 #
 # Audio

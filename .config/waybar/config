@@ -81,11 +81,12 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": "{icon} ({signalStrength}%)",
+        "format-icons": [""],
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": " Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (-)",
+        "format-disconnected": " (-)",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nssid: {essid}\nsignal: {signaldBm} dbm",
         "tooltip-format-disconnected": "disconnected"
     },
     "network#wg": {

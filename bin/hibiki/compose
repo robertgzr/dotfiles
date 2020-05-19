@@ -1,0 +1,10 @@
+#!/bin/sh
+cwd="$PWD"
+container_cwd="/run/cwd/$(basename "$cwd")"
+exec docker run \
+    --rm -it \
+    --net host \
+    --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+    --mount type=bind,src="$cwd",dst="$container_cwd" \
+    -w "$container_cwd" \
+    docker/compose:latest $@

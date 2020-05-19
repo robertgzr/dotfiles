@@ -1,0 +1,44 @@
+#!/bin/sh
+set -e
+[ -n "$DEBUG" ] && set -x
+
+target=
+img=""
+dockerfile="${PWD}/Dockerfile"
+become=
+
+usage() {
+	printf "usage: %s OPTIONS -- [DOCKER RUN ARGS]\n" "$(basename "$0")"
+	printf "\n"
+	printf "  -t TARGET\n"
+	printf "  -i IMAGE\n"
+	printf "  -f DOCKERFILE\n"
+	printf "  -u (become user)\n"
+	printf "\n"
+	printf "Enter the container defined in Dockerfile, with \$PWD mounted at /src\n"
+	exit 2
+}
+
+while getopts t:i:f:uh o; do
+	case $o in
+	t) 	target="$OPTARG" ;;
+	i) 	img="$OPTARG" ;;
+	f) 	dockerfile="$OPTARG" ;;
+	u) 	become=1 ;;
+	h|?) 	usage ;;
+	esac
+done
+shift $((OPTIND - 1))
+
+[ -z "$img" ] && img="$(basename "$(dirname "$(readlink -f -- "$dockerfile")")")"
+
+extra_args=
+[ -n "$become" ] && extra_args="--user=$(id -u):$(id -g)"
+
+# allow setting this to some non-file value to skip building
+# > enter -i alpine -f none
+# for a quick alpine based container with $PWD mounted in
+[ -f "$dockerfile" ] && \
+	docker build --tag="$img" --target="$target" --file="$dockerfile" "$(dirname "$dockerfile")"
+
+exec docker run --rm -it --mount=type=bind,src="$PWD",dst=/src -w /src $@ $extra_args "$img"

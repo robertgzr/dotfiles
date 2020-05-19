@@ -105,9 +105,9 @@ dscale=ewa_lanczossharp
 correct-downscaling=yes
 sigmoid-upscaling=yes
 
-[finesharp]
-glsl-shaders="~~/shaders/finesharp/FineSharp.glsl"
-
-[fsrcnnx]
+[gpuscale8]
 profile=gpu-hq
-glsl-shaders="~~/shaders/fsrcnnx/FSRCNNX_x2_8-0-4-1.glsl"
+glsl-shaders=~~/shaders/FSRCNNX_x2_16-0-4-1.glsl
+[gpuscale16]
+profile=gpu-hq
+glsl-shaders=~~/shaders/FSRCNNX_x2_8-0-4-1.glsl

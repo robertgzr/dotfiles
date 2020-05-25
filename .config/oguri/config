@@ -1,0 +1,5 @@
+[output *]
+filter=best
+
+[output 'Dell Inc. DELL U2518D 3C4YP87AAK3L']
+anchor=left

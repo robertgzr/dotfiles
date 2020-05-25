@@ -12,6 +12,7 @@ framedrop=vo
 video-sync=display-resample
 gpu-context=wayland
 window-maximized=yes # prevent wayland problems with buffer resize
+vf-add=stereo3d:ab2l:ml
 
 #
 # Audio
@@ -115,3 +116,8 @@ glsl-shaders=~~/shaders/FSRCNNX_x2_8-0-4-1.glsl
 [interpolate]
 profile=gpu-hq
 vf=format=yuv420p,vapoursynth=~~/vapoursynth/interpolate.vpy:4:4
+
+[n]
+load-scripts=no
+osc=yes
+osd-bar=yes

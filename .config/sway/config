@@ -31,20 +31,6 @@ set $wsGame g
 # gaps inner 5
 show_marks yes
 
-# default keyboard
-input * {
-    xkb_layout us
-    xkb_variant mac
-    xkb_options 'caps:hyper,lvl3:ralt_switch_multikey'
-    repeat_rate 70
-}
-
-# default pointer
-input * {
-    accel_profile adaptive
-}
-
-# TODO
 include input.conf
 include binds.conf
 include auto.conf
@@ -67,5 +53,5 @@ client.unfocused $bg2 $bg $text2 $indicator2 $bg
 client.urgent $urgent2 $urgent $text $indicator $urgent
 # }}}
 
-include config.d/*
+# include config.d/*
 include "`uname -n`"

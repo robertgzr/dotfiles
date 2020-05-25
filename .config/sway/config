@@ -10,7 +10,8 @@ set $right l
 
 set $term alacritty
 set $floating_term $term --config-file $HOME/.config/alacritty/launcher.yml --class '__floating-Alacritty'
-set $menu wofi -k /dev/null --terminal $term --show drun
+set $menu menu -drun
+# set $menu wofi -k /dev/null --terminal $term --show drun
 set $run_menu menu -run
 
 # workspaces {{{
@@ -44,8 +45,10 @@ set $main  #0B346F
 set $main2 #005CAF
 set $urgent #DB4D6D
 set $urgent2 #CB1B45
-set $indicator #FAD689
-set $indicator2 #C18A26
+# set $indicator #FAD689
+# set $indicator2 #C18A26
+set $indicator #434343
+set $indicator2 #434343
 
 client.focused $main2 $main $text $indicator $main
 client.focused_inactive $bg2 $bg $text2 $indicator2 $bg

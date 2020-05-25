@@ -8,6 +8,7 @@ export MENU_PROMPT="soundswitch"
 
 global=
 focused=
+profile=
 hdmi=
 reset=
 output=
@@ -19,16 +20,18 @@ usage() {
 	printf "  -I \t(manipulate pulseaudio sources)\n"
 	printf "  -g \t(set default sink and switch global output)\n"
 	printf "  -f \t(switch focused container output)\n"
+	printf "  -p \t(switch card profile)\n"
 	printf "  -H \t(switch card to HDMI profile)\n"
 	printf "  -R \t(switch card to default profile)\n"
 	printf "\n"
 	printf "Needs swq(1) to work.\n"
 	exit 2
 }
-while getopts OIfgHRh name; do
+while getopts OIfgpHRh name; do
 	case ${name} in
 	g) 	global=1 ;;
 	f) 	focused=1 ;;
+	p) 	profile=1 ;;
 	H) 	hdmi=1 ;;
 	R)	reset=1 ;;
 	O)	output=1 ;;
@@ -38,13 +41,14 @@ while getopts OIfgHRh name; do
 done
 
 if [ "$#" -lt 1 ]; then
-	printf "global\nfocused\nhdmi_profile\nreset_profile\n" | menu | {
+	printf "global\nfocused\ncard profile\nhdmi profile\nreset profile\n" | menu | {
 		read -r line
 		case ${line} in
-		global) 	exec "$0" -g ;;
-		focused) 	exec "$0" -f ;;
-		hdmi_profile)	exec "$0" -H ;;
-		reset_profile) 	exec "$0" -R ;;
+		global) 	 exec "$0" -g ;;
+		focused) 	 exec "$0" -f ;;
+		"card profile")  exec "$0" -p ;;
+		"hdmi profile")	 exec "$0" -H ;;
+		"reset profile") exec "$0" -R ;;
 		*)		usage ;;
 		esac
 	}
@@ -103,6 +107,21 @@ then
 
 	notify-send -a soundswitch "soundswitch: ${focused_binary}" "switch to <i>${target}</i>"
         pacmd move-sink-input "${what_id}" "${target}"
+
+elif [ -n "${profile}" ]
+then
+	target_card=$(pactl list short cards | awk '{print $2}' | menu)
+	target_profile=$(pacmd list-cards \
+		| tr '\n' '\r' \
+		| perl -pe 's/[^\r]index: ([0-9]+).+?name: <alsa_card.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00>\r.+profiles:\r(.+)sinks:.*?(?=index:|$)/\2\r/g' \
+		| tr -d '\t' \
+		| tr '\r' '\n' \
+		| tail -n+2 \
+		| menu \
+		| perl -pe 's/^\s*([^\s]+):\s.*$/\1/')
+
+	notify-send -a soundswitch "soundswitch: profile" "switch <i>${target_card}</i> to ${target_profile} profile"
+	pactl set-card-profile "${target_card}" ${target_profile}
 
 elif [ -n "${hdmi}" ]
 then

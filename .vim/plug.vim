@@ -19,7 +19,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'justinmk/vim-dirvish'   " folder browser
   Plug 'justinmk/vim-sneak'     " powerful missing vim motions
 
-  " Plug 'neovim/nvim-lsp'
+  if has('nvim-0.5.0')
+    Plug 'neovim/nvim-lsp'
+    Plug 'haorenW1025/completion-nvim'
+  endif
+
   Plug 'SirVer/ultisnips'
     \| Plug 'honza/vim-snippets'
 
@@ -62,8 +66,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'rhysd/git-messenger.vim'         " git-blame in a popup
   Plug 'bling/vim-bufferline'            " needed to put buffers into tabline
 
-  Plug 'kassio/neoterm',
-    \ { 'on': ['T', 'Tnew'] }
+  Plug 'kassio/neoterm'
 
 " Languages
   " NOTE: these should only be loaded when they are required...
@@ -73,7 +76,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
   Plug 'masukomi/vim-markdown-folding', { 'for': ['markdown'] }
   Plug 'mattn/emmet-vim',         { 'for': ['html', 'vue'] }        " super-fast HTML editing
-  Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] } " visually match HTML tags enclosing cursor location
+  " Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] } " visually match HTML tags enclosing cursor location
   Plug 'ledger/vim-ledger',       { 'for': ['ledger'] }
   Plug 'jceb/vim-orgmode',        { 'for': ['org'] }
     \| Plug 'tpope/vim-speeddating'  " easy time/date incrementing

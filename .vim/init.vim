@@ -228,7 +228,7 @@ let g:neoformat_only_msg_on_error = 1
 let g:neoterm_size = 20
 let g:neoterm_autoinsert = 1
 
-let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = "<c-y>"
 let g:UltiSnipsJumpForwardTrigger = "<c-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 " }}}1
@@ -248,6 +248,11 @@ function! s:fmt() abort
   endif
   try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 endfunction
+
+augroup DoFmt
+  au!
+  au BufWritePre * :call <SID>fmt()
+augroup END
 
 " autogroups {{{
 augroup SpecialBuffers
@@ -270,7 +275,6 @@ augroup init
   au VimEnter * if &diff | runtime after/ftplugin/diff.vim | endif
 
   au BufEnter,BufLeave,BufWritePost * rshada|wshada
-  " au BufWritePre * :call <SID>fmt()
   " au FileType dirvish call fugitive#detect(@%)
   au BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'

@@ -1,18 +1,21 @@
-" if !has('nvim-0.5.0')
-"   echoerr 'nvim_lsp only works with neovim>=0.5.0'
-"   finish
-" endif
-finish
+if !has('nvim-0.5.0')
+  " echoerr 'nvim_lsp only works with neovim>=0.5.0'
+  finish
+endif
 
-silent LspInstall bashls
-silent LspInstall cssls
+lua << EOF
+local lsp   = require 'nvim_lsp'
+local util  = require 'nvim_lsp/util'
+local compl = require 'completion'
 
-" call nvim_lsp#setup("gopls", {})
-call nvim_lsp#setup("pyls", {})
-call nvim_lsp#setup("rust_analyzer", {})
-call nvim_lsp#setup("texlab", {})
+lsp.gopls.setup{
+  on_attach = compl.on_attach;
+  root_dir = util.root_pattern("go.mod");
+}
+EOF
 
-autocmd Filetype bash,shell,css,go,python,rust,tex,latex setl omnifunc=lsp#omnifunc
+" autocmd Filetype bash,shell,css,go,python,rust,tex,latex setl omnifunc=lsp#omnifunc
+" au Filetype lua setl omnifunc=v:lua.vim.lsp.omnifunc
 
 nnoremap <silent> gd  :call lsp#text_document_definition()<CR>
 nnoremap <silent> gdc :call lsp#text_document_declaration()<CR>

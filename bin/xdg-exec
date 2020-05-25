@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+desktop=${1:-$(echo "$0" | sed 's#/bin#/share/applications#')}
+bin=$(awk '/TryExec=/{split($0,l,"="); if (not system("command -v l[2]")){exit 1}} /Exec=/{print substr($0, index($0,"=")+1)}' "$desktop" | tr -d '\n' | sed "s/%.$//")
+exec $bin

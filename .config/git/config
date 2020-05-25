@@ -47,7 +47,7 @@
     df = diff --word-diff
     d = "!f() { local a=${1:-HEAD}; local b=${2:-master}; if [[ $a == '-' ]]; then a=HEAD; fi; printf  ' %s is %s commits ahead and %s commits behind %s\n' `git rev-parse --short=7 $a` `git rev-list --count $b..$a` `git rev-list --count $a..$b` $b; printf ' last common commit (merge-base): %s\n' `git merge-base $a $b`; git diff --shortstat $a..$b; }; f"
     unstage = reset --hard HEAD
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     ll = log --pretty=oneline --graph --abbrev-commit
     lm = log --pretty=format:'* %s (%h)'
     lg = log -p

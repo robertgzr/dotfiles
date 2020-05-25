@@ -1,0 +1,13 @@
+#!/bin/sh
+set -ex
+
+case "$1" in
+	off)
+		swaymsg input \$pen map_to_output \*
+		;;
+	on|*)
+		out="$(swq current output)"
+		swaymsg input \$pen map_to_output "$out"
+		swaymsg input \$pen map_from_region 0.0x0.0 0.5x0.5
+		;;
+esac

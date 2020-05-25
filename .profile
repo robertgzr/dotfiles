@@ -1,3 +1,13 @@
+
+# set xdg runtime dir if it's not defined
+if [ -z "${XDG_RUNTIME_DIR}" ]; then
+	export XDG_RUNTIME_DIR=/run/user/"$(id -u)"
+	if [ ! -d "${XDG_RUNTIME_DIR}" ]; then
+		mkdir "${XDG_RUNTIME_DIR}"
+		chmod 0700 "${XDG_RUNTIME_DIR}"
+	fi
+fi
+
 if [ -d "${HOME}/bin" ]; then
 	pathprepend "${HOME}/bin"
 	pathprepend "${HOME}/bin/$(uname -n)"

@@ -4,6 +4,7 @@
 autoload-files=no
 input-ipc-server=/var/run/user/1000/mpv 
 autofit-larger=90%x90%
+profile=gpu-hq
 
 #
 # Video
@@ -12,7 +13,7 @@ framedrop=vo
 video-sync=display-resample
 gpu-context=wayland
 window-maximized=yes # prevent wayland problems with buffer resize
-vf-add=stereo3d:ab2l:ml
+hwdec=yes
 
 #
 # Audio
@@ -29,7 +30,7 @@ audio-channels=auto-safe
 slang=eng,en,ger,de
 sub-font="Rosario"
 sub-bold=yes
-sub-ass-force-style=Kerning=yes
+# sub-ass-force-style=Kerning=yes
 
 #
 # OSD
@@ -68,23 +69,12 @@ screenshot-template='%tY%tm%td-%tH%tM%tS-%F-%p'
 [anime]
 profile-desc="Optimized for watching anime with ASS subtitles"
 sub-auto=fuzzy
-# deband=yes
+deband=yes
 # sub-border-size=2
 # sub-font-size=45
 # sub-margin-y=50
 # sub-spacing=1
-
-[cache]
-profile-desc="Optimized for streaming web video"
-cache=yes
-cache-secs=36000
-script=~/.config/mpv/scripts/mpv-plugin-streamcache/streamcache.lua
-ytdl-format='bestvideo[ext=mp4]+bestaudio'
-
-[3d]
-profile-desc="Convert 3d to 2d"
-hwdec=no
-vf-add=stereo3d=sbs2l:mono
+ordered-chapters-files=/tmp/mpv_ordered_chapters
 
 [webcam]
 profile-desc="Optimized for showing internal webcam feed"
@@ -99,7 +89,24 @@ opengl-glfinish=yes
 opengl-swapinterval=0
 vf=hflip
 
+[protocol.http]
+profile-desc="Optimized for streaming video"
+glsl-shaders-clr
+title="${media-title}"
+ytdl-format=bestvideo[height<=?1080]+bestaudio/best[height<=?1080]
+demuxer-seekable-cache=yes
+demuxer-max-bytes=2048MiB
+demuxer-max-back-bytes=1024MiB
+script=~/.config/mpv/scripts/mpv-plugin-streamcache/streamcache.lua
+
+[protocol.https]
+profile=protocol.http
+
+[cache]
+profile=protocol.http
+
 [scale]
+glsl-shaders-clr
 scale=ewa_lanczossharp
 cscale=ewa_lanczossharp
 dscale=ewa_lanczossharp
@@ -107,17 +114,35 @@ correct-downscaling=yes
 sigmoid-upscaling=yes
 
 [gpuscale8]
+profile-desc="Use GLSL shaders to scale via GPU"
 profile=gpu-hq
 glsl-shaders=~~/shaders/FSRCNNX_x2_16-0-4-1.glsl
+
 [gpuscale16]
+profile-desc="Use GLSL shaders to scale via GPU"
 profile=gpu-hq
 glsl-shaders=~~/shaders/FSRCNNX_x2_8-0-4-1.glsl
 
 [interpolate]
+profile-desc="Increase framecount by interpolating (with vapoursynth)"
 profile=gpu-hq
 vf=format=yuv420p,vapoursynth=~~/vapoursynth/interpolate.vpy:4:4
 
-[n]
+[svp]
+# Everything below here only applies to this profile until another profile is declared!
+input-ipc-server=/tmp/mpvsocket     # Receives input from SVP
+hr-seek-framedrop=no                # Fixes audio desync
+resume-playback=no                  # Not compatible with SVP
+hwdec=auto-copy
+hwdec-codecs=all
+autofit-larger=100%x100%
+# video-sync=desync
+video-sync=display-resample
+
+[reset]
 load-scripts=no
 osc=yes
 osd-bar=yes
+
+[3d]
+vf-add=stereo3d:ab2l:ml

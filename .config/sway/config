@@ -14,6 +14,10 @@ set $menu menu -drun
 # set $menu wofi -k /dev/null --terminal $term --show drun
 set $run_menu menu -run
 
+set $bpix 3
+default_border pixel $bpix
+default_floating_border pixel $bpix
+
 # workspaces {{{
 set $ws1 1
 set $ws2 2

@@ -1,7 +1,11 @@
 #!/bin/sh
+set -e
+[ -n "$DEBUG" ] && set -x
 
 arg0=bemenu
 prompt=${MENU_PROMPT:-">"}
+main_color="#0B346F"
+
 while test $# -gt 0; do
    case "$1" in
       -run)
@@ -13,20 +17,19 @@ while test $# -gt 0; do
 done
 
 exec "${arg0}" \
-   --bottom \
+   --no-overlap \
    --monitor=all \
    --ignorecase \
-   --list=4 \
+   --list=10 \
    --index \
-   --no-overlap \
    --prompt "${prompt}" \
    --fn 'Iosevka Sparkle 11' \
    --nb '#221E1D' --nf '#fffefe' \
-   --tb '#0B346F' --tf '#fffefe' \
+   --tb "$main_color" --tf '#fffefe' \
    --fb '#221E1D' --ff '#fffefe' \
    --sb '#FAD689' \
    --sf '#221E1D' \
-   --hb '#0B346F' \
+   --hb "$main_color" \
    --hf '#FCFAF2' \
    --scb '#221E1D' --scf '#fffefe' \
    "$@"

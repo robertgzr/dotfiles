@@ -3,10 +3,15 @@
     email = r@gnzler.io
 
 [sendemail]
-    smtpserver = /usr/bin/msmtp
-    smtpserveroption=-a
-    smtpserveroption=gnzler
+    smtpserver = mail.gandi.net
+    smtpuser = robert@gnzler.io
+    smtpencryption = tls
+    smtppass = !pass email/gnzler.io
+    ; smtpserver = /usr/bin/msmtp
+    ; smtpserveroption=-a
+    ; smtpserveroption=gnzler
     annotate = true
+    multiEdit = true
     confirm = always
 
 [core]

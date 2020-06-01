@@ -232,9 +232,58 @@ let g:neoformat_only_msg_on_error = 1
 let g:neoterm_size = 20
 let g:neoterm_autoinsert = 1
 
-let g:UltiSnipsExpandTrigger = "<c-y>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsListSnippets = "<c-tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+" }}}1
+
+" lsp + compl {{{1
+if has('nvim-0.5.0')
+lua << EOF
+local lsp   = require 'nvim_lsp'
+local util  = require 'nvim_lsp/util'
+local compl = require 'completion'
+
+lsp.gopls.setup{
+  on_attach = compl.on_attach;
+  root_dir = util.root_pattern("go.mod");
+}
+lsp.rust_analyzer.setup{
+  on_attach = compl.on_attach;
+}
+EOF
+  " autocmd Filetype bash,shell,css,go,python,rust,tex,latex setl omnifunc=lsp#omnifunc
+  " au Filetype lua setl omnifunc=v:lua.vim.lsp.omnifunc
+  nnoremap <silent> gd  :call lsp#text_document_definition()<CR>
+  nnoremap <silent> gdc :call lsp#text_document_declaration()<CR>
+  nnoremap <silent> gt  :call lsp#text_document_type_definition()<CR>
+  nnoremap <silent> gi  :call lsp#text_document_implementation()<CR>
+  nnoremap <silent> ;h  :call lsp#text_document_hover()<CR>
+  nnoremap <silent> ;s  :call lsp#text_document_signature_help()<CR>
+else
+  echoerr 'nvim_lsp only works with neovim>=0.5.0'
+endif
+
+set complete=.,w,b,u
+set completeopt=menuone,noinsert,noselect
+" set completeopt-=preview
+set shortmess+=c
+
+let g:completion_enable_auto_popup = 1
+let g:completion_enable_auto_signature = 1
+let g:completion_enable_auto_paren = 0
+let g:completion_confirm_key = "\<tab>"
+let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_auto_change_source = 1
+let g:completion_chain_complete_list = [
+  \ {'complete_items': ['lsp', 'snippet']},
+  \ {'mode': '<c-p>'},
+  \ {'mode': '<c-n>'}
+  \ ]
+
+inoremap <silent><expr> <c-n>
+  \ pumvisible() ? "\<c-n>" : completion#trigger_completion()
 " }}}1
 
 " gui extra config {{{
@@ -269,7 +318,13 @@ augroup SpecialBuffers
   au FileType help,qf nmap <buffer>q <c-w><c-q>
 augroup END
 
-augroup init
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent loadview
+" augroup END
+
+augroup Init
   au!
   au VimEnter * set iskeyword-=-
   " au VimEnter * call vista#RunForNearestMethodOrFunction()

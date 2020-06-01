@@ -8,7 +8,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Core
-  " Plug 'airblade/vim-gitgutter' " line status next to line nums
   Plug 'mhinz/vim-signify'      " git status in the sign column
   Plug 'tpope/vim-commentary'   " auto-comment using `gcc`
   Plug 'cohama/lexima.vim'      " auto-close parens, brackets, etc.
@@ -27,19 +26,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'SirVer/ultisnips'
     \| Plug 'honza/vim-snippets'
 
-  " Plug 'neoclide/coc.nvim',
-  "   \ { 'do': './install.sh nightly' }
-  "   \| Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-json',     { 'for': ['json'],   'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-rls',      { 'for': ['rust'],   'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-python',   { 'for': ['python'], 'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-yaml',     { 'for': ['yaml'],   'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-html',     { 'for': ['html'],   'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-css',      { 'for': ['css'],    'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'josa42/coc-go',         { 'for': ['go'],     'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-java',     { 'for': ['java'],   'do': 'yarn install --frozen-lockfile' }
-  "   \| Plug 'neoclide/coc-emmet',    { 'for': ['html', 'css'],   'do': 'yarn install --frozen-lockfile' }
-    " \| Plug '~/devel/upstream/github.com/microsoft/vscode-go', { 'for': ['go'] }
 
   " search
   " Plug 'junegunn/fzf',
@@ -70,7 +56,6 @@ call plug#begin('~/.vim/plugged')
 
 " Languages
   " NOTE: these should only be loaded when they are required...
-  " Plug 'fatih/vim-go',            { 'do': ':GoInstallBinaries' }
   " Plug 'rhysd/vim-grammarous',    { 'for': ['markdown', 'latex', 'tex'] }
   Plug 'lervag/vimtex',           { 'for': ['latex', 'tex'] }
   Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
@@ -78,7 +63,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim',         { 'for': ['html', 'vue'] }        " super-fast HTML editing
   " Plug 'valloric/matchtagalways', { 'for': ['html', 'vue', 'xml'] } " visually match HTML tags enclosing cursor location
   Plug 'ledger/vim-ledger',       { 'for': ['ledger'] }
-  Plug 'jceb/vim-orgmode',        { 'for': ['org'] }
     \| Plug 'tpope/vim-speeddating'  " easy time/date incrementing
     \| Plug 'vim-scripts/utl.vim'    " follow links/urls
   Plug 'gentoo/gentoo-syntax',    { 'for': ['ebuild'] }
@@ -93,10 +77,7 @@ call plug#begin('~/.vim/plugged')
   " Plug 'equalsraf/neovim-gui-shim'
 
 " Colorschemes
-  " Plug 'deviantfero/wpgtk.vim'
-  " Plug 'KeitaNakamura/neodark.vim'
   Plug 'NLKNguyen/papercolor-theme'
-  " Plug 'crusoexia/vim-dracula'
 
 " Local
   " Plug '~/devel/projects/nihon-theme/vim'

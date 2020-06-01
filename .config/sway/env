@@ -1,24 +1,29 @@
 #!/bin/sh
 
-# export XDG_RUNTIME_DIR=/run/user/1000
+export TERM=alacritty
 
-export DESKTOP_SESSION=gnome
+# export DESKTOP_SESSION=gnome
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
-export SDK_VIDEODRIVER=wayland
-
 export QT_QPA_PLATFORM=wayland-egl
-# export QT_QPA_PLATFORM=
-# export QT_AUTO_SCREEN_SCALE_FACTOR=0
-# export QT_SCREEN_SCALE_FACTORS='1.5;1'
+export SDL_VIDEODRIVER=wayland
+export ECORE_EVAS_ENGINE=wayland-egl
+export ELM_ENGINE=wayland_egl
+export _JAVA_AWT_WM_NONREPARENTING=1
+export NO_AT_BRIDGE=1
+export MOZ_ENABLE_WAYLAND=1
+
 export QT_QPA_PLATFORMTHEME=qgnomeplatform
 export QT_STYLE_OVERRIDE=adwaita
-
-export _JAVA_AWT_WM_NONREPARENTING=1
-export MOZ_ENABLE_WAYLAND=1
 
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export GTK_IM_MODULE=xim
 
-export TERM=alacritty
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+# export XDG_CURRENT_DESKTOP=Unity
+export XDG_CURRENT_DESKTOP=sway
+
+# export WLR_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
+export WLR_DRM_DEVICES="/dev/dri/card0"

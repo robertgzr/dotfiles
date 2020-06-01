@@ -3,12 +3,12 @@
 set $laptop eDP-1
 set $desk "Dell Inc. DELL U2518D 3C4YP87AAK3L"
 
-# output * scale 1
-
 font pango:Iosevka Sparkle 12
 
+output * scale 1
 output * max_render_time 1
 output * adaptive_sync on
+
 # for_window [app_id=Alacritty] max_render_time 2
 # for_window [app_id=firefox] max_render_time 3
 # seat * hide_cursor 2000
@@ -29,5 +29,8 @@ exec swayidle -w \
 	before-sleep 'lock' \
 	lock lock
 
+exec_always kanshictl reload
+
+# clampshell mode?
 #bindswitch --locked lid:on output $laptop disable
 #bindswitch --locked lid:off output $laptop enable

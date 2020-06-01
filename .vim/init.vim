@@ -1,3 +1,7 @@
+" vim: ts=2:sw=2:et:tw=99
+
+" let g:daymode = 1
+
 let g:mapleader = ' ' " <leader> key to <space>
 let g:maplocalleader = '\'
 
@@ -270,6 +274,7 @@ augroup init
   au VimEnter * set iskeyword-=-
   " au VimEnter * call vista#RunForNearestMethodOrFunction()
   " au VimEnter * Vista!!
+  au VimEnter * if exists('g:daymode') && g:daymode | call daymode#switch(0) | endif
 
   " vim was opened as diff tool, load the 'diff' ftplugin conf
   au VimEnter * if &diff | runtime after/ftplugin/diff.vim | endif

@@ -236,6 +236,15 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 " let g:UltiSnipsListSnippets = "<c-tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+
+let g:vimwiki_main = {}
+let g:vimwiki_main.path = '~/wiki/'
+let g:vimwiki_main.syntax = 'markdown'
+let g:vimwiki_main.ext = '.md'
+let g:vimwiki_main.name = 'wiki'
+let g:vimwiki_main.index = '_index'
+let g:vimwiki_list = [vimwiki_main]
+let g:vimwiki_folding = 'list'
 " }}}1
 
 " lsp + compl {{{1
@@ -315,7 +324,8 @@ augroup SpecialBuffers
   au FileType fzf,skim tnoremap <buffer><esc> <c-c>
   au FileType gitmessengerpopup nmap <buffer><esc> <Plug>(git-messenger-close)
   au FileType vista nmap <buffer><space> :wincmd p<CR>
-  au FileType help,qf nmap <buffer>q <c-w><c-q>
+  au FileType help,qf,vista nmap <buffer>q <c-w><c-q>
+  au FileType vimwik if filereadable(expand('%')) | read !zet new | endif
 augroup END
 
 " augroup AutoSaveFolds
@@ -347,6 +357,3 @@ command! -bang DayMode call daymode#switch(<bang>0)
 command! -range Retab <line1>,<line2>call retab#do()
 command! NumberToggle call numbertoggle#switch()
 command! Alternate call alternate#alternate()
-
-command! -nargs=* Zet call zettel#edit(<f-args>)
-command! ZetDay call zettel#newday()

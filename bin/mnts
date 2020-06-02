@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+[ -n "$DEBUG" ] && set -x
+
+export MENU_PROMPT="mnts"
+
+filter='/(\/dev\/nvme0n1.*|\/dev\/mapper\/.*hibiki.*)/'
+
+{ lsblk -nrpo 'name,type,size,mountpoint' \
+	| awk "{d=\$1} d~${filter}{next} length(\$4){next} length(d)>19{d=substr(d,1,27)\"...\"} {printf \"%-30s (%6s)  %-5s\n\", d, \$3, \$4}"; \
+  mount \
+	| grep -v -E '(proc|tmpfs|devpts|sysfs|securityfs|debugfs|mqueue|configfs|fusectl|efivarfs|cgroup|binfmt_misc|nsfs|portal)' \
+	| awk "{d=\$1} d~${filter}{next} {\"df -h --output=size \"\$3\" 2>/dev/null | sed -n 2p\" | getline s} length(d)>19{d=substr(d,1,27)\"...\"} {printf \"%-30s (%6s)  %-5s\n\", d, s, \$3}"; \
+} \
+	| menu \
+	| xargs -i sh -c " \
+		mode=\$(echo '{}' |awk '{if(length(\$3)<1) print \"mount\";else print \"unmount\";}'); \
+		drv=\$(echo '{}' |cut -d' ' -f1); \
+		path=\$(echo '{}' |tr -d '[:blank:]' |cut -d\) -f2); \
+		case \$mode in \
+		mount) udisksctl \${mode} -b \${drv} ;; \
+		unmount) umount \${path} ;; \
+		esac; \
+		if [ \$? = 0 ]; then \
+		  notify-send mnts \"\${mode}ed \${drv}\"; \
+		else \
+		  notify-send mnts \"\${mode}ing \${drv} failed\\n\${err}\";  \
+		fi"

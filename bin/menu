@@ -21,8 +21,7 @@ exec "${arg0}" \
    --monitor=all \
    --ignorecase \
    --list=10 \
-   --index \
-   --prompt "${prompt}" \
+   --prompt="${prompt}" \
    --fn 'Iosevka Sparkle 11' \
    --nb '#221E1D' --nf '#fffefe' \
    --tb "$main_color" --tf '#fffefe' \

@@ -25,8 +25,7 @@ let g:lightline.active = {
 \   ],
 \   'right': [
 \       ['filetype', 'fileencoding', 'fileformat'],
-\       ['lineinfo', 'percent'],
-\       ['tabstatus'],
+\       ['indent', 'bufnum', 'lineinfo', 'percent'],
 \   ],
 \ }
 
@@ -57,12 +56,14 @@ let g:lightline.component = {
 
 let g:lightline.component_function = {
 \   'filename': 'LightLineFilename',
+\   'bufnum': 'LightLineBufnum',
 \   'fileformat': 'LightLineFileformat',
 \   'fileencoding': 'LightLineFileencoding',
 \   'mode': 'LightLineMode',
 \   'vista': 'LightLineVista',
 \   'o': 'LightLineO',
 \   'porcelain': 'LightLinePorcelain',
+\   'indent': 'LightLineIndent',
 \ }
 
 " \ 'separator': { 'left': "\ue0b8", 'right': "\ue0be" },
@@ -91,11 +92,18 @@ endfunction
 " Filename {{{
 function! LightLineFilename()
   return ('' !=? LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ (&filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-        \  &filetype ==# 'unite' ? unite#get_status_string() :
-        \  &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-        \ '' !=? expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' !=? LightLineModified() ? ' ' . LightLineModified() : '')
+       \ (&filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+       \  &filetype ==# 'unite' ? unite#get_status_string() :
+       \  &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+       \ '' !=? expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' !=? LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+" }}}
+
+" Bufnum {{{
+function! LightLineBufnum()
+  let l:nbufs = len(getbufinfo({'buflisted':1}))
+  return '% '. bufnr('%') . '('.l:nbufs.')' . (tabpagenr() != 1 ? ':'. tabpagenr() : '')
 endfunction
 " }}}
 
@@ -129,13 +137,13 @@ function! LightLineMode()
 endfunction
 " }}}
 
-" Tabchar {{{
-function! LightLineTabchar()
-  return '[' 
-    \   . &tabstop
-    \   . (&expandtab == 1 ? '->' : '<>')
-    \   . &shiftwidth
-    \ . ']'
+" Indent {{{
+function! LightLineIndent()
+  return '' .
+       \ (&expandtab == 1 ? '␣' : '→') . ' ' .
+       \ 'ts=' . &tabstop .
+       \ ' ' .
+       \ 'sw=' . &shiftwidth
 endfunction
 " }}}
 

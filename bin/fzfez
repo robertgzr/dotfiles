@@ -24,36 +24,37 @@ case "$1" in
 	git-branches)
 		git rev-parse HEAD > /dev/null 2>&1 || exit 1
 		git branch -a --sort=refname --format='%(refname)' \
-			| $0 \
-				--border --ansi --no-sort --reverse --tac \
-				--header 'Press ctrl-s to toggle sort' \
-				--bind 'ctrl-s:toggle-sort' \
-				--preview 'git log --oneline --graph --date=short --color=always {} | head -${LINES}' \
-				--preview-window right:70% \
 			| cut -d' ' -f1 \
 			| sed 's#^refs/##' \
 			| sed 's#^remotes/##' \
-			| sed 's#^heads/##'
+			| sed 's#^heads/##' \
+			| $0 \
+				--ansi --no-sort --reverse --tac \
+				--header 'Press ctrl-s to toggle sort' \
+				--bind 'ctrl-s:toggle-sort' \
+				--preview 'git log --color=always --oneline --graph --date=short {} | head -${LINES}' \
+				--preview-window right:70% \
+				--bind "ctrl-o:execute(git checkout {})"
 		;;
 
 	git-tags)
 		git rev-parse HEAD > /dev/null 2>&1 || exit 1
 		  git tag --sort -version:refname \
-			| $0 \
-				--border --no-sort \
-				--preview 'git show --color=always {} | head -${LINES}' \
-				--preview-window right:70% \
 			| cut -d' ' -f1 \
 			| sed 's#^refs/##' \
 			| sed 's#^remotes/##' \
-			| sed 's#^heads/##'
+			| sed 's#^heads/##' \
+			| $0 \
+				--ansi --no-sort --reverse \
+				--preview 'git show --color=always {} | head -${LINES}' \
+				--preview-window right:70%
 		;;
 
 	git-log)
 		git log --color=always --oneline \
 			| $0 \
-				--border --no-sort --ansi \
-				--preview 'echo {} | cut -d\  -f1 | xargs -I% sh -c "git log --color=always -1 --pretty=full %; echo; git diff --color=always %^..%;"' \
+				--ansi --no-sort --reverse \
+				--preview 'echo {} | cut -d\  -f1 | xargs git show --color=always --pretty=full --stat --patch' \
 				--preview-window right:50% \
 			| cut -d' ' -f1 \
 			| xargs -i git log -1 --pretty=%H {}
@@ -63,7 +64,6 @@ case "$1" in
 		shift
 		rg $@ --files-with-matches \
 			| $0 \
-				--border \
 				--header 'Press ctrl-s to toggle sort' \
 				--bind 'ctrl-s:toggle-sort' \
 				--preview "rg $* --color=always --no-filename --glob='{}' --context=5 --line-number"

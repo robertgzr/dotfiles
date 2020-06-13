@@ -1,0 +1,2 @@
+#!/bin/sh
+GIT_DIR=$HOME/.dotfiles.git git $@

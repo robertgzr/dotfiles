@@ -12,10 +12,6 @@ let g:neomake_error_sign = {'text': '✘', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '‼', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign = {'text': 'i', 'texthl': 'NeomakeInfoSign'}
-" let g:neomake_error_sign = {'text': '✘', 'texthl': 'ALEErrorSign'}
-" let g:neomake_warning_sign = {'text': '‼', 'texthl': 'ALEWarningSign'}
-" let g:neomake_message_sign = {'text': '☛', 'texthl': 'ALEInfoSign'}
-" let g:neomake_info_sign = {'text': 'i', 'texthl': 'ALEInfoSign'}
 " let g:neomake_serialize = 1
 
 let g:neomake_highlight_columns = 1
@@ -58,3 +54,18 @@ function! LightLineNeomake()
   \ })
   return l:msg ? 'nm:'.l:msg : ''
 endfunction
+
+" hightlights {{{
+hi SpellBad ctermfg=red guifg=red
+hi SpellCap ctermfg=yellow guifg=yellow
+
+hi link NeomakeErrorSign NeomakeError
+hi link NeomakeWarningSign NeomakeWarning
+hi link NeomakeMessageSign NeomakeMessage
+hi link NeomakeInfoSign NeomakeInfo
+
+hi link NeomakeVirtualtextError NeomakeError
+hi link NeomakeVirtualtextWarning NeomakeWarning
+hi link NeomakeVirtualtextMessage NeomakeMessage
+hi link NeomakeVirtualtextInfo NeomakeInfo
+" }}}

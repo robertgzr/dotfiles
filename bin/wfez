@@ -1,0 +1,64 @@
+#!/bin/sh
+set -e
+[ -n "$DEBUG" ] && set -x
+
+if [ "$1" = "-h" ]; then
+	printf "usage: %s [FILE]\n" "$(basename "$0")"
+	printf "\n"
+	printf "Launches wf-recorder(1) with optimized settings.\n"
+	printf "If FILE is omitted, \$HOME/Videos/rec_TIMESTAMP.mkv is used.\n"
+	printf "Optionally environment vars can be used to tune things:\n"
+	printf "  WF_AOUT - defaults to default pulseaudio sink\n"
+	printf "  WF_AIN - defaults to default pulseaudio source\n"
+	printf "  WF_AMUX - override creation of an pulseaudio sink for muxing\n"
+	printf "  WF_VOUT - limit to output, defaults to focused output (swq current output)\n"
+	printf "  WF_KEYS - launches wshowkeys(1)\n"
+	exit 2
+fi
+
+output_file=${1:-"${HOME}/Videos/rec_$(now).mkv"}
+audio_output=${WF_AOUT}
+audio_input=${WF_AIN}
+video_output=${WF_VOUT}
+showkeys=${WF_KEYS}
+mux_sink=${WF_AMUX}
+
+[ -z "${audio_output}" ] && audio_output=$(pacmd dump | grep "set-default-sink" | cut -d' ' -f2)
+[ -z "${audio_input}" ] && audio_input=$(pacmd dump | grep "set-default-source" | cut -d' ' -f2)
+[ -z "${video_output}" ] && video_output=$(swq current output)
+
+if [ "${WF_AIN}" = "none" ] && [ -z "${WF_AMUX}" ]; then
+	echo "mux: ${audio_output}"
+	mux_sink="${audio_output}"
+fi
+
+if [ -z "${mux_sink}" ]; then
+	mux_sink=wf-mux
+	mux_sink_id=
+	output_loopback_id=
+	input_loopback_id=
+	prepare_mux_sink() {
+		mux_sink_id=$(pactl load-module module-null-sink sink_name="${mux_sink}" channels=2)
+		output_loopback_id=$(pactl load-module module-loopback sink="${mux_sink}" source="${audio_output}.monitor" remix=true)
+		input_loopback_id=$(pactl load-module module-loopback sink="${mux_sink}" source="${audio_input}" remix=true)
+	}
+	teardown_mux_sink() {
+		pactl unload-module "${mux_sink_id}"
+		pactl unload-module "${output_loopback_id}"
+		pactl unload-module "${input_loopback_id}"
+	}
+	trap '{ teardown_mux_sink >/dev/null; }' EXIT
+	prepare_mux_sink >/dev/null
+	echo "mux: ${mux_sink}"
+fi
+
+if [ -n "${showkeys}" ]; then
+	echo "Starting wshowkeys on ${video_output}"
+	echo "WARNING: currently the -o flag to force display to a specific output is not implemented" >&2
+	#  -o ${video_output}
+	sway exec "wshowkeys -a bottom -a left -F 'Iosevka Sparkle 25' -t 1" >/dev/null
+	trap '{ pkill wshowkeys; }' EXIT
+fi
+
+set -x
+wf-recorder -c h264_vaapi -d /dev/dri/renderD128 -o "${video_output}" -a "${mux_sink}.monitor" -f "${output_file}"

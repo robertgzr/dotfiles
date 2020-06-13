@@ -11,10 +11,10 @@ fi
 
 trap '{ pkill wshowkeys; pkill wayvnc; pkill remmina; }' EXIT
 
-echo "=> starting wshowkeys"
-swaymsg exec "wshowkeys -a bottom -a left -F 'Iosevka Sparkle 25' -t 1" >/dev/null
+# echo "=> starting wshowkeys"
+# swaymsg exec "wshowkeys -a bottom -a left -F 'Iosevka Sparkle 25' -t 1" >/dev/null
 echo "=> starting wayvnc"
-swaymsg exec "wayvnc 0.0.0.0 5500" >/dev/null
+swaymsg exec "wayvnc -c dmabuf 0.0.0.0 5500" >/dev/null
 echo "=> starting remmina"
 swx -g "1820,50 720x450" -b none -s -I "org.remmina.Remmina" remmina -c "$HOME"/.local/share/remmina/group_vnc_wayvnc_localhost-5500.remmina
 

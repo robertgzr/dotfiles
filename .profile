@@ -49,7 +49,9 @@ export RSYNC_RSH='ssh -T -x -o Compression=no'
 
 # Alias shell commands
 # alias logout='dbus-send --session --type=method_call --print-reply --dest='
+alias rm='rm -I'
 alias vim=nvim
+alias v=nvim
 alias l='exa --long --classify --group --header --group-directories-first'
 alias ..='cd ..'
 alias ssh='TERM=xterm-256color ssh'

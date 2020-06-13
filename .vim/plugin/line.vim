@@ -1,7 +1,7 @@
 let g:lightline = {}
 let g:lightline.colorscheme = 'papercolor_dim'
 
-let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
+let g:lightline.enable = { 'statusline': 1, 'tabline': 0 }
 
 let g:lightline.mode_map = {
 \   'n' : 'N',
@@ -30,14 +30,20 @@ let g:lightline.active = {
 \   ],
 \ }
 
-set showtabline=2
+set showtabline=0
+let g:bufferline_echo = 0
+let g:bufferline_show_bufnr = 0
+" let g:bufferline_separator = ' '
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
+" let g:bufferline_unamed_buffer = '[no name]'
+let g:bufferline_fname_mod = ':t:s?^$?[no name]?'
 let g:lightline.tabline = {
 \   'right': [
 \       ['tabs'],
 \       ['porcelain'],
 \   ],
 \ }
-
 let g:lightline.tab = {
 \   'active': ['tabnum'],
 \   'inactive': ['tabnum'],

@@ -192,19 +192,8 @@ let g:vista#renderer#icons = {
 \ }
 " }}}2
 
-" bufferline {{{2
-let g:bufferline_echo = 0
-let g:bufferline_show_bufnr = 0
-" let g:bufferline_separator = ' '
-let g:bufferline_active_buffer_left = ''
-let g:bufferline_active_buffer_right = ''
-" let g:bufferline_unamed_buffer = '[no name]'
-let g:bufferline_fname_mod = ':t:s?^$?[no name]?'
-" }}}2
-
 " Enable color highlighting for all filetypes
 let g:Hexokinase_ftAutoload = ['*']
-let $SKIM_DEFAULT_COMMAND = ''
 
 " vim-markdown {{{2
 let g:vim_markdown_folding_disabled = 1

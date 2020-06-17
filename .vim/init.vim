@@ -92,6 +92,8 @@ vmap rt :call retab#do()<CR>
 " neomake          -> after/plugin/neomake.vim
 " lightline        -> plugin/line.vim
 
+let g:netrw_browsex_viewer = 'url-launcher'
+
 " plugin config {{{
 "
 let g:easy_align_ignore_groups = []

@@ -1,47 +1,45 @@
 #!/bin/sh
+set -e
 
-set -ex
+SWAY_BIN=${SWAY_BIN:-/usr/bin/sway}
+SWAY_ARGS=${SWAY_ARGS:-}
+SWAY_USER=${SWAY_USER:-robert}
+sway_user_id=$(id -u "${SWAY_USER}")
+SWAY_TTY=${SWAY_TTY:-7}
+MANUAL=
 
-if [ "$XDG_RUNTIME_DIR" == "" ]; then
-    export XDG_RUNTIME_DIR=/tmp
-fi
+export XDG_RUNTIME_DIR=/run/user/"${sway_user_id}"
+source /home/"${SWAY_USER}"/.config/sway/env
 
-LOCKED=0
-SWAY_BIN=/usr/bin/sway
-SWAY_ARGS=
-
-while getopts ":dcDL" o; do
+while getopts ":dcDmh" o; do
     case $o in
         d) SWAY_ARGS="$SWAY_ARGS --debug" ;;
         D)
             export XDG_RUNTIME_DIR=/tmp/sway-run-debug
-            [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -p "$XDG_RUNTIME_DIR"
+            [ ! -d "${XDG_RUNTIME_DIR}" ] && mkdir "${XDG_RUNTIME_DIR}" && chmod 700 "${XDG_RUNTIME_DIR}"
             ;;
-        c) SWAY_ARGS="$SWAY_ARGS --config $XDG_CONFIG_HOME/sway/simple.conf" ;;
-        L) LOCKED=1 ;;
+        c) SWAY_ARGS="${SWAY_ARGS} --config /home/${SWAY_USER}/.config/sway/simple.conf --debug" ;;
+        m) MANUAL=1 ;;
+        h) echo "usage: $0 [-dcDLh]"; exit 0 ;;
         *) echo "unknown flag: $o" 1>&2
     esac
 done
 shift $((OPTIND-1))
 
-if [ $LOCKED -eq 1 ]; then
-    sh -c 'sleep 1; $HOME/.dotfiles/bin/lock' & disown
-    exec "$0" $@
+ts="$(date -u --rfc-3339=seconds | tr ' ' 'T')"
+log=/var/log/sway/${ts}.log
+
+if [ -n "${MANUAL}" ]; then
+    cat <<EOF | doas sh -s
+# prepare tty
+chown "$SWAY_USER" "/dev/tty${SWAY_TTY}"
+chmod 600 "/dev/tty${SWAY_TTY}"
+# launch sway on new tty
+su --preserve-environment --login --command \
+    "openvt --switch --console ${SWAY_TTY} -- dbus-run-session ${SWAY_BIN} -Ddamage=rerender ${SWAY_ARGS} 1>&2 2>${log}" \
+    "${SWAY_USER}"
+EOF
+else
+    exec dbus-run-session "${SWAY_BIN}" -Ddamage=rerender ${SWAY_ARGS} $@ 1>&2 2>"${log}"
+    # exec "${SWAY_BIN}" -Ddamage=rerender ${SWAY_ARGS} $@ 1>&2 2>"${log}"
 fi
-
-case $1 in
-    locked)     shift; exec $0 -L ;;
-    git)        shift; 
-        SWAY_SRC="$HOME/devel/upstream/github.com/swaywm/sway"
-        SWAY_BIN="$SWAY_SRC/build/sway/sway";
-        export PATH="$SWAY_SRC/build/sway:$PATH"
-        export LD_LIBRARY_PATH="$SWAY_SRC/build/subprojects/wlroots:$LD_LIBRARY_PATH"
-        ;;
-    system)     shift; exec $0 ;;
-    clean)      shift; exec $0 -c ;;
-esac
-
-TS="$(date -u --rfc-3339=seconds | tr ' ' 'T')"
-LOG=/var/log/sway/"$TS".log
-
-exec $SWAY_BIN -Ddamage=rerender $SWAY_ARGS $@ 1>&2 2>"$LOG"

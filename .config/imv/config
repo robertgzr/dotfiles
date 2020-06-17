@@ -1,5 +1,5 @@
 [options]
-overlay = true
+overlay = false
 overlay_font = Iosevka Sparkle:16
 
 [binds]

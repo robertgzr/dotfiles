@@ -157,10 +157,12 @@ let g:sneak#label = 1
 " vista {{{2
 let g:vista_icon_indent = ['> ', '* ']
 let g:vista_default_executive = 'ctags'
-" let g:vista_executive_for = {
-" \ 'javascript': 'coc',
-" \ 'python': 'coc',
-" \ }
+let g:vista_go_executive = 'nvim_lsp'
+let g:vista_rust_executive = 'nvim_lsp'
+let g:vista_ctags_cmd = {
+\ 'vimwiki': $HOME . '/.vim/vwtags.py markdown',
+\ }
+
 let g:vista#renderer#enable_icon = 0
 let g:vista#renderer#icons = {
 \    'func': "f",
@@ -272,12 +274,15 @@ lsp.rust_analyzer.setup{
 EOF
   " autocmd Filetype bash,shell,css,go,python,rust,tex,latex setl omnifunc=lsp#omnifunc
   " au Filetype lua setl omnifunc=v:lua.vim.lsp.omnifunc
-  nnoremap <silent> gd  :call lsp#text_document_definition()<CR>
-  nnoremap <silent> gdc :call lsp#text_document_declaration()<CR>
-  nnoremap <silent> gt  :call lsp#text_document_type_definition()<CR>
-  nnoremap <silent> gi  :call lsp#text_document_implementation()<CR>
-  nnoremap <silent> ;h  :call lsp#text_document_hover()<CR>
-  nnoremap <silent> ;s  :call lsp#text_document_signature_help()<CR>
+  nnoremap <silent> gd <cmd> lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> gD <cmd> lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gT <cmd> lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> gI <cmd> lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> gr <cmd> lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> g0 <cmd> lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW <cmd> lua vim.lsp.buf.workspace_symbol()<CR>
+  nnoremap <silent> ;h <cmd> lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> ;s <cmd> lua vim.lsp.buf.signature_help()<CR>
 else
   echoerr 'nvim_lsp only works with neovim>=0.5.0'
 endif

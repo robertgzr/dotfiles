@@ -43,7 +43,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-sleuth'                " auto-set shiftwidth and expandtab options
   Plug 'nathanaelkane/vim-indent-guides' " show indentation levels
   Plug 'tpope/vim-repeat'                " extend '.' to plugins
-  Plug 'liuchengxu/vista.vim'            " sidebar populated by coc, ctags, etc.
+  Plug 'liuchengxu/vista.vim'            " sidebar populated by lsp, ctags, etc.
   Plug 'sgur/vim-editorconfig'           " implements editorconfig in vimscript
   Plug 'rhysd/conflict-marker.vim'
   Plug 'michaeljsmith/vim-indent-object' " adds indentation text-objects

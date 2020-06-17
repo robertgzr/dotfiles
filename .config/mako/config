@@ -18,6 +18,9 @@ progress-color=source #0B346Edd
 group-by=app-name
 default-timeout=3000
 
+history=1
+max-history=20
+
 [urgency=high]
 border-color=#db4d6ddd
 

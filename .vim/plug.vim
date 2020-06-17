@@ -35,7 +35,7 @@ call plug#begin('~/.vim/plugged')
   " Plug 'lotabout/skim',
   "   \ { 'on': 'SK', 'dir': '~/.skim', 'do': './install'}
 
-  Plug 'liuchengxu/vim-clap' " interactive finder / dispatcher
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } " interactive finder / dispatcher
 
 " Misc
   Plug 'junegunn/vim-easy-align',
@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
 
 " Colorschemes
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'cideM/yui'
 
 " Local
   " Plug '~/devel/projects/nihon-theme/vim'

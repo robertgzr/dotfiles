@@ -1,5 +1,4 @@
 let g:lightline = {}
-let g:lightline.colorscheme = 'papercolor_dim'
 
 let g:lightline.enable = { 'statusline': 1, 'tabline': 0 }
 

@@ -11,21 +11,15 @@ function! s:lightline_update(colors)
     endtry
 endfunction
 
-let s:day_mode_previous_colorscheme = ''
-let s:day_mode_previous_lightline_colorscheme = ''
-
 function! daymode#switch(bang)
     if a:bang
         set background=dark
-        execute 'colorscheme' s:day_mode_previous_colorscheme
-        call s:lightline_update(s:day_mode_previous_lightline_colorscheme)
+        execute 'colorscheme' get(g:, 'daymode_colorscheme_night', 'default')
+        call s:lightline_update(get(g:, 'daymode_lightline_colorscheme_night', 'PaperColor'))
     else
-        let s:day_mode_previous_colorscheme = g:colors_name
-        let s:day_mode_previous_lightline_colorscheme = g:lightline.colorscheme
-
         set background=light
-        execute 'colorscheme' get(g:, 'day_mode_colorscheme', 'morning')
-        call s:lightline_update(get(g:, 'day_mode_lightline_colorscheme', 'PaperColor_light'))
+        execute 'colorscheme' get(g:, 'daymode_colorscheme_day', 'default')
+        call s:lightline_update(get(g:, 'daymode_lightline_colorscheme_day', 'PaperColor'))
     endif
 
     if exists("syntax_on")

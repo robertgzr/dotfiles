@@ -1,7 +1,5 @@
 " vim: ts=2:sw=2:et:tw=99
 
-" let g:daymode = 1
-
 let g:mapleader = ' ' " <leader> key to <space>
 let g:maplocalleader = '\'
 
@@ -14,18 +12,27 @@ runtime plug.vim
 " nnoremap <Leader>cc :set cursorcolumn!<CR>
 
 " looks {{{
-set background=dark
+let g:daymode = 1
+let g:daymode_colorscheme_day = 'yui'
+let g:daymode_colorscheme_night = 'PaperColor'
+let g:daymode_lightline_colorscheme_day = 'ayu_light'
+let g:daymode_lightline_colorscheme_night = 'papercolor_dim'
+
 let g:PaperColor_Theme_Options = {
 \   'theme': {
 \     'default.dark': {
 \       'allow_bold': 1,
 \       'allow_italic': 1,
-\       'transparent_background': 1,
+\       'transparent_background': 0,
 \     }
 \   }
 \ }
-colorscheme PaperColor
-let g:day_mode_colorscheme = 'PaperColor'
+
+au VimEnter * if exists('g:daymode') && g:daymode
+  \ | call daymode#switch(0)
+  \ | else
+  \ | call daymode#switch(1)
+  \ | endif
 
 " Make comments italic, no matter what the colorscheme does
 hi Comment gui=italic
@@ -44,14 +51,17 @@ cnoreabbrev Q q
 " Buffer commands
 nmap <silent> gb :bnext<CR>
 nmap <silent> gB :bprevious<CR>
+nmap <silent> <leader>cb :Clap buffers<CR>
+nmap <silent> <leader>cg :Clap grep2<CR>
+nmap <silent> <leader>cl :Clap blines<CR>
 " quickfix jumping
-nnoremap <leader>cn :cnext<CR>
-nnoremap <leader>cp :cprevious<CR>
-nnoremap <leader>cl :clist<CR>
+" nnoremap <leader>cn :cnext<CR>
+" nnoremap <leader>cp :cprevious<CR>
+nnoremap <leader>cl :Clap quickfix<CR>
 " loclist jumping
-nnoremap <leader>ln :lnext<CR>
-nnoremap <leader>lp :lprevious<CR>
-nnoremap <leader>ll :llist<CR>
+" nnoremap <leader>ln :lnext<CR>
+" nnoremap <leader>lp :lprevious<CR>
+nnoremap <leader>ll :Clap loclist<CR>
 " escape terminal mode with <esc>
 tnoremap <esc> <C-\><C-n>
 tnoremap <leader>qq <C-\><C-n>:bdelete!<CR>
@@ -218,6 +228,15 @@ let g:neoformat_basic_format_trim = 0
 let g:neoformat_only_msg_on_error = 1
 " }}}2
 
+" let g:clap_insert_mode_only = v:true
+let g:clap_popup_border = 'sharp'
+let g:clap_layout = {
+\ 'relative': 'editor',
+\ 'row': '2%', 'col': '0%',
+\ 'width': '100%', 'height': '10%',
+\ }
+let g:clap_multi_selection_warning_silent = 1
+
 let g:neoterm_size = 20
 let g:neoterm_autoinsert = 1
 
@@ -328,7 +347,6 @@ augroup Init
   au VimEnter * set iskeyword-=-
   " au VimEnter * call vista#RunForNearestMethodOrFunction()
   " au VimEnter * Vista!!
-  au VimEnter * if exists('g:daymode') && g:daymode | call daymode#switch(0) | endif
 
   " vim was opened as diff tool, load the 'diff' ftplugin conf
   au VimEnter * if &diff | runtime after/ftplugin/diff.vim | endif

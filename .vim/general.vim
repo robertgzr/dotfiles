@@ -8,9 +8,9 @@ set inccommand=split
 set noshowcmd
 " set autochdir " automatically sets cwd to the dir containing the file in the current buffer
 set hidden
-set nolist
-" set lcs+=space:•
-" set lcs+=trail:∙
+set nolist listchars+=space:•,trail:¬
+set iskeyword-=-
+
 set encoding=utf-8 nobomb
 " set nocompatible
 set number
@@ -36,7 +36,7 @@ set updatetime=300
 " For conceal markers.
 if has('conceal')
     " set conceallevel=2 concealcursor=nv
-    set conceallevel=2 concealcursor=
+    set conceallevel=1 concealcursor=
 endif
 
 " centralize vimfiles
@@ -61,6 +61,7 @@ endif
 
 " some defaults
 " set ts=8 sts=0 et sw=4 sta
+set shiftround
 
 set diffopt+=algorithm:patience
 set path+=expand('%:h:p')

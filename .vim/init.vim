@@ -344,7 +344,6 @@ augroup END
 
 augroup Init
   au!
-  au VimEnter * set iskeyword-=-
   " au VimEnter * call vista#RunForNearestMethodOrFunction()
   " au VimEnter * Vista!!
 

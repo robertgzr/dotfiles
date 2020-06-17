@@ -337,8 +337,13 @@ augroup SpecialBuffers
   au FileType fzf,skim tnoremap <buffer><esc> <c-c>
   au FileType gitmessengerpopup nmap <buffer><esc> <Plug>(git-messenger-close)
   au FileType vista nmap <buffer><space> :wincmd p<CR>
-  au FileType help,qf,vista nmap <buffer>q <c-w><c-q>
-  au FileType vimwik if filereadable(expand('%')) | read !zet new | endif
+  au FileType help,qf,vista nmap <silent><buffer>q <c-w><c-q>
+
+  au FileType vimwiki
+        \ if filereadable(expand('%')) && line('$') == 1 && getline(1) == ''
+	\ | read !zet new
+	\ | endif
+  au FileType vimwiki Vista!!
 augroup END
 
 " augroup AutoSaveFolds

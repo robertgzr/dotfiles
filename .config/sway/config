@@ -1,5 +1,31 @@
 # vim: ft=i3 fdm=marker
 
+output * scale 1
+exec doas /etc/init.d/kanshi restart
+
+# output * max_render_time 1
+# output * adaptive_sync on
+
+exec oguri
+exec_always ogurictl output --image output $HOME/.background *
+
+exec redshift
+exec mako
+exec mpd-mpris -no-instance
+exec swayidle -w \
+	timeout 540 'lock' \
+	timeout 600 'swaymsg "output * dpms off"' \
+	     resume 'swaymsg "output * dpms on"' \
+	before-sleep 'lock' \
+	lock lock
+
+# for_window [app_id=Alacritty] max_render_time 2
+# for_window [app_id=firefox] max_render_time 3
+# seat * hide_cursor 2000
+
+set $laptop eDP-1
+set $desk "Dell Inc. DELL U2518D 3C4YP87AAK3L"
+
 set $mod Mod4
 set $alt Mod1
 
@@ -41,6 +67,8 @@ include binds.conf
 include auto.conf
 
 # style {{{
+font pango:Iosevka Sparkle 12
+
 set $text #FCFAF2
 set $text2 #BDC0BA
 set $bg #1C1C1C
@@ -62,3 +90,6 @@ client.urgent $urgent2 $urgent $text $indicator $urgent
 
 # include config.d/*
 include "`uname -n`"
+
+exec_always kanshictl reload
+exec_always doas /etc/init.d/waybar restart

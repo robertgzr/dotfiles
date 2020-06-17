@@ -3,16 +3,21 @@
     email = r@gnzler.io
 
 [sendemail]
-    smtpserver = mail.gandi.net
-    smtpuser = robert@gnzler.io
-    smtpencryption = tls
-    smtppass = !pass email/gnzler.io
-    ; smtpserver = /usr/bin/msmtp
-    ; smtpserveroption=-a
-    ; smtpserveroption=gnzler
+    from = Robert Günzler <r@gnzler.io>
+    smtpServer = mail.gandi.net
+    smtpServerPort = 465
+    smtpEncryption = ssl
+    smtpUser = robert@gnzler.io
+    ; smtpServer = /usr/bin/msmtp
+    ; smtpServerOption=-a
+    ; smtpServerOption=gnzler
     annotate = true
     multiEdit = true
     confirm = always
+
+[credential "smtp://mail.gandi.net:465"]
+    username = robert@gnzler.io
+    helper = !sh -c 'pass email/gnzler.io | xargs printf "password=%s\n"'
 
 [core]
     excludesfile = ~/.git/ignore

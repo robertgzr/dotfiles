@@ -1,5 +1,7 @@
 #!/bin/sh
-set -e
-desktop=${1:-$(echo "$0" | sed 's#/bin#/share/applications#')}
+set -ex
+basepath=$(dirname "$0" | sed 's#/bin#/share/applications#')
+basename=$(basename "$0" | sed -e 's/^_//' -e 's/.desktop$//')
+desktop=${basepath}/${basename}.desktop
 bin=$(awk '/TryExec=/{split($0,l,"="); if (not system("command -v l[2]")){exit 1}} /Exec=/{print substr($0, index($0,"=")+1)}' "$desktop" | tr -d '\n' | sed "s/%.$//")
 exec $bin

@@ -1,0 +1,34 @@
+window:
+  decorations: none
+
+font:
+  size: 13.0
+  normal:
+    family: Iosevka SS05
+    # family: Cozette Vector
+    style: Slim
+
+  bold:
+    style: Bold
+  italic:
+    style: Italic
+  bold_italic:
+    style: Bold Italic
+
+visual_bell:
+  duration: 0
+  color: '#af005f'
+
+background_opacity: 0.99
+
+mouse:
+  url:
+    launcher:
+      program: url-launcher
+    modifiers: Control
+
+
+key_bindings:
+  - { key: 'N',        mods: 'Super|Shift',   action: 'SpawnNewInstance' }
+  - { key: 'PageUp',   mods: 'Alt',           action: 'ScrollPageUp'     }
+  - { key: 'PageDown', mods: 'Alt',           action: 'ScrollPageDown'   }

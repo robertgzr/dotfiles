@@ -80,6 +80,7 @@ window#waybar.hidden {
 #pulseaudio,
 #custom-media,
 #custom-toggl,
+#mpd,
 #tray,
 #mode,
 #window,
@@ -189,10 +190,17 @@ label:focus {
 }
 
 #mpd {
+  color: @foreground;
+  border-top: 2px solid #d75f00;
 }
 #mpd.disconnected {
+  margin: 0;
+  padding: 0;
 }
 #mpd.stopped {
+  margin: 0;
+  padding: 0;
 }
 #mpd.paused {
+  border-top: 2px solid #8b3d00;
 }

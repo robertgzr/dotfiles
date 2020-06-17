@@ -74,29 +74,27 @@ nmap <silent> riw :%s/\<<C-r><C-w>\>/
 
 nmap <silent> ga <Plug>(EasyAlign)
 vmap <silent> <Enter> <Plug>(EasyAlign)
-nmap <silent> gl <Plug>(OrgHyperlinkFollow)
 nmap <leader>gm <Plug>(git-messenger)
-nmap <leader>v :Vista!!<CR>
-nmap <leader>nt :call numbertoggle#switch()<CR>
-nmap <leader>tn :rightbelow Tnew<CR>
+nmap <silent> <leader>v :Vista!!<CR>
+nmap <silent> <leader>nt :call numbertoggle#switch()<CR>
+nmap <silent> <leader>tn :rightbelow Tnew<CR>
 vmap rt :call retab#do()<CR>
 " }}}
 
-" alternate -> plugin/alternate.vim
-" daymode -> plugin/daymode.vim
-" fasd -> plugin/fasd.vim
-" fuzzy -> plugin/fuzz.vim
-" hardmode -> plugin/hard.vim
-" numbertoggle -> plugin/numbertoggle.vim
-" writing -> after/plugin/tagbar.vim
+" alternate        -> plugin/alternate.vim
+" daymode          -> plugin/daymode.vim
+" fasd             -> plugin/fasd.vim
+" fuzzy            -> plugin/fuzz.vim
+" hardmode         -> plugin/hard.vim
+" numbertoggle     -> plugin/numbertoggle.vim
+" writing          -> after/plugin/writing.vim
 " filetype configs -> after/ftplugin
-" coc -> after/plugin/coc.vim
-" neomake -> after/plugin/neomake.vim
-" tagbar -> after/plugin/tagbar.vim
-" lightline -> plugin/line.vim
+" neomake          -> after/plugin/neomake.vim
+" lightline        -> plugin/line.vim
 
 " plugin config {{{
 "
+let g:easy_align_ignore_groups = []
 " obsession {{{2
 let g:session_extension = ".vim-session"
 let g:session_autosave = "no"

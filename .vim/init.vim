@@ -362,6 +362,12 @@ augroup Init
 	\ |   exe "normal! g`\""
 	\ | endif
 augroup END
+
+augroup ClapFix
+  au!
+  " see https://github.com/liuchengxu/vim-clap/issues/374#issuecomment-608272245
+  au User ClapOnExit call lightline#update()
+augroup END
 " }}}
 
 command! -bang DayMode call daymode#switch(<bang>0)

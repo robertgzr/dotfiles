@@ -6,7 +6,7 @@
 
     "modules-left": ["sway/mode", "sway/workspaces", "sway/window", "custom/media", "custom/toggl"],
     "modules-center": ["clock#local", "clock#utc"],
-    "modules-right": ["cpu", "memory", "disk#root", "disk#home", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery", "tray"],
+    "modules-right": ["tray", "cpu", "memory", "disk#root", "disk#home", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,

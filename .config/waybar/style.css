@@ -153,6 +153,22 @@ label:focus {
   color: @dimmed;
 }
 
+#temperature {
+}
+#temperature.critical {
+  background-color: #eb4d4b;
+}
+
+#tray {
+}
+
+#idle_inhibitor {
+  color: @dimmed;
+}
+#idle_inhibitor.activated {
+  color: unset;
+}
+
 #custom-media {
   min-width: 100px;
   color: @foreground;
@@ -170,23 +186,6 @@ label:focus {
   color: @foreground;
   /* background-color: #DB4D6D; */
   border-top: 2px solid #DB4D60;
-}
-
-#temperature {
-}
-
-#temperature.critical {
-  background-color: #eb4d4b;
-}
-
-#tray {
-}
-
-#idle_inhibitor {
-  color: @dimmed;
-}
-#idle_inhibitor.activated {
-  color: unset;
 }
 
 #mpd {

@@ -1,0 +1,20 @@
+env:
+  GUICALL: '1'
+
+window:
+  padding:
+    'x': 8
+    'y': 6
+  dynamic_padding: true
+  decorations: none
+
+font:
+  size: 13.0
+
+background_opacity: 0.95
+
+# shell:
+#   program: /usr/bin/env
+#   args:
+#     - LD_LIBRARY_PATH=/usr/local/lib64
+#     - mrsh

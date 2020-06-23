@@ -1,2 +1,5 @@
 [user]
 	signEmail = robertg@balena.io
+
+[commit]
+	template = ~/devel/balena/.gitcommit

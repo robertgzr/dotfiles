@@ -1,0 +1,45 @@
+mpd_host = /var/lib/mpd/socket
+
+#execute_on_song_change = notify-send "mpd: $(mpc --format '%title%' current)" "$(mpc --format '%artist% :: %album%' current)"
+
+# playlist
+playlist_display_mode = "columns"
+now_playing_prefix = "$b"
+now_playing_suffix = "$/b"
+# song_columns_list_format = "(25)[blue]{t} (18)[red]{a} $R (38)[magenta]{b} (15)[yellow]{g}"
+#song_list_format = "$5[$9$3%l$5]$9 $8|$9 $2%a$9 $8|$9 $5%t$9 $R $6%b$9 $8%g$9"
+# song_list_format = "$8|$9 $2%a$9 $8|$9 $5%t$9 $R $6%b$9 $8%g$9"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+
+# bars
+progressbar_look = "█|▒"
+header_visibility = "no"
+titles_visibility = "no"
+statusbar_visibility = "yes"
+user_interface = "alternative"
+alternative_header_first_line_format ="$8$9 ╱ {$5%t$9} ╲ $8$9"
+alternative_header_second_line_format ="{$2%a$9} $8::$9 {$6%b$9} {$8(%y)$9}"
+alternative_ui_separator_color ="white"
+
+incremental_seeking = "yes"
+follow_now_playing_lyrics = "yes"
+ignore_leading_the = "yes"
+display_volume_level = "no"
+
+display_bitrate = "yes"
+current_item_prefix = "$r"
+current_item_suffix = "$/r"
+song_status_format = "{$2%a$9 $1>$9} {$5%t$9} $1|$9 {$6%b$9} $1|$9 {$8%y$9} $1|$9"
+
+# colors
+colors_enabled = "yes"
+discard_colors_if_item_is_selected = "yes"
+header_window_color = "white"
+volume_color = "green"
+progressbar_color = "green"
+statusbar_color = "green"
+main_window_color = "cyan"
+color1 = "green"
+color2 = "white"
+empty_tag_color = "white"

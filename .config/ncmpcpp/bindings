@@ -1,0 +1,53 @@
+# vim: ft=conf
+
+def_key "left"
+    dummy
+def_key "right"
+    dummy
+def_key "up"
+    dummy
+def_key "down"
+    dummy
+def_key "delete"
+    require_screen "browser"
+    dummy
+
+def_key "j"
+    scroll_down   
+def_key "k"
+    scroll_up
+
+def_key "J"
+    previous_screen
+def_key "K"
+    next_screen
+
+def_key "h"
+    require_screen "media_library"
+    previous_column
+def_key "l"
+    require_screen "media_library"
+    next_column
+
+def_key "h"
+    require_screen "browser"
+    jump_to_parent_directory
+def_key "l"
+    require_screen "browser"
+    enter_directory
+
+def_key "-"
+    require_screen "browser"
+    jump_to_parent_directory
+
+def_key "d"
+    require_screen "playlist"
+    delete_playlist_items
+
+
+def_key "N"
+    require_screen "playlist"
+    move_selected_items_down
+def_key "P"
+    require_screen "playlist"
+    move_selected_items_up

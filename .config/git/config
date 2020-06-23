@@ -236,3 +236,6 @@
     diff = g none
     diff = gg :move-first-line
     diff = G :move-last-line
+
+[includeIf "gitdir:~/devel/balena/"]
+    path = ~/devel/balena/.gitconfig

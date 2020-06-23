@@ -231,12 +231,13 @@ let g:neoformat_only_msg_on_error = 1
 " }}}2
 
 " let g:clap_insert_mode_only = v:true
-let g:clap_popup_border = 'sharp'
-let g:clap_layout = {
-\ 'relative': 'editor',
-\ 'row': '2%', 'col': '0%',
-\ 'width': '100%', 'height': '10%',
-\ }
+let g:clap_popup_border  = 'sharp'
+let g:clap_layout          = {}
+" let g:clap_layout.relative = 'editor'
+" let g:clap_layout.row      = '5%'
+" let g:clap_layout.col      = '0%'
+" let g:clap_layout.width    = '100%'
+" let g:clap_layout.height   = '33%'
 let g:clap_multi_selection_warning_silent = 1
 
 let g:neoterm_size = 20

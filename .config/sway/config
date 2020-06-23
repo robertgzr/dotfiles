@@ -6,18 +6,18 @@ exec doas /etc/init.d/kanshi restart
 # output * max_render_time 1
 # output * adaptive_sync on
 
-exec oguri
-exec_always ogurictl output --image output $HOME/.background *
+exec_always kanshictl reload
+exec_always exec sh -c 'pkill oguri && oguri'
 
 exec redshift
 exec mako
 exec mpd-mpris -no-instance
 exec swayidle -w \
 	timeout 540 'lock' \
-	timeout 600 'swaymsg "output * dpms off"' \
-	     resume 'swaymsg "output * dpms on"' \
+	timeout 800 'swaymsg output \* dpms off' \
+	     resume 'swaymsg output \* dpms on' \
 	before-sleep 'lock' \
-	lock lock
+	lock 'lock'
 
 # for_window [app_id=Alacritty] max_render_time 2
 # for_window [app_id=firefox] max_render_time 3

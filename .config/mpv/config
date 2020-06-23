@@ -82,7 +82,7 @@ osc=no
 profile=low-latency
 # video-sync=display-desync # needed or external audio will fail
 pulse-latency-hacks=yes
-demuxer-lavf-o=input_format=mjpeg,video_size=848x480
+# demuxer-lavf-o=input_format=mjpeg,video_size=848x480
 # framedrop=no
 # no-demuxer-thread
 opengl-glfinish=yes

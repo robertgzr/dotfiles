@@ -9,6 +9,7 @@ exec doas /etc/init.d/kanshi restart
 exec_always kanshictl reload
 exec_always exec sh -c 'pkill oguri && oguri'
 
+exec light -S 80
 exec redshift
 exec mako
 exec mpd-mpris -no-instance

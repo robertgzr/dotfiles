@@ -25,7 +25,7 @@ FILE=${3:-$(xdg-user-dir PICTURES)/screenshots/$(now).png}
 case "$ACTION" in
   usage|help|-h|--help)
   echo "Usage:"
-  echo "  grimshot copy|save|rec win|screen|area [FILE]"
+  echo "  grimshot copy|save|rec win|screen|area|output [FILE]"
   echo "Troubleshoot:"
   echo "  grimshot check"
   exit
@@ -93,6 +93,7 @@ if [ "$ACTION" = "check" ] ; then
   check slurp
   check wf-recorder
   check swaymsg
+  check swq
   check wl-copy
   check jq
   check notify-send
@@ -109,6 +110,10 @@ elif [ "$SUBJECT" = "win" ] ; then
 elif [ "$SUBJECT" = "screen" ] ; then
   GEOM=""
   WHAT="Screen"
+elif [ "$SUBJECT" = "output" ] ; then
+  GEOM=""
+  OUTPUT="$(swq current output)"
+  WHAT="$OUTPUT output"
 else
   die "Unknown subject to take a screen shot from" "$SUBJECT"
 fi

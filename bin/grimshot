@@ -25,7 +25,7 @@ FILE=${3:-$(xdg-user-dir PICTURES)/screenshots/$(now).png}
 case "$ACTION" in
   usage|help|-h|--help)
   echo "Usage:"
-  echo "  grimshot copy|save|rec|rec-copy win|screen|area [FILE]"
+  echo "  grimshot copy|save|rec win|screen|area [FILE]"
   echo "Troubleshoot:"
   echo "  grimshot check"
   exit
@@ -76,11 +76,14 @@ takeScreenshot() {
 recordScreen() {
   FILE=$1
   GEOM=$2
-  REC_OPTS="-c h264_vaapi -d /dev/dri/renderD128"
-  if [ -z "$GEOM" ]; then
-    wf-recorder ${REC_OPTS} -f "$FILE" || die "Unable to invoke wf-recorder"
+  OUTPUT=$3
+  REC_OPTS="-d /dev/dri/renderD128"
+  if [ -n "$GEOM" ]; then
+    wf-recorder ${REC_OPTS} -g "${GEOM}" -f "$FILE" || die "Unable to invoke wf-recorder"
+  elif [ -n "$OUTPUT" ]; then
+    wf-recorder ${REC_OPTS} -o "${OUTPUT}" -f "$FILE" || die "Unable to invoke wf-recorder"
   else
-    wf-recorder ${REC_OPTS} -g "$GEOM" -f "$FILE" || die "Unable to invoke wf-recorder"
+    wf-recorder ${REC_OPTS} -f "$FILE" || die "Unable to invoke wf-recorder"
   fi
 }
 
@@ -125,10 +128,14 @@ elif [ "$ACTION" = "save" ] ; then
   else
     notifyError "Error taking screenshot with grim"
   fi
+  wl-copy --type image/png < "$FILE"  || die "Clipboard error"
 elif [ "$ACTION" = "rec" ] ; then
   echo "$FILE" | awk '/png$/{exit 0}' && \
     FILE=$(xdg-user-dir VIDEOS)/grimshot/$(now).mp4
+  # create dir if not exists
+  [ -d "$(dirname "$FILE")" ] || mkdir -p "$(dirname "$FILE")"
   recordScreen "$FILE" "$GEOM"
+  wl-copy "$FILE" || die "Clipboard error"
   if [ $? ]; then
     TITLE="Screen recording of $SUBJECT"
     MESSAGE=$(basename "$FILE")
@@ -136,12 +143,6 @@ elif [ "$ACTION" = "rec" ] ; then
   else
     notifyError "Error recording screen with wf-recorder"
   fi
-elif [ "$ACTION" = "rec-copy" ] ; then
-  TMP=$(mktemp --suffix '.mp4') || die "Unable to create temp file: is mktemp installed?"
-  recordScreen "$TMP" "$GEOM"
-  wl-copy --type video/mp4 < "$TMP"  || die "Clipboard error"
-  notifyOk "$WHAT copied to buffer"
-  rm "$TMP"
 else
   die "Unknown action" "$ACTION"
 fi

@@ -22,7 +22,7 @@ exec "${arg0}" \
    --ignorecase \
    --list=10 \
    --prompt="${prompt}" \
-   --fn 'Iosevka Sparkle 11' \
+   --fn 'Iosevka SS05 Extended 11' \
    --nb '#221E1D' --nf '#fffefe' \
    --tb "$main_color" --tf '#fffefe' \
    --fb '#221E1D' --ff '#fffefe' \

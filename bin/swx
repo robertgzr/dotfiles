@@ -1,10 +1,9 @@
 #!/bin/sh
 set -e
-
 [ -n "$DEBUG" ] && set -x
 
 # check requirements
-for app in swaymsg swq jq; do
+for app in swaymsg jq; do
 	if ! command -v "$app" >/dev/null; then
 		printf "%s: %s not install but required" "$0" "$app" >&2
 		exit 1
@@ -16,11 +15,11 @@ wspace=
 output=
 geometry=
 termify=
-appid_override=
 rotate=
 force_sleep=
 sticky=
-while getopts b:w:o:g:I:r:S:sth name; do
+floating=
+while getopts b:w:o:g:I:r:S:stfh name; do
 	case "$name" in
 	b)	# border
 		border="${OPTARG}" ;;
@@ -32,8 +31,6 @@ while getopts b:w:o:g:I:r:S:sth name; do
 		geometry="${OPTARG}" ;;
 	t)	# termify
 		termify=1 ;;
-	I)	# override app_id for non-terminal applications
-		appid_override="${OPTARG}" ;;
 	r)	# rotate
 		if ! command -v cage >/dev/null; then
 			printf "%s: cage not installed but required to rotate containers" "$0" >&2
@@ -42,8 +39,10 @@ while getopts b:w:o:g:I:r:S:sth name; do
 		rotate="${OPTARG}" ;;
 	S)	# force sleep
 		force_sleep="${OPTARG}" ;;
-	s)	# set contianer to sticky
+	s)	# set container to sticky
 		sticky=1 ;;
+	f)      # set container to float
+		floating=1 ;;
 	h|?)	printf "usage: %s [-bwogIrSs] COMMAND\n" "$(basename "$0")"
 		printf "\n"
 		printf "  -t \t\t(run COMMAND in \$TERM)\n"
@@ -51,10 +50,10 @@ while getopts b:w:o:g:I:r:S:sth name; do
 		printf "  -w WORKSPACE \t(move to workspace)\n"
 		printf "  -o OUTPUT \t(move to output)\n"
 		printf "  -g GEOMETRY \t(resize/position window)\n"
-		printf "  -I APP_ID \t(override app_id used to detect window, only makes sense with -t)\n"
 		printf "  -r ROTATION \t(rotate the container, requires cage(1))\n"
 		printf "  -S SLEEP \t(force a delay between spawning and property setting, see sleep(1))\n"
 		printf "  -s \t\t(make COMMAND a sticky window, appearing on all workspaces)\n"
+		printf "  -f \t\t(make COMMAND a floating window)\n"
 		printf "\n"
 		printf "See sway(5) for possible options for BORDER, WORKSPACE, OUTPUT and GEOMETRY.\n"
 		exit 2 ;;
@@ -63,7 +62,6 @@ done
 shift $((OPTIND - 1))
 
 arg0=$(basename "$1")
-appid=${arg0}
 if [ -z "${arg0}" ]; then
 	exec "$0" -h
 fi
@@ -78,7 +76,6 @@ if [ -n "${termify}" ]; then
 	esac
 	command="${TERM} ${args} ${arg0} ${*}"
 else
-	[ -n "${appid_override}" ] && appid=${appid_override}
 	command="${arg0} ${*}"
 fi
 
@@ -97,57 +94,38 @@ if [ -n "${rotate}" ]; then
 		command="firejail --overlay-tmpfs --profile=firefox ${command} --no-remote --kiosk"
 	fi
 	command="cage -d ${rotate_args} -- \"${command}\""
-	appid="wlroots"
 fi
 
-sway exec "${command}" >/dev/null
-
-if [ -n "${force_sleep}" ]; then
-	sleep "${force_sleep}"
-fi
+swaymsg exec "${command}" >/dev/null
+con_id="$(swaymsg -t subscribe '["window"]' | jq -s -r '.[]|select(.change=="new")|.container.id')"
 
 sway_props_done=
-waiting=0
 while [ -z "${sway_props_done}" ]; do
-	if ! swq has appid "${appid}" | jq -e 'length>0' \
-		&& [ -z "${force_sleep}" ]
-	then
-		waiting=$((waiting+1))
-		if [ "${waiting}" -gt 20 ]; then
-			printf "%s: failed to run %s.\n" "$0" "${arg0}" >&2
-			if [ -z "${termify}" ]; then
-				printf "If you do see the application try running:\n" >&2
-				printf "%s -I %s %s\n" \
-					"$(basename "$0")" \
-					"$(swq current con | jq -r '.app_id')" \
-					"${arg0} $*" >&2
-			fi
-			exit 1
-		fi >&2
-		continue
-	fi
 	if [ -n "${border}" ]; then
-		swaymsg border "${border}"
+		swaymsg [con_id="${con_id}"] border "${border}"
 	fi
 	if [ -n "${wspace}" ]; then
-		swaymsg move workspace "${wspace}"
+		swaymsg [con_id="${con_id}"] move workspace "${wspace}"
 	fi
 	if [ -n "${output}" ]; then
-		swaymsg move output "${wspace}"
+		swaymsg [con_id="${con_id}"] move output "${wspace}"
 	fi
 	if [ -n "${geometry}" ]; then
-		swaymsg floating enable
+		swaymsg [con_id="${con_id}"] floating enable
 		wh=$(printf "%s" "${geometry}" | cut -d' ' -f2)
-		sway resize set \
+		swaymsg [con_id="${con_id}"] resize set \
 			width "$(printf "%s" "${wh}" | cut -d'x' -f1)" px \
 			height "$(printf "%s" "${wh}" | cut -d'x' -f2)" px
 		xy=$(printf "%s" "${geometry}" | cut -d' ' -f1)
-		swaymsg move absolute position \
+		swaymsg [con_id="${con_id}"] move absolute position \
 			"$(printf "%s" "${xy}" | cut -d',' -f1)" px \
 			"$(printf "%s" "${xy}" | cut -d',' -f2)" px
 	fi
 	if [ -n "${sticky}" ]; then
-		swaymsg sticky enable
+		swaymsg [con_id="${con_id}"] sticky enable
+	fi
+	if [ -n "${floating}" ]; then
+		swaymsg [con_id="${con_id}"] floating enable
 	fi
 	sway_props_done=1
 done >/dev/null

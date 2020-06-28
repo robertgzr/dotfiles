@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -e
 
 exec_hist=/tmp/fzf-interactive_exec-hist
@@ -8,69 +7,115 @@ if [ ! -f "$exec_hist" ]; then
 fi
 
 case "$1" in
-	exec)
-		uniq "$exec_hist" \
-			| grep -v '^$' \
-			| fzf \
-				--header 'Select or enter a command, {} is previous selection' \
-				--bind 'tab:replace-query' \
-				--bind 'enter:print-query' \
-			| tee -a $exec_hist \
-			| sed "s#{}#$2#g"  \
-			| sh -s
-		exit $?
-		;;
-	
-	git-branches)
-		git rev-parse HEAD > /dev/null 2>&1 || exit 1
-		git branch -a --sort=refname --format='%(refname)' \
-			| cut -d' ' -f1 \
-			| sed 's#^refs/##' \
-			| sed 's#^remotes/##' \
-			| sed 's#^heads/##' \
-			| $0 \
-				--ansi --no-sort --reverse --tac \
-				--header 'Press ctrl-s to toggle sort' \
-				--bind 'ctrl-s:toggle-sort' \
-				--preview 'git log --color=always --oneline --graph --date=short {} | head -${LINES}' \
-				--preview-window right:70% \
-				--bind "ctrl-o:execute(git checkout {})"
-		;;
+exec)
+	uniq "$exec_hist" \
+		| grep -v '^$' \
+		| fzf \
+			--header 'Select or enter a command, {} is previous selection' \
+			--bind 'tab:replace-query' \
+			--bind 'enter:print-query' \
+		| tee -a $exec_hist \
+		| sed "s#{}#$2#g"  \
+		| sh -s
+	exit $?
+	;;
 
-	git-tags)
-		git rev-parse HEAD > /dev/null 2>&1 || exit 1
-		  git tag --sort -version:refname \
-			| cut -d' ' -f1 \
-			| sed 's#^refs/##' \
-			| sed 's#^remotes/##' \
-			| sed 's#^heads/##' \
-			| $0 \
-				--ansi --no-sort --reverse \
-				--preview 'git show --color=always {} | head -${LINES}' \
-				--preview-window right:70%
-		;;
+_preview)
+	case "$(xdg-mime query filetype "$2")" in
+	inode/directory) 			exa -la "$2" ;;
+	text/*)					head "$2" ;;
+	application/javascript)			head "$2" ;;
+	application/x-shellscript)		head "$2" ;;
+	application/json)			jq "$2" ;;
+	application/x-compressed-tar)		tar -tvf "$2" ;;
+	application/pdf)			pdftotext "$2" - ;;
+	image/*)				mediainfo "$2" ;;
+	video/*|audio/*)			mediainfo "$2" ;;
+	*)					file "$2" ;;
+	esac
+	;;
+_preview2) # invoke mpv/imv for media files
+	case "$(xdg-mime query filetype "$2")" in
+	image/*)				swx -f imv "$2" ;;
+	video/*|audio/*)			swx -f mpv "$2" ;;
+	application/pdf)			swx -f zathura "$2" ;;
+	*)					$0 exec "$2" ;;
+	esac
+	;;
 
-	git-log)
-		git log --color=always --oneline \
-			| $0 \
-				--ansi --no-sort --reverse \
-				--preview 'echo {} | cut -d\  -f1 | xargs git show --color=always --pretty=full --stat --patch' \
-				--preview-window right:50% \
-			| cut -d' ' -f1 \
-			| xargs -i git log -1 --pretty=%H {}
-		;;
+git-branches)
+	git rev-parse HEAD > /dev/null 2>&1 || exit 1
+	git branch -a --sort=refname --format='%(refname)' \
+		| cut -d' ' -f1 \
+		| sed 's#^refs/##' \
+		| sed 's#^remotes/##' \
+		| sed 's#^heads/##' \
+		| $0 \
+			--ansi --no-sort --reverse --tac \
+			--header 'Press ctrl-s to toggle sort' \
+			--bind 'ctrl-s:toggle-sort' \
+			--preview 'git log --color=always --oneline --graph --date=short {} | head -${LINES}' \
+			--preview-window right:70% \
+			--bind "ctrl-o:execute(git checkout {})"
+	;;
 
-	rg)
-		shift
-		rg $@ --files-with-matches \
-			| $0 \
-				--header 'Press ctrl-s to toggle sort' \
-				--bind 'ctrl-s:toggle-sort' \
-				--preview "rg $* --color=always --no-filename --glob='{}' --context=5 --line-number"
-		;;
-	
-	*)
-		fzf \
-			--bind "ctrl-x:execute(${0} exec {})" \
-			"$@" ;;
+git-tags)
+	git rev-parse HEAD > /dev/null 2>&1 || exit 1
+		git tag --sort -version:refname \
+		| cut -d' ' -f1 \
+		| sed 's#^refs/##' \
+		| sed 's#^remotes/##' \
+		| sed 's#^heads/##' \
+		| $0 \
+			--ansi --no-sort --reverse \
+			--preview 'git show --color=always {} | head -${LINES}' \
+			--preview-window right:70%
+	;;
+
+git-log)
+	git log --color=always --oneline \
+		| $0 \
+			--ansi --no-sort --reverse \
+			--preview 'echo {} | cut -d\  -f1 | xargs git show --color=always --pretty=full --stat --patch' \
+			--preview-window right:50% \
+		| cut -d' ' -f1 \
+		| xargs -r -i git log -1 --pretty=%H {}
+	;;
+
+rg)
+	shift
+	rg $@ --files-with-matches \
+		| $0 \
+			--header 'Press ctrl-s to toggle sort' \
+			--bind 'ctrl-s:toggle-sort' \
+			--preview "rg $* --color=always --no-filename --glob='{}' --context=5 --line-number"
+	;;
+
+vimwiki)
+	shift
+	fd -t f -e md "${1:-.*}" "$HOME/wiki" \
+		| sed "s#^$HOME/wiki/##" \
+		| sed 's#.md$##' \
+		| $0 \
+			--print-query \
+			--preview="cat -n $HOME/wiki/{}.md" \
+		| xargs -r -i nvim +VimwikiIndex +VimwikiGoto\ {}
+	;;
+
+fd)
+	shift
+	fd $@ \
+		| $0 \
+			--ansi --reverse \
+			--header 'Press ctrl-p to toggle preview, enter for xdg-open' \
+			--bind 'ctrl-p:toggle-preview' \
+			--bind "ctrl-space:execute($0 _preview2 {})" \
+			--preview "$0 _preview {}" \
+			--preview-window ':hidden' \
+		| xargs -r xdg-open
+	;;
+
+*)
+	fzf \
+		--bind "ctrl-x:execute(${0} exec {})+accept" "$@" ;;
 esac

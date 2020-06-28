@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'SirVer/ultisnips'
     \| Plug 'honza/vim-snippets'
 
-  Plug 'vimwiki/vimwiki', { 'for': ['vimwiki'], 'on': 'VimwikiIndex' }
+  Plug 'vimwiki/vimwiki', { 'for': ['vimwiki'], 'on': ['VimwikiIndex', 'VimwikiGoto'] }
 
   " search
   " Plug 'junegunn/fzf',

@@ -22,3 +22,5 @@
 /etc/portage/sets/sway-stack
 
 /var/lib/portage/world
+
+/etc/runlevels/gui

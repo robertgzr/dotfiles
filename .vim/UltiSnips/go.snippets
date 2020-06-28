@@ -4,9 +4,8 @@ func main() {
 }
 endsnippet
 
-snippet 'if err' "if err != nil {}"
-if err != nil {
-	$1
+snippet hfn "http.HandlerFunc"
+func $1(w http.ResponseWriter, r *http.Request) {
+	$0
 }
-$0
 endsnippet

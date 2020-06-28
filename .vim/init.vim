@@ -376,3 +376,4 @@ command! -bang DayMode call daymode#switch(<bang>0)
 command! -range Retab <line1>,<line2>call retab#do()
 command! NumberToggle call numbertoggle#switch()
 command! Alternate call alternate#alternate()
+command! InsertTS r!now

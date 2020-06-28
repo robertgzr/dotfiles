@@ -119,7 +119,8 @@ _current()
 
         ws) _current workspace ;;
         workspace) swtree | jq '.. | select(.type?=="workspace") | . as $parent | $parent.nodes[]?, $parent.floating_nodes[]? | if .focused? then $parent else empty end' ;;
-        output) $0 current workspace | jq -r '.output' ;;
+        output) $0 current workspace | jq -r '.output'  ;;
+        output-full) $0 list output | jq ".[] | select((.type?==\"output\") and (.name?==\"$($0 current output)\"))" ;;
         *)
             printf 'usage: swq current <con|workspace|output>\n\n'
             exit 2 ;;

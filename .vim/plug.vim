@@ -80,6 +80,7 @@ call plug#begin('~/.vim/plugged')
 " Colorschemes
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'cideM/yui'
+  Plug 'ayu-theme/ayu-vim'
 
 " Local
   " Plug '~/devel/projects/nihon-theme/vim'

@@ -12,12 +12,13 @@ runtime plug.vim
 " nnoremap <Leader>cc :set cursorcolumn!<CR>
 
 " looks {{{
-let g:daymode = 1
-let g:daymode_colorscheme_day = 'yui'
+let g:daymode = 0
+let g:daymode_colorscheme_day = 'ayu'
 let g:daymode_colorscheme_night = 'PaperColor'
 let g:daymode_lightline_colorscheme_day = 'ayu_light'
 let g:daymode_lightline_colorscheme_night = 'papercolor_dim'
 
+let g:ayucolor="light"
 let g:PaperColor_Theme_Options = {
 \   'theme': {
 \     'default.dark': {

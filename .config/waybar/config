@@ -4,8 +4,8 @@
     "position": "top",
     "height": 30,
 
-    "modules-left": ["sway/mode", "sway/workspaces", "sway/window", "custom/media", "custom/toggl"],
-    "modules-center": ["clock#local", "clock#utc"],
+    "modules-left": ["sway/mode", "sway/workspaces", "sway/window"],
+    "modules-center": ["custom/media", "custom/toggl", "clock#local", "clock#utc"],
     "modules-right": ["tray", "cpu", "memory", "disk#root", "disk#home", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery"],
     "sway/workspaces": {
         "disable-scroll": true,
@@ -19,7 +19,7 @@
     },
     "sway/window": {
         "format": "{}",
-        "max-length": 50
+        "max-length": 100
     },
     "sway/mode": {
         "format": "{}"

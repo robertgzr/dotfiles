@@ -276,8 +276,8 @@ lsp.rust_analyzer.setup{
 EOF
   " autocmd Filetype bash,shell,css,go,python,rust,tex,latex setl omnifunc=lsp#omnifunc
   " au Filetype lua setl omnifunc=v:lua.vim.lsp.omnifunc
-  nnoremap <silent> gd <cmd> lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> gD <cmd> lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gD <cmd> lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> gd <cmd> lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gT <cmd> lua vim.lsp.buf.type_definition()<CR>
   nnoremap <silent> gI <cmd> lua vim.lsp.buf.implementation()<CR>
   nnoremap <silent> gr <cmd> lua vim.lsp.buf.references()<CR>

@@ -53,7 +53,8 @@
 	"format": "<small>/home </small>{percentage_used}%"
     },
     "cpu": {
-        "format": " {usage}%"
+        "format": " {}%",
+        "on-click": "$HOME/bin/swx -t -f htop"
     },
     "memory": {
         "format": " {}%"
@@ -65,7 +66,9 @@
     },
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": [""]
+        "format-icons": [""],
+        "on-scroll-down": "light -D 5",
+        "on-scroll-up": "light -U 5",
     },
     "battery": {
         "states": {
@@ -87,13 +90,16 @@
         "format-linked": " {ifname} (-)",
         "format-disconnected": " (-)",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nssid: {essid}\nsignal: {signaldBm} dbm",
-        "tooltip-format-disconnected": "disconnected"
+        "tooltip-format-disconnected": "disconnected",
+        "on-click": "$HOME/bin/swx -t -f iwctl"
     },
     "network#wg": {
         "interface": "wg0",
         "format": "",
 	"tooltip-format": "wg0: {ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "disconnected"
+        "tooltip-format-disconnected": "disconnected",
+	"on-click": "swaymsg exec doas wg-quick up wg0",
+	"on-click-right": "swaymsg exec doas wg-quick down wg0"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -111,7 +117,7 @@
             "default": ["", "", ""]
         },
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click": "pavucontrol"
+        "on-click": "swaymsg exec soundswitch"
     },
     "custom/media": {
         "format": "{icon} {}",

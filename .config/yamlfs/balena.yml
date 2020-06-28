@@ -2,17 +2,19 @@ docker-compose.yml: |-
   version: '2.1'
 
   services:
-    build: ./container
+    build: .
 
   volumes:
     ctr-data:
 
-container:
-  Dockerfile.template: |-
-    # vim: ft=dockerfile
-    FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:run
+Dockerfile.template: |-
+  # vim: ft=dockerfile
+  FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:run
 
-    # RUN apk add --no-cache
+  COPY ./start.sh /usr/local/bin/
+  CMD [ "start.sh" ]
 
-    # COPY ./start.sh /usr/local/bin/
-    # CMD [ "start.sh" ]
+start.sh: |-
+  #!/bin/sh
+  set -e
+  while true; do echo "nothing" && sleep 20s; done

@@ -5,14 +5,19 @@ meson.build: |-
       version: '0.0.0+unknown',
       license: 'MIT',
       default_options: [
-        'c_std=c99' \
-        'warning_level=2' \
-        'werror=true' \
+        'c_std=c99',
+        'warning_level=2',
+        'werror=true',
       ],
+      {% if .docker %}
+      meson_version: '>= 0.37',
+      {% else %}
+      meson_version: '>= 0.46',
+      {% end %}
   )
 
   cc = meson.get_compiler('c')
-  add_project_arguments(cc.get_supported_arguments([
+  add_project_arguments({% if not .docker %}cc.get_supported_arguments({% end %}[
     '-D_POSIX_C_SOURCE=200809L',
 
     '-Wundef',
@@ -24,7 +29,9 @@ meson.build: |-
     '-Wfloat-equal',
     '-Wstrict-prototypes',
     '-Wredundant-decls',
+    {% if not .docker %}
     '-Wimplicit-fallthrough=2',
+    {% end %}
     '-Wendif-labels',
     '-Wstrict-aliasing=2',
     '-Woverflow',
@@ -33,7 +40,26 @@ meson.build: |-
     '-Wno-missing-braces',
     '-Wno-missing-field-initializers',
     '-Wno-unused-parameter',
-  ]), language: 'c')
+  ]{% if not .docker %}){% end %}, language: 'c')
+
+  version = '"@0@ (" __DATE__ ")"'.format(meson.project_version())
+  # embed version sourced from git ref
+  git = find_program('git', native: true, required: false)
+  if git.found()
+      git_commit_hash = run_command([
+        git, 'describe', '--always', '--tags'
+      ])
+      git_branch = run_command([
+        git, 'rev-parse', '--abbrev-ref', 'HEAD'
+      ])
+      if git_commit_hash.returncode() == 0 and git_branch.returncode() == 0
+        version = '"@0@ (" __DATE__ ", branch \'@1@\')"'.format(
+          git_commit_hash.stdout().strip(),
+          git_branch.stdout().strip(),
+        )
+      endif
+  endif
+  add_project_arguments('-DVERSION=@0@'.format(version), language: 'c')
 
   executable(
     meson.project_name(),
@@ -78,25 +104,6 @@ meson.build: |-
   endif
   {%- end %}
 
-  version = '"@0@ (" __DATE__ ")"'.format(meson.project_version())
-  # embed version sourced from git ref
-  git = find_program('git', native: true, required: false)
-  if git.found()
-      git_commit_hash = run_command([
-        git, 'describe', '--always', '--tags'
-      ])
-      git_branch = run_command([
-        git, 'rev-parse', '--abbrev-ref', 'HEAD'
-      ])
-      if git_commit_hash.returncode() == 0 and git_branch.returncode() == 0
-        version = '"@0@ (" __DATE__ ", branch \'@1@\')"'.format(
-          git_commit_hash.stdout().strip(),
-          git_branch.stdout().strip(),
-        )
-      endif
-  endif
-  add_project_arguments('-DVERSION=@0@'.format(version), language: 'c')
-
 src:
   main.c: |-
     #define _POSIX_C_SOURCE 200809L
@@ -118,7 +125,7 @@ src:
     }
 
 include:
-  {% .name | lower %}: |-
+  {% .name | lower %}.h: |-
     #ifndef {% .name | upper %}_H
     #define {% .name | upper %}_H
 
@@ -129,6 +136,9 @@ include:
     /* TODO */
 
     #endif
+
+.gitignore: |-
+  build/
 
 .editorconfig: |-
   ; http://editorconfig.org/
@@ -157,3 +167,8 @@ README.md: |-
   # {% .name %}
 
   TODO
+
+{% if .docker %}
+Dockerfile: |-
+
+{% end %}

@@ -81,10 +81,11 @@ values.yaml: |-
 
   additionalArgs: []
 
-  # service:
+  service:
+    annotations:
   #   port: 8080
 
-{%- if .configmap %}
+{% if .configmap %}
   # configmap:
   #   config: |-
   #     # TODO
@@ -98,7 +99,7 @@ values.yaml: |-
   prometheus:
     enabled: false
 
-{%- if .ingress %}
+{% if .ingress %}
   ingress:
     enabled: false
     # annotations:
@@ -109,7 +110,7 @@ values.yaml: |-
     # tls:
 {%- end %}
 
-{%- if .pvc %}
+{% if .pvc %}
   ## Enable persistence using Persistent Volume Claims
   ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
   ##
@@ -188,7 +189,7 @@ templates:
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: {{ template "{% .name %}.name" }}
+      name: {{ template "{% .name %}.name" . }}
       labels:
         app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
         app: {{ template "{% .name %}.name" . }}
@@ -227,8 +228,8 @@ templates:
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
             imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
             args:
-            {{- if .Values.additionalArgs }}
-            {{- .Values.additionalArgs | toYaml | indent 10 }}
+            {{- range .Values.additionalArgs }}
+            - {{ . | quote }}
             {{- end }}
             ports:
             - name: http
@@ -275,7 +276,7 @@ templates:
     apiVersion: v1
     kind: Service
     metadata:
-      name: {{ template "{% .name %}.name" }}
+      name: {{ template "{% .name %}.name" . }}
       labels:
         app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
         app: {{ template "{% .name %}.name" . }}
@@ -310,7 +311,7 @@ templates:
     {{- end }}
     kind: Ingress
     metadata:
-      name: {{ template "{% .name %}.name" }}
+      name: {{ template "{% .name %}.name" . }}
       labels:
         app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
         app: {{ template "{% .name %}.name" . }}
@@ -349,7 +350,7 @@ templates:
     kind: PersistentVolumeClaim
     apiVersion: v1
     metadata:
-      name: {{ template "{% .name %}.name" }}
+      name: {{ template "{% .name %}.name" . }}
       labels:
         app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
         app: {{ template "{% .name %}.name" . }}
@@ -358,7 +359,9 @@ templates:
         heritage: {{ .Release.Service }}
     spec:
       accessModes:
-        {{- toYaml .Values.persistence.accessModes | indent 4 }}
+        {{- range .Values.persistence.accessModes }}
+        - {{ . | quote }}
+        {{- end }}
       {{- if .Values.persistence.storageClass }}
       {{- if (eq "-" .Values.persistence.storageClass) }}
       storageClassName: ""
@@ -380,7 +383,7 @@ templates:
     apiVersion: v1
     kind: ConfigMap
     metadata:
-      name: {{ template "{% .name %}.name" }}
+      name: {{ template "{% .name %}.name" . }}
       labels:
         app.kubernetes.io/name: {{ template "{% .name %}.name" . }}
         app: {{ template "{% .name %}.name" . }}

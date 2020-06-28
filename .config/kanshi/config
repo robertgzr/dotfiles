@@ -1,3 +1,4 @@
+# vim: commentstring=#\ %s
 profile laptop {
   output eDP-1 scale 1 enable
 }

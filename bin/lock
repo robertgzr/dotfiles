@@ -1,6 +1,7 @@
 #!/bin/sh
 
 exec swaylock -f \
+    --color=000000 \
     --scaling=fill \
     --font=Iosevka\ Sparkle \
     --font-size=18 \

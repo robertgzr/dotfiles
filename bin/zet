@@ -3,31 +3,23 @@
 ZET_DIR=$HOME/wiki
 
 case "$1" in
-    ls) 
-        if [ -z "$2" ]; then
-            fd -t f -e md '.*' "${ZET_DIR}"
-        else
-            shift 1
-            rg --no-ignore --files-with-matches "$@" "${ZET_DIR}" \
-                | fzf --preview="cat -n {} | grep --color=always -C 3 '$@'" --bind 'enter:execute(nvim {})'
-        fi
+    ls|l)
+        shift
+        fzfez vimwiki "$@"
         ;;
 
-    new)
-        f="${ZET_DIR}/$(date +%Y)/$2"
-        if [ -z "$f" ]; then
-            f="$(fzf --prompt="filename?> " --print-query)"
-        fi
-        if [ ! -f "$f" ]; then
-            {
-                echo "---";
-                yq n date "$(date -Iseconds)";
-                echo "---";
-                echo "";
-            } >> "$f"
-        fi
+    new|n)
+        f=${2:-/dev/stdout}
+        {
+            echo "---";
+            yq n date "$(date -Iseconds)" \
+            | yq w - title "$2";
+            echo "---";
+            echo "";
+        } >> "$f"
+        [ "$f" = "/dev/stdout" ] && exit
         nvim "$f"
         ;;
 
-    *) nvim "+Zet $*" ;;
+    *) nvim "+VimwikiIndex" ;;
 esac

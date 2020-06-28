@@ -2,6 +2,9 @@
 /etc/doas.conf
 /etc/fstab
 
+/etc/greetd/config.toml
+/etc/greetd/sway.conf
+
 # portage stuff
 /etc/portage/make.conf
 /etc/portage/package.env

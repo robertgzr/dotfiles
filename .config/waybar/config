@@ -6,7 +6,7 @@
 
     "modules-left": ["sway/mode", "sway/workspaces", "sway/window"],
     "modules-center": ["custom/media", "custom/toggl", "clock#local", "clock#utc"],
-    "modules-right": ["tray", "cpu", "memory", "disk#root", "disk#home", "temperature", "idle_inhibitor", "backlight", "pulseaudio", "network#wg", "network", "battery"],
+    "modules-right": ["tray", "cpu", "memory", "disk#root", "disk#home", "temperature", "idle_inhibitor", "backlight", "custom/redshift", "pulseaudio", "network#wg", "network", "battery"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -129,6 +129,13 @@
     "custom/toggl": {
         "exec": "$HOME/.config/waybar/toggl.lua 2>/dev/null",
         "interval": 30
+    },
+    "custom/redshift": {
+        "exec-if": "pgrep redshift",
+        "exec": "$HOME/devel/projects/waybar-bites/redshift/waybar-redshift",
+	"return-type": "json",
+	"on-click": "pkill -x -USR1 redshift",
+	"on-click-right": "pkill -x -HUP waybar-redshift"
     },
     "mpd": {
         "format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",

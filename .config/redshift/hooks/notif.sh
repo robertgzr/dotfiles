@@ -2,11 +2,9 @@
 
 case "$1" in
 	period-changed)
-		notify-send "redshift" "changed to $3"
-		if [ "$3" = "night" ]; then
-			ogurictl output --image ~/.background_night '*'
-		else
-			ogurictl output --image ~/.background '*'
-		fi
+		case "$3" in
+		transition|night)	pkill -USR2 waybar-redshift ;;
+		none|day)		pkill -USR1 waybar-redshift ;;
+		esac
 		;;
 esac

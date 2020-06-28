@@ -26,6 +26,7 @@
 #pulseaudio,
 #custom-media,
 #custom-toggl,
+#custom-redshift,
 #mpd,
 #tray,
 #idle_inhibitor {
@@ -176,6 +177,29 @@ label:focus {
   color: @foreground;
   /* background-color: #DB4D6D; */
   border-top: 2px solid #DB4D60;
+}
+
+@keyframes flash {
+  50% {
+    background: rgba(255,174,66, 0.7);
+    color: @background;
+  }
+}
+#custom-redshift.night {
+  border-top: 2px solid #ffae42;
+  color: @foreground;
+  animation-name: flash;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+#custom-redshift.day {
+  color: @dimmed;
+}
+#custom-redshift.off,
+#custom-redshift.unknown {
+  border-top: 2px solid @urgent;
+  color: @dimmed;
 }
 
 #mpd {

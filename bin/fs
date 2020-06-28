@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+_rect=$(swq current output-full | jq -r '.rect')
+w=$(echo "${_rect}" | jq -r '.width * 0.6')
+h=$(echo "${_rect}" | jq -r '.height * 0.6')
+x=$(echo "${_rect}" | jq -r "(.width - ${w}) / 2")
+y=$(echo "${_rect}" | jq -r "(.height - ${h}) / 2")
+
+exec swx -t -g "${x},${y} ${w}x${h}" fzfez fd -a -p

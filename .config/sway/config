@@ -1,14 +1,15 @@
 # vim: ft=i3 fdm=marker
 
-output * scale 1
-exec doas /etc/init.d/kanshi restart
-
-# output * max_render_time 1
-# output * adaptive_sync on
+exec doas rc gui
 
 exec_always kanshictl reload
-exec_always exec sh -c 'pkill oguri && oguri'
+output * scale 1
+output * max_render_time 1
+output * adaptive_sync on
+output * bg $HOME/Pictures/IMG_20180616_170559.jpg fill
+output 'Dell Inc. DELL U2518D 3C4YP87AAK3L' bg $HOME/Pictures/IMG_20180506_171549.jpg fill
 
+# exec_always sh -c 'sleep 2 ; killall oguri ; oguri'
 exec light -S 80
 exec redshift
 exec mako
@@ -91,6 +92,3 @@ client.urgent $urgent2 $urgent $text $indicator $urgent
 
 # include config.d/*
 include "`uname -n`"
-
-exec_always kanshictl reload
-exec_always doas /etc/init.d/waybar restart

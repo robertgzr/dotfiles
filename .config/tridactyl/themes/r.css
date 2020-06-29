@@ -1,4 +1,8 @@
+/* vim: fdm=marker
+ * */
 :root.TridactylThemeR {
+    --r-accent: #005CAF;
+
     --tridactyl-bg: #1c1c1c;
     --tridactyl-bg-second: #38383d;
     --tridactyl-fg: #f9f9fa;
@@ -14,10 +18,35 @@
     --tridactyl-cmdl-small-font-size: 12pt;
     --tridactyl-cmplt-bg: #1c1c1c;
     --tridactyl-cmplt-small-font-size: 12pt;
-}
 
-/* :root.TridactylThemeR body { */
-/* } */
+    --tridactyl-header-first-bg: #333;
+    --tridactyl-header-second-bg: #222;
+    --tridactyl-header-third-bg: #111;
+
+    --tridactyl-cmplt-border-top: 1px solid
+        var(--tridactyl-photon-colours-in-content-category-header-background);
+
+    /* --tridactyl-url-fg: var(--tridactyl-photon-colours-code-green); */
+    /* --tridactyl-url-bg: var(--tridactyl-bg); */
+
+    /* --tridactyl-of-fg: var(--tridactyl-photon-colours-warning-color); */
+    /* --tridactyl-of-bg: var(--tridactyl-photon-colours-warning-background-color); */
+
+    /* Hints are not photon coloured. Feel free to experiment with that */
+
+    --tridactyl-hintspan-fg: white;
+    --tridactyl-hintspan-bg: #204e8a;
+
+    --tridactyl-hint-active-fg: #333;
+    --tridactyl-hint-active-bg: #88ff00;
+    --tridactyl-hint-active-outline: 1px solid #000;
+
+    --tridactyl-hint-bg: rgba(13, 31, 54, 0.25);
+    --tridactyl-hint-outline: 1px solid var(--tridactyl-hintspan-bg);
+
+    --tridactyl-highlight-box-bg: none;
+    --tridactyl-highlight-box-fg: none;
+}
 
 :root.TridactylThemeR #command-line-holder {
     order: 1;
@@ -54,6 +83,23 @@
     /* opacity: 0.9; */
 }
 
-:root.TridactylThemeR .TridactylOwnNamespace #changelog {
-    background: var(--tridactyl-bg-second);
+:root.TridactylThemeR.TridactylOwnNamespace input[id^="spoiler"] ~ .spoiler {
+    border-color: var(--r-accent);
 }
+
+:root.TridactylThemeR.TridactylOwnNamespace a {
+    color: var(--r-accent);
+}
+
+/* These rules have greater specificity than the rules applying the variables
+ * above, which causes *issues*. */
+
+/* :root.TridactylThemeR.TridactylOwnNamespace */
+/* a:link { */
+/*     color: var(--tridactyl-photon-colours-in-content-link-color); */
+/* } */
+
+/* :root.TridactylThemeR.TridactylOwnNamespace */
+/* a:link:visited { */
+/*     --tridactyl-photon-colours-in-content-link-color-visited: #0a8dff; */
+/* } */

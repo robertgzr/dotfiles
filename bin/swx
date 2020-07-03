@@ -16,11 +16,10 @@ output=
 geometry=
 termify=
 rotate=
-force_sleep=
 sticky=
 floating=
 autotile=
-while getopts b:w:o:g:I:r:S:stfAh name; do
+while getopts b:w:o:g:I:r:stfah name; do
 	case "$name" in
 	b)	# border
 		border="${OPTARG}" ;;
@@ -38,25 +37,23 @@ while getopts b:w:o:g:I:r:S:stfAh name; do
 			exit 1
 		fi
 		rotate="${OPTARG}" ;;
-	S)	# force sleep
-		force_sleep="${OPTARG}" ;;
 	s)	# set container to sticky
 		sticky=1 ;;
 	f)      # set container to float
 		floating=1 ;;
-	A)	# auto-tiling enabled
+	a)	# auto-tiling enabled
 		autotile=1 ;;
-	h|?)	printf "usage: %s [-bwogIrSs] COMMAND\n" "$(basename "$0")"
+	h|?)	printf "usage: %s [-bwogIrsfo] COMMAND\n" "$(basename "$0")"
 		printf "\n"
-		printf "  -t \t\t(run COMMAND in \$TERM)\n"
-		printf "  -b BORDER \t(set border property)\n"
-		printf "  -w WORKSPACE \t(move to workspace)\n"
-		printf "  -o OUTPUT \t(move to output)\n"
-		printf "  -g GEOMETRY \t(resize/position window)\n"
-		printf "  -r ROTATION \t(rotate the container, requires cage(1))\n"
-		printf "  -S SLEEP \t(force a delay between spawning and property setting, see sleep(1))\n"
-		printf "  -s \t\t(make COMMAND a sticky window, appearing on all workspaces)\n"
-		printf "  -f \t\t(make COMMAND a floating window)\n"
+		printf "  -t \t\trun COMMAND in \$TERM\n"
+		printf "  -b BORDER \tset border property\n"
+		printf "  -w WORKSPACE \tmove to workspace\n"
+		printf "  -o OUTPUT \tmove to output\n"
+		printf "  -g GEOMETRY \tresize/position window\n"
+		printf "  -r ROTATION \trotate the container, requires cage(1)\n"
+		printf "  -s \t\tmake COMMAND a sticky window, appearing on all workspaces\n"
+		printf "  -f \t\tmake COMMAND a floating window\n"
+		printf "  -a \t\tauto-tiling; always open COMMAND on the shorter edge\n\t\tof the current container\n"
 		printf "\n"
 		printf "See sway(5) for possible options for BORDER, WORKSPACE, OUTPUT and GEOMETRY.\n"
 		exit 2 ;;
